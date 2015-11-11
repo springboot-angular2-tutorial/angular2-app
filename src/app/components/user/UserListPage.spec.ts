@@ -72,12 +72,9 @@ export function main() {
       expect(gravatarDebugElement).toBeTruthy();
       expect(gravatarDebugElement.componentInstance.email).toEqual('test1@test.com');
       expect(gravatarDebugElement.componentInstance.alt).toEqual('test1');
-    });
 
-    it('can move to user-show page', () => {
-      ctx.rootTC.detectChanges();
-      expect(DOM.querySelector(cmpDebugElement.nativeElement, 'li>a').getAttribute('href'))
-        .toEqual('/users/1');
+      const userShowLink = cmpDebugElement.query(By.css('li>a')).nativeElement;
+      expect(userShowLink.getAttribute('href')).toEqual('/users/1');
     });
 
   });
