@@ -47,6 +47,7 @@ __build__/**
 
 # IDE #
 .idea/
+*.iml
 
 # generated documents
 /doc
