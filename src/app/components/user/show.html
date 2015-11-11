@@ -1,0 +1,13 @@
+<div class="row">
+
+  <aside class="col-md-4">
+    <user-stats [user-id]="userId" [shown-on-profile]="true"></user-stats>
+  </aside>
+
+  <div class="col-md-8">
+    <follow-btn *ng-if="canShowFollowBtn()" [follower-id]="userId"></follow-btn>
+    <micropost-list [user-id]="userId"></micropost-list>
+  </div>
+
+</div>
+

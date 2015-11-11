@@ -1,0 +1,16 @@
+<h1>All users</h1>
+
+<ul class="users list-unstyled">
+  <li *ng-for="var u of users">
+    <gravatar [email]="u.email" size="50" [alt]="u.name"></gravatar>
+    <a [router-link]="['/UserShow', {id: u.id}]">{{u.name}}</a>
+  </li>
+</ul>
+
+<pagination
+  [hidden]="totalPages <= 1"
+  [total-items]="totalItems"
+  [items-per-page]="itemsPerPage"
+  [(ng-model)]="currentPage"
+  (page-changed)="pageChanged($event)">
+</pagination>

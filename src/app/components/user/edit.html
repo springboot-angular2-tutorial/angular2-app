@@ -1,0 +1,70 @@
+<div class="user-edit-page">
+  <h1>Update your profile</h1>
+
+  <form [ng-form-model]="myForm" (submit)="onSubmit(myForm.value)" novalidate>
+
+    <div class="form-group"
+         [class.has-error]="!name.valid && name.touched">
+      <label class="control-label" for="nameInput">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nameInput"
+        placeholder="Name"
+        maxlength="30"
+        [ng-form-control]="name"/>
+      <span *ng-if="name.hasError('required') && name.touched"
+            class="help-block">Name is required</span>
+      <span *ng-if="name.hasError('minLength') && name.touched"
+            class="help-block">Name must be longer than 4 chars.</span>
+    </div>
+
+    <div class="form-group"
+         [class.has-error]="!email.valid && email.touched">
+      <label class="control-label" for="emailInput">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="emailInput"
+        placeholder="Email"
+        maxlength="30"
+        [ng-form-control]="email"/>
+      <span *ng-if="email.hasError('required') && email.touched"
+            class="help-block">Email is required</span>
+      <span *ng-if="email.hasError('email') && email.touched"
+            class="help-block">Invalid format</span>
+    </div>
+
+    <div class="form-group"
+         [class.has-error]="!password.valid && password.touched">
+      <label class="control-label" for="passwordInput">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="passwordInput"
+        placeholder="Password"
+        maxlength="100"
+        [ng-form-control]="password"/>
+      <span *ng-if="password.hasError('minLength') && password.touched"
+            class="help-block">Password must be longer than 8 chars.</span>
+    </div>
+
+    <div class="form-group"
+         [class.has-error]="!passwordConfirmation.valid && passwordConfirmation.touched">
+      <label class="control-label" for="passwordConfirmationInput">Confirm
+        Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="passwordConfirmationInput"
+        placeholder="Confirm Password"
+        [ng-form-control]="passwordConfirmation"/>
+      <span
+        *ng-if="passwordConfirmation.hasError('matched') && passwordConfirmation.touched"
+        class="help-block">Doesn't match</span>
+    </div>
+
+    <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+
+  </form>
+</div>

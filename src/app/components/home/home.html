@@ -1,0 +1,15 @@
+<div class="row">
+
+  <aside class="col-md-4">
+    <user-stats #us [user-id]="'me'"></user-stats>
+    <section>
+      <micropost-new (created)="f.list(); us.onChanges()"></micropost-new>
+    </section>
+  </aside>
+
+  <div class="col-md-8">
+    <h3>Micropost Feed</h3>
+    <feed #f (deleted)="us.onChanges()"></feed>
+  </div>
+
+</div>

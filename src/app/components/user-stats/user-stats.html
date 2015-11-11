@@ -1,0 +1,25 @@
+<div class="user-stats">
+
+  <section class="user clearfix">
+    <h2>
+      <gravatar [email]="user?.email" size="50" [alt]="user?.name"></gravatar>
+      {{user?.name}}
+    </h2>
+    <span *ng-if="!shownOnProfile">
+      <a class="profile-link" [router-link]="['/UserShow', {id: user?.id}]">view my profile</a>
+    </span>
+    <span class="microposts" *ng-if="!shownOnProfile">{{userStats?.micropostCnt | pluralize:'micropost'}}</span>
+  </section>
+
+  <section class="relationships clearfix">
+    <div>
+      <a class="followings" [router-link]="['/FollowingList', {id: user?.id}]">
+        <strong class="stat">{{userStats?.followingCnt || 0}}</strong> followings
+      </a>
+      <a class="followers" [router-link]="['/FollowerList', {id: user?.id}]">
+        <strong class="stat">{{userStats?.followerCnt || 0}}</strong> followers
+      </a>
+    </div>
+  </section>
+
+</div>

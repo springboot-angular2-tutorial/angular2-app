@@ -1,0 +1,6 @@
+<form class="micropost_new" (submit)="create(content); $event.preventDefault()">
+  <div class="form-group">
+    <textarea class="form-control" rows="5" #content placeholder="Compose new micropost..."></textarea>
+  </div>
+  <button class="btn btn-lg btn-primary" type="submit">Post</button>
+</form>

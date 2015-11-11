@@ -1,0 +1,10 @@
+sudo: required
+dist: trusty
+language: node_js
+cache:
+  directories:
+  - node_modules
+node_js:
+- '5.0.0'
+after_success:
+- scripts/push-to-ghpages.sh

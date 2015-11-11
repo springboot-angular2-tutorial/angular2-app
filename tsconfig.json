@@ -1,0 +1,20 @@
+{
+  "version": "1.6.2",
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "listFiles": false,
+    "outDir": "dist"
+  },
+  "files": [
+    "src/typings/_custom.d.ts",
+    "src/app/bootstrap.ts"
+  ]
+}
