@@ -48,7 +48,7 @@ export function main() {
         });
       });
       describe('when not following', () => {
-        it('return true', (done) => {
+        it('return false', (done) => {
           backend.connections.subscribe(conn => {
             conn.mockRespond(new Response(new ResponseOptions({
               status: 404,
