@@ -4,6 +4,8 @@ This repository is an example application for angular2 tutorial.
 
 [![Build Status][travis-image]][travis-url]
 
+You can try out [Demo page](http://micropost.hana053.com/).
+
 ## Getting Started
 
 Prepare backend app.
