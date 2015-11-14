@@ -4,7 +4,6 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {
   MicropostService,
   FeedService,
-  LoginService,
   ErrorHandler
 } from 'app/services';
 import {Micropost} from 'app/interfaces'
@@ -28,7 +27,6 @@ export class Feed {
 
   constructor(private micropostService:MicropostService,
               private feedService:FeedService,
-              private loginService:LoginService,
               private errorHandler:ErrorHandler) {
     this.list();
 
@@ -52,7 +50,7 @@ export class Feed {
   }
 
   isMyPost(post:Micropost):boolean {
-    return post.user.id == this.loginService.currentUser().id
+    return this.micropostService.isMyPost(post);
   }
 
 }

@@ -2,13 +2,16 @@ import {Injectable} from 'angular2/core';
 import {Response} from 'angular2/http';
 
 import {Http} from 'app/http';
+import {Micropost} from 'app/interfaces';
+import {LoginService} from 'app/services';
 
 const url = '/api/microposts';
 
 @Injectable()
 export class MicropostService {
 
-  constructor(private http:Http) {
+  constructor(private http:Http,
+              private loginService:LoginService) {
   }
 
   create(content:string):Rx.Observable<Response> {
@@ -20,4 +23,8 @@ export class MicropostService {
     return this.http.delete(`${url}/${id}`);
   }
 
+  isMyPost(post:Micropost) {
+    if (!this.loginService.currentUser()) return false;
+    return post.user.id == this.loginService.currentUser().id
+  }
 }

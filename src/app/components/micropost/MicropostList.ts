@@ -10,7 +10,6 @@ import {pagination} from 'ng2-bootstrap/components/pagination/pagination';
 import {
   UserMicropostService,
   MicropostService,
-  LoginService,
   ErrorHandler
 } from 'app/services';
 import {Micropost} from 'app/interfaces';
@@ -38,7 +37,6 @@ export class MicropostList {
 
   constructor(private userMicropostService:UserMicropostService,
               private micropostService:MicropostService,
-              private loginService:LoginService,
               private errorHandler:ErrorHandler) {
   }
 
@@ -70,7 +68,7 @@ export class MicropostList {
   }
 
   isMyPost(post:Micropost):boolean {
-    return post.user.id == this.loginService.currentUser().id
+    return this.micropostService.isMyPost(post);
   }
 
 }
