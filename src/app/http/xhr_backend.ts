@@ -2,8 +2,8 @@
  * Original XHRBackend does not parse response headers.
  * So, I added parsing process on original one.
  */
-import {Injectable} from 'angular2/angular2';
-import {isPresent} from 'angular2/src/core/facade/lang';
+import {Injectable, Observable} from 'angular2/angular2';
+import {isPresent} from 'angular2/src/facade/lang';
 import {
   ConnectionBackend,
   Connection,
@@ -18,9 +18,6 @@ import {
   BrowserXhr,
 } from 'angular2/http';
 
-// todo(robwormald): temporary until https://github.com/angular/angular/issues/4390 decided
-var Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-var {Observable} = Rx;
 /**
  * Creates connections using `XMLHttpRequest`. Given a fully-qualified
  * request, an `XHRConnection` will immediately create an `XMLHttpRequest` object and send the
@@ -30,18 +27,17 @@ var {Observable} = Rx;
  * the {@link MockConnection} may be interacted with in tests.
  */
 export class XHRConnection implements Connection {
-  request:Request;
+  request: Request;
   /**
    * Response {@link EventEmitter} which emits a single {@link Response} value on load event of
    * `XMLHttpRequest`.
    */
-  response:any;  // TODO: Make generic of <Response>;
-  readyState:ReadyStates;
-
-  constructor(req:Request, browserXHR:BrowserXhr, baseResponseOptions?:ResponseOptions) {
+  response: Observable<Response>;
+  readyState: ReadyStates;
+  constructor(req: Request, browserXHR: BrowserXhr, baseResponseOptions?: ResponseOptions) {
     this.request = req;
     this.response = new Observable(responseObserver => {
-      let _xhr:XMLHttpRequest = browserXHR.build();
+      let _xhr: XMLHttpRequest = browserXHR.build();
       _xhr.open(RequestMethods[req.method].toUpperCase(), req.url);
       // load event handler
       let onLoad = () => {
@@ -73,10 +69,7 @@ export class XHRConnection implements Connection {
       };
       // error event handler
       let onError = (err) => {
-        var responseOptions = new ResponseOptions({
-          body: err,
-          type: ResponseTypes.Error
-        });
+        var responseOptions = new ResponseOptions({body: err, type: ResponseTypes.Error});
         if (isPresent(baseResponseOptions)) {
           responseOptions = baseResponseOptions.merge(responseOptions);
         }
@@ -98,7 +91,6 @@ export class XHRConnection implements Connection {
         _xhr.abort();
       };
     });
-
   }
 
   private parseHeaders(xhr) {
@@ -120,7 +112,7 @@ export class XHRConnection implements Connection {
  * overridden if a different backend implementation should be used,
  * such as in a node backend.
  *
- * #Example
+ * ### Example
  *
  * ```
  * import {Http, MyNodeBackend, HTTP_PROVIDERS, BaseRequestOptions} from 'angular2/http';
@@ -133,7 +125,7 @@ export class XHRConnection implements Connection {
  * })
  * class MyComponent {
  *   constructor(http:Http) {
- *     http('people.json').subscribe(res => this.people = res.json());
+ *     http.request('people.json').subscribe(res => this.people = res.json());
  *   }
  * }
  * ```
@@ -141,11 +133,8 @@ export class XHRConnection implements Connection {
  **/
 @Injectable()
 export class XHRBackend implements ConnectionBackend {
-  constructor(private _browserXHR:BrowserXhr, private _baseResponseOptions:ResponseOptions) {
-  }
-
-  createConnection(request:Request):XHRConnection {
+  constructor(private _browserXHR: BrowserXhr, private _baseResponseOptions: ResponseOptions) {}
+  createConnection(request: Request): XHRConnection {
     return new XHRConnection(request, this._browserXHR, this._baseResponseOptions);
   }
 }
-

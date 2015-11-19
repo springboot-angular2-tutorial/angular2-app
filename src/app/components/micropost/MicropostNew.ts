@@ -14,7 +14,7 @@ const toastr = require('toastr');
 })
 export class MicropostNew {
 
-  created:EventEmitter = new EventEmitter();
+  created:EventEmitter<any> = new EventEmitter();
 
   constructor(private micropostService:MicropostService,
               private errorHandler:ErrorHandler) {
@@ -30,7 +30,7 @@ export class MicropostNew {
       .subscribe(() => {
         toastr.success('Micropost created!');
         content.value = '';
-        this.created.next(null);
+        this.created.next({});
       }, e => this.errorHandler.handle(e))
     ;
   }

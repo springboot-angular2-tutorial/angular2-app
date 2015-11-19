@@ -15,7 +15,7 @@ import {
 } from 'angular2/testing';
 import {DOM} from 'angular2/src/core/dom/dom_adapter';
 import {ResponseOptions, Response, BaseResponseOptions} from 'angular2/http';
-import {ObservableWrapper} from "angular2/src/core/facade/async";
+import {ObservableWrapper} from "angular2/src/facade/async";
 
 import {MicropostNew} from 'app/components';
 import {APP_TEST_PROVIDERS} from "app/bindings";

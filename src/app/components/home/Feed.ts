@@ -23,7 +23,7 @@ import {Gravatar} from 'app/components'
 export class Feed {
 
   feed:Micropost[];
-  deleted:EventEmitter = new EventEmitter();
+  deleted:EventEmitter<any> = new EventEmitter();
 
   constructor(private micropostService:MicropostService,
               private feedService:FeedService,
@@ -44,7 +44,7 @@ export class Feed {
     this.micropostService.delete(id)
       .subscribe(() => {
         this.list();
-        this.deleted.next(null);
+        this.deleted.next({});
       }, e => this.errorHandler.handle(e))
     ;
   }

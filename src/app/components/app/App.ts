@@ -29,24 +29,24 @@ require('!style!css!toastr/build/toastr.css');
   directives: [SecurityRouterOutlet, Header],
 })
 @RouteConfig([
-  {path: '/home', as: 'Home', component: HomePage},
-  {path: '/login', as: 'Login', component: LoginPage},
-  {path: '/signup', as: 'Signup', component: SignupPage},
-  {path: '/users', as: 'UserList', component: UserListPage},
-  {path: '/users/:id', as: 'UserShow', component: UserShowPage},
-  {path: '/users/me/edit', as: 'MeEdit', component: UserEditPage},
+  {path: '/home', name: 'Home', component: HomePage},
+  {path: '/login', name: 'Login', component: LoginPage},
+  {path: '/signup', name: 'Signup', component: SignupPage},
+  {path: '/users', name: 'UserList', component: UserListPage},
+  {path: '/users/:id', name: 'UserShow', component: UserShowPage},
+  {path: '/users/me/edit', name: 'MeEdit', component: UserEditPage},
   {
     path: '/users/:id/followings',
-    as: 'FollowingList',
+    name: 'FollowingList',
     component: FollowingListPage
   },
   {
     path: '/users/:id/followers',
-    as: 'FollowerList',
+    name: 'FollowerList',
     component: FollowerListPage
   },
-  {path: '/help', as: 'Help', component: HelpPage},
-  {path: '/', as: 'Top', component: TopPage},
+  {path: '/help', name: 'Help', component: HelpPage},
+  {path: '/', name: 'Top', component: TopPage},
 ])
 export class App {
 }

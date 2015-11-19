@@ -76,7 +76,7 @@ export class UserEditPage {
   }
 
   onSubmit(value) {
-    this.passwordConfirmation.updateValidity({});
+    this.passwordConfirmation.updateValueAndValidity({});
     this.passwordConfirmation.markAsTouched();
     if (!this.myForm.valid) return;
     this.userService.updateMe(_.omit(value, _.isEmpty))

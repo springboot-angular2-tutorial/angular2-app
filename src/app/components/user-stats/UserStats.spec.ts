@@ -16,7 +16,7 @@ import {
 import {DOM} from 'angular2/src/core/dom/dom_adapter';
 import {ResponseOptions, Response} from 'angular2/http';
 import {RouteParams} from 'angular2/router';
-import {ObservableWrapper} from "angular2/src/core/facade/async";
+import {ObservableWrapper} from "angular2/src/facade/async";
 
 import {UserStats, Gravatar} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/bindings";

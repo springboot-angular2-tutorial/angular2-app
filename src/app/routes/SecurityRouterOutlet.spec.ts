@@ -112,9 +112,9 @@ class LoginPage {
   directives: [SecurityRouterOutlet],
 })
 @RouteConfig([
-  {path: '/private', as: 'PrivateCmp', component: PrivateCmp},
-  {path: '/public', as: 'PublicCmp', component: PublicCmp},
-  {path: '/login', as: 'Login', component: LoginPage},
+  {path: '/private', name: 'PrivateCmp', component: PrivateCmp},
+  {path: '/public', name: 'PublicCmp', component: PublicCmp},
+  {path: '/login', name: 'Login', component: LoginPage},
 ])
 class TestCmp {
 }

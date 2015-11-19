@@ -16,7 +16,7 @@ import {
   iit,
 } from 'angular2/testing';
 import {DOM} from 'angular2/src/core/dom/dom_adapter';
-import {ObservableWrapper} from "angular2/src/core/facade/async";
+import {ObservableWrapper} from "angular2/src/facade/async";
 import {Router, Location, RouterOutlet} from 'angular2/router';
 import {ResponseOptions, Response} from 'angular2/http';
 
