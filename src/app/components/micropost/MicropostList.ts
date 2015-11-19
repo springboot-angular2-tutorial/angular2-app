@@ -5,7 +5,7 @@ import {
   FORM_DIRECTIVES
 } from 'angular2/angular2';
 
-import {pagination} from 'ng2-bootstrap/components/pagination/pagination';
+import {pagination} from 'ng2-bootstrap/ng2-bootstrap';
 
 import {
   UserMicropostService,

@@ -1,7 +1,7 @@
 import {Component, View, CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {pagination} from 'ng2-bootstrap/components/pagination/pagination';
+import {pagination} from 'ng2-bootstrap/ng2-bootstrap';
 
 import {UserService, ErrorHandler, LoginService} from 'app/services';
 import {User} from 'app/interfaces';

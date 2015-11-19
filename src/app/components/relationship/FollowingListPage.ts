@@ -3,7 +3,7 @@ const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
 import {Component, View, CORE_DIRECTIVES} from 'angular2/angular2';
 import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {pagination} from 'ng2-bootstrap/components/pagination/pagination';
+import {pagination} from 'ng2-bootstrap/ng2-bootstrap';
 
 import {UserService} from 'app/services';
 import {UserStats, Gravatar} from 'app/components';

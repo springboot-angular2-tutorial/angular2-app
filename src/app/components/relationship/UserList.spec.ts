@@ -18,7 +18,7 @@ import {ResponseOptions, Response} from 'angular2/http';
 import {RouteParams} from 'angular2/router';
 import {ObservableWrapper} from "angular2/src/facade/async";
 
-import {Pagination} from "ng2-bootstrap/components/pagination/pagination";
+import {Pagination} from "ng2-bootstrap/ng2-bootstrap";
 
 import {Gravatar} from "app/components";
 import {UserList} from './UserList';
