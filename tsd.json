@@ -6,13 +6,13 @@
   "bundle": "tsd_typings/tsd.d.ts",
   "installed": {
     "rx/rx.d.ts": {
-      "commit": "35989a3ab4834b8e8b2b56788f1d4fc46a25dc8d"
+      "commit": "fc341765ebbb04b7109981a25dced01f488f4d94"
     },
     "rx/rx-lite.d.ts": {
-      "commit": "35989a3ab4834b8e8b2b56788f1d4fc46a25dc8d"
+      "commit": "fc341765ebbb04b7109981a25dced01f488f4d94"
     },
     "lodash/lodash.d.ts": {
-      "commit": "35989a3ab4834b8e8b2b56788f1d4fc46a25dc8d"
+      "commit": "fc341765ebbb04b7109981a25dced01f488f4d94"
     }
   }
 }
