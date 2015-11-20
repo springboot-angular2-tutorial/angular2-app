@@ -26,14 +26,6 @@ module.exports = function (config) {
           {
             test: /\.ts$/,
             loader: 'ts',
-            query: {
-              ignoreDiagnostics: [
-                2300,
-                2383,
-                2375,
-                2374
-              ]
-            },
             exclude: [
               /\.min\.js$/,
               /node_modules/

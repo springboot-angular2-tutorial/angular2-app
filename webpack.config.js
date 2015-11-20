@@ -13,13 +13,40 @@ var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var DedupePlugin = webpack.optimize.DedupePlugin;
 var DefinePlugin = webpack.DefinePlugin;
-var BannerPlugin = webpack.BannerPlugin;
 
+var plugins = [
+  new DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
+    'VERSION': JSON.stringify(pkg.version)
+  }),
+  new OccurenceOrderPlugin(),
+  new DedupePlugin(),
+  new CommonsChunkPlugin({
+    name: 'angular2',
+    minChunks: Infinity,
+    filename: 'angular2.js'
+  }),
+  new CommonsChunkPlugin({
+    name: 'common',
+    filename: 'common.js'
+  })
+];
 
-/*
- * Config
- */
-var config = {
+if (NODE_ENV === 'production') {
+  plugins.push(new UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        drop_debugger: false
+      },
+      output: {
+        comments: false
+      },
+      beautify: false
+    })
+  )
+}
+
+module.exports = {
   devtool: 'source-map',
   debug: true,
   cache: true,
@@ -95,15 +122,6 @@ var config = {
       {
         test: /\.ts$/,
         loader: 'ts',
-        query: {
-          'ignoreDiagnostics': [
-            2300, // 2300 -> Duplicate identifier
-            2309, // 2309 -> An export assignment cannot be used in a module with other exported elements.
-            2383,
-            2375,
-            2374
-          ]
-        },
         exclude: [
           /\.min\.js$/,
           /\.spec\.ts$/,
@@ -128,60 +146,10 @@ var config = {
       /rtts_assert\/src\/rtts_assert/,
       /reflect-metadata/
     ]
-  }
-};
-
-var commons_chunks_plugins = [
-  {
-    name: 'angular2',
-    minChunks: Infinity,
-    filename: 'angular2.js'
   },
-  {
-    name: 'common',
-    filename: 'common.js'
-  }
-];
 
-var environment_plugins = {
-  all: [
-    new DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
-      'VERSION': pkg.version
-    }),
-    new OccurenceOrderPlugin(),
-    new DedupePlugin()
-  ],
-  production: [
-    new UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        drop_debugger: false
-      },
-      output: {
-        comments: false
-      },
-      beautify: false
-    }),
-    new BannerPlugin(getBanner(), {entryOnly: true})
-  ],
-  development: []
+  plugins: plugins
 };
-
-// create CommonsChunkPlugin instance for each config
-var combine_common_chunks = commons_chunks_plugins.map(function (config) {
-  return new CommonsChunkPlugin(config);
-});
-
-// combine everything
-config.plugins = [].concat(combine_common_chunks, environment_plugins.all, environment_plugins[NODE_ENV]);
-
-module.exports = config;
-
-// Helper functions
-function getBanner() {
-  return 'Spring Boot and Angular2 tutorial v' + pkg.version + ' by Akira Sosa';
-}
 
 function root(args) {
   args = sliceArgs(arguments, 0);
