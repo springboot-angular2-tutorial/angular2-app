@@ -14,7 +14,7 @@ module.exports = function (config) {
     webpack: {
       resolve: {
         root: __dirname,
-        extensions: ['', '.ts', '.js', '.json'],
+        extensions: ['', '.js', '.ts', '.json'],
         alias: {
           'app': 'src/app',
           'common': 'src/common'
@@ -35,7 +35,8 @@ module.exports = function (config) {
               ]
             },
             exclude: [
-              /\.min\.js$/
+              /\.min\.js$/,
+              /node_modules/
             ]
           },
           {test: /reflect-metadata/, loader: "imports?require=>false"},

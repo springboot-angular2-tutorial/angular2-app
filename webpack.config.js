@@ -68,7 +68,7 @@ var config = {
 
   resolve: {
     root: __dirname,
-    extensions: ['', '.ts', '.js', '.json'],
+    extensions: ['', '.js', '.ts', '.json'],
     alias: {
       'app': 'src/app'
     }
@@ -106,7 +106,8 @@ var config = {
         },
         exclude: [
           /\.min\.js$/,
-          /\.spec\.ts$/
+          /\.spec\.ts$/,
+          /node_modules/
         ]
       },
       {
