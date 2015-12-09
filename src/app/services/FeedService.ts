@@ -11,7 +11,7 @@ export class FeedService {
   constructor(private http:Http) {
   }
 
-  showFeed():Rx.Observable<Page<Micropost>> {
+  showFeed():Rx.Observable<Micropost[]> {
     return this.http.get(`${url}`)
       .map(resp => resp.json())
       ;

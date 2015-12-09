@@ -21,32 +21,28 @@ import {
 import {APP_TEST_PROVIDERS} from "app/bindings";
 import {FeedService} from "app/services";
 
-const dummyJson = {
-  content: [
-    {
+const dummyJson = [
+  {
+    id: 1,
+    content: 'content1',
+    createdAt: 0,
+    user: {
       id: 1,
-      content: 'content1',
-      createdAt: 0,
-      user: {
-        id: 1,
-        email: 'test1@test.com',
-        name: 'test user1'
-      },
+      email: 'test1@test.com',
+      name: 'test user1'
     },
-    {
+  },
+  {
+    id: 2,
+    content: 'content2',
+    createdAt: 1234567,
+    user: {
       id: 2,
-      content: 'content2',
-      createdAt: 1234567,
-      user: {
-        id: 2,
-        email: 'test2@test.com',
-        name: 'test user2'
-      },
+      email: 'test2@test.com',
+      name: 'test user2'
     },
-  ],
-  totalPages: 1,
-  totalElements: 2,
-};
+  },
+];
 
 export function main() {
   describe('FeedService', () => {

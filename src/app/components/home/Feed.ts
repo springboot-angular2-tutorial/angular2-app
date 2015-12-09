@@ -34,7 +34,7 @@ export class Feed {
 
   list():void {
     this.feedService.showFeed()
-      .subscribe(posts => this.feed = posts.content,
+      .subscribe(feed => this.feed = feed,
         e => this.errorHandler.handle(e))
     ;
   }

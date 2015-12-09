@@ -26,32 +26,28 @@ import {LoginService, MicropostService} from 'app/services';
 import {TestContext, createTestContext, signin} from 'app/testing';
 
 const dummyResponse = new Response(new ResponseOptions({
-  body: JSON.stringify({
-    content: [
-      {
+  body: JSON.stringify([
+    {
+      id: 1,
+      content: 'content1',
+      createdAt: 0,
+      user: {
         id: 1,
-        content: 'content1',
-        createdAt: 0,
-        user: {
-          id: 1,
-          email: 'test1@test.com',
-          name: 'test user1'
-        },
+        email: 'test1@test.com',
+        name: 'test user1'
       },
-      {
+    },
+    {
+      id: 2,
+      content: 'content2',
+      createdAt: 1234567,
+      user: {
         id: 2,
-        content: 'content2',
-        createdAt: 1234567,
-        user: {
-          id: 2,
-          email: 'test2@test.com',
-          name: 'test user2'
-        },
+        email: 'test2@test.com',
+        name: 'test user2'
       },
-    ],
-    totalPages: 1,
-    totalElements: 2,
-  }),
+    },
+  ]),
 }));
 
 export function main() {
