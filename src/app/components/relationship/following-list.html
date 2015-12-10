@@ -1,9 +1,9 @@
 <div class="row">
 
   <aside class="col-md-4">
-    <user-stats [user-id]="userId"></user-stats>
+    <user-stats [userId]="userId"></user-stats>
     <div class="user_avatars">
-      <a *ng-for="var u of users" [router-link]="['/UserShow', {id: u.id}]">
+      <a *ngFor="var u of users" [routerLink]="['/UserShow', {id: u.id}]">
         <gravatar [alt]="u.name" [email]="u.email" size="30"></gravatar>
       </a>
     </div>
@@ -11,7 +11,7 @@
 
   <div class="col-md-8">
     <h3>Following</h3>
-    <user-list [list-provider]="listProvider"></user-list>
+    <user-list [listProvider]="listProvider"></user-list>
   </div>
 
 </div>

@@ -14,10 +14,10 @@ import {
   Headers,
   ResponseOptions,
   Response,
-  MockBackend,
   BaseResponseOptions,
-  RequestMethods,
+  RequestMethod,
 } from 'angular2/http';
+import {MockBackend} from 'angular2/http/testing';
 
 import {APP_TEST_PROVIDERS} from "app/bindings";
 import {LoginService} from "app/services";
@@ -40,7 +40,7 @@ export function main() {
           conn.mockRespond(new Response(new ResponseOptions({
             headers: new Headers({'X-AUTH-TOKEN': 'my jwt'}),
           })));
-          expect(conn.request.method).toEqual(RequestMethods.Post);
+          expect(conn.request.method).toEqual(RequestMethod.Post);
           expect(conn.request.url).toEqual('/api/login');
           expect(conn.request.text()).toEqual(JSON.stringify({
             email: 'test@test.com',

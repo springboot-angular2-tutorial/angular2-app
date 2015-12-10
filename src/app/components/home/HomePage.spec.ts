@@ -1,7 +1,4 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
-
-import {Component, View, By, DebugElement} from 'angular2/angular2';
+import {provide, Component, View, By, DebugElement, DOM} from 'angular2/angular2';
 import {
   inject,
   beforeEachProviders,
@@ -14,9 +11,9 @@ import {
   it,
   iit,
 } from 'angular2/testing';
-import {DOM} from 'angular2/src/core/dom/dom_adapter';
+import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
-import {HomePage, UserStats, MicropostNew, Feed} from 'app/components';
+import {HomePage, UserStats, MicropostNew, Feed, App} from 'app/components';
 import {APP_TEST_PROVIDERS} from "app/bindings";
 import {TestContext, createTestContext} from 'app/testing';
 
@@ -30,7 +27,10 @@ export function main() {
     var micropostNewDebugElement:DebugElement;
     var feedDebugElement:DebugElement;
 
-    beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+    beforeEachProviders(() => [
+      APP_TEST_PROVIDERS,
+      provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
+    ]);
     beforeEach(createTestContext(_ => ctx = _));
 
     function createCmp(done) {
@@ -57,9 +57,9 @@ export function main() {
 
     it('reload user stats when created new micropost', () => {
       const userStats:UserStats = userStatsDebugElement.componentInstance;
-      spyOn(userStats, 'onChanges');
+      spyOn(userStats, 'ngOnChanges');
       micropostNewDebugElement.triggerEventHandler('created', null);
-      expect(userStats.onChanges).toHaveBeenCalled();
+      expect(userStats.ngOnChanges).toHaveBeenCalled();
     });
 
     it('reload feed when created new micropost', () => {
@@ -71,9 +71,9 @@ export function main() {
 
     it('reload user stats when deleted a micropost', () => {
       const userStats:UserStats = userStatsDebugElement.componentInstance;
-      spyOn(userStats, 'onChanges');
+      spyOn(userStats, 'ngOnChanges');
       feedDebugElement.triggerEventHandler('deleted', null);
-      expect(userStats.onChanges).toHaveBeenCalled();
+      expect(userStats.ngOnChanges).toHaveBeenCalled();
     });
   });
 }

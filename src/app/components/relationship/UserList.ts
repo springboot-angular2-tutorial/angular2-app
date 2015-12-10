@@ -1,18 +1,16 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-
 import {
   Component,
   View,
   CORE_DIRECTIVES,
   FORM_DIRECTIVES,
+  Observable,
+  OnInit,
 } from 'angular2/angular2';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {pagination} from 'ng2-bootstrap/ng2-bootstrap';
-
 import {PageRequest, Page, User} from "app/interfaces";
 import {ErrorHandler, LoginService} from "app/services";
-import {Gravatar} from 'app/components';
+import {Gravatar, Pager} from 'app/components';
 
 @Component({
   selector: 'user-list',
@@ -25,39 +23,30 @@ import {Gravatar} from 'app/components';
     CORE_DIRECTIVES,
     ROUTER_DIRECTIVES,
     FORM_DIRECTIVES,
-    pagination,
     Gravatar,
+    Pager,
   ],
 })
-export class UserList {
+export class UserList implements OnInit {
 
-  listProvider:(pageRequest:PageRequest) => Rx.Observable<Page<User>>;
+  listProvider:(pageRequest:PageRequest) => Observable<Page<User>>;
   users:User[];
-  currentPage:number;
-  totalItems:number;
-  itemsPerPage:number = 5;
-  totalPages:number = 0;
+  totalPages:number;
 
   constructor(private errorHandler:ErrorHandler) {
   }
 
-  list() {
-    this.listProvider({
-        page: this.currentPage,
-        size: this.itemsPerPage,
-      })
+  ngOnInit():any {
+    this.list(1);
+  }
+
+  list(page) {
+    this.listProvider({page: page, size: 5})
       .subscribe(usersPage => {
         this.users = usersPage.content;
-        this.totalItems = usersPage.totalElements;
         this.totalPages = usersPage.totalPages;
       }, e => this.errorHandler.handle(e))
     ;
-  }
-
-  pageChanged(event) {
-    if (event.page == this.currentPage) return;
-    this.currentPage = event.page;
-    this.list();
   }
 
 }

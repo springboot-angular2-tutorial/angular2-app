@@ -1,10 +1,9 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
+import * as Rx from 'rxjs/Rx';
 
-import {By, DebugElement} from 'angular2/angular2';
-import {MockBackend} from 'angular2/http';
+import {By, DebugElement, Observable} from 'angular2/angular2';
+import {MockBackend} from 'angular2/http/testing';
 import {Router, Location} from 'angular2/router';
-import {inject, RootTestComponent, TestComponentBuilder} from 'angular2/testing';
+import {inject, ComponentFixture, TestComponentBuilder} from 'angular2/testing';
 
 const tokens = [TestComponentBuilder, Router, Location, MockBackend];
 
@@ -26,7 +25,7 @@ export class TestContext {
   private _router:Router;
   private _location:Location;
   private _backend:MockBackend;
-  private _rootTC:RootTestComponent;
+  private _fixture:ComponentFixture;
 
   constructor({tcb, router, location, backend}:{
     tcb:TestComponentBuilder,
@@ -40,14 +39,14 @@ export class TestContext {
     this._backend = backend;
   }
 
-  init(rootComponent:Function):Rx.Observable<RootTestComponent> {
+  init(rootComponent:Function):Observable<ComponentFixture> {
     const promise = this._tcb.createAsync(rootComponent)
-      .then(rootTC => {
-        this._rootTC = rootTC;
-        rootTC.detectChanges();
-        return rootTC;
+      .then(fixture => {
+        this._fixture = fixture;
+        fixture.detectChanges();
+        return fixture;
       });
-    return Observable.fromPromise(promise);
+    return Rx.Observable.fromPromise(promise);
   }
 
   get router():Router {
@@ -62,7 +61,7 @@ export class TestContext {
     return this._backend;
   }
 
-  get rootTC():RootTestComponent {
-    return this._rootTC;
+  get fixture():ComponentFixture {
+    return this._fixture;
   }
 }

@@ -14,10 +14,10 @@ import {
   Headers,
   ResponseOptions,
   Response,
-  MockBackend,
   BaseResponseOptions,
-  RequestMethods,
+  RequestMethod,
 } from 'angular2/http';
+import {MockBackend} from 'angular2/http/testing';
 
 import {APP_TEST_PROVIDERS} from "app/bindings";
 import {UserMicropostService} from "app/services";
@@ -66,7 +66,7 @@ export function main() {
           conn.mockRespond(new Response(new ResponseOptions({
             body: JSON.stringify(dummyJson),
           })));
-          expect(conn.request.method).toEqual(RequestMethods.Get);
+          expect(conn.request.method).toEqual(RequestMethod.Get);
           expect(conn.request.url).toEqual('/api/users/1/microposts?page=1&size=5');
         });
         userMicropostService.list('1').subscribe(res => {

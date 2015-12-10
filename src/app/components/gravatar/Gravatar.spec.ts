@@ -1,7 +1,4 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
-
-import {Component, View, By, provide, DebugElement} from 'angular2/angular2';
+import {Component, View, By, provide, DebugElement, DOM} from 'angular2/angular2';
 import {
   inject,
   beforeEachProviders,
@@ -13,9 +10,9 @@ import {
   it,
   iit,
 } from 'angular2/testing';
-import {DOM} from 'angular2/src/core/dom/dom_adapter';
+import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
-import {Gravatar} from "app/components";
+import {Gravatar, App} from "app/components";
 import {APP_TEST_PROVIDERS} from 'app/bindings';
 import {TestContext, createTestContext} from 'app/testing';
 
@@ -25,7 +22,10 @@ export function main() {
     var ctx:TestContext;
     var cmpDebugElement:DebugElement;
 
-    beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+    beforeEachProviders(() => [
+      APP_TEST_PROVIDERS,
+      provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
+    ]);
     beforeEach(createTestContext(_  => ctx = _));
     beforeEach(done => {
       ctx.init(TestCmp)

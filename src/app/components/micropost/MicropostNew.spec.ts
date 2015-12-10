@@ -1,7 +1,4 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
-
-import {Component, View, By, DebugElement, provide} from 'angular2/angular2';
+import {DOM, Component, View, By, DebugElement, provide} from 'angular2/angular2';
 import {
   inject,
   beforeEachProviders,
@@ -13,11 +10,11 @@ import {
   it,
   iit,
 } from 'angular2/testing';
-import {DOM} from 'angular2/src/core/dom/dom_adapter';
 import {ResponseOptions, Response, BaseResponseOptions} from 'angular2/http';
 import {ObservableWrapper} from "angular2/src/facade/async";
+import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
-import {MicropostNew} from 'app/components';
+import {MicropostNew, App} from 'app/components';
 import {APP_TEST_PROVIDERS} from "app/bindings";
 import {TestContext, createTestContext} from 'app/testing';
 import {MicropostService} from "app/services";
@@ -29,7 +26,10 @@ export function main() {
     var cmpDebugElement:DebugElement;
     var micropostService:MicropostService;
 
-    beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+    beforeEachProviders(() => [
+      APP_TEST_PROVIDERS,
+      provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
+    ]);
     beforeEach(createTestContext(_ => ctx = _));
     beforeEach(inject([MicropostService], _ => micropostService = _));
     beforeEach(done => {

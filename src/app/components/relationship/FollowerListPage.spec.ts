@@ -1,7 +1,4 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
-
-import {Component, View, By, provide, DebugElement} from 'angular2/angular2';
+import {DOM, Component, View, By, provide, DebugElement} from 'angular2/angular2';
 import {
   inject,
   beforeEachProviders,
@@ -13,10 +10,9 @@ import {
   it,
   iit,
 } from 'angular2/testing';
-import {DOM} from 'angular2/src/core/dom/dom_adapter';
-import {RouteParams} from 'angular2/router';
+import {RouteParams, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
-import {FollowerListPage, UserStats} from 'app/components';
+import {FollowerListPage, UserStats, App} from 'app/components';
 import {APP_TEST_PROVIDERS} from 'app/bindings';
 import {TestContext, createTestContext} from 'app/testing';
 import {UserList} from './UserList';
@@ -38,6 +34,7 @@ export function main() {
       return [
         APP_TEST_PROVIDERS,
         provide(RouteParams, {useValue: routeParams}),
+        provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
       ]
     });
     beforeEach(createTestContext(_  => ctx = _));

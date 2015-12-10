@@ -28,7 +28,7 @@ export class UserStats implements OnChanges {
               private errorHandler:ErrorHandler) {
   }
 
-  onChanges():void {
+  ngOnChanges():void {
     if (!this.userId) return;
     this.loadUser();
   }

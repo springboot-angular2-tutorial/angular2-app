@@ -1,7 +1,4 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
-
-import {Injectable} from 'angular2/core';
+import {Injectable, Observable} from 'angular2/angular2';
 import {Response} from 'angular2/http';
 
 import {Http} from 'app/http';
@@ -15,7 +12,7 @@ export class LoginService {
   constructor(private http:Http) {
   }
 
-  login(email, password):Rx.Observable<Response> {
+  login(email, password):Observable<Response> {
     return this.http.post('/api/login', JSON.stringify({
       email: email,
       password: password,

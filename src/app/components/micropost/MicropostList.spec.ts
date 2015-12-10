@@ -1,7 +1,4 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
-
-import {Component, View, By, DebugElement, provide} from 'angular2/angular2';
+import {provide, Component, View, By, DebugElement, DOM} from 'angular2/angular2';
 import {
   inject,
   beforeEachProviders,
@@ -13,14 +10,12 @@ import {
   it,
   iit,
 } from 'angular2/testing';
-import {DOM} from 'angular2/src/core/dom/dom_adapter';
 import {ResponseOptions, Response} from 'angular2/http';
 import {RouteParams} from 'angular2/router';
 import {ObservableWrapper} from "angular2/src/facade/async";
+import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
-import {Pagination} from "ng2-bootstrap/ng2-bootstrap";
-
-import {MicropostList} from 'app/components';
+import {MicropostList, Pager, App} from 'app/components';
 import {APP_TEST_PROVIDERS} from "app/bindings";
 import {TestContext, createTestContext, signin} from 'app/testing';
 import {MicropostService} from "app/services";
@@ -59,10 +54,13 @@ export function main() {
 
     var ctx:TestContext;
     var cmpDebugElement:DebugElement;
-    var paginationDebugElement:DebugElement;
+    var pagerDebugElement:DebugElement;
     var micropostService:MicropostService;
 
-    beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+    beforeEachProviders(() => [
+      APP_TEST_PROVIDERS,
+      provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
+    ]);
     beforeEach(createTestContext(_ => ctx = _));
     beforeEach(inject([MicropostService], _ => micropostService = _));
     beforeEach(() => jasmine.clock().mockDate(new Date(24 * 60 * 60 * 1000)));
@@ -76,23 +74,24 @@ export function main() {
         .finally(done)
         .subscribe(rootTC => {
           cmpDebugElement = rootTC.debugElement.query(By.directive(MicropostList));
-          paginationDebugElement = cmpDebugElement.query(By.directive(Pagination));
+          pagerDebugElement = rootTC.debugElement.query(By.directive(Pager));
           rootTC.detectChanges();
         });
     }
+
     beforeEach(createCmp);
 
     it('can be shown', () => {
       expect(cmpDebugElement).toBeTruthy();
-      expect(paginationDebugElement).toBeTruthy();
+      expect(pagerDebugElement).toBeTruthy();
     });
 
     it('can show list of posts', () => {
       const cmp:MicropostList = cmpDebugElement.componentInstance;
 
       expect(cmp.posts.length).toEqual(2);
-      expect(cmp.totalItems).toEqual(2);
       expect(cmp.totalPages).toEqual(1);
+      expect(cmp.totalItems).toEqual(2);
 
       const el = cmpDebugElement.nativeElement;
       expect(DOM.querySelectorAll(el, 'li>.content').length).toEqual(2);
@@ -106,6 +105,16 @@ export function main() {
       const deleteLinks = DOM.querySelectorAll(el, '.delete');
       expect(deleteLinks[0]).toBeTruthy();
       expect(deleteLinks[1]).toBeFalsy();
+
+      const pager:Pager = pagerDebugElement.componentInstance;
+      expect(pager.totalPages).toEqual(1);
+    });
+
+    it('list another page when page was changed', () => {
+      const cmp:MicropostList = cmpDebugElement.componentInstance;
+      spyOn(cmp, 'list');
+      pagerDebugElement.triggerEventHandler('pageChanged', <any>{page: 2});
+      expect(cmp.list).toHaveBeenCalledWith(2);
     });
 
     it('does not delete micropost when not confirmed', () => {
@@ -130,7 +139,7 @@ export function main() {
 
 @Component({selector: 'test-cmp'})
 @View({
-  template: `<micropost-list user-id="1"></micropost-list>`,
+  template: `<micropost-list userId="1"></micropost-list>`,
   directives: [MicropostList],
 })
 class TestCmp {

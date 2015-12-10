@@ -3,6 +3,7 @@ export * from './components/header/Header';
 export * from './components/home/Feed';
 export * from './components/micropost/MicropostNew';
 export * from './components/user-stats/UserStats';
+export * from './components/pager/Pager';
 export * from './components/micropost/MicropostList';
 export * from './components/relationship/FollowBtn';
 

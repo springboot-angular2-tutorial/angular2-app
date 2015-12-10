@@ -1,7 +1,4 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
-
-import {Component, View, By, provide, DebugElement} from 'angular2/angular2';
+import {DOM, Component, View, By, provide, DebugElement} from 'angular2/angular2';
 import {
   injectAsync,
   inject,
@@ -15,7 +12,6 @@ import {
   it,
   iit,
 } from 'angular2/testing';
-import {DOM} from 'angular2/src/core/dom/dom_adapter';
 import {ResponseOptions, Response} from 'angular2/http';
 import {RouteParams} from 'angular2/router';
 

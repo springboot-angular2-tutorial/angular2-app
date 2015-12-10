@@ -4,7 +4,7 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['jasmine'],
     files: [
-      {pattern: './src/lib/es6-shim.js', watched: false},
+      'node_modules/es6-shim/es6-shim.js',
       {pattern: 'spec.bundle.js', watched: false}
     ],
     exclude: [],

@@ -2,11 +2,11 @@ import {
   Component,
   View,
   CORE_DIRECTIVES,
-  FORM_DIRECTIVES
+  FORM_DIRECTIVES,
+  OnInit,
 } from 'angular2/angular2';
 
-import {pagination} from 'ng2-bootstrap/ng2-bootstrap';
-
+import {Pager} from 'app/components';
 import {
   UserMicropostService,
   MicropostService,
@@ -22,47 +22,42 @@ import {TimeAgoPipe} from 'app/pipes';
 @View({
   styles: [require('./list.scss')],
   template: require('./list.html'),
-  directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, pagination],
+  directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, Pager],
   pipes: [TimeAgoPipe],
 })
-export class MicropostList {
+export class MicropostList implements OnInit {
 
   userId:string;
   posts:Micropost[];
 
-  currentPage:number;
-  totalItems:number;
-  itemsPerPage:number = 5;
   totalPages:number;
+  totalItems:number;
+  currentPage:number;
 
   constructor(private userMicropostService:UserMicropostService,
               private micropostService:MicropostService,
               private errorHandler:ErrorHandler) {
   }
 
-  list():void {
-    this.userMicropostService.list(this.userId, {
-        page: this.currentPage,
-        size: this.itemsPerPage
-      })
+  ngOnInit():any {
+    this.list(1);
+  }
+
+  list(page):void {
+    this.userMicropostService.list(this.userId, {page: page, size: 5})
       .subscribe((micropostPage) => {
         this.posts = micropostPage.content;
+        this.currentPage = page;
         this.totalItems = micropostPage.totalElements;
         this.totalPages = micropostPage.totalPages;
       }, e => this.errorHandler.handle(e))
     ;
   }
 
-  pageChanged(event) {
-    if (event.page == this.currentPage) return;
-    this.currentPage = event.page;
-    this.list();
-  }
-
   delete(postId:number) {
     if (!window.confirm('Are you sure?')) return;
     this.micropostService.delete(postId)
-      .subscribe(() => this.list(),
+      .subscribe(() => this.list(this.currentPage),
         e => this.errorHandler.handle(e))
     ;
   }

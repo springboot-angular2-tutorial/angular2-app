@@ -30,7 +30,7 @@ export class MicropostNew {
       .subscribe(() => {
         toastr.success('Micropost created!');
         content.value = '';
-        this.created.next({});
+        this.created.emit({});
       }, e => this.errorHandler.handle(e))
     ;
   }

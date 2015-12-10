@@ -14,10 +14,10 @@ import {
   Headers,
   ResponseOptions,
   Response,
-  MockBackend,
   BaseResponseOptions,
-  RequestMethods,
+  RequestMethod,
 } from 'angular2/http';
+import {MockBackend} from 'angular2/http/testing';
 
 import {APP_TEST_PROVIDERS} from "app/bindings";
 import {UserService} from "app/services";
@@ -81,7 +81,7 @@ export function main() {
           conn.mockRespond(new Response(new ResponseOptions({
             body: JSON.stringify(dummyListJson),
           })));
-          expect(conn.request.method).toEqual(RequestMethods.Get);
+          expect(conn.request.method).toEqual(RequestMethod.Get);
           expect(conn.request.url).toEqual('/api/users?page=1&size=5');
         });
         userService.list().subscribe(res => {
@@ -97,7 +97,7 @@ export function main() {
           conn.mockRespond(new Response(new ResponseOptions({
             body: JSON.stringify(dummyGetJson),
           })));
-          expect(conn.request.method).toEqual(RequestMethods.Get);
+          expect(conn.request.method).toEqual(RequestMethod.Get);
           expect(conn.request.url).toEqual('/api/users/1');
         });
         userService.get(1).subscribe(res => {
@@ -116,7 +116,7 @@ export function main() {
         };
         backend.connections.subscribe(conn => {
           conn.mockRespond(new Response(new BaseResponseOptions()));
-          expect(conn.request.method).toEqual(RequestMethods.Post);
+          expect(conn.request.method).toEqual(RequestMethod.Post);
           expect(conn.request.url).toEqual('/api/users');
           expect(conn.request.text()).toEqual(JSON.stringify(params));
         });
@@ -135,7 +135,7 @@ export function main() {
         };
         backend.connections.subscribe(conn => {
           conn.mockRespond(new Response(new BaseResponseOptions()));
-          expect(conn.request.method).toEqual(RequestMethods.Patch);
+          expect(conn.request.method).toEqual(RequestMethod.Patch);
           expect(conn.request.url).toEqual('/api/users/me');
           expect(conn.request.text()).toEqual(JSON.stringify(params));
         });
@@ -151,7 +151,7 @@ export function main() {
           conn.mockRespond(new Response(new ResponseOptions({
             body: JSON.stringify(dummyListJson),
           })));
-          expect(conn.request.method).toEqual(RequestMethods.Get);
+          expect(conn.request.method).toEqual(RequestMethod.Get);
           expect(conn.request.url).toEqual('/api/users/1/followings?page=1&size=5');
         });
         userService.listFollowings('1').subscribe(res => {
@@ -167,7 +167,7 @@ export function main() {
           conn.mockRespond(new Response(new ResponseOptions({
             body: JSON.stringify(dummyListJson),
           })));
-          expect(conn.request.method).toEqual(RequestMethods.Get);
+          expect(conn.request.method).toEqual(RequestMethod.Get);
           expect(conn.request.url).toEqual('/api/users/1/followers?page=1&size=5');
         });
         userService.listFollowers('1').subscribe(res => {

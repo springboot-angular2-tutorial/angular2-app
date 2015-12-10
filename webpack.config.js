@@ -69,11 +69,9 @@ module.exports = {
   //
   entry: {
     'angular2': [
-      // Angular 2 Deps
-      '@reactivex/rxjs',
+      'rxjs',
       'zone.js',
       'reflect-metadata',
-      // to ensure these modules are grouped together in one file
       'angular2/angular2',
       'angular2/router',
       'angular2/http',
@@ -99,15 +97,6 @@ module.exports = {
     alias: {
       'app': 'src/app'
     }
-  },
-
-  /*
-   * When using `templateUrl` and `styleUrls` please use `__filename`
-   * rather than `module.id` for `moduleId` in `@View`
-   */
-  node: {
-    crypto: false,
-    __filename: true
   },
 
   module: {
@@ -143,7 +132,6 @@ module.exports = {
       }
     ],
     noParse: [
-      /rtts_assert\/src\/rtts_assert/,
       /reflect-metadata/
     ]
   },

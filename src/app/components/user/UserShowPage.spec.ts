@@ -1,7 +1,4 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
-
-import {Component, View, By, DebugElement, provide} from 'angular2/angular2';
+import {DOM, Component, View, By, DebugElement, provide} from 'angular2/angular2';
 import {
   inject,
   beforeEachProviders,
@@ -13,9 +10,8 @@ import {
   it,
   iit,
 } from 'angular2/testing';
-import {DOM} from 'angular2/src/core/dom/dom_adapter';
 import {ResponseOptions, Response} from 'angular2/http';
-import {RouteParams} from 'angular2/router';
+import {RouteParams, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
 import {App, UserShowPage, UserStats, FollowBtn, MicropostList} from 'app/components';
 import {APP_TEST_PROVIDERS} from "app/bindings";
@@ -36,10 +32,10 @@ export function main() {
     beforeEachProviders(() => {
       routeParams = jasmine.createSpyObj('routeParams', ['get']);
       (<jasmine.Spy>routeParams.get).and.returnValue('1');
-
       return [
         APP_TEST_PROVIDERS,
         provide(RouteParams, {useValue: routeParams}),
+        provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
       ]
     });
     beforeEach(createTestContext(_ => ctx = _));

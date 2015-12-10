@@ -1,7 +1,13 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
+import {Observable} from 'rxjs/Observable';
 
-import {Component, View, By, DebugElement, provide} from 'angular2/angular2';
+import {
+  Component,
+  View,
+  By,
+  DebugElement,
+  provide,
+  DOM,
+} from 'angular2/angular2';
 import {
   inject,
   beforeEachProviders,
@@ -13,14 +19,11 @@ import {
   it,
   iit,
 } from 'angular2/testing';
-import {DOM} from 'angular2/src/core/dom/dom_adapter';
 import {ResponseOptions, Response} from 'angular2/http';
-import {RouteParams} from 'angular2/router';
+import {RouteParams, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 import {ObservableWrapper} from "angular2/src/facade/async";
 
-import {Pagination} from "ng2-bootstrap/ng2-bootstrap";
-
-import {Gravatar} from "app/components";
+import {Gravatar, App, Pager} from "app/components";
 import {UserList} from './UserList';
 import {APP_TEST_PROVIDERS} from "app/bindings";
 import {TestContext, createTestContext, signin} from 'app/testing';
@@ -31,9 +34,12 @@ export function main() {
 
     var ctx:TestContext;
     var cmpDebugElement:DebugElement;
-    var paginationDebugElement:DebugElement;
+    var pagerDebugElement:DebugElement;
 
-    beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+    beforeEachProviders(() => [
+      APP_TEST_PROVIDERS,
+      provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
+    ]);
     beforeEach(createTestContext(_ => ctx = _));
 
     function createCmp(done) {
@@ -41,21 +47,20 @@ export function main() {
         .finally(done)
         .subscribe(rootTC => {
           cmpDebugElement = rootTC.debugElement.query(By.directive(UserList));
-          paginationDebugElement = cmpDebugElement.query(By.directive(Pagination))
+          pagerDebugElement = rootTC.debugElement.query(By.directive(Pager));
         });
     }
 
     beforeEach(createCmp);
 
     it('can be shown', () => {
-      ctx.rootTC.detectChanges();
+      ctx.fixture.detectChanges();
 
       expect(cmpDebugElement).toBeTruthy();
-      expect(paginationDebugElement).toBeTruthy();
+      expect(pagerDebugElement).toBeTruthy();
 
       const cmp:UserList = cmpDebugElement.componentInstance;
       expect(cmp.users.length).toEqual(2);
-      expect(cmp.totalItems).toEqual(2);
       expect(cmp.totalPages).toEqual(1);
 
       expect(DOM.querySelectorAll(cmpDebugElement.nativeElement, '.users>li').length).toEqual(2);
@@ -70,17 +75,24 @@ export function main() {
       expect(userLink.getAttribute('href')).toEqual('/users/1');
     });
 
+    it('list another page when page was changed', () => {
+      const cmp:UserList= cmpDebugElement.componentInstance;
+      spyOn(cmp, 'list');
+      pagerDebugElement.triggerEventHandler('pageChanged', <any>{page: 2});
+      expect(cmp.list).toHaveBeenCalledWith(2);
+    });
+
   });
 }
 
 @Component({selector: 'test-cmp'})
 @View({
-  template: `<user-list [list-provider]="listProvider"></user-list>`,
+  template: `<user-list [listProvider]="listProvider"></user-list>`,
   directives: [UserList],
 })
 class TestCmp {
 
-  listProvider:(pageRequest:PageRequest) => Rx.Observable<Page<User>>;
+  listProvider:(pageRequest:PageRequest) => Observable<Page<User>>;
 
   constructor() {
     this.listProvider = () => {

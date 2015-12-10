@@ -1,7 +1,4 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
-
-import {Injectable} from 'angular2/core';
+import {Injectable, Observable} from 'angular2/angular2';
 import {Response} from 'angular2/http';
 
 import {Http} from 'app/http';
@@ -17,36 +14,36 @@ export class UserService {
   constructor(private http:Http) {
   }
 
-  list(pageRequest:PageRequest = defaultPageRequest):Rx.Observable<Page<User>> {
+  list(pageRequest:PageRequest = defaultPageRequest):Observable<Page<User>> {
     return this.http.get(url, {search: objToSearchParams(pageRequest)})
       .map(res => res.json())
       ;
   }
 
-  get(id:string|number):Rx.Observable<UserResponse> {
+  get(id:string|number):Observable<UserResponse> {
     return this.http.get(`${url}/${id}`)
       .map(res => res.json())
       ;
   }
 
-  create(params:UserParams):Rx.Observable<Response> {
+  create(params:UserParams):Observable<Response> {
     return this.http.post(url, JSON.stringify(params));
   }
 
-  updateMe(userParam:UserParams):Rx.Observable<void> {
+  updateMe(userParam:UserParams):Observable<void> {
     return this.http.patch(`${url}/me`, JSON.stringify(userParam))
       .do(resp => {
         localStorage.setItem('jwt', resp.headers.get('X-AUTH-TOKEN'))
       });
   }
 
-  listFollowings(userId:string, pageRequest:PageRequest = defaultPageRequest):Rx.Observable<Page<User>> {
+  listFollowings(userId:string, pageRequest:PageRequest = defaultPageRequest):Observable<Page<User>> {
     return this.http.get(`${url}/${userId}/followings`, {search: objToSearchParams(pageRequest)})
       .map(res => res.json())
       ;
   }
 
-  listFollowers(userId:string, pageRequest:PageRequest = defaultPageRequest):Rx.Observable<Page<User>> {
+  listFollowers(userId:string, pageRequest:PageRequest = defaultPageRequest):Observable<Page<User>> {
     return this.http.get(`${url}/${userId}/followers`, {search: objToSearchParams(pageRequest)})
       .map(res => res.json())
       ;

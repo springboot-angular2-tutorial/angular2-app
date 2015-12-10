@@ -1,7 +1,5 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
-
-import {Injectable} from 'angular2/core';
+import {Observable} from 'rxjs/Observable';
+import {Injectable} from 'angular2/angular2';
 
 import {Http} from 'app/http';
 
@@ -13,7 +11,7 @@ export class RelationshipService {
   constructor(private http:Http) {
   }
 
-  isFollowing(followerId:string):Rx.Observable<boolean> {
+  isFollowing(followerId:string):Observable<boolean> {
     return this.http.get(`${url}/to/${followerId}`)
       .map(() => true)
       .catch(error => {
@@ -25,11 +23,11 @@ export class RelationshipService {
       ;
   }
 
-  follow(followerId:string):Rx.Observable<void> {
+  follow(followerId:string):Observable<void> {
     return this.http.post(`${url}/to/${followerId}`, '');
   }
 
-  unfollow(followerId:string):Rx.Observable<void> {
+  unfollow(followerId:string):Observable<void> {
     return this.http.delete(`${url}/to/${followerId}`);
   }
 

@@ -1,4 +1,4 @@
-import {Injectable} from 'angular2/core';
+import {Injectable, Observable} from 'angular2/angular2';
 
 import {Http} from 'app/http';
 import {Micropost, Page} from 'app/interfaces'
@@ -11,11 +11,10 @@ export class FeedService {
   constructor(private http:Http) {
   }
 
-  showFeed():Rx.Observable<Micropost[]> {
+  showFeed():Observable<Micropost[]> {
     return this.http.get(`${url}`)
       .map(resp => resp.json())
       ;
   }
 
 }
-

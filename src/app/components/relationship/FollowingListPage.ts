@@ -1,9 +1,5 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-
-import {Component, View, CORE_DIRECTIVES} from 'angular2/angular2';
+import {Component, View, CORE_DIRECTIVES, Observable} from 'angular2/angular2';
 import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
-
-import {pagination} from 'ng2-bootstrap/ng2-bootstrap';
 
 import {UserService} from 'app/services';
 import {UserStats, Gravatar} from 'app/components';
@@ -28,7 +24,7 @@ import {UserList} from './UserList';
 export class FollowingListPage {
 
   userId:string;
-  listProvider:(pageRequest:PageRequest) => Rx.Observable<Page<User>>;
+  listProvider:(pageRequest:PageRequest) => Observable<Page<User>>;
 
   constructor(private userService:UserService,
               private params:RouteParams) {

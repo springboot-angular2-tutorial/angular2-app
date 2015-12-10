@@ -1,13 +1,11 @@
 <ul class="users list-unstyled">
-  <li *ng-for="var u of users">
+  <li *ngFor="var u of users">
     <gravatar [alt]="u.name" [email]="u.email" size="50"></gravatar>
-    <a [router-link]="['/UserShow', {id: u.id}]">{{u.name}}</a>
+    <a [routerLink]="['/UserShow', {id: u.id}]">{{u.name}}</a>
   </li>
 </ul>
-<pagination
-  [hidden]="totalPages <= 1"
-  [total-items]="totalItems"
-  [items-per-page]="itemsPerPage"
-  [(ng-model)]="currentPage"
-  (page-changed)="pageChanged($event)">
-</pagination>
+
+<div class="clearfix">
+  <pager class="pull-left" (pageChanged)="list($event.page)"
+         [totalPages]="totalPages"></pager>
+</div>

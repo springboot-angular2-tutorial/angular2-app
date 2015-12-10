@@ -44,7 +44,7 @@ export class Feed {
     this.micropostService.delete(id)
       .subscribe(() => {
         this.list();
-        this.deleted.next({});
+        this.deleted.emit({});
       }, e => this.errorHandler.handle(e))
     ;
   }

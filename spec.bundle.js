@@ -1,9 +1,12 @@
 Error.stackTraceLimit = Infinity;
 require('reflect-metadata');
-require('angular2/test');
-require('angular2/mock');
+require('zone.js/dist/zone-microtask.js');
+require('zone.js/dist/long-stack-trace-zone.js');
+require('zone.js/dist/jasmine-patch.js');
+require('angular2/testing');
+//require('angular2/mock');
 
-browser_adapter = require('angular2/src/core/dom/browser_adapter');
+browser_adapter = require('angular2/src/platform/browser/browser_adapter');
 browser_adapter.BrowserDomAdapter.makeCurrent();
 
 var ctx = require.context('./src', true, /\.spec\.ts/);

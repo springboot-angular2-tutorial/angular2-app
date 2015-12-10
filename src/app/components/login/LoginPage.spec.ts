@@ -1,7 +1,4 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
-
-import {Component, View, By, DebugElement} from 'angular2/angular2';
+import {provide, Component, View, By, DebugElement, DOM} from 'angular2/angular2';
 import {
   injectAsync,
   inject,
@@ -14,8 +11,8 @@ import {
   it,
   iit,
 } from 'angular2/testing';
-import {DOM} from 'angular2/src/core/dom/dom_adapter';
 import {BaseResponseOptions, Response} from 'angular2/http';
+import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
 import {App, LoginPage} from 'app/components';
 import {APP_TEST_PROVIDERS} from "app/bindings";
@@ -29,7 +26,10 @@ export function main() {
     var cmpDebugElement:DebugElement;
     var loginService:LoginService;
 
-    beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+    beforeEachProviders(() => [
+      APP_TEST_PROVIDERS,
+      provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
+    ]);
     beforeEach(inject([LoginService], _ => loginService = _));
     beforeEach(createTestContext(_ => ctx = _));
     beforeEach(done => {

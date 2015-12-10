@@ -1,15 +1,15 @@
 <ol class="feed list-unstyled">
 
-  <li *ng-for="var f of feed">
-    <a [router-link]="['/UserShow', {id: f.user.id}]">
+  <li *ngFor="var f of feed">
+    <a [routerLink]="['/UserShow', {id: f.user.id}]">
       <gravatar [email]="f.user.email" size="50" [alt]="f.user.name"></gravatar>
     </a>
     <span class="user">
-      <a [router-link]="['/UserShow', {id: f.user.id}]">{{f.user.name}}</a>
+      <a [routerLink]="['/UserShow', {id: f.user.id}]">{{f.user.name}}</a>
     </span>
     <span class="content">{{f.content}}</span>
     <span class="timestamp">Posted less than {{f.createdAt | timeAgo}}.</span>
-    <a *ng-if="isMyPost(f)" class="delete" href="#"
+    <a *ngIf="isMyPost(f)" class="delete" href="#"
        (click)="delete(f.id); $event.preventDefault()">delete</a>
   </li>
 

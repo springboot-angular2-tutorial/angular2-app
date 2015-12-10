@@ -5,8 +5,7 @@ import {
   ResponseOptions,
   Response,
   BaseRequestOptions,
-  MockBackend,
-  RequestMethods,
+  RequestMethod,
 } from 'angular2/http';
 import {
   inject,
@@ -20,6 +19,7 @@ import {
   iit,
   NgMatchers,
 } from 'angular2/testing';
+import {MockBackend} from 'angular2/http/testing';
 
 import {HttpAuthError, HttpClientError, HttpServerError, Http} from 'app/http';
 
@@ -55,7 +55,7 @@ export function main() {
                 && (actual.headers.get('Accept') == 'application/json')
                 && (actual.headers.get('Content-Type') == 'application/json')
                 && (actual.method == expectedMethod);
-              let message = `Expected json request via ${RequestMethods[actual.method]} to equal ${RequestMethods[expectedMethod]}`;
+              let message = `Expected json request via ${RequestMethod[actual.method]} to equal ${RequestMethod[expectedMethod]}`;
               return {pass: pass, message: message};
             }
           }
@@ -67,7 +67,7 @@ export function main() {
       it('performs a get request', (done) => {
         backend.connections.subscribe(conn => {
           conn.mockRespond(new Response(new BaseResponseOptions()));
-          expect(conn.request).toBeJsonRequestVia(RequestMethods.Get);
+          expect(conn.request).toBeJsonRequestVia(RequestMethod.Get);
         });
         http.get('http://www.google.com').subscribe(() => {
           expect(Http.checkStatus).toHaveBeenCalled();
@@ -80,7 +80,7 @@ export function main() {
       it('performs a post request', (done) => {
         backend.connections.subscribe(conn => {
           conn.mockRespond(new Response(new BaseResponseOptions()));
-          expect(conn.request).toBeJsonRequestVia(RequestMethods.Post);
+          expect(conn.request).toBeJsonRequestVia(RequestMethod.Post);
         });
         http.post('http://www.google.com', '').subscribe(() => {
           expect(Http.checkStatus).toHaveBeenCalled();
@@ -93,7 +93,7 @@ export function main() {
       it('performs a put request', (done) => {
         backend.connections.subscribe(conn => {
           conn.mockRespond(new Response(new BaseResponseOptions()));
-          expect(conn.request).toBeJsonRequestVia(RequestMethods.Put);
+          expect(conn.request).toBeJsonRequestVia(RequestMethod.Put);
         });
         http.put('http://www.google.com', '').subscribe(() => {
           expect(Http.checkStatus).toHaveBeenCalled();
@@ -106,7 +106,7 @@ export function main() {
       it('performs a delete request', (done) => {
         backend.connections.subscribe(conn => {
           conn.mockRespond(new Response(new BaseResponseOptions()));
-          expect(conn.request).toBeJsonRequestVia(RequestMethods.Delete);
+          expect(conn.request).toBeJsonRequestVia(RequestMethod.Delete);
         });
         http.delete('http://www.google.com').subscribe(() => {
           expect(Http.checkStatus).toHaveBeenCalled();
@@ -119,7 +119,7 @@ export function main() {
       it('performs a patch request', (done) => {
         backend.connections.subscribe(conn => {
           conn.mockRespond(new Response(new BaseResponseOptions()));
-          expect(conn.request).toBeJsonRequestVia(RequestMethods.Patch);
+          expect(conn.request).toBeJsonRequestVia(RequestMethod.Patch);
         });
         http.patch('http://www.google.com', '').subscribe(() => {
           expect(Http.checkStatus).toHaveBeenCalled();
@@ -132,7 +132,7 @@ export function main() {
       it('performs a head request', (done) => {
         backend.connections.subscribe(conn => {
           conn.mockRespond(new Response(new BaseResponseOptions()));
-          expect(conn.request).toBeJsonRequestVia(RequestMethods.Head);
+          expect(conn.request).toBeJsonRequestVia(RequestMethod.Head);
         });
         http.head('http://www.google.com').subscribe(() => {
           expect(Http.checkStatus).toHaveBeenCalled();

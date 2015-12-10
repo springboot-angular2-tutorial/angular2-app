@@ -1,7 +1,4 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
-
-import {Component, View, By, DebugElement} from 'angular2/angular2';
+import {provide, Component, View, By, DebugElement, DOM} from 'angular2/angular2';
 import {
   inject,
   beforeEachProviders,
@@ -13,9 +10,9 @@ import {
   it,
   iit,
 } from 'angular2/testing';
-import {DOM} from 'angular2/src/core/dom/dom_adapter';
+import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
-import {Header} from "app/components";
+import {Header, App} from "app/components";
 import {APP_TEST_PROVIDERS} from 'app/bindings';
 import {TestContext, createTestContext, signin} from 'app/testing';
 import {LoginService} from 'app/services';
@@ -26,7 +23,10 @@ export function main() {
     var ctx:TestContext;
     var cmpDebugElement:DebugElement;
 
-    beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+    beforeEachProviders(() => [
+      APP_TEST_PROVIDERS,
+      provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
+    ]);
     beforeEach(createTestContext(_  => ctx = _));
 
     function createCmp(done) {
@@ -53,7 +53,7 @@ export function main() {
         expect(link).toBeTruthy();
         link.click();
         ctx.router.subscribe(() => {
-          ctx.rootTC.detectChanges();
+          ctx.fixture.detectChanges();
           expect(ctx.location.path()).toEqual('/home');
           expect(link.parentElement.classList).toContain('active');
           done();
@@ -70,7 +70,7 @@ export function main() {
         expect(link).toBeTruthy();
         link.click();
         ctx.router.subscribe(() => {
-          ctx.rootTC.detectChanges();
+          ctx.fixture.detectChanges();
           expect(ctx.location.path()).toEqual('/users');
           expect(link.parentElement.classList).toContain('active');
           done();
@@ -82,7 +82,7 @@ export function main() {
         expect(link).toBeTruthy();
         link.click();
         ctx.router.subscribe(() => {
-          ctx.rootTC.detectChanges();
+          ctx.fixture.detectChanges();
           expect(ctx.location.path()).toEqual('/help');
           expect(link.parentElement.classList).toContain('active');
           done();
@@ -94,7 +94,7 @@ export function main() {
         expect(link).toBeTruthy();
         link.click();
         ctx.router.subscribe(() => {
-          ctx.rootTC.detectChanges();
+          ctx.fixture.detectChanges();
           expect(ctx.location.path()).toEqual('/users/1');
           done();
         })
@@ -106,7 +106,7 @@ export function main() {
         expect(link).toBeTruthy();
         link.click();
         ctx.router.subscribe(() => {
-          ctx.rootTC.detectChanges();
+          ctx.fixture.detectChanges();
           expect(ctx.location.path()).toEqual('/users/me/edit');
           done();
         })
@@ -119,7 +119,7 @@ export function main() {
         link.click();
         expect(loginService.logout).toHaveBeenCalled();
         ctx.router.subscribe(() => {
-          ctx.rootTC.detectChanges();
+          ctx.fixture.detectChanges();
           expect(ctx.location.path()).toEqual('/login');
           done();
         })
@@ -143,7 +143,7 @@ export function main() {
         expect(link).toBeTruthy();
         link.click();
         ctx.router.subscribe(() => {
-          ctx.rootTC.detectChanges();
+          ctx.fixture.detectChanges();
           expect(ctx.location.path()).toEqual('');
           done();
         })
@@ -159,7 +159,7 @@ export function main() {
         expect(link).toBeTruthy();
         link.click();
         ctx.router.subscribe(() => {
-          ctx.rootTC.detectChanges();
+          ctx.fixture.detectChanges();
           expect(ctx.location.path()).toEqual('/help');
           expect(link.parentElement.classList).toContain('active');
           done();
@@ -181,7 +181,7 @@ export function main() {
         expect(link).toBeTruthy();
         link.click();
         ctx.router.subscribe(() => {
-          ctx.rootTC.detectChanges();
+          ctx.fixture.detectChanges();
           expect(ctx.location.path()).toEqual('/login');
           done();
         })

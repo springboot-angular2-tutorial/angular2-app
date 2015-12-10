@@ -1,4 +1,4 @@
-import {Injectable} from 'angular2/core';
+import {Injectable, Observable} from 'angular2/angular2';
 import {Response} from 'angular2/http';
 
 import {Http} from 'app/http';
@@ -14,12 +14,12 @@ export class MicropostService {
               private loginService:LoginService) {
   }
 
-  create(content:string):Rx.Observable<Response> {
+  create(content:string):Observable<Response> {
     const body = JSON.stringify({content: content});
     return this.http.post(url, body);
   }
 
-  delete(id:Number):Rx.Observable<void> {
+  delete(id:Number):Observable<void> {
     return this.http.delete(`${url}/${id}`);
   }
 

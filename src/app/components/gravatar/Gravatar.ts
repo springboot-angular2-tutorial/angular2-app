@@ -17,7 +17,7 @@ export class Gravatar implements OnChanges {
   alt:string;
   imageUrl:string;
 
-  onChanges() {
+  ngOnChanges() {
     if (this.email) {
       const hash = md5Hex(this.email);
       this.imageUrl = `https://secure.gravatar.com/avatar/${hash}?s=${this.size}`;

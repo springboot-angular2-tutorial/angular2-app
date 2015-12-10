@@ -14,10 +14,10 @@ import {
   Headers,
   ResponseOptions,
   Response,
-  MockBackend,
   BaseResponseOptions,
-  RequestMethods,
+  RequestMethod,
 } from 'angular2/http';
+import {MockBackend} from 'angular2/http/testing';
 
 import {APP_TEST_PROVIDERS} from "app/bindings";
 import {RelationshipService} from "app/services";
@@ -38,7 +38,7 @@ export function main() {
         it('return true', (done) => {
           backend.connections.subscribe(conn => {
             conn.mockRespond(new Response(new BaseResponseOptions()));
-            expect(conn.request.method).toEqual(RequestMethods.Get);
+            expect(conn.request.method).toEqual(RequestMethod.Get);
             expect(conn.request.url).toEqual('/api/relationships/to/1');
           });
           relationshipService.isFollowing('1').subscribe(result => {
@@ -66,7 +66,7 @@ export function main() {
       it('can follow user', (done) => {
         backend.connections.subscribe(conn => {
           conn.mockRespond(new Response(new BaseResponseOptions()));
-          expect(conn.request.method).toEqual(RequestMethods.Post);
+          expect(conn.request.method).toEqual(RequestMethod.Post);
           expect(conn.request.url).toEqual('/api/relationships/to/1');
         });
         relationshipService.follow('1').subscribe(() => {
@@ -79,7 +79,7 @@ export function main() {
       it('can unfollow user', (done) => {
         backend.connections.subscribe(conn => {
           conn.mockRespond(new Response(new BaseResponseOptions()));
-          expect(conn.request.method).toEqual(RequestMethods.Delete);
+          expect(conn.request.method).toEqual(RequestMethod.Delete);
           expect(conn.request.url).toEqual('/api/relationships/to/1');
         });
         relationshipService.unfollow('1').subscribe(() => {

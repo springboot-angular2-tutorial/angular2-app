@@ -14,14 +14,14 @@ import {
   Headers,
   ResponseOptions,
   Response,
-  MockBackend,
   BaseResponseOptions,
-  RequestMethods,
+  RequestMethod,
 } from 'angular2/http';
+import {MockBackend} from 'angular2/http/testing';
 
 import {APP_TEST_PROVIDERS} from "app/bindings";
 import {MicropostService} from "app/services";
-import {Micropost} from "../interfaces";
+import {Micropost} from "app/interfaces";
 import {LoginService} from "./LoginService";
 
 export function main() {
@@ -39,7 +39,7 @@ export function main() {
       it('can create a micropost', (done) => {
         backend.connections.subscribe(conn => {
           conn.mockRespond(new Response(new BaseResponseOptions()));
-          expect(conn.request.method).toEqual(RequestMethods.Post);
+          expect(conn.request.method).toEqual(RequestMethod.Post);
           expect(conn.request.url).toEqual('/api/microposts');
           expect(conn.request.text()).toEqual(JSON.stringify({
             content: 'my post',
@@ -55,7 +55,7 @@ export function main() {
       it('can delete a micropost', (done) => {
         backend.connections.subscribe(conn => {
           conn.mockRespond(new Response(new BaseResponseOptions()));
-          expect(conn.request.method).toEqual(RequestMethods.Delete);
+          expect(conn.request.method).toEqual(RequestMethod.Delete);
           expect(conn.request.url).toEqual('/api/microposts/1');
         });
         micropostService.delete(1).subscribe(() => {

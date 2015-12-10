@@ -1,10 +1,11 @@
 import {provide, DirectiveResolver} from 'angular2/angular2';
-import {BaseRequestOptions, HTTP_PROVIDERS, MockBackend} from 'angular2/http';
+import {BaseRequestOptions, HTTP_PROVIDERS, XHRBackend} from 'angular2/http';
+import {MockBackend} from 'angular2/http/testing';
 import {Router, RouteRegistry, Location} from 'angular2/router';
 import {SpyLocation} from 'angular2/src/mock/location_mock';
 import {RootRouter} from 'angular2/src/router/router';
 
-import {Http, XHRBackend} from 'app/http';
+import {Http} from 'app/http';
 import {App} from 'app/components';
 import {
   ErrorHandler,
@@ -57,12 +58,7 @@ const APP_TEST_ROUTER_PROVIDERS = [
   RouteRegistry,
   DirectiveResolver,
   provide(Location, {useClass: SpyLocation}),
-  provide(Router, {
-    useFactory: (registry, location) => {
-      return new RootRouter(registry, location, App);
-    },
-    deps: [RouteRegistry, Location]
-  }),
+  provide(Router, {useClass: RootRouter}),
 ];
 
 const APP_TEST_SERVICE_PROVIDERS = APP_SERVICE_PROVIDERS;

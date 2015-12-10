@@ -1,6 +1,4 @@
-import {Observable} from "@reactivex/rxjs";
-
-import {Injectable} from 'angular2/core';
+import {Injectable, Observable} from 'angular2/angular2';
 
 import {Http} from 'app/http';
 import {objToSearchParams} from './helpers';
@@ -15,7 +13,7 @@ export class UserMicropostService {
   constructor(private http:Http) {
   }
 
-  list(userId:string, pageRequest:PageRequest = defaultPageRequest):Rx.Observable<Page<Micropost>> {
+  list(userId:string, pageRequest:PageRequest = defaultPageRequest):Observable<Page<Micropost>> {
     return this.http.get(url(userId), {search: objToSearchParams(pageRequest)})
       .map(res => res.json())
       ;

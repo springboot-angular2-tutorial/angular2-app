@@ -1,4 +1,5 @@
-import {Router} from 'angular2/router';
+import {provide} from 'angular2/angular2';
+import {Router, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 import {
   inject,
   beforeEachProviders,
@@ -12,6 +13,7 @@ import {
   iit,
 } from 'angular2/testing';
 
+import {App} from 'app/components';
 import {APP_TEST_PROVIDERS} from "app/bindings";
 import {ErrorHandler, LoginService} from "app/services";
 import {HttpAuthError} from "app/http";
@@ -23,7 +25,10 @@ export function main() {
     var loginService:LoginService;
     var router:Router;
 
-    beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+    beforeEachProviders(() => [
+      APP_TEST_PROVIDERS,
+      provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
+    ]);
     beforeEach(inject([ErrorHandler, LoginService, Router], (..._) => {
       [errorHandler, loginService, router] = _;
       spyOn(loginService, 'logout');

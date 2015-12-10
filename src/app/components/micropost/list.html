@@ -2,20 +2,18 @@
 
   <h3>Microposts ({{totalItems}})</h3>
   <ol class="posts list-unstyled">
-    <li *ng-for="var p of posts">
+    <li *ngFor="var p of posts">
       <span class="content">{{p.content}}</span>
       <span class="timestamp">Posted about {{p.createdAt | timeAgo}}.</span>
-      <a *ng-if="isMyPost(p)" href="#" class="delete"
+      <a *ngIf="isMyPost(p)" href="#" class="delete"
          (click)="delete(p.id); $event.preventDefault()">delete</a>
     </li>
   </ol>
 
-  <pagination
-    [hidden]="totalPages <= 1"
-    [total-items]="totalItems"
-    [items-per-page]="itemsPerPage"
-    [(ng-model)]="currentPage"
-    (page-changed)="pageChanged($event)">
-  </pagination>
+  <div class="clearfix">
+    <pager class="pull-left" (pageChanged)="list($event.page)"
+           [totalPages]="totalPages"></pager>
+  </div>
+
 </div>
 

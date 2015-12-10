@@ -13,10 +13,10 @@ import {
 import {
   ResponseOptions,
   Response,
-  MockBackend,
   BaseResponseOptions,
-  RequestMethods,
+  RequestMethod,
 } from 'angular2/http';
+import {MockBackend} from 'angular2/http/testing';
 
 import {APP_TEST_PROVIDERS} from "app/bindings";
 import {FeedService} from "app/services";
@@ -61,7 +61,7 @@ export function main() {
           conn.mockRespond(new Response(new ResponseOptions({
             body: JSON.stringify(dummyJson),
           })));
-          expect(conn.request.method).toEqual(RequestMethods.Get);
+          expect(conn.request.method).toEqual(RequestMethod.Get);
           expect(conn.request.url).toEqual('/api/feed');
         });
         feedService.showFeed().subscribe(res => {

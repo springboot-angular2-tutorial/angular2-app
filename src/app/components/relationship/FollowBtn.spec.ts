@@ -1,7 +1,4 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
-
-import {Component, View, By, DebugElement, provide} from 'angular2/angular2';
+import {DOM, Component, View, By, DebugElement, provide} from 'angular2/angular2';
 import {
   inject,
   beforeEachProviders,
@@ -13,11 +10,11 @@ import {
   it,
   iit,
 } from 'angular2/testing';
-import {DOM} from 'angular2/src/core/dom/dom_adapter';
 import {ResponseOptions, Response, BaseResponseOptions} from 'angular2/http';
 import {ObservableWrapper} from "angular2/src/facade/async";
+import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
-import {FollowBtn} from 'app/components';
+import {FollowBtn, App} from 'app/components';
 import {APP_TEST_PROVIDERS} from "app/bindings";
 import {TestContext, createTestContext} from 'app/testing';
 import {RelationshipService} from "app/services";
@@ -29,7 +26,10 @@ export function main() {
     var cmpDebugElement:DebugElement;
     var relationshipService:RelationshipService;
 
-    beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+    beforeEachProviders(() => [
+      APP_TEST_PROVIDERS,
+      provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
+    ]);
     beforeEach(createTestContext(_ => ctx = _));
     beforeEach(inject([RelationshipService], _relationshipService => {
       relationshipService = _relationshipService;
@@ -60,7 +60,7 @@ export function main() {
     it('can unfollow', () => {
       const cmp:FollowBtn = cmpDebugElement.componentInstance;
       cmp.isFollowing = true;
-      ctx.rootTC.detectChanges();
+      ctx.fixture.detectChanges();
 
       const unfollowBtn = cmpDebugElement.query(By.css('.follow-btn')).nativeElement;
       expect(unfollowBtn).toHaveText('Unfollow');
@@ -73,7 +73,7 @@ export function main() {
     it('can follow', () => {
       const cmp:FollowBtn = cmpDebugElement.componentInstance;
       cmp.isFollowing = false;
-      ctx.rootTC.detectChanges();
+      ctx.fixture.detectChanges();
 
       const followBtn = cmpDebugElement.query(By.css('.follow-btn')).nativeElement;
       expect(followBtn).toHaveText('Follow');
@@ -88,7 +88,7 @@ export function main() {
 
 @Component({selector: 'test-cmp'})
 @View({
-  template: `<follow-btn follower-id="1"></follow-btn>`,
+  template: `<follow-btn followerId="1"></follow-btn>`,
   directives: [FollowBtn],
 })
 class TestCmp {

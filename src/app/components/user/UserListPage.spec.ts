@@ -1,9 +1,5 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
-
-import {Component, View, By, provide, DebugElement} from 'angular2/angular2';
+import {DOM, Component, View, By, provide, DebugElement} from 'angular2/angular2';
 import {
-  RootTestComponent,
   inject,
   beforeEachProviders,
   beforeEach,
@@ -15,10 +11,10 @@ import {
   xit,
   iit,
 } from 'angular2/testing';
-import {DOM} from 'angular2/src/core/dom/dom_adapter';
 import {ResponseOptions, Response} from 'angular2/http';
+import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
-import {App, UserListPage, Gravatar} from 'app/components';
+import {App, UserListPage, Gravatar, Pager} from 'app/components';
 import {APP_TEST_PROVIDERS} from "app/bindings";
 import {TestContext, createTestContext} from 'app/testing';
 
@@ -38,8 +34,12 @@ export function main() {
 
     var ctx:TestContext;
     var cmpDebugElement:DebugElement;
+    var pagerDebugElement:DebugElement;
 
-    beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+    beforeEachProviders(() => [
+      APP_TEST_PROVIDERS,
+      provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
+    ]);
     beforeEach(createTestContext(_ => ctx = _));
     beforeEach(done => {
       ctx.backend.connections.subscribe(conn => {
@@ -49,20 +49,21 @@ export function main() {
         .finally(done)
         .subscribe(rootTC => {
           cmpDebugElement = rootTC.debugElement.query(By.directive(UserListPage));
+          pagerDebugElement = rootTC.debugElement.query(By.directive(Pager));
         });
     });
 
     it('can be shown', () => {
       expect(cmpDebugElement).toBeTruthy();
+      expect(pagerDebugElement).toBeTruthy();
     });
 
     it('can list users', () => {
-      ctx.rootTC.detectChanges();
+      ctx.fixture.detectChanges();
 
       const page:UserListPage = cmpDebugElement.componentInstance;
       expect(page.users.length).toEqual(2);
       expect(page.totalPages).toEqual(1);
-      expect(page.totalItems).toEqual(2);
 
       const el = cmpDebugElement.nativeElement;
       expect(DOM.querySelectorAll(el, 'li>a')[0]).toHaveText('test1');
@@ -75,6 +76,16 @@ export function main() {
 
       const userShowLink = cmpDebugElement.query(By.css('li>a')).nativeElement;
       expect(userShowLink.getAttribute('href')).toEqual('/users/1');
+
+      const pager:Pager = pagerDebugElement.componentInstance;
+      expect(pager.totalPages).toEqual(1);
+    });
+
+    it('list another page when page was changed', () => {
+      const cmp:UserListPage = cmpDebugElement.componentInstance;
+      spyOn(cmp, 'list');
+      pagerDebugElement.triggerEventHandler('pageChanged', <any>{page: 2});
+      expect(cmp.list).toHaveBeenCalledWith(2);
     });
 
   });

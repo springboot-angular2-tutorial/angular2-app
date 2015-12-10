@@ -1,10 +1,5 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
-
-import {Component, View, By, DebugElement} from 'angular2/angular2';
+import {provide, Component, View, By, DebugElement, DOM} from 'angular2/angular2';
 import {
-  TestComponentBuilder,
-  RootTestComponent,
   inject,
   beforeEachProviders,
   beforeEach,
@@ -15,12 +10,11 @@ import {
   it,
   iit,
 } from 'angular2/testing';
-import {DOM} from 'angular2/src/core/dom/dom_adapter';
 import {ObservableWrapper} from "angular2/src/facade/async";
-import {Router, Location, RouterOutlet} from 'angular2/router';
+import {Router, Location, RouterOutlet, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 import {ResponseOptions, Response} from 'angular2/http';
 
-import {Feed, Gravatar} from "app/components";
+import {Feed, Gravatar, App} from "app/components";
 import {APP_TEST_PROVIDERS} from 'app/bindings';
 import {LoginService, MicropostService} from 'app/services';
 import {TestContext, createTestContext, signin} from 'app/testing';
@@ -57,7 +51,10 @@ export function main() {
     var cmpDebugElement:DebugElement;
     var micropostService:MicropostService;
 
-    beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+    beforeEachProviders(() => [
+      APP_TEST_PROVIDERS,
+      provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
+    ]);
     beforeEach(createTestContext(_  => ctx = _));
     beforeEach(inject([MicropostService], _ => micropostService = _));
     beforeEach(signin({id: 1, email: 'test1@test.com'}));
@@ -121,7 +118,7 @@ export function main() {
 
     it('deletes micropost when confirmed', done => {
       const cmp:Feed = cmpDebugElement.componentInstance;
-      const testCmp:TestCmp = ctx.rootTC.debugElement.componentInstance;
+      const testCmp:TestCmp = ctx.fixture.debugElement.componentInstance;
       const deleteLink = DOM.querySelector(cmpDebugElement.nativeElement, '.delete');
       spyOn(window, 'confirm').and.returnValue(true);
       spyOn(cmp, 'list');

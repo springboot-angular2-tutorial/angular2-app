@@ -31,7 +31,7 @@ export class LoginPage {
   }
 
   handleError(error) {
-    switch (error.response.status) {
+    switch (error.status) {
       case 401:
         toastr.error('Email or password is wrong.');
     }

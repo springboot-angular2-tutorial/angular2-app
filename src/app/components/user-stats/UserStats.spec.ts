@@ -1,7 +1,4 @@
-const Rx = require('@reactivex/rxjs/dist/cjs/Rx');
-const {Observable} = Rx;
-
-import {Component, View, By, DebugElement, provide} from 'angular2/angular2';
+import {DOM, Component, View, By, DebugElement, provide} from 'angular2/angular2';
 import {
   inject,
   beforeEachProviders,
@@ -13,12 +10,11 @@ import {
   it,
   iit,
 } from 'angular2/testing';
-import {DOM} from 'angular2/src/core/dom/dom_adapter';
 import {ResponseOptions, Response} from 'angular2/http';
-import {RouteParams} from 'angular2/router';
+import {RouteParams, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 import {ObservableWrapper} from "angular2/src/facade/async";
 
-import {UserStats, Gravatar} from "app/components";
+import {UserStats, Gravatar, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/bindings";
 import {TestContext, createTestContext, signin} from 'app/testing';
 
@@ -43,7 +39,10 @@ export function main() {
     var ctx:TestContext;
     var cmpDebugElement:DebugElement;
 
-    beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+    beforeEachProviders(() => [
+      APP_TEST_PROVIDERS,
+      provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
+    ]);
     beforeEach(createTestContext(_ => ctx = _));
 
     function createCmp(done) {
@@ -101,7 +100,7 @@ export function main() {
       beforeEach(() => {
         const cmp:UserStats = cmpDebugElement.componentInstance;
         cmp.shownOnProfile = true;
-        ctx.rootTC.detectChanges();
+        ctx.fixture.detectChanges();
       });
 
       it('does not show profile link', () => {
@@ -120,7 +119,7 @@ export function main() {
 
 @Component({selector: 'test-cmp'})
 @View({
-  template: `<user-stats user-id="1" [shown-on-profile]="false"></user-stats>`,
+  template: `<user-stats userId="1" [shownOnProfile]="false"></user-stats>`,
   directives: [UserStats],
 })
 class TestCmp {

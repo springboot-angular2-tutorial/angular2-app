@@ -1,5 +1,11 @@
 import {Component, View, provide} from 'angular2/angular2';
-import {Router, RouteRegistry, Location, RouteConfig} from 'angular2/router';
+import {
+  Router,
+  RouteRegistry,
+  Location,
+  RouteConfig,
+  ROUTER_PRIMARY_COMPONENT
+} from 'angular2/router';
 import {RootRouter} from 'angular2/src/router/router';
 import {
   inject,
@@ -25,12 +31,7 @@ export function main() {
 
     beforeEachProviders(() => [
       APP_TEST_PROVIDERS,
-      provide(Router, {
-        useFactory: (registry, location) => {
-          return new RootRouter(registry, location, TestCmp);
-        },
-        deps: [RouteRegistry, Location]
-      }),
+      provide(ROUTER_PRIMARY_COMPONENT, {useValue: TestCmp}),
     ]);
     beforeEach(createTestContext(_ => ctx = _));
 

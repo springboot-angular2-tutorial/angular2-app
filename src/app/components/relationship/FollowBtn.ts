@@ -1,4 +1,5 @@
-import {Component, View, CORE_DIRECTIVES, OnChanges, SimpleChange} from 'angular2/angular2';
+import {Component, View, CORE_DIRECTIVES, OnChanges} from 'angular2/angular2';
+
 import {RelationshipService, ErrorHandler, LoginService} from 'app/services';
 
 @Component({
@@ -19,7 +20,7 @@ export class FollowBtn implements OnChanges {
               private errorHandler:ErrorHandler) {
   }
 
-  onChanges(changes:{[key: string]: SimpleChange}):void {
+  ngOnChanges():void {
     if (this.followerId) {
       this.loadCurrentStatus();
     }

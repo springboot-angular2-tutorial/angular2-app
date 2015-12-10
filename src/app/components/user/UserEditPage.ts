@@ -1,3 +1,5 @@
+import * as Rx from 'rxjs/Rx';
+
 import {
   Component,
   View,
@@ -6,7 +8,7 @@ import {
   Injector,
   Control,
   ControlGroup,
-  Validators
+  Validators,
 } from 'angular2/angular2';
 import {RouteParams, CanActivate, ComponentInstruction} from 'angular2/router';
 
@@ -16,7 +18,6 @@ import {UserService, ErrorHandler, LoginService} from 'app/services'
 import {User} from 'app/interfaces'
 import {PrivatePage} from 'app/routes'
 
-const _ = require('lodash');
 const toastr = require('toastr');
 
 @Component({
@@ -79,7 +80,14 @@ export class UserEditPage {
     this.passwordConfirmation.updateValueAndValidity({});
     this.passwordConfirmation.markAsTouched();
     if (!this.myForm.valid) return;
-    this.userService.updateMe(_.omit(value, _.isEmpty))
+
+    const params = Object.keys(value)
+      .filter(k => value[k] != "")
+      .reduce((prev, current) => {
+        prev[current] = value[current];
+        return prev;
+      }, {});
+    this.userService.updateMe(params)
       .subscribe(() => {
         toastr.success('Successfully updated.')
       }, this.handleError);
