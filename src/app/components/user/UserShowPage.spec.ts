@@ -43,8 +43,8 @@ export function main() {
     function createCmp(done) {
       ctx.init(TestCmp)
         .finally(done)
-        .subscribe(rootTC => {
-          cmpDebugElement = rootTC.debugElement.query(By.directive(UserShowPage));
+        .subscribe(() => {
+          cmpDebugElement = ctx.fixture.debugElement.query(By.directive(UserShowPage));
           userStatsDebugElement = cmpDebugElement.query(By.directive(UserStats));
           followBtnDebugElement = cmpDebugElement.query(By.directive(FollowBtn));
           micropostListDebugElement = cmpDebugElement.query(By.directive(MicropostList));

@@ -42,8 +42,8 @@ export function main() {
     beforeEach(done => {
       ctx.init(TestCmp)
         .finally(done)
-        .subscribe(rootTC => {
-          cmpDebugElement = rootTC.debugElement.query(By.directive(FollowerListPage));
+        .subscribe(() => {
+          cmpDebugElement = ctx.fixture.debugElement.query(By.directive(FollowerListPage));
           if (!cmpDebugElement) return;
           userStatsDebugElement = cmpDebugElement.query(By.directive(UserStats));
           userListDebugElement = cmpDebugElement.query(By.directive(UserList));

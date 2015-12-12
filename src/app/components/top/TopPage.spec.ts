@@ -29,8 +29,8 @@ export function main() {
     ]);
     beforeEach(createTestContext(_  => ctx = _));
     beforeEach(done => {
-      ctx.init(TestCmp).finally(done).subscribe(rootTC => {
-        cmpDebugElement = rootTC.debugElement.query(By.directive(TopPage));
+      ctx.init(TestCmp).finally(done).subscribe(() => {
+        cmpDebugElement = ctx.fixture.debugElement.query(By.directive(TopPage));
       });
     });
 

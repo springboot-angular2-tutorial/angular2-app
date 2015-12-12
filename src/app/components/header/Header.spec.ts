@@ -32,8 +32,8 @@ export function main() {
     function createCmp(done) {
       ctx.init(TestCmp)
         .finally(done)
-        .subscribe(rootTC => {
-          cmpDebugElement = rootTC.debugElement.query(By.directive(Header));
+        .subscribe(() => {
+          cmpDebugElement = ctx.fixture.debugElement.query(By.directive(Header));
         });
     }
 

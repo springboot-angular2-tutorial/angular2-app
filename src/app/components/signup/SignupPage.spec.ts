@@ -38,8 +38,8 @@ export function main() {
     beforeEach(done => {
       ctx.init(TestCmp)
         .finally(done)
-        .subscribe(rootTC => {
-          cmpDebugElement = rootTC.debugElement.query(By.directive(SignupPage));
+        .subscribe(() => {
+          cmpDebugElement = ctx.fixture.debugElement.query(By.directive(SignupPage));
         });
     });
     afterEach(() => localStorage.clear());

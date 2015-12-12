@@ -66,8 +66,8 @@ export function main() {
       });
       ctx.init(TestCmp)
         .finally(done)
-        .subscribe(rootTC => {
-          cmpDebugElement = rootTC.debugElement.query(By.directive(Feed));
+        .subscribe(() => {
+          cmpDebugElement = ctx.fixture.debugElement.query(By.directive(Feed));
         });
     }
 

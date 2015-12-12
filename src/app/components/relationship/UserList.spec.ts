@@ -45,9 +45,9 @@ export function main() {
     function createCmp(done) {
       ctx.init(TestCmp)
         .finally(done)
-        .subscribe(rootTC => {
-          cmpDebugElement = rootTC.debugElement.query(By.directive(UserList));
-          pagerDebugElement = rootTC.debugElement.query(By.directive(Pager));
+        .subscribe(() => {
+          cmpDebugElement = ctx.fixture.debugElement.query(By.directive(UserList));
+          pagerDebugElement = cmpDebugElement.query(By.directive(Pager));
         });
     }
 

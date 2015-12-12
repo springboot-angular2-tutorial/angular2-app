@@ -47,9 +47,9 @@ export function main() {
       });
       ctx.init(TestCmp)
         .finally(done)
-        .subscribe(rootTC => {
-          cmpDebugElement = rootTC.debugElement.query(By.directive(UserListPage));
-          pagerDebugElement = rootTC.debugElement.query(By.directive(Pager));
+        .subscribe(() => {
+          cmpDebugElement = ctx.fixture.debugElement.query(By.directive(UserListPage));
+          pagerDebugElement = cmpDebugElement.query(By.directive(Pager));
         });
     });
 

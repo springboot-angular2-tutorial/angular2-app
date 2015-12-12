@@ -35,8 +35,8 @@ export function main() {
     beforeEach(done => {
       ctx.init(TestCmp)
         .finally(done)
-        .subscribe(rootTC => {
-          cmpDebugElement = rootTC.debugElement.query(By.directive(LoginPage));
+        .subscribe(() => {
+          cmpDebugElement = ctx.fixture.debugElement.query(By.directive(LoginPage));
         });
     });
     afterEach(() => localStorage.clear());

@@ -39,12 +39,11 @@ export class TestContext {
     this._backend = backend;
   }
 
-  init(rootComponent:Function):Observable<ComponentFixture> {
+  init(rootComponent:Function):Observable<void> {
     const promise = this._tcb.createAsync(rootComponent)
       .then(fixture => {
         this._fixture = fixture;
         fixture.detectChanges();
-        return fixture;
       });
     return Rx.Observable.fromPromise(promise);
   }
