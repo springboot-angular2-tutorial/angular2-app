@@ -36,7 +36,6 @@
     "jwt-decode": "^1.4.0",
     "md5-hex": "^1.1.0",
     "moment": "^2.10.6",
-    "ng2-bootstrap": "0.46.0",
     "pluralize": "^1.2.1",
     "reflect-metadata": "0.1.2",
     "time-ago": "^0.1.0",
