@@ -14,7 +14,7 @@ import {RouteParams} from 'angular2/router';
 import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
 import {FollowingListPage, UserStats, App} from 'app/components';
-import {APP_TEST_PROVIDERS} from 'app/bindings';
+import {APP_TEST_PROVIDERS} from 'app/providers';
 import {TestContext, createTestContext, signin} from 'app/testing';
 import {UserList} from './UserList';
 

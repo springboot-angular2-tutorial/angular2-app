@@ -14,7 +14,7 @@ import {
 } from 'angular2/testing';
 
 import {App} from 'app/components';
-import {APP_TEST_PROVIDERS} from "app/bindings";
+import {APP_TEST_PROVIDERS} from "app/providers";
 import {ErrorHandler, LoginService} from "app/services";
 import {HttpAuthError} from "app/http";
 

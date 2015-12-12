@@ -16,7 +16,7 @@ import {ObservableWrapper} from "angular2/src/facade/async";
 import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
 import {MicropostList, Pager, App} from 'app/components';
-import {APP_TEST_PROVIDERS} from "app/bindings";
+import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext, signin} from 'app/testing';
 import {MicropostService} from "app/services";
 

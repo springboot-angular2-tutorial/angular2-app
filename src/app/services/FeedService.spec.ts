@@ -18,7 +18,7 @@ import {
 } from 'angular2/http';
 import {MockBackend} from 'angular2/http/testing';
 
-import {APP_TEST_PROVIDERS} from "app/bindings";
+import {APP_TEST_PROVIDERS} from "app/providers";
 import {FeedService} from "app/services";
 
 const dummyJson = [

@@ -22,7 +22,7 @@ import {
 
 import {SecurityRouterOutlet, PrivatePage, PublicPage} from "app/routes";
 import {TestContext, createTestContext, signin} from 'app/testing';
-import {APP_TEST_PROVIDERS} from "app/bindings";
+import {APP_TEST_PROVIDERS} from "app/providers";
 
 export function main() {
   describe('SecurityRouterOutlet', () => {

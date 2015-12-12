@@ -19,7 +19,7 @@ import {
 } from 'angular2/http';
 import {MockBackend} from 'angular2/http/testing';
 
-import {APP_TEST_PROVIDERS} from "app/bindings";
+import {APP_TEST_PROVIDERS} from "app/providers";
 import {MicropostService} from "app/services";
 import {Micropost} from "app/interfaces";
 import {LoginService} from "./LoginService";

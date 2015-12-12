@@ -15,7 +15,7 @@ import {RouteParams, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 import {ObservableWrapper} from "angular2/src/facade/async";
 
 import {UserStats, Gravatar, App} from "app/components";
-import {APP_TEST_PROVIDERS} from "app/bindings";
+import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext, signin} from 'app/testing';
 
 const dummyResponse = new Response(new ResponseOptions({

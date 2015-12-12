@@ -13,7 +13,7 @@ import {
 import {RouteParams, CanActivate, ComponentInstruction} from 'angular2/router';
 
 import {Validators as AppValidators} from 'app/forms'
-import {APP_PROVIDERS} from 'app/bindings'
+import {APP_PROVIDERS} from 'app/providers'
 import {UserService, ErrorHandler, LoginService} from 'app/services'
 import {User} from 'app/interfaces'
 import {PrivatePage} from 'app/routes'

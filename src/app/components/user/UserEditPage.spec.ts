@@ -16,7 +16,7 @@ import {ResponseOptions, Response} from 'angular2/http';
 import {RouteParams} from 'angular2/router';
 
 import {App, UserEditPage} from 'app/components';
-import {APP_TEST_PROVIDERS} from "app/bindings";
+import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext} from 'app/testing';
 
 export function main() {

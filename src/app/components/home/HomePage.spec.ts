@@ -14,7 +14,7 @@ import {
 import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
 import {HomePage, UserStats, MicropostNew, Feed, App} from 'app/components';
-import {APP_TEST_PROVIDERS} from "app/bindings";
+import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext} from 'app/testing';
 
 export function main() {

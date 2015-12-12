@@ -14,7 +14,7 @@ import {ResponseOptions, Response} from 'angular2/http';
 import {RouteParams, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
 import {App, UserShowPage, UserStats, FollowBtn, MicropostList} from 'app/components';
-import {APP_TEST_PROVIDERS} from "app/bindings";
+import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext, signin} from 'app/testing';
 
 export function main() {

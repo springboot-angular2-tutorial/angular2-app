@@ -25,7 +25,7 @@ import {ObservableWrapper} from "angular2/src/facade/async";
 
 import {Gravatar, App, Pager} from "app/components";
 import {UserList} from './UserList';
-import {APP_TEST_PROVIDERS} from "app/bindings";
+import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext, signin} from 'app/testing';
 import {User, Page, PageRequest} from "app/interfaces";
 

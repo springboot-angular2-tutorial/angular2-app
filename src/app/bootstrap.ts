@@ -3,7 +3,7 @@ import {ROUTER_PROVIDERS, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
 import {App} from 'app/components';
-import {APP_PROVIDERS} from 'app/bindings'
+import {APP_PROVIDERS} from 'app/providers'
 
 bootstrap(App, [
   FORM_PROVIDERS,

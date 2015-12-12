@@ -15,7 +15,7 @@ import {Router, Location, RouterOutlet, ROUTER_PRIMARY_COMPONENT} from 'angular2
 import {ResponseOptions, Response} from 'angular2/http';
 
 import {Feed, Gravatar, App} from "app/components";
-import {APP_TEST_PROVIDERS} from 'app/bindings';
+import {APP_TEST_PROVIDERS} from 'app/providers';
 import {LoginService, MicropostService} from 'app/services';
 import {TestContext, createTestContext, signin} from 'app/testing';
 

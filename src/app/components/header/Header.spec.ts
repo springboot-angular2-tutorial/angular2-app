@@ -13,7 +13,7 @@ import {
 import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
 import {Header, App} from "app/components";
-import {APP_TEST_PROVIDERS} from 'app/bindings';
+import {APP_TEST_PROVIDERS} from 'app/providers';
 import {TestContext, createTestContext, signin} from 'app/testing';
 import {LoginService} from 'app/services';
 

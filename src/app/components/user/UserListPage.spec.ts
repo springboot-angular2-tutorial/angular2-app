@@ -15,7 +15,7 @@ import {ResponseOptions, Response} from 'angular2/http';
 import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
 import {App, UserListPage, Gravatar, Pager} from 'app/components';
-import {APP_TEST_PROVIDERS} from "app/bindings";
+import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext} from 'app/testing';
 
 const dummyResponse = new Response(new ResponseOptions({
