@@ -72,6 +72,8 @@ module.exports = {
       'rxjs',
       'zone.js',
       'reflect-metadata',
+      'angular2/bootstrap',
+      'angular2/common',
       'angular2/router',
       'angular2/http',
       'angular2/core'
