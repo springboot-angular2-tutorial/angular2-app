@@ -1,4 +1,4 @@
-import {provide, DirectiveResolver} from 'angular2/angular2';
+import {provide, DirectiveResolver} from 'angular2/core';
 import {BaseRequestOptions, HTTP_PROVIDERS, XHRBackend} from 'angular2/http';
 import {MockBackend} from 'angular2/http/testing';
 import {Router, RouteRegistry, Location} from 'angular2/router';

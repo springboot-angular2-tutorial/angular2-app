@@ -1,4 +1,5 @@
-import {Component, View, CORE_DIRECTIVES, OnChanges} from 'angular2/angular2';
+import {Component, View, OnChanges} from 'angular2/core';
+import {CORE_DIRECTIVES} from 'angular2/common';
 
 import {RelationshipService, ErrorHandler, LoginService} from 'app/services';
 

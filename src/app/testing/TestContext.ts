@@ -1,6 +1,7 @@
 import * as Rx from 'rxjs/Rx';
 
-import {By, DebugElement, Observable} from 'angular2/angular2';
+import {DebugElement} from 'angular2/core';
+import {By} from 'angular2/platform/common_dom';
 import {MockBackend} from 'angular2/http/testing';
 import {Router, Location} from 'angular2/router';
 import {inject, ComponentFixture, TestComponentBuilder} from 'angular2/testing';
@@ -39,7 +40,7 @@ export class TestContext {
     this._backend = backend;
   }
 
-  init(rootComponent:Function):Observable<void> {
+  init(rootComponent:Function):Rx.Observable<void> {
     const promise = this._tcb.createAsync(rootComponent)
       .then(fixture => {
         this._fixture = fixture;

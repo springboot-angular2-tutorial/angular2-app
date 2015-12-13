@@ -1,4 +1,5 @@
-import {Component, View, OnChanges, CORE_DIRECTIVES} from 'angular2/angular2';
+import {Component, View, OnChanges} from 'angular2/core';
+import {CORE_DIRECTIVES} from 'angular2/common';
 
 const md5Hex = require('md5-hex');
 

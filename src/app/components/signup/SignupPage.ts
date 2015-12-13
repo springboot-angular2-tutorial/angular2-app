@@ -1,12 +1,11 @@
+import {Component, View} from 'angular2/core';
 import {
-  Component,
-  View,
   CORE_DIRECTIVES,
   FORM_DIRECTIVES,
   Control,
   ControlGroup,
-  Validators
-} from 'angular2/angular2';
+  Validators,
+} from 'angular2/common';
 import {Router} from 'angular2/router';
 
 import {Validators as AppValidators} from 'app/forms'

@@ -1,13 +1,7 @@
 import {Observable} from 'rxjs/Observable';
-
-import {
-  Component,
-  View,
-  By,
-  DebugElement,
-  provide,
-  DOM,
-} from 'angular2/angular2';
+import {Component, View, provide, DebugElement} from 'angular2/core';
+import {By} from 'angular2/platform/common_dom';
+import {DOM} from "angular2/src/platform/dom/dom_adapter";
 import {
   inject,
   beforeEachProviders,

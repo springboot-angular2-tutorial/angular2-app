@@ -1,11 +1,6 @@
-import {
-  Component,
-  View,
-  CORE_DIRECTIVES,
-  FORM_DIRECTIVES,
-  Observable,
-  OnInit,
-} from 'angular2/angular2';
+import {Observable} from "rxjs/Observable";
+import {Component, View, OnInit} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {PageRequest, Page, User} from "app/interfaces";

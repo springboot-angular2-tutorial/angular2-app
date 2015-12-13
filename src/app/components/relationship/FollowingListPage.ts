@@ -1,4 +1,6 @@
-import {Component, View, CORE_DIRECTIVES, Observable} from 'angular2/angular2';
+import {Observable} from "rxjs/Observable";
+import {Component, View} from 'angular2/core';
+import {CORE_DIRECTIVES} from 'angular2/common';
 import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {UserService} from 'app/services';

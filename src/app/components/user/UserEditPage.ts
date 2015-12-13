@@ -1,15 +1,5 @@
-import * as Rx from 'rxjs/Rx';
-
-import {
-  Component,
-  View,
-  CORE_DIRECTIVES,
-  FORM_DIRECTIVES,
-  Injector,
-  Control,
-  ControlGroup,
-  Validators,
-} from 'angular2/angular2';
+import { Component, View, Injector} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES, Control, ControlGroup, Validators} from "angular2/common";
 import {RouteParams, CanActivate, ComponentInstruction} from 'angular2/router';
 
 import {Validators as AppValidators} from 'app/forms'

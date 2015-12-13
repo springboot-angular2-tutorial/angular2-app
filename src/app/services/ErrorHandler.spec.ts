@@ -1,4 +1,4 @@
-import {provide} from 'angular2/angular2';
+import {provide} from 'angular2/core';
 import {Router, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 import {
   inject,

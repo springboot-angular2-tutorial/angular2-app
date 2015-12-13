@@ -1,4 +1,5 @@
-import {Component, View, CORE_DIRECTIVES, OnChanges} from 'angular2/angular2';
+import {Component, View, OnChanges} from 'angular2/core';
+import {CORE_DIRECTIVES} from 'angular2/common';
 import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {User, UserStats as IUserStats} from 'app/interfaces';

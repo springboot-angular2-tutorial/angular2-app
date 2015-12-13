@@ -1,4 +1,4 @@
-import {Control} from 'angular2/angular2';
+import {Control} from 'angular2/common';
 
 function isBlank(val:string) {
   return val == '';

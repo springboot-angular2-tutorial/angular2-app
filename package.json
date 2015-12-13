@@ -30,7 +30,7 @@
   "homepage": "https://github.com/springboot-angular2-tutorial/angular2-app",
   "dependencies": {
     "rxjs": "5.0.0-alpha.14",
-    "angular2": "2.0.0-alpha.52",
+    "angular2": "2.0.0-alpha.53",
     "bootstrap": "^3.3.6",
     "jquery": "^2.1.4",
     "jwt-decode": "^1.4.0",

@@ -1,4 +1,4 @@
-import {View, Component} from 'angular2/angular2';
+import {View, Component} from 'angular2/core';
 import {RouteConfig} from 'angular2/router';
 
 import {SecurityRouterOutlet} from 'app/routes';
