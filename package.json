@@ -29,8 +29,8 @@
   },
   "homepage": "https://github.com/springboot-angular2-tutorial/angular2-app",
   "dependencies": {
-    "rxjs": "5.0.0-alpha.14",
-    "angular2": "2.0.0-alpha.53",
+    "rxjs": "5.0.0-beta.0",
+    "angular2": "2.0.0-beta.0",
     "bootstrap": "^3.3.6",
     "jquery": "^2.1.4",
     "jwt-decode": "^1.4.0",
@@ -40,7 +40,7 @@
     "reflect-metadata": "0.1.2",
     "time-ago": "^0.1.0",
     "toastr": "^2.1.2",
-    "zone.js": "0.5.8"
+    "zone.js": "0.5.10"
   },
   "devDependencies": {
     "bootstrap-webpack": "0.0.5",

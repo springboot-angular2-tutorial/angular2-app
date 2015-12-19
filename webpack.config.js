@@ -70,7 +70,7 @@ module.exports = {
   entry: {
     'angular2': [
       'rxjs',
-      'zone.js',
+      'zone.js/dist/zone-microtask',
       'reflect-metadata',
       'angular2/bootstrap',
       'angular2/common',
@@ -133,7 +133,8 @@ module.exports = {
       }
     ],
     noParse: [
-      /reflect-metadata/
+      /reflect-metadata/,
+      /zone\.js\/dist\/zone-microtask/
     ]
   },
 
