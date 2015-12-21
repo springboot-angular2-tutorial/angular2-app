@@ -26,6 +26,13 @@ module.exports = function (config) {
           {
             test: /\.ts$/,
             loader: 'ts',
+            query: {
+              'ignoreDiagnostics': [
+                2300, // 2300 -> Duplicate identifier
+                2374,
+                2375
+              ]
+            },
             exclude: [
               /\.min\.js$/,
               /node_modules/

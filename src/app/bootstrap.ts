@@ -12,6 +12,7 @@ export function main() {
     FORM_PROVIDERS,
     ROUTER_PROVIDERS,
     HTTP_PROVIDERS,
+    ELEMENT_PROBE_PROVIDERS,
 
     APP_PROVIDERS,
   ]).catch(e => console.error(e));
