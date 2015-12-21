@@ -8,6 +8,9 @@
     "sourceMap": true
   },
   "files": [
+    "typings/main.d.ts",
+    "src/app/components/app/App.ts",
+    "src/app/providers.ts",
     "src/app/bootstrap.ts"
   ]
 }

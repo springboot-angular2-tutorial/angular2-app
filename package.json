@@ -13,7 +13,8 @@
     "server": "webpack-dev-server --inline --progress --profile --colors --display-error-details --display-cached --port 3001",
     "test": "karma start",
     "docs": "typedoc  --options typedoc.json  src/**/*.ts",
-    "start": "npm run server"
+    "start": "npm run server",
+    "postinstall": "typings install"
   },
   "repository": {
     "type": "git",
@@ -69,6 +70,7 @@
     "ts-loader": "0.7.2",
     "tsd": "^0.6.5",
     "typescript": "^1.7.3",
+    "typings": "^0.3.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
