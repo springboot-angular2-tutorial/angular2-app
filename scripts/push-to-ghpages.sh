@@ -5,7 +5,7 @@ if [ "$TRAVIS_BRANCH" != "master" ]; then
 fi
 
 rm -rf out || exit 0;
-NODE_ENV=production npm run build || exit 1;
+npm run build:prod || exit 1;
 cp -rf __build__ out
 
 (
