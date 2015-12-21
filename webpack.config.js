@@ -6,18 +6,8 @@ var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 module.exports = {
   devtool: 'source-map',
   debug: true,
-  cache: true,
-  verbose: true,
-  displayErrorDetails: true,
-  context: __dirname,
-  stats: {
-    colors: true,
-    reasons: true
-  },
 
   devServer: {
-    inline: true,
-    colors: true,
     historyApiFallback: true,
     publicPath: '/__build__'
   },
@@ -30,7 +20,7 @@ module.exports = {
   output: {
     path: root('__build__'),
     filename: '[name].js',
-    sourceMapFilename: '[name].js.map',
+    sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
   },
 
