@@ -17,7 +17,6 @@ import {
 } from 'app/components';
 
 require('expose?$!expose?jQuery!jquery');
-require("bootstrap-webpack");
 require('!style!css!toastr/build/toastr.css');
 
 @Component({

@@ -1,50 +1,7 @@
-// Helper
-var sliceArgs = Function.prototype.call.bind(Array.prototype.slice);
-var NODE_ENV = process.env.NODE_ENV || 'development';
-
-// Node
 var webpack = require('webpack');
 var path = require('path');
-var pkg = require('./package.json');
 
-// Webpack Plugins
-var OccurenceOrderPlugin = webpack.optimize.OccurenceOrderPlugin;
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-var DedupePlugin = webpack.optimize.DedupePlugin;
-var DefinePlugin = webpack.DefinePlugin;
-
-var plugins = [
-  new DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
-    'VERSION': JSON.stringify(pkg.version)
-  }),
-  new OccurenceOrderPlugin(),
-  new DedupePlugin(),
-  new CommonsChunkPlugin({
-    name: 'angular2',
-    minChunks: Infinity,
-    filename: 'angular2.js'
-  }),
-  new CommonsChunkPlugin({
-    name: 'common',
-    filename: 'common.js'
-  })
-];
-
-if (NODE_ENV === 'production') {
-  plugins.push(new UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        drop_debugger: false
-      },
-      output: {
-        comments: false
-      },
-      beautify: false
-    })
-  )
-}
 
 module.exports = {
   devtool: 'source-map',
@@ -58,7 +15,6 @@ module.exports = {
     reasons: true
   },
 
-  // our Development Server configs
   devServer: {
     inline: true,
     colors: true,
@@ -66,28 +22,14 @@ module.exports = {
     publicPath: '/__build__'
   },
 
-  //
   entry: {
-    'angular2': [
-      'rxjs',
-      'zone.js/dist/zone-microtask',
-      'reflect-metadata',
-      'angular2/bootstrap',
-      'angular2/common',
-      'angular2/router',
-      'angular2/http',
-      'angular2/core'
-    ],
-    'app': [
-      './src/app/bootstrap'
-    ]
+    'vendor': './src/vendor.ts',
+    'app': './src/app/bootstrap'
   },
 
-  // Config for our build files
   output: {
     path: root('__build__'),
     filename: '[name].js',
-    // filename: '[name].[hash].js',
     sourceMapFilename: '[name].js.map',
     chunkFilename: '[id].chunk.js'
   },
@@ -132,16 +74,27 @@ module.exports = {
         loader: 'url?limit=10000&mimetype=image/svg+xml'
       }
     ],
-    noParse: [
-      /reflect-metadata/,
-      /zone\.js\/dist\/zone-microtask/
-    ]
+    noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/]
   },
 
-  plugins: plugins
+  plugins: [
+    new CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'vendor.js',
+      minChunks: Infinity
+    }),
+    new CommonsChunkPlugin({
+      name: 'common',
+      filename: 'common.js',
+      minChunks: 2,
+      chunks: ['app', 'vendor']
+    })
+  ]
+
 };
 
 function root(args) {
-  args = sliceArgs(arguments, 0);
+  args = Array.prototype.slice.call(arguments, 0);
   return path.join.apply(path, [__dirname].concat(args));
 }
+

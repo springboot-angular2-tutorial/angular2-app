@@ -42,7 +42,9 @@ export function main() {
     describe('when signed in', () => {
       let loginService:LoginService;
 
-      beforeEach(inject([LoginService], _ => loginService = _));
+      beforeEach(inject([LoginService], _ => {
+        loginService = _
+      }));
       beforeEach(signin({id: 1, email: 'test@test.com'}));
       beforeEach(createCmp);
 

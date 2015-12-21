@@ -43,7 +43,7 @@ export function main() {
         deps: [MockBackend, BaseRequestOptions],
       }),
     ]);
-    beforeEach(inject([Http, MockBackend], (..._) => [http, backend] = _));
+    beforeEach(inject([Http, MockBackend], (..._) => {[http, backend] = _}));
     beforeEach(() => {
       spyOn(Http, 'checkStatus').and.callThrough();
       spyOn(localStorage, 'getItem').and.returnValue('my jwt');

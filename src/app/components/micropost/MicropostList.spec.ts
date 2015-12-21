@@ -64,7 +64,9 @@ export function main() {
       provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
     ]);
     beforeEach(createTestContext(_ => ctx = _));
-    beforeEach(inject([MicropostService], _ => micropostService = _));
+    beforeEach(inject([MicropostService], _ => {
+      micropostService = _
+    }));
     beforeEach(() => jasmine.clock().mockDate(new Date(24 * 60 * 60 * 1000)));
     beforeEach(signin({id: 1, email: "test@test.com"}));
 

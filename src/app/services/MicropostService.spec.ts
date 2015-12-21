@@ -75,7 +75,7 @@ export function main() {
         createdAt: 0,
       };
       let loginService:LoginService;
-      beforeEach(inject([LoginService], _ => loginService = _));
+      beforeEach(inject([LoginService], _ => {loginService = _}));
 
       it('returns false when not signed in', () => {
         expect(micropostService.isMyPost(post)).toBeFalsy();

@@ -36,7 +36,9 @@ export function main() {
       provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
     ]);
     beforeEach(createTestContext(_  => ctx = _));
-    beforeEach(inject([LoginService], _ => loginService = _));
+    beforeEach(inject([LoginService], _ => {
+      loginService = _
+    }));
     beforeEach(done => {
       ctx.init(TestCmp)
         .finally(done)

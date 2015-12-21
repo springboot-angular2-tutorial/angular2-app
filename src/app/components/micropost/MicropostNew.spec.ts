@@ -33,7 +33,9 @@ export function main() {
       provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
     ]);
     beforeEach(createTestContext(_ => ctx = _));
-    beforeEach(inject([MicropostService], _ => micropostService = _));
+    beforeEach(inject([MicropostService], _ => {
+      micropostService = _
+    }));
     beforeEach(done => {
       ctx.init(TestCmp)
         .finally(done)
