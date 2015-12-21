@@ -16,4 +16,6 @@ import 'angular2/http';
 // RxJS
 import 'rxjs';
 
+import 'expose?$!expose?jQuery!jquery';
+import  '!style!css!toastr/build/toastr.css';
 import "bootstrap-webpack";

@@ -16,8 +16,6 @@ import {
   TopPage
 } from 'app/components';
 
-require('expose?$!expose?jQuery!jquery');
-require('!style!css!toastr/build/toastr.css');
 
 @Component({
   selector: 'app'
