@@ -1,5 +1,6 @@
 import {Observable} from "rxjs/Observable";
 import {Injectable} from 'angular2/core';
+import {Response} from 'angular2/http';
 
 import {Http} from 'app/http';
 
@@ -13,21 +14,14 @@ export class RelationshipService {
 
   isFollowing(followerId:string):Observable<boolean> {
     return this.http.get(`${url}/to/${followerId}`)
-      .map(() => true)
-      .catch(error => {
-        if (error.response.status == 404) {
-          return Observable.of(false);
-        }
-        throw error;
-      })
-      ;
+      .map(res => res.status != 404);
   }
 
-  follow(followerId:string):Observable<void> {
+  follow(followerId:string):Observable<Response> {
     return this.http.post(`${url}/to/${followerId}`, '');
   }
 
-  unfollow(followerId:string):Observable<void> {
+  unfollow(followerId:string):Observable<Response> {
     return this.http.delete(`${url}/to/${followerId}`);
   }
 

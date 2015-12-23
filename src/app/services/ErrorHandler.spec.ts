@@ -15,13 +15,12 @@ import {
 
 import {App} from 'app/components';
 import {APP_TEST_PROVIDERS} from "app/providers";
-import {ErrorHandler, LoginService} from "app/services";
-import {HttpAuthError} from "app/http";
+import {HttpErrorHandler, LoginService} from "app/services";
 
 export function main() {
   describe('ErrorHandler', () => {
 
-    var errorHandler:ErrorHandler;
+    var errorHandler:HttpErrorHandler;
     var loginService:LoginService;
     var router:Router;
 
@@ -29,21 +28,21 @@ export function main() {
       APP_TEST_PROVIDERS,
       provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
     ]);
-    beforeEach(inject([ErrorHandler, LoginService, Router], (..._) => {
+    beforeEach(inject([HttpErrorHandler, LoginService, Router], (..._) => {
       [errorHandler, loginService, router] = _;
       spyOn(loginService, 'logout');
       spyOn(router, 'navigate');
     }));
 
     describe('.handle', () => {
-      it('handles a HttpAuthError', () => {
-        errorHandler.handle(new HttpAuthError('msg'));
+      it('handles 401 response', () => {
+        errorHandler.handle({status: 401});
         expect(loginService.logout).toHaveBeenCalled();
         expect(router.navigate).toHaveBeenCalledWith(['/Login']);
       });
 
       it('does not handle other errors', () => {
-        errorHandler.handle(new Error('msg'));
+        errorHandler.handle({status: 400});
         expect(loginService.logout).not.toHaveBeenCalled();
         expect(router.navigate).not.toHaveBeenCalled();
       });

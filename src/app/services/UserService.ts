@@ -31,7 +31,7 @@ export class UserService {
     return this.http.post(url, JSON.stringify(params));
   }
 
-  updateMe(userParam:UserParams):Observable<void> {
+  updateMe(userParam:UserParams):Observable<Response> {
     return this.http.patch(`${url}/me`, JSON.stringify(userParam))
       .do(resp => {
         localStorage.setItem('jwt', resp.headers.get('X-AUTH-TOKEN'))

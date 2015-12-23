@@ -3,7 +3,7 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {User, UserStats as IUserStats} from 'app/interfaces';
-import {UserService, ErrorHandler, LoginService} from 'app/services';
+import {UserService, HttpErrorHandler, LoginService} from 'app/services';
 import {PluralizePipe} from 'app/pipes';
 import {Gravatar} from 'app/components';
 
@@ -26,7 +26,7 @@ export class UserStats implements OnChanges {
   shownOnProfile:boolean = false;
 
   constructor(private userService:UserService,
-              private errorHandler:ErrorHandler) {
+              private errorHandler:HttpErrorHandler) {
   }
 
   ngOnChanges():void {

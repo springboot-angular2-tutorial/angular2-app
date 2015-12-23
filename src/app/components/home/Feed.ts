@@ -5,7 +5,7 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {
   MicropostService,
   FeedService,
-  ErrorHandler
+  HttpErrorHandler
 } from 'app/services';
 import {Micropost} from 'app/interfaces'
 import {TimeAgoPipe} from 'app/pipes'
@@ -28,7 +28,7 @@ export class Feed {
 
   constructor(private micropostService:MicropostService,
               private feedService:FeedService,
-              private errorHandler:ErrorHandler) {
+              private errorHandler:HttpErrorHandler) {
     this.list();
 
   }

@@ -5,7 +5,7 @@ import {Pager} from 'app/components';
 import {
   UserMicropostService,
   MicropostService,
-  ErrorHandler
+  HttpErrorHandler
 } from 'app/services';
 import {Micropost} from 'app/interfaces';
 import {TimeAgoPipe} from 'app/pipes';
@@ -31,7 +31,7 @@ export class MicropostList implements OnInit {
 
   constructor(private userMicropostService:UserMicropostService,
               private micropostService:MicropostService,
-              private errorHandler:ErrorHandler) {
+              private errorHandler:HttpErrorHandler) {
   }
 
   ngOnInit():any {

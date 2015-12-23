@@ -8,7 +8,7 @@ import {RootRouter} from 'angular2/src/router/router';
 import {Http} from 'app/http';
 import {App} from 'app/components';
 import {
-  ErrorHandler,
+  HttpErrorHandler,
   FeedService,
   LoginService,
   MicropostService,
@@ -28,7 +28,7 @@ const APP_HTTP_PROVIDERS = [
 ];
 
 const APP_SERVICE_PROVIDERS = [
-  ErrorHandler,
+  HttpErrorHandler,
   FeedService,
   LoginService,
   MicropostService,

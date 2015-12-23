@@ -1,6 +1,6 @@
 import {Component, View, EventEmitter} from 'angular2/core';
 
-import {MicropostService, ErrorHandler, LoginService} from 'app/services';
+import {MicropostService, HttpErrorHandler, LoginService} from 'app/services';
 
 const toastr = require('toastr');
 
@@ -17,7 +17,7 @@ export class MicropostNew {
   created:EventEmitter<any> = new EventEmitter();
 
   constructor(private micropostService:MicropostService,
-              private errorHandler:ErrorHandler) {
+              private errorHandler:HttpErrorHandler) {
   }
 
   create(content:HTMLInputElement) {

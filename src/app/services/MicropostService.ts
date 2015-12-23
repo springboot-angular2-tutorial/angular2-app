@@ -20,7 +20,7 @@ export class MicropostService {
     return this.http.post(url, body);
   }
 
-  delete(id:Number):Observable<void> {
+  delete(id:Number):Observable<Response> {
     return this.http.delete(`${url}/${id}`);
   }
 

@@ -4,7 +4,7 @@ import {RouteParams, CanActivate, ComponentInstruction} from 'angular2/router';
 
 import {Validators as AppValidators} from 'app/forms'
 import {APP_PROVIDERS} from 'app/providers'
-import {UserService, ErrorHandler, LoginService} from 'app/services'
+import {UserService, HttpErrorHandler, LoginService} from 'app/services'
 import {User} from 'app/interfaces'
 import {PrivatePage} from 'app/routes'
 
@@ -38,7 +38,7 @@ export class UserEditPage {
 
   constructor(private params:RouteParams,
               private userService:UserService,
-              private errorHandler:ErrorHandler) {
+              private errorHandler:HttpErrorHandler) {
     this.user = <any>params.get('user');
     this.initForm();
   }

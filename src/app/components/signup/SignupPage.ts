@@ -76,9 +76,9 @@ export class SignupPage {
   }
 
   private handleError(error) {
-    switch (error.response.status) {
+    switch (error.status) {
       case 400:
-        if (error.response.json()['code'] == 'email_already_taken') {
+        if (error.json()['code'] == 'email_already_taken') {
           toastr.error('This email is already taken.');
         }
     }

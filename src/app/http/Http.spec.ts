@@ -21,7 +21,7 @@ import {
 } from 'angular2/testing';
 import {MockBackend} from 'angular2/http/testing';
 
-import {HttpAuthError, HttpClientError, HttpServerError, Http} from 'app/http';
+import {Http} from 'app/http';
 
 export function main() {
 
@@ -30,7 +30,7 @@ export function main() {
   }
   const expect:(actual:any) => CustomMatchers = <any>_expect;
 
-  describe('http.Http', () => {
+  describe('Http', () => {
     var http:Http;
     var backend:MockBackend;
 
@@ -45,7 +45,6 @@ export function main() {
     ]);
     beforeEach(inject([Http, MockBackend], (..._) => {[http, backend] = _}));
     beforeEach(() => {
-      spyOn(Http, 'checkStatus').and.callThrough();
       spyOn(localStorage, 'getItem').and.returnValue('my jwt');
       jasmine.addMatchers({
         toBeJsonRequestVia: () => {
@@ -69,10 +68,7 @@ export function main() {
           conn.mockRespond(new Response(new BaseResponseOptions()));
           expect(conn.request).toBeJsonRequestVia(RequestMethod.Get);
         });
-        http.get('http://www.google.com').subscribe(() => {
-          expect(Http.checkStatus).toHaveBeenCalled();
-          done();
-        });
+        http.get('http://www.google.com').subscribe(done);
       });
     });
 
@@ -82,10 +78,7 @@ export function main() {
           conn.mockRespond(new Response(new BaseResponseOptions()));
           expect(conn.request).toBeJsonRequestVia(RequestMethod.Post);
         });
-        http.post('http://www.google.com', '').subscribe(() => {
-          expect(Http.checkStatus).toHaveBeenCalled();
-          done();
-        });
+        http.post('http://www.google.com', '').subscribe(done);
       });
     });
 
@@ -95,10 +88,7 @@ export function main() {
           conn.mockRespond(new Response(new BaseResponseOptions()));
           expect(conn.request).toBeJsonRequestVia(RequestMethod.Put);
         });
-        http.put('http://www.google.com', '').subscribe(() => {
-          expect(Http.checkStatus).toHaveBeenCalled();
-          done();
-        });
+        http.put('http://www.google.com', '').subscribe(done);
       });
     });
 
@@ -108,10 +98,7 @@ export function main() {
           conn.mockRespond(new Response(new BaseResponseOptions()));
           expect(conn.request).toBeJsonRequestVia(RequestMethod.Delete);
         });
-        http.delete('http://www.google.com').subscribe(() => {
-          expect(Http.checkStatus).toHaveBeenCalled();
-          done();
-        });
+        http.delete('http://www.google.com').subscribe(done);
       });
     });
 
@@ -121,10 +108,7 @@ export function main() {
           conn.mockRespond(new Response(new BaseResponseOptions()));
           expect(conn.request).toBeJsonRequestVia(RequestMethod.Patch);
         });
-        http.patch('http://www.google.com', '').subscribe(() => {
-          expect(Http.checkStatus).toHaveBeenCalled();
-          done();
-        });
+        http.patch('http://www.google.com', '').subscribe(done);
       });
     });
 
@@ -134,29 +118,9 @@ export function main() {
           conn.mockRespond(new Response(new BaseResponseOptions()));
           expect(conn.request).toBeJsonRequestVia(RequestMethod.Head);
         });
-        http.head('http://www.google.com').subscribe(() => {
-          expect(Http.checkStatus).toHaveBeenCalled();
-          done();
-        });
+        http.head('http://www.google.com').subscribe(done);
       });
     });
-  }); // http.Http
-
-  describe('http.Http.checkStatus', () => {
-    it('throws an AuthError when status is 401', () => {
-      const resp = new Response(new ResponseOptions({status: 401}));
-      expect(() => Http.checkStatus(resp)).toThrowError(HttpAuthError, resp.statusText);
-    });
-
-    it('throws an HttpClientError when status is 400', () => {
-      const resp = new Response(new ResponseOptions({status: 400}));
-      expect(() => Http.checkStatus(resp)).toThrowError(HttpClientError, resp.statusText);
-    });
-
-    it('throws an HttpServerError when status is 500', () => {
-      const resp = new Response(new ResponseOptions({status: 500}));
-      expect(() => Http.checkStatus(resp)).toThrowError(HttpServerError, resp.statusText);
-    });
-  }); // http.Http.checkStatus
+  });
 
 }

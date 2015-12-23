@@ -1,7 +1,7 @@
 import {Component, View, OnChanges} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 
-import {RelationshipService, ErrorHandler, LoginService} from 'app/services';
+import {RelationshipService, HttpErrorHandler, LoginService} from 'app/services';
 
 @Component({
   selector: 'follow-btn',
@@ -18,7 +18,7 @@ export class FollowBtn implements OnChanges {
   busy:boolean = false;
 
   constructor(private relationshipService:RelationshipService,
-              private errorHandler:ErrorHandler) {
+              private errorHandler:HttpErrorHandler) {
   }
 
   ngOnChanges():void {
