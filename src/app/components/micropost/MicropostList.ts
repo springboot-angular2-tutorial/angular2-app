@@ -4,9 +4,10 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {
   UserMicropostService,
   MicropostService,
+  UserService,
   HttpErrorHandler
 } from 'app/services';
-import {Micropost} from 'app/interfaces';
+import {Micropost, UserStats} from 'app/interfaces';
 import {TimeAgoPipe} from 'app/pipes';
 
 @Component({
@@ -24,23 +25,17 @@ export class MicropostList implements OnInit {
   userId:string;
   posts:Micropost[] = [];
   noMorePosts:boolean = false;
+  userStats:UserStats;
 
   constructor(private userMicropostService:UserMicropostService,
               private micropostService:MicropostService,
+              private userService:UserService,
               private errorHandler:HttpErrorHandler) {
   }
 
   ngOnInit():any {
     this.list();
-  }
-
-  list(maxId:number = null):void {
-    this.userMicropostService.list(this.userId, {maxId: maxId, count: 5})
-      .subscribe(posts => {
-        this.posts = this.posts.concat(posts);
-        this.noMorePosts = posts.length == 0;
-      }, e => this.errorHandler.handle(e))
-    ;
+    this.loadUserStats();
   }
 
   delete(postId:number) {
@@ -61,6 +56,23 @@ export class MicropostList implements OnInit {
     const lastPost = this.posts[this.posts.length - 1];
     if (!lastPost) return false;
     this.list(lastPost.id);
+  }
+
+  private list(maxId:number = null):void {
+    this.userMicropostService.list(this.userId, {maxId: maxId, count: 5})
+      .subscribe(posts => {
+        this.posts = this.posts.concat(posts);
+        this.noMorePosts = posts.length == 0;
+      }, e => this.errorHandler.handle(e))
+    ;
+  }
+
+  private loadUserStats() {
+    this.userService.get(this.userId)
+      .subscribe(resp => {
+        this.userStats = resp.userStats;
+      }, e => this.errorHandler.handle(e))
+    ;
   }
 
 }
