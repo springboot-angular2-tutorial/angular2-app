@@ -17,38 +17,34 @@ import {RouteParams} from 'angular2/router';
 import {ObservableWrapper} from "angular2/src/facade/async";
 import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 
-import {MicropostList, Pager, App} from 'app/components';
+import {MicropostList, App} from 'app/components';
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext, signin} from 'app/testing';
 import {MicropostService} from "app/services";
 
 const dummyResponse = new Response(new ResponseOptions({
-  body: JSON.stringify({
-    content: [
-      {
+  body: JSON.stringify([
+    {
+      id: 1,
+      content: 'content1',
+      createdAt: 0,
+      user: {
         id: 1,
-        content: 'content1',
-        createdAt: 0,
-        user: {
-          id: 1,
-          email: 'test1@test.com',
-          name: 'test user1'
-        },
+        email: 'test1@test.com',
+        name: 'test user1'
       },
-      {
+    },
+    {
+      id: 2,
+      content: 'content2',
+      createdAt: 1234567,
+      user: {
         id: 2,
-        content: 'content2',
-        createdAt: 1234567,
-        user: {
-          id: 2,
-          email: 'test2@test.com',
-          name: 'test user2'
-        },
+        email: 'test2@test.com',
+        name: 'test user2'
       },
-    ],
-    totalPages: 1,
-    totalElements: 2,
-  }),
+    },
+  ]),
 }));
 
 export function main() {
@@ -56,7 +52,6 @@ export function main() {
 
     var ctx:TestContext;
     var cmpDebugElement:DebugElement;
-    var pagerDebugElement:DebugElement;
     var micropostService:MicropostService;
 
     beforeEachProviders(() => [
@@ -78,7 +73,6 @@ export function main() {
         .finally(done)
         .subscribe(() => {
           cmpDebugElement = ctx.fixture.debugElement.query(By.directive(MicropostList));
-          pagerDebugElement = cmpDebugElement.query(By.directive(Pager));
           ctx.fixture.detectChanges();
         });
     }
@@ -87,15 +81,11 @@ export function main() {
 
     it('can be shown', () => {
       expect(cmpDebugElement).toBeTruthy();
-      expect(pagerDebugElement).toBeTruthy();
     });
 
     it('can show list of posts', () => {
       const cmp:MicropostList = cmpDebugElement.componentInstance;
-
       expect(cmp.posts.length).toEqual(2);
-      expect(cmp.totalPages).toEqual(1);
-      expect(cmp.totalItems).toEqual(2);
 
       const el = cmpDebugElement.nativeElement;
       expect(DOM.querySelectorAll(el, 'li>.content').length).toEqual(2);
@@ -109,16 +99,13 @@ export function main() {
       const deleteLinks = DOM.querySelectorAll(el, '.delete');
       expect(deleteLinks[0]).toBeTruthy();
       expect(deleteLinks[1]).toBeFalsy();
-
-      const pager:Pager = pagerDebugElement.componentInstance;
-      expect(pager.totalPages).toEqual(1);
     });
 
-    it('list another page when page was changed', () => {
+    it('can load more', () => {
       const cmp:MicropostList = cmpDebugElement.componentInstance;
-      spyOn(cmp, 'list');
-      pagerDebugElement.triggerEventHandler('pageChanged', <any>{page: 2});
-      expect(cmp.list).toHaveBeenCalledWith(2);
+      const moreBtn = DOM.querySelector(cmpDebugElement.nativeElement, '.moreBtn');
+      moreBtn.click();
+      expect(cmp.posts.length).toEqual(4);
     });
 
     it('does not delete micropost when not confirmed', () => {
@@ -133,9 +120,8 @@ export function main() {
       const cmp:MicropostList = cmpDebugElement.componentInstance;
       const deleteLink = DOM.querySelector(cmpDebugElement.nativeElement, '.delete');
       spyOn(window, 'confirm').and.returnValue(true);
-      spyOn(cmp, 'list');
       deleteLink.click();
-      expect(cmp.list).toHaveBeenCalled();
+      expect(cmp.posts.length).toEqual(1);
     });
 
   });

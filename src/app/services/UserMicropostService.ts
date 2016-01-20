@@ -6,7 +6,6 @@ import {objToSearchParams} from './helpers';
 import {Page, Micropost, PageRequest} from 'app/interfaces';
 
 const url = (userId:string):string => `/api/users/${userId}/microposts`;
-const defaultPageRequest:PageRequest = {page: 1, size: 5};
 
 @Injectable()
 export class UserMicropostService {
@@ -14,8 +13,8 @@ export class UserMicropostService {
   constructor(private http:Http) {
   }
 
-  list(userId:string, pageRequest:PageRequest = defaultPageRequest):Observable<Page<Micropost>> {
-    return this.http.get(url(userId), {search: objToSearchParams(pageRequest)})
+  list(userId:string, params:{maxId:number, count:number}):Observable<Micropost[]> {
+    return this.http.get(url(userId), {search: objToSearchParams(params)})
       .map(res => res.json())
       ;
   }

@@ -1,7 +1,6 @@
 import {Component, View, OnInit} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 
-import {Pager} from 'app/components';
 import {
   UserMicropostService,
   MicropostService,
@@ -17,17 +16,14 @@ import {TimeAgoPipe} from 'app/pipes';
 @View({
   styles: [require('./list.scss')],
   template: require('./list.html'),
-  directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, Pager],
+  directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
   pipes: [TimeAgoPipe],
 })
 export class MicropostList implements OnInit {
 
   userId:string;
-  posts:Micropost[];
-
-  totalPages:number;
-  totalItems:number;
-  currentPage:number;
+  posts:Micropost[] = [];
+  noMorePosts:boolean = false;
 
   constructor(private userMicropostService:UserMicropostService,
               private micropostService:MicropostService,
@@ -35,16 +31,14 @@ export class MicropostList implements OnInit {
   }
 
   ngOnInit():any {
-    this.list(1);
+    this.list();
   }
 
-  list(page):void {
-    this.userMicropostService.list(this.userId, {page: page, size: 5})
-      .subscribe((micropostPage) => {
-        this.posts = micropostPage.content;
-        this.currentPage = page;
-        this.totalItems = micropostPage.totalElements;
-        this.totalPages = micropostPage.totalPages;
+  list(maxId:number = null):void {
+    this.userMicropostService.list(this.userId, {maxId: maxId, count: 5})
+      .subscribe(posts => {
+        this.posts = this.posts.concat(posts);
+        this.noMorePosts = posts.length == 0;
       }, e => this.errorHandler.handle(e))
     ;
   }
@@ -52,13 +46,21 @@ export class MicropostList implements OnInit {
   delete(postId:number) {
     if (!window.confirm('Are you sure?')) return;
     this.micropostService.delete(postId)
-      .subscribe(() => this.list(this.currentPage),
-        e => this.errorHandler.handle(e))
+      .subscribe(() => {
+        }, e => this.errorHandler.handle(e),
+        () => this.posts = this.posts.filter(p => p.id != postId)
+      )
     ;
   }
 
   isMyPost(post:Micropost):boolean {
     return this.micropostService.isMyPost(post);
+  }
+
+  loadMore() {
+    const lastPost = this.posts[this.posts.length - 1];
+    if (!lastPost) return false;
+    this.list(lastPost.id);
   }
 
 }

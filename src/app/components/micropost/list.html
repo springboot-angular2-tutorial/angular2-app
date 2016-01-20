@@ -10,10 +10,9 @@
     </li>
   </ol>
 
-  <div class="clearfix">
-    <pager class="pull-left" (pageChanged)="list($event.page)"
-           [totalPages]="totalPages"></pager>
-  </div>
+  <button class="btn btn-default moreBtn" type="button" (click)="loadMore()"
+          [disabled]="noMorePosts">More
+  </button>
 
 </div>
 
