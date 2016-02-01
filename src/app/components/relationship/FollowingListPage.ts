@@ -5,7 +5,7 @@ import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {UserService} from 'app/services';
 import {UserStats, Gravatar} from 'app/components';
-import {User, PageRequest, Page} from 'app/interfaces';
+import {RelatedUser, PageRequest, Page} from 'app/interfaces';
 import {PrivatePage} from 'app/routes';
 import {UserList} from './UserList';
 
@@ -26,7 +26,7 @@ import {UserList} from './UserList';
 export class FollowingListPage {
 
   userId:string;
-  listProvider:(params:any) => Observable<User[]>;
+  listProvider:(params:any) => Observable<RelatedUser[]>;
 
   constructor(private userService:UserService,
               private params:RouteParams) {

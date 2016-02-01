@@ -22,6 +22,10 @@ export interface User {
   name?:string
 }
 
+export interface RelatedUser extends User {
+  relationshipId:number;
+}
+
 export interface UserStats {
   micropostCnt:number
   followingCnt:number

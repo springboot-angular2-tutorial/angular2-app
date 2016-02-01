@@ -4,7 +4,7 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {Response} from 'angular2/http';
 
-import {PageRequest, Page, User} from "app/interfaces";
+import {PageRequest, Page, RelatedUser} from "app/interfaces";
 import {HttpErrorHandler, LoginService} from "app/services";
 import {Gravatar, Pager} from 'app/components';
 
@@ -25,8 +25,8 @@ import {Gravatar, Pager} from 'app/components';
 })
 export class UserList implements OnInit {
 
-  listProvider:(params:{maxId:number, count:number}) => Observable<User[]>;
-  users:User[] = [];
+  listProvider:(params:{maxId:number, count:number}) => Observable<RelatedUser[]>;
+  users:RelatedUser[] = [];
   noMoreUsers:boolean = false;
 
   constructor(private errorHandler:HttpErrorHandler) {
@@ -36,7 +36,13 @@ export class UserList implements OnInit {
     this.list();
   }
 
-  list(maxId = null) {
+  loadMore() {
+    const lastUser = this.users[this.users.length - 1];
+    if (!lastUser) return false;
+    this.list(lastUser.relationshipId);
+  }
+
+  private list(maxId = null) {
     this.listProvider({maxId: maxId, count: 5})
       .subscribe(users => {
           this.users = this.users.concat(users);
@@ -44,12 +50,6 @@ export class UserList implements OnInit {
         }, e => this.errorHandler.handle(e)
       )
     ;
-  }
-
-  loadMore() {
-    const lastUser = this.users[this.users.length - 1];
-    if (!lastUser) return false;
-    this.list(lastUser.id);
   }
 
 }

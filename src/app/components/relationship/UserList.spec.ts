@@ -21,7 +21,7 @@ import {Gravatar, App} from "app/components";
 import {UserList} from './UserList';
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext, signin} from 'app/testing';
-import {User, Page, PageRequest} from "app/interfaces";
+import {RelatedUser, Page, PageRequest} from "app/interfaces";
 
 export function main() {
   describe('relationship.UserList', () => {
@@ -68,8 +68,10 @@ export function main() {
     it('can load more', () => {
       const cmp:UserList = cmpDebugElement.componentInstance;
       const moreBtn = DOM.querySelector(cmpDebugElement.nativeElement, '.moreBtn');
+      spyOn(cmp, 'listProvider').and.callThrough();
       moreBtn.click();
       expect(cmp.users.length).toEqual(4);
+      expect(cmp.listProvider).toHaveBeenCalledWith({maxId: 100, count: 5});
     });
 
   });
@@ -82,13 +84,13 @@ export function main() {
 })
 class TestCmp {
 
-  listProvider:(params:any) => Observable<User[]>;
+  listProvider:(params:any) => Observable<RelatedUser[]>;
 
   constructor() {
     this.listProvider = () => {
       return Observable.of([
-        {id: 1, email: 'test1@test.com', name: 'test1'},
-        {id: 2, email: 'test2@test.com', name: 'test2'},
+        {id: 1, email: 'test1@test.com', name: 'test1', relationshipId: 1},
+        {id: 2, email: 'test2@test.com', name: 'test2', relationshipId: 100},
       ]);
     };
   }
