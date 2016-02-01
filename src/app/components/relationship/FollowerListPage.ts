@@ -25,13 +25,13 @@ import {UserList} from './UserList';
 export class FollowerListPage {
 
   userId:string;
-  listProvider:(pageRequest:PageRequest) => Observable<Page<User>>;
+  listProvider:(params:any) => Observable<User[]>;
 
   constructor(private userService:UserService,
               private params:RouteParams) {
     this.userId = params.get('id');
-    this.listProvider = (pageRequest) => {
-      return userService.listFollowers(this.userId, pageRequest);
+    this.listProvider = (params) => {
+      return userService.listFollowers(this.userId, params);
     };
   }
 

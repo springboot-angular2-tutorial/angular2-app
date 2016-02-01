@@ -25,24 +25,31 @@ import {Gravatar, Pager} from 'app/components';
 })
 export class UserList implements OnInit {
 
-  listProvider:(pageRequest:PageRequest) => Observable<Page<User>>;
-  users:User[];
-  totalPages:number;
+  listProvider:(params:{maxId:number, count:number}) => Observable<User[]>;
+  users:User[] = [];
+  noMoreUsers:boolean = false;
 
   constructor(private errorHandler:HttpErrorHandler) {
   }
 
   ngOnInit():any {
-    this.list(1);
+    this.list();
   }
 
-  list(page) {
-    this.listProvider({page: page, size: 5})
-      .subscribe(usersPage => {
-        this.users = usersPage.content;
-        this.totalPages = usersPage.totalPages;
-      }, e => this.errorHandler.handle(e))
+  list(maxId = null) {
+    this.listProvider({maxId: maxId, count: 5})
+      .subscribe(users => {
+          this.users = this.users.concat(users);
+          this.noMoreUsers = users.length == 0;
+        }, e => this.errorHandler.handle(e)
+      )
     ;
+  }
+
+  loadMore() {
+    const lastUser = this.users[this.users.length - 1];
+    if (!lastUser) return false;
+    this.list(lastUser.id);
   }
 
 }

@@ -23,32 +23,28 @@ import {APP_TEST_PROVIDERS} from "app/providers";
 import {UserService} from "app/services";
 import {UserParams} from "app/interfaces";
 
-const dummyListJson = {
-  content: [
-    {
+const dummyListJson = [
+  {
+    id: 1,
+    content: 'content1',
+    createdAt: 0,
+    user: {
       id: 1,
-      content: 'content1',
-      createdAt: 0,
-      user: {
-        id: 1,
-        email: 'test1@test.com',
-        name: 'test user1'
-      },
+      email: 'test1@test.com',
+      name: 'test user1'
     },
-    {
-      id: 2,
-      content: 'content2',
-      createdAt: 1234567,
-      user: {
-        id: 1,
-        email: 'test1@test.com',
-        name: 'test user1'
-      },
+  },
+  {
+    id: 2,
+    content: 'content2',
+    createdAt: 1234567,
+    user: {
+      id: 1,
+      email: 'test1@test.com',
+      name: 'test user1'
     },
-  ],
-  totalPages: 1,
-  totalElements: 2,
-};
+  },
+];
 
 const dummyGetJson = {
   user: {
@@ -152,9 +148,9 @@ export function main() {
             body: JSON.stringify(dummyListJson),
           })));
           expect(conn.request.method).toEqual(RequestMethod.Get);
-          expect(conn.request.url).toEqual('/api/users/1/followings?page=1&size=5');
+          expect(conn.request.url).toEqual('/api/users/1/followings?maxId=2&count=3');
         });
-        userService.listFollowings('1').subscribe(res => {
+        userService.listFollowings('1', {maxId: 2, count: 3}).subscribe(res => {
           expect(res).toEqual(dummyListJson);
           done();
         });
@@ -168,9 +164,9 @@ export function main() {
             body: JSON.stringify(dummyListJson),
           })));
           expect(conn.request.method).toEqual(RequestMethod.Get);
-          expect(conn.request.url).toEqual('/api/users/1/followers?page=1&size=5');
+          expect(conn.request.url).toEqual('/api/users/1/followers?maxId=2&count=3');
         });
-        userService.listFollowers('1').subscribe(res => {
+        userService.listFollowers('1', {maxId: 2, count: 3}).subscribe(res => {
           expect(res).toEqual(dummyListJson);
           done();
         });

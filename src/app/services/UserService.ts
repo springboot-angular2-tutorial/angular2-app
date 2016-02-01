@@ -38,14 +38,14 @@ export class UserService {
       });
   }
 
-  listFollowings(userId:string, pageRequest:PageRequest = defaultPageRequest):Observable<Page<User>> {
-    return this.http.get(`${url}/${userId}/followings`, {search: objToSearchParams(pageRequest)})
+  listFollowings(userId:string, params:{maxId:number, count:number}):Observable<User[]> {
+    return this.http.get(`${url}/${userId}/followings`, {search: objToSearchParams(params)})
       .map(res => res.json())
       ;
   }
 
-  listFollowers(userId:string, pageRequest:PageRequest = defaultPageRequest):Observable<Page<User>> {
-    return this.http.get(`${url}/${userId}/followers`, {search: objToSearchParams(pageRequest)})
+  listFollowers(userId:string, params:{maxId:number, count:number}):Observable<User[]> {
+    return this.http.get(`${url}/${userId}/followers`, {search: objToSearchParams(params)})
       .map(res => res.json())
       ;
   }

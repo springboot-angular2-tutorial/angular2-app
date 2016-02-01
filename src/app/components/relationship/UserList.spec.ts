@@ -17,7 +17,7 @@ import {ResponseOptions, Response} from 'angular2/http';
 import {RouteParams, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 import {ObservableWrapper} from "angular2/src/facade/async";
 
-import {Gravatar, App, Pager} from "app/components";
+import {Gravatar, App} from "app/components";
 import {UserList} from './UserList';
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext, signin} from 'app/testing';
@@ -28,7 +28,6 @@ export function main() {
 
     var ctx:TestContext;
     var cmpDebugElement:DebugElement;
-    var pagerDebugElement:DebugElement;
 
     beforeEachProviders(() => [
       APP_TEST_PROVIDERS,
@@ -41,7 +40,6 @@ export function main() {
         .finally(done)
         .subscribe(() => {
           cmpDebugElement = ctx.fixture.debugElement.query(By.directive(UserList));
-          pagerDebugElement = cmpDebugElement.query(By.directive(Pager));
         });
     }
 
@@ -51,11 +49,9 @@ export function main() {
       ctx.fixture.detectChanges();
 
       expect(cmpDebugElement).toBeTruthy();
-      expect(pagerDebugElement).toBeTruthy();
 
       const cmp:UserList = cmpDebugElement.componentInstance;
       expect(cmp.users.length).toEqual(2);
-      expect(cmp.totalPages).toEqual(1);
 
       expect(DOM.querySelectorAll(cmpDebugElement.nativeElement, '.users>li').length).toEqual(2);
 
@@ -69,11 +65,11 @@ export function main() {
       expect(userLink.getAttribute('href')).toEqual('/users/1');
     });
 
-    it('list another page when page was changed', () => {
-      const cmp:UserList= cmpDebugElement.componentInstance;
-      spyOn(cmp, 'list');
-      pagerDebugElement.triggerEventHandler('pageChanged', <any>{page: 2});
-      expect(cmp.list).toHaveBeenCalledWith(2);
+    it('can load more', () => {
+      const cmp:UserList = cmpDebugElement.componentInstance;
+      const moreBtn = DOM.querySelector(cmpDebugElement.nativeElement, '.moreBtn');
+      moreBtn.click();
+      expect(cmp.users.length).toEqual(4);
     });
 
   });
@@ -86,18 +82,14 @@ export function main() {
 })
 class TestCmp {
 
-  listProvider:(pageRequest:PageRequest) => Observable<Page<User>>;
+  listProvider:(params:any) => Observable<User[]>;
 
   constructor() {
     this.listProvider = () => {
-      return Observable.of({
-        content: [
-          {id: 1, email: 'test1@test.com', name: 'test1'},
-          {id: 2, email: 'test2@test.com', name: 'test2'},
-        ],
-        totalPages: 1,
-        totalElements: 2,
-      });
+      return Observable.of([
+        {id: 1, email: 'test1@test.com', name: 'test1'},
+        {id: 2, email: 'test2@test.com', name: 'test2'},
+      ]);
     };
   }
 
