@@ -12,11 +12,6 @@ export class RelationshipService {
   constructor(private http:Http) {
   }
 
-  isFollowing(followerId:string):Observable<boolean> {
-    return this.http.get(`${url}/to/${followerId}`)
-      .map(res => res.status != 404);
-  }
-
   follow(followerId:string):Observable<Response> {
     return this.http.post(`${url}/to/${followerId}`, '');
   }

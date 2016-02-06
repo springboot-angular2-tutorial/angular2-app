@@ -33,35 +33,6 @@ export function main() {
       [relationshipService, backend] = _;
     }));
 
-    describe('.isFollowing', () => {
-      describe('when following', () => {
-        it('return true', (done) => {
-          backend.connections.subscribe(conn => {
-            conn.mockRespond(new Response(new BaseResponseOptions()));
-            expect(conn.request.method).toEqual(RequestMethod.Get);
-            expect(conn.request.url).toEqual('/api/relationships/to/1');
-          });
-          relationshipService.isFollowing('1').subscribe(result => {
-            expect(result).toBeTruthy();
-            done();
-          });
-        });
-      });
-      describe('when not following', () => {
-        it('return false', (done) => {
-          backend.connections.subscribe(conn => {
-            conn.mockRespond(new Response(new ResponseOptions({
-              status: 404,
-            })));
-          });
-          relationshipService.isFollowing('1').subscribe(result => {
-            expect(result).toBeFalsy();
-            done();
-          });
-        });
-      });
-    }); // .isFollowing
-
     describe('.follow', () => {
       it('can follow user', (done) => {
         backend.connections.subscribe(conn => {

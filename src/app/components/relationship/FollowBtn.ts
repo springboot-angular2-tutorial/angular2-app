@@ -1,7 +1,11 @@
 import {Component, View, OnChanges} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 
-import {RelationshipService, HttpErrorHandler, LoginService} from 'app/services';
+import {
+  RelationshipService,
+  HttpErrorHandler,
+  UserService,
+} from 'app/services';
 
 @Component({
   selector: 'follow-btn',
@@ -13,11 +17,12 @@ import {RelationshipService, HttpErrorHandler, LoginService} from 'app/services'
 })
 export class FollowBtn implements OnChanges {
 
-  isFollowing:boolean;
+  isFollowedByMe:boolean;
   followerId:string;
   busy:boolean = false;
 
   constructor(private relationshipService:RelationshipService,
+              private userService:UserService,
               private errorHandler:HttpErrorHandler) {
   }
 
@@ -32,7 +37,7 @@ export class FollowBtn implements OnChanges {
     this.relationshipService.follow(this.followerId)
       .finally(() => this.busy = false)
       .subscribe(() => {
-        this.isFollowing = true;
+        this.isFollowedByMe = true;
       }, e => this.errorHandler.handle(e))
     ;
   }
@@ -42,17 +47,18 @@ export class FollowBtn implements OnChanges {
     this.relationshipService.unfollow(this.followerId)
       .finally(() => this.busy = false)
       .subscribe(() => {
-        this.isFollowing = false;
+        this.isFollowedByMe = false;
       }, e => this.errorHandler.handle(e))
     ;
   }
 
   loadCurrentStatus():void {
     this.busy = true;
-    this.relationshipService.isFollowing(this.followerId)
+    this.userService.get(this.followerId)
+      .map(user =>  user.userStats.followedByMe)
       .finally(() => this.busy = false)
-      .subscribe(isFollowing => {
-        this.isFollowing = isFollowing;
+      .subscribe(followedByMe => {
+        this.isFollowedByMe = followedByMe;
       }, e => this.errorHandler.handle(e))
     ;
   }

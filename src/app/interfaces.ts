@@ -20,6 +20,7 @@ export interface UserStats {
   micropostCnt:number
   followingCnt:number
   followerCnt:number
+  followedByMe:boolean
 }
 
 export interface Page<T> {

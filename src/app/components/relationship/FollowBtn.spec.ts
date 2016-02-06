@@ -19,7 +19,7 @@ import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 import {FollowBtn, App} from 'app/components';
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext} from 'app/testing';
-import {RelationshipService} from "app/services";
+import {RelationshipService, UserService} from "app/services";
 
 export function main() {
   describe('FollowBtn', () => {
@@ -27,17 +27,18 @@ export function main() {
     var ctx:TestContext;
     var cmpDebugElement:DebugElement;
     var relationshipService:RelationshipService;
+    var userService:UserService;
 
     beforeEachProviders(() => [
       APP_TEST_PROVIDERS,
       provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
     ]);
     beforeEach(createTestContext(_ => ctx = _));
-    beforeEach(inject([RelationshipService], _relationshipService => {
-      relationshipService = _relationshipService;
-      ['follow', 'unfollow', 'isFollowing'].forEach(m => {
-        spyOn(relationshipService, m).and.callThrough();
-      });
+    beforeEach(inject([RelationshipService, UserService], (..._) => {
+      [relationshipService, userService] = _;
+      spyOn(relationshipService, 'follow').and.callThrough();
+      spyOn(relationshipService, 'unfollow').and.callThrough();
+      spyOn(userService, 'get').and.callThrough();
     }));
     beforeEach(done => {
       ctx.backend.connections.subscribe(conn => {
@@ -52,36 +53,35 @@ export function main() {
 
     it('can be shown', () => {
       expect(cmpDebugElement).toBeTruthy();
-
       const cmp:FollowBtn = cmpDebugElement.componentInstance;
       expect(cmp.followerId).toEqual('1');
       expect(cmp.busy).toBeFalsy();
-      expect(relationshipService.isFollowing).toHaveBeenCalledWith('1');
+      expect(userService.get).toHaveBeenCalledWith('1');
     });
 
     it('can unfollow', () => {
       const cmp:FollowBtn = cmpDebugElement.componentInstance;
-      cmp.isFollowing = true;
+      cmp.isFollowedByMe = true;
       ctx.fixture.detectChanges();
 
       const unfollowBtn = cmpDebugElement.query(By.css('.follow-btn')).nativeElement;
       expect(unfollowBtn).toHaveText('Unfollow');
 
       unfollowBtn.click();
-      expect(cmp.isFollowing).toBeFalsy();
+      expect(cmp.isFollowedByMe).toBeFalsy();
       expect(relationshipService.unfollow).toHaveBeenCalledWith('1');
     });
 
     it('can follow', () => {
       const cmp:FollowBtn = cmpDebugElement.componentInstance;
-      cmp.isFollowing = false;
+      cmp.isFollowedByMe = false;
       ctx.fixture.detectChanges();
 
       const followBtn = cmpDebugElement.query(By.css('.follow-btn')).nativeElement;
       expect(followBtn).toHaveText('Follow');
 
       followBtn.click();
-      expect(cmp.isFollowing).toBeTruthy();
+      expect(cmp.isFollowedByMe).toBeTruthy();
       expect(relationshipService.follow).toHaveBeenCalledWith('1');
     });
 
