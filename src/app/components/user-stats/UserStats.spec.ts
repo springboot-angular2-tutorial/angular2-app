@@ -22,11 +22,9 @@ import {TestContext, createTestContext, signin} from 'app/testing';
 
 const dummyResponse = new Response(new ResponseOptions({
   body: {
-    user: {
-      id: 1,
-      email: 'test1@test.com',
-      name: 'test1',
-    },
+    id: 1,
+    email: 'test1@test.com',
+    name: 'test1',
     userStats: {
       micropostCnt: 2,
       followingCnt: 3,
@@ -67,8 +65,8 @@ export function main() {
       expect(cmp.userId).toEqual('1');
       expect(cmp.user).toBeTruthy();
       expect(cmp.user.id).toEqual(1);
-      expect(cmp.userStats).toBeTruthy();
-      expect(cmp.userStats.micropostCnt).toEqual(2);
+      expect(cmp.user.email).toEqual('test1@test.com');
+      expect(cmp.user.userStats.micropostCnt).toEqual(2);
 
       const gravatarDebugElement = cmpDebugElement.query(By.directive(Gravatar));
       expect(gravatarDebugElement).toBeTruthy();

@@ -5,21 +5,11 @@ export interface Micropost {
   createdAt:number
 }
 
-export interface UserParams {
-  email?:string
-  password?:string
-  name?:string
-}
-
-export interface UserResponse {
-  user:User
-  userStats:UserStats
-}
-
 export interface User {
   id:string|number
   email:string
   name?:string
+  userStats?:UserStats
 }
 
 export interface RelatedUser extends User {
@@ -43,3 +33,8 @@ export interface PageRequest {
   size:number;
 }
 
+export interface UserParams {
+  email?:string
+  password?:string
+  name?:string
+}

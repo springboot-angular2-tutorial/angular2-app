@@ -4,7 +4,7 @@ import {Response} from 'angular2/http';
 
 import {Http} from 'app/http';
 import {objToSearchParams} from './helpers';
-import {User, UserResponse, Page, PageRequest, UserParams} from 'app/interfaces';
+import {User, Page, PageRequest, UserParams} from 'app/interfaces';
 
 const url = '/api/users';
 const defaultPageRequest:PageRequest = {page: 1, size: 5};
@@ -21,7 +21,7 @@ export class UserService {
       ;
   }
 
-  get(id:string|number):Observable<UserResponse> {
+  get(id:string|number):Observable<User> {
     return this.http.get(`${url}/${id}`)
       .map(res => res.json())
       ;

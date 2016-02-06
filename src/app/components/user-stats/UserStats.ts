@@ -21,7 +21,6 @@ export class UserStats implements OnChanges {
 
   userId:string;
   user:User;
-  userStats:IUserStats;
 
   shownOnProfile:boolean = false;
 
@@ -36,10 +35,9 @@ export class UserStats implements OnChanges {
 
   private loadUser() {
     this.userService.get(this.userId)
-      .subscribe(resp => {
-        this.user = resp.user;
-        this.userStats = resp.userStats;
-      }, e => this.errorHandler.handle(e))
+      .subscribe(user => this.user = user,
+        e => this.errorHandler.handle(e)
+      )
     ;
   }
 

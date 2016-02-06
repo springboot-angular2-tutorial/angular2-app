@@ -51,11 +51,11 @@ const dummyGetJson = {
     id: 1,
     email: 'test1@test.com',
     name: 'test1',
-  },
-  userStats: {
-    micropostCnt: 1,
-    followingCnt: 2,
-    followerCnt: 3,
+    userStats: {
+      micropostCnt: 1,
+      followingCnt: 2,
+      followerCnt: 3,
+    },
   },
 };
 
