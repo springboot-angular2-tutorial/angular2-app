@@ -1,10 +1,7 @@
-import * as Rx from 'rxjs/Rx';
-
-import {DebugElement} from 'angular2/core';
-import {By} from 'angular2/platform/common_dom';
-import {MockBackend} from 'angular2/http/testing';
-import {Router, Location} from 'angular2/router';
-import {inject, ComponentFixture, TestComponentBuilder} from 'angular2/testing';
+import * as Rx from "rxjs/Rx";
+import {MockBackend} from "angular2/http/testing";
+import {Router, Location} from "angular2/router";
+import {inject, ComponentFixture, TestComponentBuilder} from "angular2/testing";
 
 const tokens = [TestComponentBuilder, Router, Location, MockBackend];
 

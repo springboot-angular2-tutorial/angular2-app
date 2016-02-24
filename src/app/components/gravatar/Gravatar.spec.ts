@@ -1,22 +1,17 @@
-import {Component, View, provide, DebugElement} from 'angular2/core';
-import {By} from 'angular2/platform/common_dom';
+import {Component, View, provide, DebugElement} from "angular2/core";
+import {By} from "angular2/platform/common_dom";
 import {DOM} from "angular2/src/platform/dom/dom_adapter";
 import {
-  inject,
   beforeEachProviders,
   beforeEach,
-  afterEach,
   expect,
   describe,
-  ddescribe,
-  it,
-  iit,
-} from 'angular2/testing';
-import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
-
+  it
+} from "angular2/testing";
+import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
 import {Gravatar, App} from "app/components";
-import {APP_TEST_PROVIDERS} from 'app/providers';
-import {TestContext, createTestContext} from 'app/testing';
+import {APP_TEST_PROVIDERS} from "app/providers";
+import {TestContext, createTestContext} from "app/testing";
 
 export function main() {
   describe('Gravatar', () => {
@@ -28,7 +23,7 @@ export function main() {
       APP_TEST_PROVIDERS,
       provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
     ]);
-    beforeEach(createTestContext(_  => ctx = _));
+    beforeEach(createTestContext(_ => ctx = _));
     beforeEach(done => {
       ctx.init(TestCmp)
         .finally(done)
