@@ -1,81 +1,72 @@
-import {Observable} from 'rxjs/Observable';
-import {Component, View, provide, DebugElement} from 'angular2/core';
-import {By} from 'angular2/platform/common_dom';
+import {Observable} from "rxjs/Observable";
+import {Component, View, provide, DebugElement} from "angular2/core";
+import {By} from "angular2/platform/common_dom";
 import {DOM} from "angular2/src/platform/dom/dom_adapter";
 import {
-  inject,
   beforeEachProviders,
   beforeEach,
-  afterEach,
   expect,
   describe,
-  ddescribe,
-  it,
-  iit,
-} from 'angular2/testing';
-import {ResponseOptions, Response} from 'angular2/http';
-import {RouteParams, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
-import {ObservableWrapper} from "angular2/src/facade/async";
-
+  it
+} from "angular2/testing";
+import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
 import {Gravatar, App} from "app/components";
-import {UserList} from './UserList';
+import {UserList} from "./UserList";
 import {APP_TEST_PROVIDERS} from "app/providers";
-import {TestContext, createTestContext, signin} from 'app/testing';
-import {RelatedUser, Page, PageRequest} from "app/interfaces";
+import {TestContext, createTestContext} from "app/testing";
+import {RelatedUser} from "app/interfaces";
 
-export function main() {
-  describe('relationship.UserList', () => {
+describe('relationship.UserList', () => {
 
-    var ctx:TestContext;
-    var cmpDebugElement:DebugElement;
+  var ctx:TestContext;
+  var cmpDebugElement:DebugElement;
 
-    beforeEachProviders(() => [
-      APP_TEST_PROVIDERS,
-      provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
-    ]);
-    beforeEach(createTestContext(_ => ctx = _));
+  beforeEachProviders(() => [
+    APP_TEST_PROVIDERS,
+    provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
+  ]);
+  beforeEach(createTestContext(_ => ctx = _));
 
-    function createCmp(done) {
-      ctx.init(TestCmp)
-        .finally(done)
-        .subscribe(() => {
-          cmpDebugElement = ctx.fixture.debugElement.query(By.directive(UserList));
-        });
-    }
+  function createCmp(done) {
+    ctx.init(TestCmp)
+      .finally(done)
+      .subscribe(() => {
+        cmpDebugElement = ctx.fixture.debugElement.query(By.directive(UserList));
+      });
+  }
 
-    beforeEach(createCmp);
+  beforeEach(createCmp);
 
-    it('can be shown', () => {
-      ctx.fixture.detectChanges();
+  it('can be shown', () => {
+    ctx.fixture.detectChanges();
 
-      expect(cmpDebugElement).toBeTruthy();
+    expect(cmpDebugElement).toBeTruthy();
 
-      const cmp:UserList = cmpDebugElement.componentInstance;
-      expect(cmp.users.length).toEqual(2);
+    const cmp:UserList = cmpDebugElement.componentInstance;
+    expect(cmp.users.length).toEqual(2);
 
-      expect(DOM.querySelectorAll(cmpDebugElement.nativeElement, '.users>li').length).toEqual(2);
+    expect(DOM.querySelectorAll(cmpDebugElement.nativeElement, '.users>li').length).toEqual(2);
 
-      const gravatarDebugElement = cmpDebugElement.query(By.directive(Gravatar));
-      expect(gravatarDebugElement).toBeTruthy();
-      expect(gravatarDebugElement.componentInstance.alt).toEqual('test1');
-      expect(gravatarDebugElement.componentInstance.email).toEqual('test1@test.com');
+    const gravatarDebugElement = cmpDebugElement.query(By.directive(Gravatar));
+    expect(gravatarDebugElement).toBeTruthy();
+    expect(gravatarDebugElement.componentInstance.alt).toEqual('test1');
+    expect(gravatarDebugElement.componentInstance.email).toEqual('test1@test.com');
 
-      const userLink:HTMLElement = cmpDebugElement.query(By.css('.users>li>a')).nativeElement;
-      expect(userLink).toHaveText('test1');
-      expect(userLink.getAttribute('href')).toEqual('/users/1');
-    });
-
-    it('can load more', () => {
-      const cmp:UserList = cmpDebugElement.componentInstance;
-      const moreBtn = DOM.querySelector(cmpDebugElement.nativeElement, '.moreBtn');
-      spyOn(cmp, 'listProvider').and.callThrough();
-      moreBtn.click();
-      expect(cmp.users.length).toEqual(4);
-      expect(cmp.listProvider).toHaveBeenCalledWith({maxId: 100, count: 5});
-    });
-
+    const userLink:HTMLElement = cmpDebugElement.query(By.css('.users>li>a')).nativeElement;
+    expect(userLink).toHaveText('test1');
+    expect(userLink.getAttribute('href')).toEqual('/users/1');
   });
-}
+
+  it('can load more', () => {
+    const cmp:UserList = cmpDebugElement.componentInstance;
+    const moreBtn = DOM.querySelector(cmpDebugElement.nativeElement, '.moreBtn');
+    spyOn(cmp, 'listProvider').and.callThrough();
+    moreBtn.click();
+    expect(cmp.users.length).toEqual(4);
+    expect(cmp.listProvider).toHaveBeenCalledWith({maxId: 100, count: 5});
+  });
+
+});
 
 @Component({selector: 'test-cmp'})
 @View({
@@ -83,7 +74,6 @@ export function main() {
   directives: [UserList],
 })
 class TestCmp {
-
   listProvider:(params:any) => Observable<RelatedUser[]>;
 
   constructor() {
@@ -94,5 +84,4 @@ class TestCmp {
       ]);
     };
   }
-
 }

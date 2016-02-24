@@ -5,20 +5,15 @@ import {
   afterEach,
   expect,
   describe,
-  ddescribe,
-  it,
-  xit,
-  iit,
-} from 'angular2/testing';
+  it
+} from "angular2/testing";
 import {
-  Headers,
   ResponseOptions,
   Response,
   BaseResponseOptions,
-  RequestMethod,
-} from 'angular2/http';
-import {MockBackend} from 'angular2/http/testing';
-
+  RequestMethod
+} from "angular2/http";
+import {MockBackend} from "angular2/http/testing";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {UserService} from "app/services";
 import {UserParams} from "app/interfaces";
@@ -59,119 +54,117 @@ const dummyGetJson = {
   },
 };
 
-export function main() {
-  describe('UserService', () => {
+describe('UserService', () => {
 
-    var userService:UserService;
-    var backend:MockBackend;
+  var userService:UserService;
+  var backend:MockBackend;
 
-    beforeEachProviders(() => [APP_TEST_PROVIDERS]);
-    beforeEach(inject([UserService, MockBackend], (..._) => {
-      [userService, backend] = _;
-    }));
-    afterEach(() => localStorage.clear());
+  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+  beforeEach(inject([UserService, MockBackend], (..._) => {
+    [userService, backend] = _;
+  }));
+  afterEach(() => localStorage.clear());
 
-    describe('.list', () => {
-      it("list users", (done) => {
-        backend.connections.subscribe(conn => {
-          conn.mockRespond(new Response(new ResponseOptions({
-            body: JSON.stringify(dummyListJson),
-          })));
-          expect(conn.request.method).toEqual(RequestMethod.Get);
-          expect(conn.request.url).toEqual('/api/users?page=1&size=5');
-        });
-        userService.list().subscribe(res => {
-          expect(res).toEqual(dummyListJson);
-          done();
-        });
+  describe('.list', () => {
+    it("list users", (done) => {
+      backend.connections.subscribe(conn => {
+        conn.mockRespond(new Response(new ResponseOptions({
+          body: JSON.stringify(dummyListJson),
+        })));
+        expect(conn.request.method).toEqual(RequestMethod.Get);
+        expect(conn.request.url).toEqual('/api/users?page=1&size=5');
       });
-    }); // .list
-
-    describe('.get', () => {
-      it("get user", (done) => {
-        backend.connections.subscribe(conn => {
-          conn.mockRespond(new Response(new ResponseOptions({
-            body: JSON.stringify(dummyGetJson),
-          })));
-          expect(conn.request.method).toEqual(RequestMethod.Get);
-          expect(conn.request.url).toEqual('/api/users/1');
-        });
-        userService.get(1).subscribe(res => {
-          expect(res).toEqual(dummyGetJson);
-          done();
-        });
+      userService.list().subscribe(res => {
+        expect(res).toEqual(dummyListJson);
+        done();
       });
-    }); // .get
+    });
+  }); // .list
 
-    describe('.create', () => {
-      it("create user", (done) => {
-        const params:UserParams = {
-          email: 'test1@test.com',
-          password: 'secret',
-          name: 'test1',
-        };
-        backend.connections.subscribe(conn => {
-          conn.mockRespond(new Response(new BaseResponseOptions()));
-          expect(conn.request.method).toEqual(RequestMethod.Post);
-          expect(conn.request.url).toEqual('/api/users');
-          expect(conn.request.text()).toEqual(JSON.stringify(params));
-        });
-        userService.create(params).subscribe(() => {
-          done();
-        });
+  describe('.get', () => {
+    it("get user", (done) => {
+      backend.connections.subscribe(conn => {
+        conn.mockRespond(new Response(new ResponseOptions({
+          body: JSON.stringify(dummyGetJson),
+        })));
+        expect(conn.request.method).toEqual(RequestMethod.Get);
+        expect(conn.request.url).toEqual('/api/users/1');
       });
-    }); // .create
-
-    describe('.updateMe', () => {
-      it("update me", (done) => {
-        const params:UserParams = {
-          email: 'test1@test.com',
-          password: 'secret',
-          name: 'test1',
-        };
-        backend.connections.subscribe(conn => {
-          conn.mockRespond(new Response(new BaseResponseOptions()));
-          expect(conn.request.method).toEqual(RequestMethod.Patch);
-          expect(conn.request.url).toEqual('/api/users/me');
-          expect(conn.request.text()).toEqual(JSON.stringify(params));
-        });
-        userService.updateMe(params).subscribe(() => {
-          done();
-        });
+      userService.get(1).subscribe(res => {
+        expect(res).toEqual(dummyGetJson);
+        done();
       });
-    }); // .updateMe
+    });
+  }); // .get
 
-    describe('.listFollowings', () => {
-      it("list followings", (done) => {
-        backend.connections.subscribe(conn => {
-          conn.mockRespond(new Response(new ResponseOptions({
-            body: JSON.stringify(dummyListJson),
-          })));
-          expect(conn.request.method).toEqual(RequestMethod.Get);
-          expect(conn.request.url).toEqual('/api/users/1/followings?maxId=2&count=3');
-        });
-        userService.listFollowings('1', {maxId: 2, count: 3}).subscribe(res => {
-          expect(res).toEqual(dummyListJson);
-          done();
-        });
+  describe('.create', () => {
+    it("create user", (done) => {
+      const params:UserParams = {
+        email: 'test1@test.com',
+        password: 'secret',
+        name: 'test1',
+      };
+      backend.connections.subscribe(conn => {
+        conn.mockRespond(new Response(new BaseResponseOptions()));
+        expect(conn.request.method).toEqual(RequestMethod.Post);
+        expect(conn.request.url).toEqual('/api/users');
+        expect(conn.request.text()).toEqual(JSON.stringify(params));
       });
-    }); // .listFollowings
-
-    describe('.listFollowers', () => {
-      it("list followers", (done) => {
-        backend.connections.subscribe(conn => {
-          conn.mockRespond(new Response(new ResponseOptions({
-            body: JSON.stringify(dummyListJson),
-          })));
-          expect(conn.request.method).toEqual(RequestMethod.Get);
-          expect(conn.request.url).toEqual('/api/users/1/followers?maxId=2&count=3');
-        });
-        userService.listFollowers('1', {maxId: 2, count: 3}).subscribe(res => {
-          expect(res).toEqual(dummyListJson);
-          done();
-        });
+      userService.create(params).subscribe(() => {
+        done();
       });
-    }); // .listFollowers
+    });
+  }); // .create
 
-  });
-}
+  describe('.updateMe', () => {
+    it("update me", (done) => {
+      const params:UserParams = {
+        email: 'test1@test.com',
+        password: 'secret',
+        name: 'test1',
+      };
+      backend.connections.subscribe(conn => {
+        conn.mockRespond(new Response(new BaseResponseOptions()));
+        expect(conn.request.method).toEqual(RequestMethod.Patch);
+        expect(conn.request.url).toEqual('/api/users/me');
+        expect(conn.request.text()).toEqual(JSON.stringify(params));
+      });
+      userService.updateMe(params).subscribe(() => {
+        done();
+      });
+    });
+  }); // .updateMe
+
+  describe('.listFollowings', () => {
+    it("list followings", (done) => {
+      backend.connections.subscribe(conn => {
+        conn.mockRespond(new Response(new ResponseOptions({
+          body: JSON.stringify(dummyListJson),
+        })));
+        expect(conn.request.method).toEqual(RequestMethod.Get);
+        expect(conn.request.url).toEqual('/api/users/1/followings?maxId=2&count=3');
+      });
+      userService.listFollowings('1', {maxId: 2, count: 3}).subscribe(res => {
+        expect(res).toEqual(dummyListJson);
+        done();
+      });
+    });
+  }); // .listFollowings
+
+  describe('.listFollowers', () => {
+    it("list followers", (done) => {
+      backend.connections.subscribe(conn => {
+        conn.mockRespond(new Response(new ResponseOptions({
+          body: JSON.stringify(dummyListJson),
+        })));
+        expect(conn.request.method).toEqual(RequestMethod.Get);
+        expect(conn.request.url).toEqual('/api/users/1/followers?maxId=2&count=3');
+      });
+      userService.listFollowers('1', {maxId: 2, count: 3}).subscribe(res => {
+        expect(res).toEqual(dummyListJson);
+        done();
+      });
+    });
+  }); // .listFollowers
+
+});

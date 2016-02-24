@@ -13,13 +13,15 @@ testing.setBaseTestProviders(
   browser.TEST_BROWSER_PLATFORM_PROVIDERS,
   browser.TEST_BROWSER_APPLICATION_PROVIDERS);
 
-var ctx = require.context('./src', true, /\.spec\.ts/);
+var testContext = require.context('./src', true, /\.spec\.ts/);
+testContext.keys().forEach(testContext);
 
-ctx.keys().forEach(function (path) {
-  var module = ctx(path);
-  if (module.hasOwnProperty('main')) {
-    module.main();
-  } else {
-    throw new Error('Module ' + path + ' does not implement main() method.');
-  }
-});
+
+// ctx.keys().forEach(function (path) {
+//   var module = ctx(path);
+//   if (module.hasOwnProperty('main')) {
+//     module.main();
+//   } else {
+//     throw new Error('Module ' + path + ' does not implement main() method.');
+//   }
+// });

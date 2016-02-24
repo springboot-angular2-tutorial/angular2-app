@@ -2,23 +2,12 @@ import {
   inject,
   beforeEachProviders,
   beforeEach,
-  afterEach,
   expect,
   describe,
-  ddescribe,
-  it,
-  xit,
-  iit,
-} from 'angular2/testing';
-import {
-  Headers,
-  ResponseOptions,
-  Response,
-  BaseResponseOptions,
-  RequestMethod,
-} from 'angular2/http';
-import {MockBackend} from 'angular2/http/testing';
-
+  it
+} from "angular2/testing";
+import {ResponseOptions, Response, RequestMethod} from "angular2/http";
+import {MockBackend} from "angular2/http/testing";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {UserMicropostService} from "app/services";
 
@@ -45,32 +34,30 @@ const dummyJson = [
   },
 ];
 
-export function main() {
-  describe('UserMicropostService', () => {
+describe('UserMicropostService', () => {
 
-    var userMicropostService:UserMicropostService;
-    var backend:MockBackend;
+  var userMicropostService:UserMicropostService;
+  var backend:MockBackend;
 
-    beforeEachProviders(() => [APP_TEST_PROVIDERS]);
-    beforeEach(inject([UserMicropostService, MockBackend], (..._) => {
-      [userMicropostService, backend] = _;
-    }));
+  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+  beforeEach(inject([UserMicropostService, MockBackend], (..._) => {
+    [userMicropostService, backend] = _;
+  }));
 
-    describe('.list', () => {
-      it("can list user's posts", (done) => {
-        backend.connections.subscribe(conn => {
-          conn.mockRespond(new Response(new ResponseOptions({
-            body: JSON.stringify(dummyJson),
-          })));
-          expect(conn.request.method).toEqual(RequestMethod.Get);
-          expect(conn.request.url).toEqual('/api/users/1/microposts?maxId=2&count=3');
-        });
-        userMicropostService.list('1', {maxId: 2, count:3}).subscribe(res => {
-          expect(res).toEqual(dummyJson);
-          done();
-        });
+  describe('.list', () => {
+    it("can list user's posts", (done) => {
+      backend.connections.subscribe(conn => {
+        conn.mockRespond(new Response(new ResponseOptions({
+          body: JSON.stringify(dummyJson),
+        })));
+        expect(conn.request.method).toEqual(RequestMethod.Get);
+        expect(conn.request.url).toEqual('/api/users/1/microposts?maxId=2&count=3');
       });
-    }); // .list
+      userMicropostService.list('1', {maxId: 2, count: 3}).subscribe(res => {
+        expect(res).toEqual(dummyJson);
+        done();
+      });
+    });
+  }); // .list
 
-  });
-}
+});

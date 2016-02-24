@@ -1,84 +1,76 @@
-import {Component, View, provide, DebugElement} from 'angular2/core';
-import {By} from 'angular2/platform/common_dom';
-import {DOM} from "angular2/src/platform/dom/dom_adapter";
+import {Component, View, provide, DebugElement} from "angular2/core";
+import {By} from "angular2/platform/common_dom";
 import {
-  inject,
   beforeEachProviders,
   beforeEach,
-  afterEach,
   expect,
   describe,
-  ddescribe,
-  xdescribe,
-  it,
-  iit,
-} from 'angular2/testing';
-import {ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
-
-import {HomePage, UserStats, MicropostNew, Feed, App} from 'app/components';
+  it
+} from "angular2/testing";
+import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
+import {HomePage, UserStats, MicropostNew, Feed, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
-import {TestContext, createTestContext} from 'app/testing';
+import {TestContext, createTestContext} from "app/testing";
 
-export function main() {
-  describe('HomePage', () => {
+describe('HomePage', () => {
 
-    var ctx:TestContext;
+  var ctx:TestContext;
 
-    var cmpDebugElement:DebugElement;
-    var userStatsDebugElement:DebugElement;
-    var micropostNewDebugElement:DebugElement;
-    var feedDebugElement:DebugElement;
+  var cmpDebugElement:DebugElement;
+  var userStatsDebugElement:DebugElement;
+  var micropostNewDebugElement:DebugElement;
+  var feedDebugElement:DebugElement;
 
-    beforeEachProviders(() => [
-      APP_TEST_PROVIDERS,
-      provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
-    ]);
-    beforeEach(createTestContext(_ => ctx = _));
+  beforeEachProviders(() => [
+    APP_TEST_PROVIDERS,
+    provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
+  ]);
+  beforeEach(createTestContext(_ => ctx = _));
 
-    function createCmp(done) {
-      ctx.init(TestCmp)
-        .finally(done)
-        .subscribe(() => {
-          cmpDebugElement = ctx.fixture.debugElement.query(By.directive(HomePage));
-          if (!cmpDebugElement) return;
-          userStatsDebugElement = cmpDebugElement.query(By.directive(UserStats));
-          micropostNewDebugElement = cmpDebugElement.query(By.directive(MicropostNew));
-          feedDebugElement = cmpDebugElement.query(By.directive(Feed));
-        });
-    }
+  function createCmp(done) {
+    ctx.init(TestCmp)
+      .finally(done)
+      .subscribe(() => {
+        cmpDebugElement = ctx.fixture.debugElement.query(By.directive(HomePage));
+        if (!cmpDebugElement) return;
+        userStatsDebugElement = cmpDebugElement.query(By.directive(UserStats));
+        micropostNewDebugElement = cmpDebugElement.query(By.directive(MicropostNew));
+        feedDebugElement = cmpDebugElement.query(By.directive(Feed));
+      });
+  }
 
-    beforeEach(createCmp);
+  beforeEach(createCmp);
 
-    it('can be shown', () => {
-      expect(cmpDebugElement).toBeTruthy();
-      expect(userStatsDebugElement).toBeTruthy();
-      expect(userStatsDebugElement.componentInstance.userId).toEqual('me');
-      expect(micropostNewDebugElement).toBeTruthy();
-      expect(feedDebugElement).toBeTruthy();
-    });
-
-    it('reload user stats when created new micropost', () => {
-      const userStats:UserStats = userStatsDebugElement.componentInstance;
-      spyOn(userStats, 'ngOnChanges');
-      micropostNewDebugElement.triggerEventHandler('created', null);
-      expect(userStats.ngOnChanges).toHaveBeenCalled();
-    });
-
-    it('reload feed when created new micropost', () => {
-      const feed:Feed = feedDebugElement.componentInstance;
-      spyOn(feed, 'list');
-      micropostNewDebugElement.triggerEventHandler('created', null);
-      expect(feed.list).toHaveBeenCalled();
-    });
-
-    it('reload user stats when deleted a micropost', () => {
-      const userStats:UserStats = userStatsDebugElement.componentInstance;
-      spyOn(userStats, 'ngOnChanges');
-      feedDebugElement.triggerEventHandler('deleted', null);
-      expect(userStats.ngOnChanges).toHaveBeenCalled();
-    });
+  it('can be shown', () => {
+    expect(cmpDebugElement).toBeTruthy();
+    expect(userStatsDebugElement).toBeTruthy();
+    expect(userStatsDebugElement.componentInstance.userId).toEqual('me');
+    expect(micropostNewDebugElement).toBeTruthy();
+    expect(feedDebugElement).toBeTruthy();
   });
-}
+
+  it('reload user stats when created new micropost', () => {
+    const userStats:UserStats = userStatsDebugElement.componentInstance;
+    spyOn(userStats, 'ngOnChanges');
+    micropostNewDebugElement.triggerEventHandler('created', null);
+    expect(userStats.ngOnChanges).toHaveBeenCalled();
+  });
+
+  it('reload feed when created new micropost', () => {
+    const feed:Feed = feedDebugElement.componentInstance;
+    spyOn(feed, 'list');
+    micropostNewDebugElement.triggerEventHandler('created', null);
+    expect(feed.list).toHaveBeenCalled();
+  });
+
+  it('reload user stats when deleted a micropost', () => {
+    const userStats:UserStats = userStatsDebugElement.componentInstance;
+    spyOn(userStats, 'ngOnChanges');
+    feedDebugElement.triggerEventHandler('deleted', null);
+    expect(userStats.ngOnChanges).toHaveBeenCalled();
+  });
+  
+});
 
 @Component({selector: 'test-cmp'})
 @View({

@@ -13,40 +13,38 @@ import {Gravatar, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext} from "app/testing";
 
-export function main() {
-  describe('Gravatar', () => {
+describe('Gravatar', () => {
 
-    var ctx:TestContext;
-    var cmpDebugElement:DebugElement;
+  var ctx:TestContext;
+  var cmpDebugElement:DebugElement;
 
-    beforeEachProviders(() => [
-      APP_TEST_PROVIDERS,
-      provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
-    ]);
-    beforeEach(createTestContext(_ => ctx = _));
-    beforeEach(done => {
-      ctx.init(TestCmp)
-        .finally(done)
-        .subscribe(() => {
-          cmpDebugElement = ctx.fixture.debugElement.query(By.directive(Gravatar));
-        });
-    });
+  beforeEachProviders(() => [
+    APP_TEST_PROVIDERS,
+    provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
+  ]);
+  beforeEach(createTestContext(_ => ctx = _));
+  beforeEach(done => {
+    ctx.init(TestCmp)
+      .finally(done)
+      .subscribe(() => {
+        cmpDebugElement = ctx.fixture.debugElement.query(By.directive(Gravatar));
+      });
+  });
 
-    it('can be shown', () => {
-      expect(cmpDebugElement).toBeTruthy();
+  it('can be shown', () => {
+    expect(cmpDebugElement).toBeTruthy();
 
-      const cmp:Gravatar = cmpDebugElement.componentInstance;
-      expect(cmp.email).toEqual('test@test.com');
-      expect(cmp.alt).toEqual('test-alt');
-      expect(cmp.size).toEqual('1');
+    const cmp:Gravatar = cmpDebugElement.componentInstance;
+    expect(cmp.email).toEqual('test@test.com');
+    expect(cmp.alt).toEqual('test-alt');
+    expect(cmp.size).toEqual('1');
 
-      const el = cmpDebugElement.nativeElement;
-      expect(DOM.querySelector(el, 'img').getAttribute('src'))
-        .toEqual('https://secure.gravatar.com/avatar/b642b4217b34b1e8d3bd915fc65c4452?s=1');
-    })
+    const el = cmpDebugElement.nativeElement;
+    expect(DOM.querySelector(el, 'img').getAttribute('src'))
+      .toEqual('https://secure.gravatar.com/avatar/b642b4217b34b1e8d3bd915fc65c4452?s=1');
+  });
 
-  })
-}
+});
 
 @Component({selector: 'test-cmp'})
 @View({

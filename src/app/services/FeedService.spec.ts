@@ -2,22 +2,12 @@ import {
   inject,
   beforeEachProviders,
   beforeEach,
-  afterEach,
   expect,
   describe,
-  ddescribe,
-  it,
-  xit,
-  iit,
-} from 'angular2/testing';
-import {
-  ResponseOptions,
-  Response,
-  BaseResponseOptions,
-  RequestMethod,
-} from 'angular2/http';
-import {MockBackend} from 'angular2/http/testing';
-
+  it
+} from "angular2/testing";
+import {ResponseOptions, Response, RequestMethod} from "angular2/http";
+import {MockBackend} from "angular2/http/testing";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {FeedService} from "app/services";
 
@@ -44,32 +34,30 @@ const dummyJson = [
   },
 ];
 
-export function main() {
-  describe('FeedService', () => {
+describe('FeedService', () => {
 
-    var feedService:FeedService;
-    var backend:MockBackend;
+  var feedService:FeedService;
+  var backend:MockBackend;
 
-    beforeEachProviders(() => [APP_TEST_PROVIDERS]);
-    beforeEach(inject([FeedService, MockBackend], (..._) => {
-      [feedService, backend] = _;
-    }));
+  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+  beforeEach(inject([FeedService, MockBackend], (..._) => {
+    [feedService, backend] = _;
+  }));
 
-    describe('.showFeed', () => {
-      it('can show feed', (done) => {
-        backend.connections.subscribe(conn => {
-          conn.mockRespond(new Response(new ResponseOptions({
-            body: JSON.stringify(dummyJson),
-          })));
-          expect(conn.request.method).toEqual(RequestMethod.Get);
-          expect(conn.request.url).toEqual('/api/feed');
-        });
-        feedService.showFeed().subscribe(res => {
-          expect(res).toEqual(dummyJson);
-          done();
-        });
+  describe('.showFeed', () => {
+    it('can show feed', (done) => {
+      backend.connections.subscribe(conn => {
+        conn.mockRespond(new Response(new ResponseOptions({
+          body: JSON.stringify(dummyJson),
+        })));
+        expect(conn.request.method).toEqual(RequestMethod.Get);
+        expect(conn.request.url).toEqual('/api/feed');
       });
-    }); // .showFeed
+      feedService.showFeed().subscribe(res => {
+        expect(res).toEqual(dummyJson);
+        done();
+      });
+    });
+  }); // .showFeed
 
-  });
-}
+});
