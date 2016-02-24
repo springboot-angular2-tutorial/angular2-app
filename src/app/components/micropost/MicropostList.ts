@@ -1,14 +1,13 @@
-import {Component, View, OnInit} from 'angular2/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
-
+import {Component, View, OnInit} from "angular2/core";
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "angular2/common";
 import {
   UserMicropostService,
   MicropostService,
   UserService,
   HttpErrorHandler
-} from 'app/services';
-import {Micropost, UserStats} from 'app/interfaces';
-import {TimeAgoPipe} from 'app/pipes';
+} from "app/services";
+import {Micropost, UserStats} from "app/interfaces";
+import {TimeAgoPipe} from "app/pipes";
 
 @Component({
   selector: 'micropost-list',

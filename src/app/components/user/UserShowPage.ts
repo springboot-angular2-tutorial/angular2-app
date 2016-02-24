@@ -1,10 +1,9 @@
-import {Component, View} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
-import {RouteParams} from 'angular2/router';
-
-import {FollowBtn, UserStats, MicropostList} from 'app/components'
-import {LoginService} from 'app/services'
-import {PublicPage} from 'app/routes'
+import {Component, View} from "angular2/core";
+import {CORE_DIRECTIVES} from "angular2/common";
+import {RouteParams} from "angular2/router";
+import {FollowBtn, UserStats, MicropostList} from "app/components";
+import {LoginService} from "app/services";
+import {PublicPage} from "app/routes";
 
 @Component({
   selector: 'user-show-page',

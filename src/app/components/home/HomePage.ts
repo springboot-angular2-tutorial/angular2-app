@@ -1,7 +1,6 @@
-import {Component, View} from 'angular2/core';
-
-import {Feed, MicropostNew, UserStats} from 'app/components';
-import {PrivatePage} from 'app/routes'
+import {Component, View} from "angular2/core";
+import {Feed, MicropostNew, UserStats} from "app/components";
+import {PrivatePage} from "app/routes";
 
 @Component({
   selector: 'home-page',

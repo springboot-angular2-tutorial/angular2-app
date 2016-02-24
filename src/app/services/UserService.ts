@@ -1,10 +1,9 @@
 import {Observable} from "rxjs/Observable";
-import {Injectable} from 'angular2/core';
-import {Response} from 'angular2/http';
-
-import {Http} from 'app/http';
-import {objToSearchParams} from './helpers';
-import {User, Page, PageRequest, UserParams} from 'app/interfaces';
+import {Injectable} from "angular2/core";
+import {Response} from "angular2/http";
+import {Http} from "app/http";
+import {objToSearchParams} from "./helpers";
+import {User, Page, PageRequest, UserParams} from "app/interfaces";
 
 const url = '/api/users';
 const defaultPageRequest:PageRequest = {page: 1, size: 5};

@@ -1,11 +1,10 @@
-import {Component, View, OnChanges} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
-import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
-
-import {User, UserStats as IUserStats} from 'app/interfaces';
-import {UserService, HttpErrorHandler, LoginService} from 'app/services';
-import {PluralizePipe} from 'app/pipes';
-import {Gravatar} from 'app/components';
+import {Component, View, OnChanges} from "angular2/core";
+import {CORE_DIRECTIVES} from "angular2/common";
+import {ROUTER_DIRECTIVES} from "angular2/router";
+import {User} from "app/interfaces";
+import {UserService, HttpErrorHandler} from "app/services";
+import {PluralizePipe} from "app/pipes";
+import {Gravatar} from "app/components";
 
 @Component({
   selector: 'user-stats',

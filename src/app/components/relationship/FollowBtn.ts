@@ -1,11 +1,6 @@
-import {Component, View, OnChanges} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
-
-import {
-  RelationshipService,
-  HttpErrorHandler,
-  UserService,
-} from 'app/services';
+import {Component, View, OnChanges} from "angular2/core";
+import {CORE_DIRECTIVES} from "angular2/common";
+import {RelationshipService, HttpErrorHandler, UserService} from "app/services";
 
 @Component({
   selector: 'follow-btn',
@@ -55,7 +50,7 @@ export class FollowBtn implements OnChanges {
   loadCurrentStatus():void {
     this.busy = true;
     this.userService.get(this.followerId)
-      .map(user =>  user.userStats.followedByMe)
+      .map(user => user.userStats.followedByMe)
       .finally(() => this.busy = false)
       .subscribe(followedByMe => {
         this.isFollowedByMe = followedByMe;

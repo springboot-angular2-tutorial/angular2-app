@@ -1,12 +1,10 @@
 import {Observable} from "rxjs/Observable";
-import {Component, View, OnInit} from 'angular2/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
-import {ROUTER_DIRECTIVES} from 'angular2/router';
-import {Response} from 'angular2/http';
-
-import {PageRequest, Page, RelatedUser} from "app/interfaces";
-import {HttpErrorHandler, LoginService} from "app/services";
-import {Gravatar, Pager} from 'app/components';
+import {Component, View, OnInit} from "angular2/core";
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "angular2/common";
+import {ROUTER_DIRECTIVES} from "angular2/router";
+import {RelatedUser} from "app/interfaces";
+import {HttpErrorHandler} from "app/services";
+import {Gravatar, Pager} from "app/components";
 
 @Component({
   selector: 'user-list',

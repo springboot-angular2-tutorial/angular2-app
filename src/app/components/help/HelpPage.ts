@@ -1,6 +1,5 @@
-import {Component, View} from 'angular2/core';
-
-import {PublicPage} from 'app/routes'
+import {Component, View} from "angular2/core";
+import {PublicPage} from "app/routes";
 
 @Component({
   selector: 'help-page',

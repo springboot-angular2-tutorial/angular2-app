@@ -1,5 +1,5 @@
-import {Component, View, EventEmitter} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
+import {Component, View, EventEmitter} from "angular2/core";
+import {CORE_DIRECTIVES} from "angular2/common";
 
 @Component({
   selector: 'pager',

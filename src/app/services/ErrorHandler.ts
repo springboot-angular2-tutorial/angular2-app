@@ -1,8 +1,6 @@
-import {Injectable} from 'angular2/core';
-import {Router} from 'angular2/router';
-import {Response} from 'angular2/http';
-
-import {LoginService} from 'app/services';
+import {Injectable} from "angular2/core";
+import {Router} from "angular2/router";
+import {LoginService} from "app/services";
 
 const toastr = require('toastr');
 toastr.options.preventDuplicates = true;

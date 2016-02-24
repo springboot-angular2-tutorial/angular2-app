@@ -1,12 +1,17 @@
-import { Component, View, Injector} from 'angular2/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES, Control, ControlGroup, Validators} from "angular2/common";
-import {RouteParams, CanActivate, ComponentInstruction} from 'angular2/router';
-
-import {Validators as AppValidators} from 'app/forms'
-import {APP_PROVIDERS} from 'app/providers'
-import {UserService, HttpErrorHandler, LoginService} from 'app/services'
-import {User} from 'app/interfaces'
-import {PrivatePage} from 'app/routes'
+import {Component, View, Injector} from "angular2/core";
+import {
+  CORE_DIRECTIVES,
+  FORM_DIRECTIVES,
+  Control,
+  ControlGroup,
+  Validators
+} from "angular2/common";
+import {RouteParams, CanActivate, ComponentInstruction} from "angular2/router";
+import {Validators as AppValidators} from "app/forms";
+import {APP_PROVIDERS} from "app/providers";
+import {UserService, HttpErrorHandler} from "app/services";
+import {User} from "app/interfaces";
+import {PrivatePage} from "app/routes";
 
 const toastr = require('toastr');
 

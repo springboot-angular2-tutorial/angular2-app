@@ -1,7 +1,6 @@
-import {Component, View} from 'angular2/core';
-import {ROUTER_DIRECTIVES} from 'angular2/router';
-
-import {PublicPage} from 'app/routes'
+import {Component, View} from "angular2/core";
+import {ROUTER_DIRECTIVES} from "angular2/router";
+import {PublicPage} from "app/routes";
 
 @Component({
   selector: 'top-page',

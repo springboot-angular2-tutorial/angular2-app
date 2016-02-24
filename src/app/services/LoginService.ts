@@ -1,8 +1,7 @@
 import {Observable} from "rxjs/Observable";
-import {Injectable} from 'angular2/core';
-import {Response} from 'angular2/http';
-
-import {Http} from 'app/http';
+import {Injectable} from "angular2/core";
+import {Response} from "angular2/http";
+import {Http} from "app/http";
 import {User} from "app/interfaces";
 
 const jwtDecode = require('jwt-decode');

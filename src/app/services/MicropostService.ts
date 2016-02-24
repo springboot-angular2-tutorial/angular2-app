@@ -1,10 +1,9 @@
 import {Observable} from "rxjs/Observable";
-import {Injectable} from 'angular2/core';
-import {Response} from 'angular2/http';
-
-import {Http} from 'app/http';
-import {Micropost} from 'app/interfaces';
-import {LoginService} from 'app/services';
+import {Injectable} from "angular2/core";
+import {Response} from "angular2/http";
+import {Http} from "app/http";
+import {Micropost} from "app/interfaces";
+import {LoginService} from "app/services";
 
 const url = '/api/microposts';
 

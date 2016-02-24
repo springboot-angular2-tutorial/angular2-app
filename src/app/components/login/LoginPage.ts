@@ -1,8 +1,7 @@
-import {Component, View} from 'angular2/core';
-import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
-
-import {LoginService} from 'app/services';
-import {PublicPage} from 'app/routes'
+import {Component, View} from "angular2/core";
+import {ROUTER_DIRECTIVES, Router} from "angular2/router";
+import {LoginService} from "app/services";
+import {PublicPage} from "app/routes";
 
 const toastr = require('toastr/toastr');
 

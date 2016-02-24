@@ -1,8 +1,7 @@
-import {Directive, Attribute, ElementRef, DynamicComponentLoader} from 'angular2/core';
-import {Router, RouterOutlet, ComponentInstruction} from 'angular2/router';
-import {makeDecorator} from 'angular2/src/core/util/decorators';
-import {reflector} from 'angular2/src/core/reflection/reflection';
-
+import {Directive, ElementRef, DynamicComponentLoader} from "angular2/core";
+import {Router, RouterOutlet, ComponentInstruction} from "angular2/router";
+import {makeDecorator} from "angular2/src/core/util/decorators";
+import {reflector} from "angular2/src/core/reflection/reflection";
 import {LoginService} from "app/services";
 
 @Directive({

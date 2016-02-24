@@ -1,6 +1,5 @@
-import {Component, View, EventEmitter} from 'angular2/core';
-
-import {MicropostService, HttpErrorHandler, LoginService} from 'app/services';
+import {Component, View, EventEmitter} from "angular2/core";
+import {MicropostService, HttpErrorHandler} from "app/services";
 
 const toastr = require('toastr');
 

@@ -1,16 +1,15 @@
-import {Component, View} from 'angular2/core';
+import {Component, View} from "angular2/core";
 import {
   CORE_DIRECTIVES,
   FORM_DIRECTIVES,
   Control,
   ControlGroup,
-  Validators,
-} from 'angular2/common';
-import {Router} from 'angular2/router';
-
-import {Validators as AppValidators} from 'app/forms'
-import {UserService, LoginService} from 'app/services';
-import {PublicPage} from 'app/routes';
+  Validators
+} from "angular2/common";
+import {Router} from "angular2/router";
+import {Validators as AppValidators} from "app/forms";
+import {UserService, LoginService} from "app/services";
+import {PublicPage} from "app/routes";
 
 const toastr = require('toastr');
 

@@ -1,8 +1,7 @@
 import {Observable} from "rxjs/Observable";
-import {Injectable} from 'angular2/core';
-
-import {Http} from 'app/http';
-import {Micropost, Page} from 'app/interfaces'
+import {Injectable} from "angular2/core";
+import {Http} from "app/http";
+import {Micropost} from "app/interfaces";
 
 const url = '/api/feed';
 

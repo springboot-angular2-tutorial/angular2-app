@@ -1,5 +1,4 @@
-import {inject} from 'angular2/testing';
-
+import {inject} from "angular2/testing";
 import {User} from "app/interfaces";
 import {LoginService} from "app/services";
 

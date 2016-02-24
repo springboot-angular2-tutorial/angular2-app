@@ -1,13 +1,12 @@
 import {Observable} from "rxjs/Observable";
-import {Component, View} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
-import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
-
-import {UserService} from 'app/services';
-import {UserStats, Gravatar} from 'app/components';
-import {RelatedUser, PageRequest, Page} from 'app/interfaces';
-import {PrivatePage} from 'app/routes';
-import {UserList} from './UserList';
+import {Component, View} from "angular2/core";
+import {CORE_DIRECTIVES} from "angular2/common";
+import {RouteParams, ROUTER_DIRECTIVES} from "angular2/router";
+import {UserService} from "app/services";
+import {UserStats, Gravatar} from "app/components";
+import {RelatedUser} from "app/interfaces";
+import {PrivatePage} from "app/routes";
+import {UserList} from "./UserList";
 
 @Component({
   selector: 'following-list-page',
