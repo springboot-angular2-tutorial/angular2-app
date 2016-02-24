@@ -15,13 +15,3 @@ testing.setBaseTestProviders(
 
 var testContext = require.context('./src', true, /\.spec\.ts/);
 testContext.keys().forEach(testContext);
-
-
-// ctx.keys().forEach(function (path) {
-//   var module = ctx(path);
-//   if (module.hasOwnProperty('main')) {
-//     module.main();
-//   } else {
-//     throw new Error('Module ' + path + ' does not implement main() method.');
-//   }
-// });
