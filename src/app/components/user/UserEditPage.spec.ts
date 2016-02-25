@@ -20,7 +20,7 @@ import {User} from "app/interfaces";
 import {SecurityRouterOutlet} from "app/routes";
 import {appInjector} from "../../app-injector";
 
-ddescribe('UserEditPage', () => {
+describe('UserEditPage', () => {
 
   var ctx:TestContext;
   var cmpDebugElement:DebugElement;
