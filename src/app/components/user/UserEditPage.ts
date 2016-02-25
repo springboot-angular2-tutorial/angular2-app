@@ -26,7 +26,7 @@ const toastr = require('toastr');
   // TODO It's hard to test. It will be solved by https://github.com/angular/angular/issues/4112.
   const userService = Injector.resolveAndCreate([APP_PROVIDERS]).get(UserService);
   return userService.get('me')
-    .do(userResponse => next.params['user'] = userResponse.user)
+    .do(user => next.params['user'] = user)
     .map(() => true)
     .toPromise();
 })
