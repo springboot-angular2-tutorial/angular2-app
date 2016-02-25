@@ -1,4 +1,4 @@
-import {Component, View, Injector} from "angular2/core";
+import {Component, View} from "angular2/core";
 import {
   CORE_DIRECTIVES,
   FORM_DIRECTIVES,
@@ -8,10 +8,10 @@ import {
 } from "angular2/common";
 import {RouteParams, CanActivate, ComponentInstruction} from "angular2/router";
 import {Validators as AppValidators} from "app/forms";
-import {APP_PROVIDERS} from "app/providers";
-import {UserService, HttpErrorHandler} from "app/services";
+import {UserService} from "app/services";
 import {User} from "app/interfaces";
 import {PrivatePage} from "app/routes";
+import {appInjector} from "../../app-injector";
 
 const toastr = require('toastr');
 
@@ -23,8 +23,8 @@ const toastr = require('toastr');
   directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
 })
 @CanActivate((next:ComponentInstruction) => {
-  // TODO It's hard to test. It will be solved by https://github.com/angular/angular/issues/4112.
-  const userService = Injector.resolveAndCreate([APP_PROVIDERS]).get(UserService);
+  // work around supposed by https://github.com/angular/angular/issues/4112#issuecomment-153811572
+  const userService:UserService = appInjector().get(UserService);
   return userService.get('me')
     .do(user => next.params['user'] = user)
     .map(() => true)
@@ -42,8 +42,7 @@ export class UserEditPage {
   user:User;
 
   constructor(private params:RouteParams,
-              private userService:UserService,
-              private errorHandler:HttpErrorHandler) {
+              private userService:UserService) {
     this.user = <any>params.get('user');
     this.initForm();
   }
@@ -51,14 +50,14 @@ export class UserEditPage {
   private initForm() {
     this.name = new Control(this.user.name, Validators.compose([
       Validators.required,
-      AppValidators.minLength(4),
+      Validators.minLength(4),
     ]));
     this.email = new Control(this.user.email, Validators.compose([
       Validators.required,
       AppValidators.email
     ]));
     this.password = new Control('', Validators.compose([
-      AppValidators.minLength(8),
+      Validators.minLength(8),
     ]));
     this.passwordConfirmation = new Control('', Validators.compose([
       AppValidators.match(this.password),
@@ -89,15 +88,11 @@ export class UserEditPage {
   }
 
   private handleError(error) {
-    this.errorHandler.handle(error);
-
-    switch (error.response.status) {
+    switch (error.status) {
       case 400:
-        error.response.json().then(json => {
-          if (json['code'] == 'email_already_taken') {
-            toastr.error('This email is already taken.');
-          }
-        });
+        if (error.json()['code'] == 'email_already_taken') {
+          toastr.error('This email is already taken.');
+        }
     }
   }
 

@@ -19,11 +19,4 @@ export class Validators {
     }
   }
 
-  static minLength(min:Number):(c:Control) => any {
-    return (c) => {
-      if (isBlank(c.value)) return;
-      if (c.value.length < min) return {minLength: false};
-    }
-  }
-
 }

@@ -16,7 +16,7 @@
       [ngFormControl]="name"/>
       <span *ngIf="name.hasError('required') && name.touched"
             class="help-block">Name is required</span>
-      <span *ngIf="name.hasError('minLength') && name.touched"
+      <span *ngIf="name.hasError('minlength') && name.touched"
             class="help-block">Name must be longer than 4 chars.</span>
   </div>
 
@@ -48,7 +48,7 @@
       [ngFormControl]="password"/>
       <span *ngIf="password.hasError('required') && password.touched"
             class="help-block">Password is required</span>
-      <span *ngIf="password.hasError('minLength') && password.touched"
+      <span *ngIf="password.hasError('minlength') && password.touched"
             class="help-block">Password must be longer than 8 chars.</span>
   </div>
 

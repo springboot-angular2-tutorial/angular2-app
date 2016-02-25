@@ -41,7 +41,7 @@ export class SignupPage {
   private initForm() {
     this.name = new Control('', Validators.compose([
       Validators.required,
-      AppValidators.minLength(4),
+      Validators.minLength(4),
     ]));
     this.email = new Control('', Validators.compose([
       Validators.required,
@@ -49,7 +49,7 @@ export class SignupPage {
     ]));
     this.password = new Control('', Validators.compose([
       Validators.required,
-      AppValidators.minLength(8),
+      Validators.minLength(8),
     ]));
     this.passwordConfirmation = new Control('', Validators.compose([
       Validators.required,

@@ -22,12 +22,4 @@ describe('Validator', () => {
     });
   }); // .email
 
-  describe('.minLength', () => {
-    it('validates min length', () => {
-      const ctrl = new Control('abc');
-      expect(Validators.minLength(3)(ctrl)).toBeUndefined();
-      expect(Validators.minLength(4)(ctrl)).toEqual({minLength: false});
-    });
-  }); // .minLength
-
 });
