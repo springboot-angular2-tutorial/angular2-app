@@ -5,7 +5,6 @@ import {
   beforeEach,
   expect,
   it,
-  ddescribe,
   inject
 } from "angular2/testing";
 import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";

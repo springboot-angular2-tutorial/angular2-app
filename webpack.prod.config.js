@@ -9,18 +9,12 @@ var DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 var UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 var CompressionPlugin = require('compression-webpack-plugin');
-// var CopyWebpackPlugin = require('copy-webpack-plugin');
-// var HtmlWebpackPlugin = require('html-webpack-plugin');
-// var WebpackMd5Hash    = require('webpack-md5-hash');
+
+var ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 
 module.exports = {
   devtool: 'source-map',
   debug: true,
-
-  devServer: {
-    historyApiFallback: true,
-    publicPath: '/__build__'
-  },
 
   entry: {
     'vendor': './src/vendor.ts',
@@ -28,21 +22,32 @@ module.exports = {
   },
 
   output: {
-    path: root('__build__'),
-    filename: '[name].js',
+    path: root('dist'),
+    filename: '[name].bundle.js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
   },
 
   resolve: {
     root: __dirname,
-    extensions: ['', '.js', '.ts', '.json'],
+    cache: false,
+    extensions: ['', '.ts', '.js', '.json'],
     alias: {
       'app': 'src/app'
     }
   },
 
   module: {
+    preLoaders: [
+      {
+        test: /\.js$/,
+        loader: "source-map-loader",
+        exclude: [
+          root('node_modules/rxjs'),
+          root('node_modules/bootstrap-webpack/bootstrap.config.js')
+        ]
+      }
+    ],
     loaders: [
       {test: /\.json$/, loader: 'json'},
       {test: /\.css$/, loader: 'raw'},
@@ -56,16 +61,10 @@ module.exports = {
         loader: 'ts',
         query: {
           'ignoreDiagnostics': [
-            2300, // 2300 -> Duplicate identifier
-            2374,
-            2375
+            2300 // 2300 -> Duplicate identifier
           ]
         },
-        exclude: [
-          /\.min\.js$/,
-          /\.spec\.ts$/,
-          /node_modules/
-        ]
+        exclude: [/\.spec\.ts$/]
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
@@ -80,24 +79,26 @@ module.exports = {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url?limit=10000&mimetype=image/svg+xml'
       }
-    ],
-    noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/]
+    ]
   },
 
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
+    new OccurenceOrderPlugin(true),
+    new CommonsChunkPlugin({
       name: 'vendor',
-      filename: 'vendor.js',
+      filename: 'vendor.bundle.js',
       minChunks: Infinity
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'common',
-      filename: 'common.js',
-      minChunks: 2,
-      chunks: ['app', 'vendor']
+    new DefinePlugin({
+      'process.env': {
+        'ENV': JSON.stringify(ENV),
+        'NODE_ENV': JSON.stringify(ENV)
+      }
+    }),
+    new ProvidePlugin({
+      'Reflect': 'es7-reflect-metadata/dist/browser'
     }),
     new DedupePlugin(),
-    new OccurenceOrderPlugin(true),
     new UglifyJsPlugin({
       beautify: false,
       mangle: false,

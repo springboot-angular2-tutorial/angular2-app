@@ -1,40 +1,17 @@
 var path = require('path');
-var webpack = require('webpack');
 
-var ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+var ProvidePlugin = require('webpack/lib/ProvidePlugin');
+var DefinePlugin  = require('webpack/lib/DefinePlugin');
 
-var metadata = {
-  host: 'localhost',
-  port: 3001
-};
+var ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 
 module.exports = {
-  devtool: 'source-map',
-  debug: true,
-
-  entry: {
-    'vendor': './src/vendor.ts',
-    'app': './src/app/bootstrap.ts'
-  },
-
-  output: {
-    path: root('dist'),
-    filename: '[name].bundle.js',
-    sourceMapFilename: '[name].map',
-    chunkFilename: '[id].chunk.js',
-    // required for hot module replacement
-    publicPath: 'http://' + metadata.host + ':' + metadata.port + '/'
-  },
-
-  devServer: {
-    port: metadata.port,
-    host: metadata.host,
-    historyApiFallback: true,
-    watchOptions: {aggregateTimeout: 300, poll: 1000}
-  },
+  devtool: 'inline-source-map',
+  debug: false,
 
   resolve: {
     root: __dirname,
+    cache: false,
     extensions: ['', '.ts', '.js', '.json'],
     alias: {
       'app': 'src/app'
@@ -67,8 +44,7 @@ module.exports = {
           'ignoreDiagnostics': [
             2300 // 2300 -> Duplicate identifier
           ]
-        },
-        exclude: [/\.spec\.ts$/]
+        }
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
@@ -83,21 +59,24 @@ module.exports = {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url?limit=10000&mimetype=image/svg+xml'
       }
+    ],
+    noParse: [
+      root('zone.js/dist'),
+      root('angular2/bundles')
     ]
   },
 
+  stats: { colors: true, reasons: true },
+
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(true),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor.bundle.js',
-      minChunks: Infinity
-    }),
-    new webpack.DefinePlugin({
+    new DefinePlugin({
       'process.env': {
         'ENV': JSON.stringify(ENV),
         'NODE_ENV': JSON.stringify(ENV)
       }
+    }),
+    new ProvidePlugin({
+      'Reflect': 'es7-reflect-metadata/dist/browser'
     })
   ],
 
