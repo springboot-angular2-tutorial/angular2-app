@@ -1,7 +1,6 @@
-import {View, Component} from 'angular2/core';
-import {RouteConfig} from 'angular2/router';
-
-import {SecurityRouterOutlet} from 'app/routes';
+import {View, Component} from "angular2/core";
+import {RouteConfig} from "angular2/router";
+import {SecurityRouterOutlet} from "app/routes";
 import {
   Header,
   HomePage,
@@ -14,8 +13,7 @@ import {
   FollowingListPage,
   HelpPage,
   TopPage
-} from 'app/components';
-
+} from "app/components";
 
 @Component({
   selector: 'app'

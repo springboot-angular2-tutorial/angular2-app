@@ -1,17 +1,21 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "es5",
     "module": "commonjs",
-    "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true
   },
-  "files": [
+  "exclude": [
+    "node_modules",
     "typings/main.d.ts",
-    "src/app/components/app/App.ts",
-    "src/app/providers.ts",
-    "src/app/bootstrap.ts",
-    "src/app/app-injector.ts"
-  ]
+    "typings/main"
+  ],
+  "filesGlob": [
+    "./src/**/*.ts",
+    "!./node_modules/**/*.ts",
+    "typings/browser.d.ts"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false
 }
