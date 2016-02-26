@@ -6,7 +6,7 @@ fi
 
 rm -rf out || exit 0;
 npm run build:prod || exit 1;
-cp -rf __build__ out
+cp -rf dist out
 
 (
 cd out
