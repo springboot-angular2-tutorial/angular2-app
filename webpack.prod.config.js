@@ -1,5 +1,17 @@
-var webpack = require('webpack');
 var path = require('path');
+var zlib = require('zlib');
+
+var webpack = require('webpack');
+var ProvidePlugin = require('webpack/lib/ProvidePlugin');
+var DefinePlugin = require('webpack/lib/DefinePlugin');
+var OccurenceOrderPlugin = require('webpack/lib/optimize/OccurenceOrderPlugin');
+var DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
+var UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+var CompressionPlugin = require('compression-webpack-plugin');
+// var CopyWebpackPlugin = require('copy-webpack-plugin');
+// var HtmlWebpackPlugin = require('html-webpack-plugin');
+// var WebpackMd5Hash    = require('webpack-md5-hash');
 
 module.exports = {
   devtool: 'source-map',
@@ -83,6 +95,19 @@ module.exports = {
       filename: 'common.js',
       minChunks: 2,
       chunks: ['app', 'vendor']
+    }),
+    new DedupePlugin(),
+    new OccurenceOrderPlugin(true),
+    new UglifyJsPlugin({
+      beautify: false,
+      mangle: false,
+      compress : { screw_ie8 : true},
+      comments: false
+    }),
+    new CompressionPlugin({
+      algorithm: gzipMaxLevel,
+      regExp: /\.css$|\.html$|\.js$|\.map$/,
+      threshold: 2 * 1024
     })
   ]
 
@@ -92,3 +117,8 @@ function root(args) {
   args = Array.prototype.slice.call(arguments, 0);
   return path.join.apply(path, [__dirname].concat(args));
 }
+
+function gzipMaxLevel(buffer, callback) {
+  return zlib['gzip'](buffer, {level: 9}, callback)
+}
+
