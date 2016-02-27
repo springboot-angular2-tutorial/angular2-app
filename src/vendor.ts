@@ -12,6 +12,5 @@ if ('production' === process.env.ENV) {
 }
 
 require("expose?$!expose?jQuery!jquery");
+require('bootstrap-loader');
 require("!style!css!toastr/build/toastr.css");
-require("bootstrap-webpack");
-

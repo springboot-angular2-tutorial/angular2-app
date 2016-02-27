@@ -47,8 +47,7 @@ module.exports = {
         test: /\.js$/,
         loader: "source-map-loader",
         exclude: [
-          root('node_modules/rxjs'),
-          root('node_modules/bootstrap-webpack/bootstrap.config.js')
+          root('node_modules/rxjs')
         ]
       }
     ],
