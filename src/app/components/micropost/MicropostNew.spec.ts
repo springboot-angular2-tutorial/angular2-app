@@ -28,7 +28,7 @@ describe('MicropostNew', () => {
   ]);
   beforeEach(createTestContext(_ => ctx = _));
   beforeEach(inject([MicropostService], _ => {
-    micropostService = _
+    micropostService = _;
   }));
   beforeEach(done => {
     ctx.init(TestCmp)

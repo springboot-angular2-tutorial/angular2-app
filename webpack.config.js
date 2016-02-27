@@ -44,6 +44,13 @@ module.exports = {
   module: {
     preLoaders: [
       {
+        test: /\.ts$/,
+        loader: 'tslint-loader',
+        exclude: [
+          root('node_modules')
+        ]
+      },
+      {
         test: /\.js$/,
         loader: "source-map-loader",
         exclude: [
@@ -99,6 +106,12 @@ module.exports = {
       }
     })
   ],
+
+  tslint: {
+    emitErrors: false,
+    failOnHint: false,
+    resourcePath: 'src'
+  },
 
   node: {
     global: 'window',

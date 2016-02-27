@@ -54,7 +54,7 @@ describe('Feed', () => {
   ]);
   beforeEach(createTestContext(_ => ctx = _));
   beforeEach(inject([MicropostService], _ => {
-    micropostService = _
+    micropostService = _;
   }));
   beforeEach(signin({id: 1, email: 'test1@test.com'}));
   beforeEach(() => jasmine.clock().mockDate(new Date(24 * 60 * 60 * 1000)));

@@ -69,7 +69,7 @@ describe('HomePage', () => {
     feedDebugElement.triggerEventHandler('deleted', null);
     expect(userStats.ngOnChanges).toHaveBeenCalled();
   });
-  
+
 });
 
 @Component({selector: 'test-cmp'})

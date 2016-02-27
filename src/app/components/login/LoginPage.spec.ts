@@ -28,7 +28,7 @@ describe('LoginPage', () => {
     provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
   ]);
   beforeEach(inject([LoginService], _ => {
-    loginService = _
+    loginService = _;
   }));
   beforeEach(createTestContext(_ => ctx = _));
   beforeEach(done => {

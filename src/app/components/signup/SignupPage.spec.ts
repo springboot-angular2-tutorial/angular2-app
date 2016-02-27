@@ -29,7 +29,7 @@ describe('SignupPage', () => {
   ]);
   beforeEach(createTestContext(_ => ctx = _));
   beforeEach(inject([LoginService], _ => {
-    loginService = _
+    loginService = _;
   }));
   beforeEach(done => {
     ctx.init(TestCmp)
@@ -76,7 +76,7 @@ describe('SignupPage', () => {
 
     ctx.router.subscribe(() => {
       expect(ctx.location.path()).toEqual('/home');
-      done()
+      done();
     });
   });
 

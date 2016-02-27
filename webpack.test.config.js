@@ -21,6 +21,13 @@ module.exports = {
   module: {
     preLoaders: [
       {
+        test: /\.ts$/,
+        loader: 'tslint-loader',
+        exclude: [
+          root('node_modules')
+        ]
+      },
+      {
         test: /\.js$/,
         loader: "source-map-loader",
         exclude: [

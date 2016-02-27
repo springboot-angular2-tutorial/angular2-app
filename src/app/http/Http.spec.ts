@@ -18,7 +18,6 @@ import {
 import {MockBackend} from "angular2/http/testing";
 import {Http} from "app/http";
 
-
 interface CustomMatchers extends NgMatchers {
   toBeJsonRequestVia(expectedMethod:any):boolean;
 }
@@ -38,7 +37,7 @@ describe('Http', () => {
     }),
   ]);
   beforeEach(inject([Http, MockBackend], (..._) => {
-    [http, backend] = _
+    [http, backend] = _;
   }));
   beforeEach(() => {
     spyOn(localStorage, 'getItem').and.returnValue('my jwt');
@@ -46,14 +45,15 @@ describe('Http', () => {
       toBeJsonRequestVia: () => {
         return {
           compare: (actual, expectedMethod) => {
-            let pass = (actual.headers.get('X-AUTH-TOKEN') == 'my jwt')
-              && (actual.headers.get('Accept') == 'application/json')
-              && (actual.headers.get('Content-Type') == 'application/json')
-              && (actual.method == expectedMethod);
-            let message = `Expected json request via ${RequestMethod[actual.method]} to equal ${RequestMethod[expectedMethod]}`;
-            return {pass: pass, message: message};
+            let pass = (actual.headers.get('X-AUTH-TOKEN') === 'my jwt')
+              && (actual.headers.get('Accept') === 'application/json')
+              && (actual.headers.get('Content-Type') === 'application/json')
+              && (actual.method === expectedMethod);
+            let msg = `Expected json request via ${RequestMethod[actual.method]}`
+              + ` to equal ${RequestMethod[expectedMethod]}`;
+            return {pass: pass, message: msg};
           }
-        }
+        };
       }
     });
   });

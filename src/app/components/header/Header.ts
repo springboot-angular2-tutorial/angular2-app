@@ -21,11 +21,11 @@ export class Header {
     this.currentUser = loginService.currentUser();
     router.subscribe(() => {
       this.currentUser = loginService.currentUser();
-    })
+    });
   }
 
   isActive(path:string):boolean {
-    return this.location.path() == path
+    return this.location.path() === path;
   }
 
   logout() {

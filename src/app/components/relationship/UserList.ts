@@ -44,7 +44,7 @@ export class UserList implements OnInit {
     this.listProvider({maxId: maxId, count: 5})
       .subscribe(users => {
           this.users = this.users.concat(users);
-          this.noMoreUsers = users.length == 0;
+          this.noMoreUsers = users.length === 0;
         }, e => this.errorHandler.handle(e)
       )
     ;

@@ -17,13 +17,13 @@ export class Pager {
   pageChanged:EventEmitter<any> = new EventEmitter();
 
   showPrev() {
-    if (this.currentPage == 1) return;
+    if (this.currentPage === 1) return;
     this.currentPage -= 1;
     this.pageChanged.emit({page: this.currentPage});
   }
 
   showNext() {
-    if (this.totalPages && this.totalPages == this.currentPage) return;
+    if (this.totalPages && this.totalPages === this.currentPage) return;
     this.currentPage += 1;
     this.pageChanged.emit({page: this.currentPage});
   }

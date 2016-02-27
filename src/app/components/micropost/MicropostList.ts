@@ -42,7 +42,7 @@ export class MicropostList implements OnInit {
     this.micropostService.delete(postId)
       .subscribe(() => {
         }, e => this.errorHandler.handle(e),
-        () => this.posts = this.posts.filter(p => p.id != postId)
+        () => this.posts = this.posts.filter(p => p.id !== postId)
       )
     ;
   }
@@ -61,7 +61,7 @@ export class MicropostList implements OnInit {
     this.userMicropostService.list(this.userId, {maxId: maxId, count: 5})
       .subscribe(posts => {
         this.posts = this.posts.concat(posts);
-        this.noMorePosts = posts.length == 0;
+        this.noMorePosts = posts.length === 0;
       }, e => this.errorHandler.handle(e))
     ;
   }

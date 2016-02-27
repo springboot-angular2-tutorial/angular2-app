@@ -30,7 +30,7 @@ describe('FollowerListPage', () => {
       APP_TEST_PROVIDERS,
       provide(RouteParams, {useValue: routeParams}),
       provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
-    ]
+    ];
   });
   beforeEach(createTestContext(_ => ctx = _));
 

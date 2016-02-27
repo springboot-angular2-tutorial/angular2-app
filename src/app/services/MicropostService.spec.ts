@@ -64,7 +64,7 @@ describe('MicropostService', () => {
     };
     let loginService:LoginService;
     beforeEach(inject([LoginService], _ => {
-      loginService = _
+      loginService = _;
     }));
 
     it('returns false when not signed in', () => {

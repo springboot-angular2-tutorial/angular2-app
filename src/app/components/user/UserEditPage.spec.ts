@@ -38,7 +38,7 @@ describe('UserEditPage', () => {
       provide(UserService, {useValue: _}),
     ]));
     userService = appInjector().get(UserService);
-    spyOn(userService, 'get').and.returnValue(Observable.of(user))
+    spyOn(userService, 'get').and.returnValue(Observable.of(user));
   }));
   beforeEach(signin(user));
   beforeEach(done => {
@@ -69,7 +69,8 @@ describe('UserEditPage', () => {
     const passwordInput = <HTMLInputElement>DOM.querySelector(el, '#passwordInput');
     expect(passwordInput.value).toEqual('');
 
-    const passwordConfirmationInput = <HTMLInputElement>DOM.querySelector(el, '#passwordConfirmationInput');
+    const passwordConfirmationInput = <HTMLInputElement>
+      DOM.querySelector(el, '#passwordConfirmationInput');
     expect(passwordConfirmationInput.value).toEqual('');
   });
 

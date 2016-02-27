@@ -20,7 +20,7 @@ export class MicropostNew {
   }
 
   create(content:HTMLInputElement) {
-    if (content.value == '') {
+    if (content.value === '') {
       toastr.warning('Type your post.');
       return;
     }

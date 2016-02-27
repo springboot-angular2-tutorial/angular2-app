@@ -25,7 +25,7 @@ export class UserShowPage {
 
   canShowFollowBtn():boolean {
     if (!this.loginService.currentUser()) return false;
-    return this.loginService.currentUser().id != this.userId;
+    return this.loginService.currentUser().id !== this.userId;
   }
 
 }

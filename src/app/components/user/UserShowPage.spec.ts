@@ -36,7 +36,7 @@ describe('UserShowPage', () => {
       APP_TEST_PROVIDERS,
       provide(RouteParams, {useValue: routeParams}),
       provide(ROUTER_PRIMARY_COMPONENT, {useValue: App}),
-    ]
+    ];
   });
   beforeEach(createTestContext(_ => ctx = _));
 
@@ -64,7 +64,7 @@ describe('UserShowPage', () => {
 
     it('does not show follow button', () => {
       expect(followBtnDebugElement).toBeNull();
-    })
+    });
   }); // when not signed in
 
   describe('when signed in and it is my own page', () => {

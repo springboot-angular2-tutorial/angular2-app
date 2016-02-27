@@ -33,7 +33,7 @@ export class UserService {
   updateMe(userParam:UserParams):Observable<Response> {
     return this.http.patch(`${url}/me`, JSON.stringify(userParam))
       .do(resp => {
-        localStorage.setItem('jwt', resp.headers.get('X-AUTH-TOKEN'))
+        localStorage.setItem('jwt', resp.headers.get('X-AUTH-TOKEN'));
       });
   }
 

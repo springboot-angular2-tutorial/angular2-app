@@ -18,7 +18,7 @@ export class LoginService {
       password: password,
     })).do(resp => {
       localStorage.setItem('jwt', resp.headers.get('X-AUTH-TOKEN'));
-    })
+    });
   }
 
   logout():void {
@@ -32,7 +32,7 @@ export class LoginService {
     return {
       id: decoded.userId,
       email: decoded.sub,
-    }
+    };
   }
 
 }

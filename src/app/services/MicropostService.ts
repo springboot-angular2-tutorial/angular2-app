@@ -25,6 +25,6 @@ export class MicropostService {
 
   isMyPost(post:Micropost) {
     if (!this.loginService.currentUser()) return false;
-    return post.user.id == this.loginService.currentUser().id
+    return post.user.id === this.loginService.currentUser().id;
   }
 }

@@ -38,7 +38,7 @@ describe('Header', () => {
     let loginService:LoginService;
 
     beforeEach(inject([LoginService], _ => {
-      loginService = _
+      loginService = _;
     }));
     beforeEach(signin({id: 1, email: 'test@test.com'}));
     beforeEach(createCmp);
@@ -56,7 +56,7 @@ describe('Header', () => {
         expect(ctx.location.path()).toEqual('/home');
         expect(link.parentElement.classList).toContain('active');
         done();
-      })
+      });
     });
 
     it('does not show a nav link to top', () => {
@@ -73,7 +73,7 @@ describe('Header', () => {
         expect(ctx.location.path()).toEqual('/users');
         expect(link.parentElement.classList).toContain('active');
         done();
-      })
+      });
     });
 
     it('shows a nav link to help', (done) => {
@@ -85,7 +85,7 @@ describe('Header', () => {
         expect(ctx.location.path()).toEqual('/help');
         expect(link.parentElement.classList).toContain('active');
         done();
-      })
+      });
     });
 
     it('shows a nav link to profile', (done) => {
@@ -96,7 +96,7 @@ describe('Header', () => {
         ctx.fixture.detectChanges();
         expect(ctx.location.path()).toEqual('/users/1');
         done();
-      })
+      });
     });
 
     // TODO https://github.com/angular/angular/issues/4112.
@@ -108,7 +108,7 @@ describe('Header', () => {
         ctx.fixture.detectChanges();
         expect(ctx.location.path()).toEqual('/users/me/edit');
         done();
-      })
+      });
     });
 
     it('shows a nav link to logout', (done) => {
@@ -121,7 +121,7 @@ describe('Header', () => {
         ctx.fixture.detectChanges();
         expect(ctx.location.path()).toEqual('/login');
         done();
-      })
+      });
     });
   }); // when signed in
 
@@ -145,7 +145,7 @@ describe('Header', () => {
         ctx.fixture.detectChanges();
         expect(ctx.location.path()).toEqual('');
         done();
-      })
+      });
     });
 
     it('does not show a nav link to users', () => {
@@ -162,7 +162,7 @@ describe('Header', () => {
         expect(ctx.location.path()).toEqual('/help');
         expect(link.parentElement.classList).toContain('active');
         done();
-      })
+      });
     });
 
     it('does not show a nav link to profile', () => {
@@ -183,7 +183,7 @@ describe('Header', () => {
         ctx.fixture.detectChanges();
         expect(ctx.location.path()).toEqual('/login');
         done();
-      })
+      });
     });
   }); // when not signed in
 

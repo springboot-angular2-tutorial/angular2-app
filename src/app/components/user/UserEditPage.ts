@@ -47,6 +47,23 @@ export class UserEditPage {
     this.initForm();
   }
 
+  onSubmit(value) {
+    this.passwordConfirmation.updateValueAndValidity({});
+    this.passwordConfirmation.markAsTouched();
+    if (!this.myForm.valid) return;
+
+    const params = Object.keys(value)
+      .filter(k => value[k] !== "")
+      .reduce((prev, current) => {
+        prev[current] = value[current];
+        return prev;
+      }, {});
+    this.userService.updateMe(params)
+      .subscribe(() => {
+        toastr.success('Successfully updated.');
+      }, this.handleError);
+  }
+
   private initForm() {
     this.name = new Control(this.user.name, Validators.compose([
       Validators.required,
@@ -70,27 +87,10 @@ export class UserEditPage {
     });
   }
 
-  onSubmit(value) {
-    this.passwordConfirmation.updateValueAndValidity({});
-    this.passwordConfirmation.markAsTouched();
-    if (!this.myForm.valid) return;
-
-    const params = Object.keys(value)
-      .filter(k => value[k] != "")
-      .reduce((prev, current) => {
-        prev[current] = value[current];
-        return prev;
-      }, {});
-    this.userService.updateMe(params)
-      .subscribe(() => {
-        toastr.success('Successfully updated.')
-      }, this.handleError);
-  }
-
   private handleError(error) {
     switch (error.status) {
       case 400:
-        if (error.json()['code'] == 'email_already_taken') {
+        if (error.json()['code'] === 'email_already_taken') {
           toastr.error('This email is already taken.');
         }
     }

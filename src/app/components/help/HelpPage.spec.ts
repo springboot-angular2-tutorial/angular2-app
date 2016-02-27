@@ -32,7 +32,7 @@ describe('HelpPage', () => {
   });
 
   it('can be shown', () => {
-    expect(cmpDebugElement).toBeTruthy()
+    expect(cmpDebugElement).toBeTruthy();
   });
 
 });

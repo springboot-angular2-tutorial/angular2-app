@@ -38,6 +38,17 @@ export class SignupPage {
     this.initForm();
   }
 
+  onSubmit(params) {
+    this.userService.create(params)
+      .flatMap(() => {
+        return this.loginService.login(params.email, params.password);
+      })
+      .subscribe(() => {
+        this.router.navigate(['/Home']);
+      }, this.handleError)
+    ;
+  }
+
   private initForm() {
     this.name = new Control('', Validators.compose([
       Validators.required,
@@ -63,21 +74,10 @@ export class SignupPage {
     });
   }
 
-  onSubmit(params) {
-    this.userService.create(params)
-      .flatMap(() => {
-        return this.loginService.login(params.email, params.password);
-      })
-      .subscribe(() => {
-        this.router.navigate(['/Home'])
-      }, this.handleError)
-    ;
-  }
-
   private handleError(error) {
     switch (error.status) {
       case 400:
-        if (error.json()['code'] == 'email_already_taken') {
+        if (error.json()['code'] === 'email_already_taken') {
           toastr.error('This email is already taken.');
         }
     }

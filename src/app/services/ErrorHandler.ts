@@ -13,7 +13,7 @@ export class HttpErrorHandler {
   }
 
   handle(error:any) {
-    if (error.status == 401) {
+    if (error.status === 401) {
       toastr.error('Please sign in');
       this.loginService.logout();
       this.router.navigate(['/Login']);
