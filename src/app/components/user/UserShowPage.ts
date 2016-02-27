@@ -25,7 +25,8 @@ export class UserShowPage {
 
   canShowFollowBtn():boolean {
     if (!this.loginService.currentUser()) return false;
-    return this.loginService.currentUser().id !== this.userId;
+    // FIXME want to use !== , but it stops karma...
+    return this.loginService.currentUser().id != this.userId;
   }
 
 }
