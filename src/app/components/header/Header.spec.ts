@@ -94,7 +94,7 @@ describe('Header', () => {
       link.click();
       ctx.router.subscribe(() => {
         ctx.fixture.detectChanges();
-        expect(ctx.location.path()).toEqual('/users/1');
+        expect(ctx.location.path()).toEqual('/users/me');
         done();
       });
     });

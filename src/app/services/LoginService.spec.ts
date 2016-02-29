@@ -51,27 +51,20 @@ describe('LoginService', () => {
     });
   }); // .logout
 
-  describe('.currentUser', () => {
+  describe('.isSignedIn', () => {
     describe('when not signed in', () => {
-      it('returns nothing', () => {
-        expect(loginService.currentUser()).toBeFalsy();
+      it('should be false', () => {
+        expect(loginService.isSignedIn()).toBeFalsy();
       });
     });
 
     describe('when signed in', () => {
-      beforeEach(() => {
-        /* tslint:disable */
-        localStorage.setItem('jwt', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0OEB0ZXN0LmNvbSIsInVzZXJJZCI6MTd9.KKUI_-xoLRlouQ4MNYGRn7OkuLM0i8Frmwb5O5gvf1xgXse6sfqG10HiFwber9JSp9ZYh25n3MH_YwUowF9Xzw');
-        /* tslint:enable */
-      });
-      it('returns current user', () => {
-        expect(loginService.currentUser()).toEqual({
-          id: 17,
-          email: 'test8@test.com',
-        });
+      beforeEach(() => localStorage.setItem('jwt', 'dummy'));
+      it('should be true', () => {
+        expect(loginService.isSignedIn()).toBeTruthy();
       });
     });
-  }); // .currentUsr
+  }); // .isSignedIn
 
 });
 

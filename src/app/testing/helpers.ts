@@ -4,6 +4,6 @@ import {LoginService} from "app/services";
 
 export function signin(user:User = {id: 1, email: 'test@test.com'}) {
   return inject([LoginService], (loginService) => {
-    spyOn(loginService, 'currentUser').and.returnValue(user);
+    spyOn(loginService, 'isSignedIn').and.returnValue(true);
   });
 }

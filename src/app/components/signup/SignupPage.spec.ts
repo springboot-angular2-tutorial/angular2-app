@@ -7,7 +7,8 @@ import {
   afterEach,
   expect,
   describe,
-  it
+  it,
+  iit
 } from "angular2/testing";
 import {BaseResponseOptions, Response} from "angular2/http";
 import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
@@ -61,9 +62,6 @@ describe('SignupPage', () => {
   it('can signup', (done) => {
     const page:SignupPage = cmpDebugElement.componentInstance;
     spyOn(loginService, 'login').and.callThrough();
-    spyOn(loginService, 'currentUser').and.returnValue({
-      id: 1, email: 'test@test.com',
-    });
     ctx.backend.connections.subscribe(conn => {
       conn.mockRespond(new Response(new BaseResponseOptions()));
     });

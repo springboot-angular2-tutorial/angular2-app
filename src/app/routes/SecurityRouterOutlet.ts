@@ -22,7 +22,7 @@ export class SecurityRouterOutlet extends RouterOutlet {
     const publicPageMeta = reflector.annotations(next.componentType)
       .filter(a => a instanceof PublicPageMetadata)[0];
     if (publicPageMeta) {
-      if (!this.loginService.currentUser()) return super.activate(next);
+      if (!this.loginService.isSignedIn()) return super.activate(next);
       if (!publicPageMeta.whenSignedIn) return super.activate(next);
       publicPageMeta.whenSignedIn(this.parentRouter);
       return super.activate(next);
@@ -31,7 +31,7 @@ export class SecurityRouterOutlet extends RouterOutlet {
     const privatePageMeta = reflector.annotations(next.componentType)
       .filter(a => a instanceof PrivatePageMetadata)[0];
     if (privatePageMeta) {
-      if (this.loginService.currentUser()) return super.activate(next);
+      if (this.loginService.isSignedIn()) return super.activate(next);
       privatePageMeta.whenNotSignedIn(this.parentRouter);
       return;
     }

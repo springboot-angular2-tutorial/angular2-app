@@ -2,7 +2,6 @@ import {Observable} from "rxjs/Observable";
 import {Injectable} from "angular2/core";
 import {Response} from "angular2/http";
 import {Http} from "app/http";
-import {User} from "app/interfaces";
 
 const jwtDecode = require('jwt-decode');
 
@@ -25,14 +24,8 @@ export class LoginService {
     localStorage.removeItem('jwt');
   }
 
-  currentUser():User {
-    const jwt = localStorage.getItem('jwt');
-    if (!jwt) return;
-    const decoded = jwtDecode(jwt);
-    return {
-      id: decoded.userId,
-      email: decoded.sub,
-    };
+  isSignedIn():boolean {
+    return localStorage.getItem('jwt') !== null;
   }
 
 }

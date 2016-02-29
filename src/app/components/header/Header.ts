@@ -2,7 +2,6 @@ import {Component, View} from "angular2/core";
 import {CORE_DIRECTIVES} from "angular2/common";
 import {Router, ROUTER_DIRECTIVES, Location} from "angular2/router";
 import {LoginService} from "app/services";
-import {User} from "app/interfaces";
 
 @Component({
   selector: 'app-header',
@@ -13,14 +12,14 @@ import {User} from "app/interfaces";
 })
 export class Header {
 
-  currentUser:User;
+  isSignedIn:boolean;
 
   constructor(private router:Router,
               private location:Location,
               private loginService:LoginService) {
-    this.currentUser = loginService.currentUser();
+    this.isSignedIn = loginService.isSignedIn();
     router.subscribe(() => {
-      this.currentUser = loginService.currentUser();
+      this.isSignedIn = loginService.isSignedIn();
     });
   }
 
