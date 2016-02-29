@@ -3,8 +3,6 @@ import {Injectable} from "angular2/core";
 import {Response} from "angular2/http";
 import {Http} from "app/http";
 
-const jwtDecode = require('jwt-decode');
-
 @Injectable()
 export class LoginService {
 

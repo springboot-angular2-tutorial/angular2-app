@@ -32,7 +32,6 @@
     "es6-shim": "^0.33.3",
     "es7-reflect-metadata": "^1.5.5",
     "jquery": "^2.1.4",
-    "jwt-decode": "^1.4.0",
     "md5-hex": "^1.1.0",
     "moment": "^2.10.6",
     "pluralize": "^1.2.1",
