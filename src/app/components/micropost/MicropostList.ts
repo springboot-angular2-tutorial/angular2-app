@@ -47,10 +47,6 @@ export class MicropostList implements OnInit {
     ;
   }
 
-  isMyPost(post:Micropost):boolean {
-    return this.micropostService.isMyPost(post);
-  }
-
   loadMore() {
     const lastPost = this.posts[this.posts.length - 1];
     if (!lastPost) return false;

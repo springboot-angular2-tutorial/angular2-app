@@ -45,9 +45,5 @@ export class Feed {
     ;
   }
 
-  isMyPost(post:Micropost):boolean {
-    return this.micropostService.isMyPost(post);
-  }
-
 }
 

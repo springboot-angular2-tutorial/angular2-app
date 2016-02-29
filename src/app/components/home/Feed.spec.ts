@@ -6,7 +6,6 @@ import {
   beforeEachProviders,
   beforeEach,
   expect,
-  describe,
   it
 } from "angular2/testing";
 import {ObservableWrapper} from "angular2/src/facade/async";
@@ -15,7 +14,7 @@ import {ResponseOptions, Response} from "angular2/http";
 import {Feed, Gravatar, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {MicropostService} from "app/services";
-import {TestContext, createTestContext, signin} from "app/testing";
+import {TestContext, createTestContext} from "app/testing";
 
 const dummyResponse = new Response(new ResponseOptions({
   body: JSON.stringify([
@@ -23,6 +22,7 @@ const dummyResponse = new Response(new ResponseOptions({
       id: 1,
       content: 'content1',
       createdAt: 0,
+      isMyPost: true,
       user: {
         id: 1,
         email: 'test1@test.com',
@@ -33,6 +33,7 @@ const dummyResponse = new Response(new ResponseOptions({
       id: 2,
       content: 'content2',
       createdAt: 1234567,
+      isMyPost: false,
       user: {
         id: 2,
         email: 'test2@test.com',
@@ -56,7 +57,6 @@ describe('Feed', () => {
   beforeEach(inject([MicropostService], _ => {
     micropostService = _;
   }));
-  beforeEach(signin({id: 1, email: 'test1@test.com'}));
   beforeEach(() => jasmine.clock().mockDate(new Date(24 * 60 * 60 * 1000)));
 
   function createCmp(done) {
@@ -72,11 +72,9 @@ describe('Feed', () => {
 
   beforeEach(createCmp);
 
-  it('can be shown', () => {
-    expect(cmpDebugElement).toBeTruthy();
-  });
-
   it('can show feed', () => {
+    expect(cmpDebugElement).toBeTruthy();
+
     const cmp:Feed = cmpDebugElement.componentInstance;
     expect(cmp.feed.length).toEqual(2);
 

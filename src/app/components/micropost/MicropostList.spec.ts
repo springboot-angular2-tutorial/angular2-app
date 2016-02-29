@@ -6,14 +6,13 @@ import {
   beforeEachProviders,
   beforeEach,
   expect,
-  describe,
   it
 } from "angular2/testing";
 import {ResponseOptions, Response} from "angular2/http";
 import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
 import {MicropostList, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
-import {TestContext, createTestContext, signin} from "app/testing";
+import {TestContext, createTestContext} from "app/testing";
 import {MicropostService} from "app/services";
 
 const dummyResponse = new Response(new ResponseOptions({
@@ -22,6 +21,7 @@ const dummyResponse = new Response(new ResponseOptions({
       id: 1,
       content: 'content1',
       createdAt: 0,
+      isMyPost: true,
       user: {
         id: 1,
         email: 'test1@test.com',
@@ -32,6 +32,7 @@ const dummyResponse = new Response(new ResponseOptions({
       id: 2,
       content: 'content2',
       createdAt: 1234567,
+      isMyPost: false,
       user: {
         id: 2,
         email: 'test2@test.com',
@@ -56,7 +57,6 @@ describe('MicropostList', () => {
     micropostService = _;
   }));
   beforeEach(() => jasmine.clock().mockDate(new Date(24 * 60 * 60 * 1000)));
-  beforeEach(signin({id: 1, email: "test@test.com"}));
 
   function createCmp(done) {
     ctx.backend.connections.subscribe(conn => {

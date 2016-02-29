@@ -1,15 +1,16 @@
 export interface Micropost {
-  id:number
-  content:string
-  user:User
-  createdAt:number
+  id:number;
+  content:string;
+  user:User;
+  createdAt:number;
+  isMyPost?:boolean;
 }
 
 export interface User {
-  id:string|number
-  email:string
-  name?:string
-  userStats?:UserStats
+  id:string|number;
+  email:string;
+  name?:string;
+  userStats?:UserStats;
 }
 
 export interface RelatedUser extends User {
@@ -17,16 +18,16 @@ export interface RelatedUser extends User {
 }
 
 export interface UserStats {
-  micropostCnt:number
-  followingCnt:number
-  followerCnt:number
-  followedByMe:boolean
+  micropostCnt:number;
+  followingCnt:number;
+  followerCnt:number;
+  followedByMe:boolean;
 }
 
 export interface Page<T> {
-  content:T[]
-  totalPages:number
-  totalElements:number
+  content:T[];
+  totalPages:number;
+  totalElements:number;
 }
 
 export interface PageRequest {
@@ -35,7 +36,7 @@ export interface PageRequest {
 }
 
 export interface UserParams {
-  email?:string
-  password?:string
-  name?:string
+  email?:string;
+  password?:string;
+  name?:string;
 }

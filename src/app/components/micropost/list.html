@@ -5,7 +5,7 @@
     <li *ngFor="var p of posts">
       <span class="content">{{p.content}}</span>
       <span class="timestamp">Posted about {{p.createdAt | timeAgo}}.</span>
-      <a *ngIf="isMyPost(p)" href="#" class="delete"
+      <a *ngIf="p.isMyPost" href="#" class="delete"
          (click)="delete(p.id); $event.preventDefault()">delete</a>
     </li>
   </ol>

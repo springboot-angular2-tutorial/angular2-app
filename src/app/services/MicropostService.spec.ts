@@ -52,32 +52,4 @@ describe('MicropostService', () => {
     });
   }); // .delete
 
-  describe('.isMyPost', () => {
-    let post:Micropost = {
-      id: 1,
-      content: 'some content',
-      user: {
-        id: 1,
-        email: 'test1@test.com',
-      },
-      createdAt: 0,
-    };
-    let loginService:LoginService;
-    beforeEach(inject([LoginService], _ => {
-      loginService = _;
-    }));
-
-    it('returns false when not signed in', () => {
-      expect(micropostService.isMyPost(post)).toBeFalsy();
-    });
-    it('returns false when not my post', () => {
-      spyOn(loginService, 'currentUser').and.returnValue({id: 2});
-      expect(micropostService.isMyPost(post)).toBeFalsy();
-    });
-    it('returns true when my post', () => {
-      spyOn(loginService, 'currentUser').and.returnValue({id: 1});
-      expect(micropostService.isMyPost(post)).toBeTruthy();
-    });
-  }); // .isMyPost
-
 });

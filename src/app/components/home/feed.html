@@ -9,7 +9,7 @@
     </span>
     <span class="content">{{f.content}}</span>
     <span class="timestamp">Posted less than {{f.createdAt | timeAgo}}.</span>
-    <a *ngIf="isMyPost(f)" class="delete" href="#"
+    <a *ngIf="f.isMyPost" class="delete" href="#"
        (click)="delete(f.id); $event.preventDefault()">delete</a>
   </li>
 
