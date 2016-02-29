@@ -4,8 +4,8 @@ import {
   beforeEachProviders,
   beforeEach,
   expect,
-  describe,
-  it
+  it,
+  inject
 } from "angular2/testing";
 import {RouteParams, ROUTER_PRIMARY_COMPONENT} from "angular2/router";
 import {
@@ -16,7 +16,9 @@ import {
   MicropostList
 } from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
-import {TestContext, createTestContext, signin} from "app/testing";
+import {TestContext, createTestContext} from "app/testing";
+import {UserService} from "app/services";
+import {Observable} from "rxjs/Observable";
 
 describe('UserShowPage', () => {
 
@@ -39,8 +41,11 @@ describe('UserShowPage', () => {
     ];
   });
   beforeEach(createTestContext(_ => ctx = _));
-
-  function createCmp(done) {
+  // required to show FollowBtn
+  beforeEach(inject([UserService], userService => {
+    spyOn(userService, 'get').and.returnValue(Observable.empty())
+  }));
+  beforeEach(done => {
     ctx.init(TestCmp)
       .finally(done)
       .subscribe(() => {
@@ -49,50 +54,17 @@ describe('UserShowPage', () => {
         followBtnDebugElement = cmpDebugElement.query(By.directive(FollowBtn));
         micropostListDebugElement = cmpDebugElement.query(By.directive(MicropostList));
       });
-  }
+  });
 
-  describe('when not signed in', () => {
-    beforeEach(createCmp);
-
-    it('can be shown', () => {
-      expect(cmpDebugElement).toBeTruthy();
-      expect(userStatsDebugElement).toBeTruthy();
-      expect(userStatsDebugElement.componentInstance.userId).toEqual('1');
-      expect(micropostListDebugElement).toBeTruthy();
-      expect(micropostListDebugElement.componentInstance.userId).toEqual('1');
-    });
-
-    it('does not show follow button', () => {
-      expect(followBtnDebugElement).toBeNull();
-    });
-  }); // when not signed in
-
-  describe('when signed in and it is my own page', () => {
-    beforeEach(signin({id: 1, email: 'test@test.com'}));
-    beforeEach(createCmp);
-
-    it('can be shown', () => {
-      expect(cmpDebugElement).toBeTruthy();
-    });
-
-    it('does not show follow button', () => {
-      expect(followBtnDebugElement).toBeNull();
-    });
-  }); // when signed in and it is my own page
-
-  describe('when signed in and it is not my own page', () => {
-    beforeEach(signin({id: 2, email: 'test@test.com'}));
-    beforeEach(createCmp);
-
-    it('can be shown', () => {
-      expect(cmpDebugElement).toBeTruthy();
-    });
-
-    it('shows follow button', () => {
-      expect(followBtnDebugElement).toBeTruthy();
-      expect(followBtnDebugElement.componentInstance.followerId).toEqual('1');
-    });
-  }); // when signed in and it is not my own page
+  it('can be shown', () => {
+    expect(cmpDebugElement).toBeTruthy();
+    expect(userStatsDebugElement).toBeTruthy();
+    expect(userStatsDebugElement.componentInstance.userId).toEqual('1');
+    expect(micropostListDebugElement).toBeTruthy();
+    expect(micropostListDebugElement.componentInstance.userId).toEqual('1');
+    expect(followBtnDebugElement).toBeTruthy();
+    expect(followBtnDebugElement.componentInstance.followerId).toEqual('1');
+  });
 
 });
 

@@ -11,6 +11,7 @@ export interface User {
   email:string;
   name?:string;
   userStats?:UserStats;
+  isMyself?:boolean;
 }
 
 export interface RelatedUser extends User {

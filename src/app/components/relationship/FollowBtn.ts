@@ -1,6 +1,7 @@
 import {Component, View, OnChanges} from "angular2/core";
 import {CORE_DIRECTIVES} from "angular2/common";
 import {RelationshipService, HttpErrorHandler, UserService} from "app/services";
+import {User} from "../../interfaces";
 
 @Component({
   selector: 'follow-btn',
@@ -12,7 +13,9 @@ import {RelationshipService, HttpErrorHandler, UserService} from "app/services";
 })
 export class FollowBtn implements OnChanges {
 
-  isFollowedByMe:boolean;
+  canShowFollowBtn:boolean;
+  canShowUnfollowBtn:boolean;
+
   followerId:string;
   busy:boolean = false;
 
@@ -32,7 +35,8 @@ export class FollowBtn implements OnChanges {
     this.relationshipService.follow(this.followerId)
       .finally(() => this.busy = false)
       .subscribe(() => {
-        this.isFollowedByMe = true;
+        this.canShowFollowBtn = !this.canShowFollowBtn;
+        this.canShowUnfollowBtn = !this.canShowUnfollowBtn;
       }, e => this.errorHandler.handle(e))
     ;
   }
@@ -42,7 +46,8 @@ export class FollowBtn implements OnChanges {
     this.relationshipService.unfollow(this.followerId)
       .finally(() => this.busy = false)
       .subscribe(() => {
-        this.isFollowedByMe = false;
+        this.canShowFollowBtn = !this.canShowFollowBtn;
+        this.canShowUnfollowBtn = !this.canShowUnfollowBtn;
       }, e => this.errorHandler.handle(e))
     ;
   }
@@ -50,11 +55,25 @@ export class FollowBtn implements OnChanges {
   loadCurrentStatus():void {
     this.busy = true;
     this.userService.get(this.followerId)
-      .map(user => user.userStats.followedByMe)
       .finally(() => this.busy = false)
-      .subscribe(followedByMe => {
-        this.isFollowedByMe = followedByMe;
+      .subscribe(user => {
+        this.canShowFollowBtn = this._canShowFollowBtn(user);
+        this.canShowUnfollowBtn = this._canShowUnfollowBtn(user);
       }, e => this.errorHandler.handle(e))
     ;
+  }
+
+  private _canShowFollowBtn(user:User):boolean {
+    if (user.isMyself === null) return false; // not signed in
+    if (user.isMyself === true) return false; // myself
+    if (user.userStats.followedByMe === true) return false; // already followed
+    return true;
+  }
+
+  private _canShowUnfollowBtn(user:User):boolean {
+    if (user.isMyself === null) return false; // not signed in
+    if (user.isMyself === true) return false; // myself
+    if (user.userStats.followedByMe === false) return false; // not followed yet
+    return true;
   }
 }
