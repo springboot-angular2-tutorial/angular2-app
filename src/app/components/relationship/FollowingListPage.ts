@@ -10,8 +10,6 @@ import {UserList} from "./UserList";
 
 @Component({
   selector: 'following-list-page',
-})
-@View({
   template: require('./following-list.html'),
   directives: [
     CORE_DIRECTIVES,

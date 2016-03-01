@@ -1,4 +1,4 @@
-import {Component, View, OnChanges} from "angular2/core";
+import {Component, OnChanges} from "angular2/core";
 import {CORE_DIRECTIVES} from "angular2/common";
 import {ROUTER_DIRECTIVES} from "angular2/router";
 import {User} from "app/interfaces";
@@ -9,8 +9,6 @@ import {Gravatar} from "app/components";
 @Component({
   selector: 'user-stats',
   properties: ['userId', 'shownOnProfile'],
-})
-@View({
   styles: [require('./user-stats.scss')],
   template: require('./user-stats.html'),
   directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, Gravatar],

@@ -1,5 +1,5 @@
 import {Observable} from "rxjs/Observable";
-import {Component, View, provide, DebugElement, Injector} from "angular2/core";
+import {Component, provide, DebugElement, Injector} from "angular2/core";
 import {beforeEachProviders, beforeEach, inject} from "angular2/testing";
 import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
 import {By} from "angular2/platform/common_dom";
@@ -104,8 +104,8 @@ describe('UserEditPage', () => {
 
 });
 
-@Component({selector: 'test-cmp'})
-@View({
+@Component({
+  selector: 'test-cmp',
   template: `<router-outlet></router-outlet>`,
   directives: [SecurityRouterOutlet],
 })

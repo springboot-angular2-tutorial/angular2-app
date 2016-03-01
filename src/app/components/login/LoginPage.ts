@@ -1,4 +1,4 @@
-import {Component, View} from "angular2/core";
+import {Component} from "angular2/core";
 import {ROUTER_DIRECTIVES, Router} from "angular2/router";
 import {LoginService} from "app/services";
 import {PublicPage} from "app/routes";
@@ -7,8 +7,6 @@ const toastr = require('toastr/toastr');
 
 @Component({
   selector: 'login-page',
-})
-@View({
   styles: [require('./login.scss')],
   template: require('./login.html'),
   directives: [ROUTER_DIRECTIVES]

@@ -1,4 +1,4 @@
-import {View, Component} from "angular2/core";
+import {Component} from "angular2/core";
 import {RouteConfig} from "angular2/router";
 import {SecurityRouterOutlet} from "app/routes";
 import {
@@ -16,9 +16,7 @@ import {
 } from "app/components";
 
 @Component({
-  selector: 'app'
-})
-@View({
+  selector: 'app',
   styles: [require('./app.scss')],
   template: require('./app.html'),
   directives: [SecurityRouterOutlet, Header],

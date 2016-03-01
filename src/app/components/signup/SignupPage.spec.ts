@@ -1,11 +1,6 @@
-import {Component, View, provide, DebugElement} from "angular2/core";
+import {Component, provide, DebugElement} from "angular2/core";
 import {By} from "angular2/platform/common_dom";
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  afterEach
-} from "angular2/testing";
+import {inject, beforeEachProviders, beforeEach} from "angular2/testing";
 import {BaseResponseOptions, Response} from "angular2/http";
 import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
 import {App, SignupPage} from "app/components";
@@ -35,7 +30,6 @@ describe('SignupPage', () => {
         cmpDebugElement = ctx.fixture.debugElement.query(By.directive(SignupPage));
       });
   });
-  afterEach(() => localStorage.clear());
 
   it('can be shown', () => {
     expect(cmpDebugElement).toBeTruthy();
@@ -76,8 +70,8 @@ describe('SignupPage', () => {
 
 });
 
-@Component({selector: 'test-cmp'})
-@View({
+@Component({
+  selector: 'test-cmp',
   template: `<signup-page></signup-page>`,
   directives: [SignupPage],
 })

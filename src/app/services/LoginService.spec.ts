@@ -1,9 +1,4 @@
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  afterEach
-} from "angular2/testing";
+import {inject, beforeEachProviders, beforeEach} from "angular2/testing";
 import {Headers, ResponseOptions, Response, RequestMethod} from "angular2/http";
 import {MockBackend} from "angular2/http/testing";
 import {APP_TEST_PROVIDERS} from "app/providers";
@@ -18,7 +13,6 @@ describe('LoginService', () => {
   beforeEach(inject([LoginService, MockBackend], (..._) => {
     [loginService, backend] = _;
   }));
-  afterEach(() => localStorage.clear());
 
   describe('.login', () => {
     it('can login', (done) => {

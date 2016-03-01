@@ -1,4 +1,4 @@
-import {Component, View, OnInit} from "angular2/core";
+import {Component, OnInit} from "angular2/core";
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "angular2/common";
 import {ROUTER_DIRECTIVES} from "angular2/router";
 import {UserService, HttpErrorHandler} from "app/services";
@@ -8,8 +8,6 @@ import {Gravatar, Pager} from "app/components";
 
 @Component({
   selector: 'user-list-page',
-})
-@View({
   styles: [require('./list.scss')],
   template: require('./list.html'),
   directives: [

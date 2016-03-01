@@ -1,7 +1,7 @@
-import {Component, View, provide, DebugElement} from "angular2/core";
+import {Component, provide, DebugElement} from "angular2/core";
 import {By} from "angular2/platform/common_dom";
 import {DOM} from "angular2/src/platform/dom/dom_adapter";
-import {beforeEachProviders, beforeEach, expect} from "angular2/testing";
+import {beforeEachProviders, beforeEach} from "angular2/testing";
 import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
 import {Gravatar, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
@@ -40,8 +40,8 @@ describe('Gravatar', () => {
 
 });
 
-@Component({selector: 'test-cmp'})
-@View({
+@Component({
+  selector: 'test-cmp',
   template: `<gravatar email="test@test.com" alt="test-alt" size="1"></gravatar>`,
   directives: [Gravatar],
 })

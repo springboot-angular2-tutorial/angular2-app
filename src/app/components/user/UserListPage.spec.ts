@@ -1,10 +1,7 @@
-import {Component, View, provide, DebugElement} from "angular2/core";
+import {Component, provide, DebugElement} from "angular2/core";
 import {By} from "angular2/platform/common_dom";
 import {DOM} from "angular2/src/platform/dom/dom_adapter";
-import {
-  beforeEachProviders,
-  beforeEach,
-} from "angular2/testing";
+import {beforeEachProviders, beforeEach} from "angular2/testing";
 import {ResponseOptions, Response} from "angular2/http";
 import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
 import {App, UserListPage, Gravatar, Pager} from "app/components";
@@ -82,8 +79,8 @@ describe('UserListPage', () => {
 
 });
 
-@Component({selector: 'test-cmp'})
-@View({
+@Component({
+  selector: 'test-cmp',
   template: `<user-list-page></user-list-page>`,
   directives: [UserListPage],
 })

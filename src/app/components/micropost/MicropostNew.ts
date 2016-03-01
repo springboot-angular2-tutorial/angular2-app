@@ -1,4 +1,4 @@
-import {Component, View, EventEmitter} from "angular2/core";
+import {Component, EventEmitter} from "angular2/core";
 import {MicropostService, HttpErrorHandler} from "app/services";
 
 const toastr = require('toastr');
@@ -6,8 +6,6 @@ const toastr = require('toastr');
 @Component({
   selector: 'micropost-new',
   events: ['created'],
-})
-@View({
   styles: [require('./new.scss')],
   template: require('./new.html'),
 })

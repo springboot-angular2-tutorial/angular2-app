@@ -1,12 +1,10 @@
-import {Component, View} from "angular2/core";
+import {Component} from "angular2/core";
 import {CORE_DIRECTIVES} from "angular2/common";
 import {Router, ROUTER_DIRECTIVES, Location} from "angular2/router";
 import {LoginService} from "app/services";
 
 @Component({
   selector: 'app-header',
-})
-@View({
   template: require('./header.html'),
   directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES],
 })

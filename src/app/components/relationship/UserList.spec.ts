@@ -1,5 +1,5 @@
 import {Observable} from "rxjs/Observable";
-import {Component, View, provide, DebugElement} from "angular2/core";
+import {Component, provide, DebugElement} from "angular2/core";
 import {By} from "angular2/platform/common_dom";
 import {DOM} from "angular2/src/platform/dom/dom_adapter";
 import {beforeEachProviders, beforeEach} from "angular2/testing";
@@ -62,8 +62,8 @@ describe('relationship.UserList', () => {
 
 });
 
-@Component({selector: 'test-cmp'})
-@View({
+@Component({
+  selector: 'test-cmp',
   template: `<user-list [listProvider]="listProvider"></user-list>`,
   directives: [UserList],
 })

@@ -1,4 +1,4 @@
-import {Component, View, OnChanges} from "angular2/core";
+import {Component, OnChanges} from "angular2/core";
 import {CORE_DIRECTIVES} from "angular2/common";
 
 const md5Hex = require('md5-hex');
@@ -6,8 +6,6 @@ const md5Hex = require('md5-hex');
 @Component({
   selector: 'gravatar',
   properties: ['email', 'size', 'alt'],
-})
-@View({
   template: require('./gravatar.html'),
   directives: [CORE_DIRECTIVES],
 })

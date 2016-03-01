@@ -1,5 +1,5 @@
 import {Observable} from "rxjs/Observable";
-import {Component, View, OnInit} from "angular2/core";
+import {Component, OnInit} from "angular2/core";
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "angular2/common";
 import {ROUTER_DIRECTIVES} from "angular2/router";
 import {RelatedUser} from "app/interfaces";
@@ -9,8 +9,6 @@ import {Gravatar, Pager} from "app/components";
 @Component({
   selector: 'user-list',
   properties: ['listProvider'],
-})
-@View({
   styles: [require('./user-list.scss')],
   template: require('./user-list.html'),
   directives: [

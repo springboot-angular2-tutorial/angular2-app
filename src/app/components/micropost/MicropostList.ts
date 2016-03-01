@@ -1,4 +1,4 @@
-import {Component, View, OnInit} from "angular2/core";
+import {Component, OnInit} from "angular2/core";
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "angular2/common";
 import {
   UserMicropostService,
@@ -12,8 +12,6 @@ import {TimeAgoPipe} from "app/pipes";
 @Component({
   selector: 'micropost-list',
   properties: ['userId'],
-})
-@View({
   styles: [require('./list.scss')],
   template: require('./list.html'),
   directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],

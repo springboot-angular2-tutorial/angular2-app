@@ -1,12 +1,10 @@
-import {Component, View, EventEmitter} from "angular2/core";
+import {Component, EventEmitter} from "angular2/core";
 import {CORE_DIRECTIVES} from "angular2/common";
 
 @Component({
   selector: 'pager',
   properties: ['totalPages'],
   events: ['pageChanged'],
-})
-@View({
   template: require('./pager.html'),
   directives: [CORE_DIRECTIVES],
 })

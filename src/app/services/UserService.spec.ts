@@ -1,9 +1,4 @@
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  afterEach
-} from "angular2/testing";
+import {inject, beforeEachProviders, beforeEach} from "angular2/testing";
 import {
   ResponseOptions,
   Response,
@@ -60,7 +55,6 @@ describe('UserService', () => {
   beforeEach(inject([UserService, MockBackend], (..._) => {
     [userService, backend] = _;
   }));
-  afterEach(() => localStorage.clear());
 
   describe('.list', () => {
     it("list users", (done) => {

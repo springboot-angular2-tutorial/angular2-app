@@ -1,4 +1,4 @@
-import {Component, View, provide, DebugElement, Injector} from "angular2/core";
+import {Component, provide, DebugElement, Injector} from "angular2/core";
 import {By} from "angular2/platform/common_dom";
 import {DOM} from "angular2/src/platform/dom/dom_adapter";
 import {inject, beforeEachProviders, beforeEach} from "angular2/testing";
@@ -192,8 +192,8 @@ describe('Header', () => {
 
 });
 
-@Component({selector: 'test-cmp'})
-@View({
+@Component({
+  selector: 'test-cmp',
   template: `<app-header></app-header>`,
   directives: [Header],
 })

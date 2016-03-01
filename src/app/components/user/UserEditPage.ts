@@ -1,4 +1,4 @@
-import {Component, View} from "angular2/core";
+import {Component} from "angular2/core";
 import {
   CORE_DIRECTIVES,
   FORM_DIRECTIVES,
@@ -17,13 +17,11 @@ const toastr = require('toastr');
 
 @Component({
   selector: 'user-edit-page',
-})
-@View({
   template: require('./edit.html'),
   directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
 })
 @CanActivate((next:ComponentInstruction) => {
-  // work around supposed by https://github.com/angular/angular/issues/4112#issuecomment-153811572
+  // work around https://github.com/angular/angular/issues/4112#issuecomment-153811572
   const userService:UserService = appInjector().get(UserService);
   return userService.get('me')
     .do(user => next.params['user'] = user)

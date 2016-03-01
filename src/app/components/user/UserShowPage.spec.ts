@@ -1,4 +1,4 @@
-import {Component, View, provide, DebugElement} from "angular2/core";
+import {Component, provide, DebugElement} from "angular2/core";
 import {By} from "angular2/platform/common_dom";
 import {beforeEachProviders, beforeEach, inject} from "angular2/testing";
 import {RouteParams, ROUTER_PRIMARY_COMPONENT} from "angular2/router";
@@ -69,8 +69,8 @@ describe('UserShowPage', () => {
 
 });
 
-@Component({selector: 'test-cmp'})
-@View({
+@Component({
+  selector: 'test-cmp',
   template: `<user-show-page></user-show-page>`,
   directives: [UserShowPage],
 })

@@ -1,4 +1,4 @@
-import {Component, View} from "angular2/core";
+import {Component} from "angular2/core";
 import {
   CORE_DIRECTIVES,
   FORM_DIRECTIVES,
@@ -15,8 +15,6 @@ const toastr = require('toastr');
 
 @Component({
   selector: 'signup-page',
-})
-@View({
   styles: [require('./signup.scss')],
   template: require('./signup.html'),
   directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],

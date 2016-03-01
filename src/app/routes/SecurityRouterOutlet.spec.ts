@@ -1,4 +1,4 @@
-import {Component, View, provide} from "angular2/core";
+import {Component, provide} from "angular2/core";
 import {RouteConfig, ROUTER_PRIMARY_COMPONENT} from "angular2/router";
 import {beforeEachProviders, beforeEach} from "angular2/testing";
 import {SecurityRouterOutlet, PrivatePage, PublicPage} from "app/routes";
@@ -66,28 +66,34 @@ describe('SecurityRouterOutlet', () => {
 
 });
 
-@Component({selector: 'private-cmp'})
-@View({template: `private`})
+@Component({
+  selector: 'private-cmp',
+  template: `private`,
+})
 @PrivatePage()
 class PrivateCmp {
 }
 
-@Component({selector: 'public-cmp'})
-@View({template: `public`})
+@Component({
+  selector: 'public-cmp',
+  template: `public`,
+})
 @PublicPage()
 class PublicCmp {
 }
 
-@Component({selector: 'login-page'})
-@View({template: `login`})
+@Component({
+  selector: 'login-page',
+  template: `login`,
+})
 @PublicPage({
   whenSignedIn: (router) => router.navigate(['/PublicCmp'])
 })
 class LoginPage {
 }
 
-@Component({selector: 'test-cmp'})
-@View({
+@Component({
+  selector: 'test-cmp',
   template: `<router-outlet></router-outlet>`,
   directives: [SecurityRouterOutlet],
 })
