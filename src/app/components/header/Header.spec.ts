@@ -1,19 +1,15 @@
-import {Component, View, provide, DebugElement} from "angular2/core";
+import {Component, View, provide, DebugElement, Injector} from "angular2/core";
 import {By} from "angular2/platform/common_dom";
 import {DOM} from "angular2/src/platform/dom/dom_adapter";
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  expect,
-  describe,
-  it
-} from "angular2/testing";
+import {inject, beforeEachProviders, beforeEach} from "angular2/testing";
 import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
 import {Header, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext, signin} from "app/testing";
 import {LoginService} from "app/services";
+import {UserService} from "../../services/UserService";
+import {appInjector} from "../../app-injector";
+import {Observable} from "rxjs/Observable";
 
 describe('Header', () => {
 
@@ -99,15 +95,22 @@ describe('Header', () => {
       });
     });
 
-    // TODO https://github.com/angular/angular/issues/4112.
-    xit('shows a nav link to settings', (done) => {
-      const link = DOM.querySelector(cmpDebugElement.nativeElement, '#navbar li.settings>a');
-      expect(link).toBeTruthy();
-      link.click();
-      ctx.router.subscribe(() => {
-        ctx.fixture.detectChanges();
-        expect(ctx.location.path()).toEqual('/users/me/edit');
-        done();
+    describe('navigate to settings', () => {
+      beforeEach(inject([UserService], userService => {
+        appInjector(Injector.resolveAndCreate([
+          provide(UserService, {useValue: userService}),
+        ]));
+        spyOn(userService, 'get').and.returnValue(Observable.of({}));
+      }));
+      it('shows a nav link to settings', (done) => {
+        const link = DOM.querySelector(cmpDebugElement.nativeElement, '#navbar li.settings>a');
+        expect(link).toBeTruthy();
+        link.click();
+        ctx.router.subscribe(() => {
+          ctx.fixture.detectChanges();
+          expect(ctx.location.path()).toEqual('/users/me/edit');
+          done();
+        });
       });
     });
 
