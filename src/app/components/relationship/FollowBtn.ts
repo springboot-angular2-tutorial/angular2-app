@@ -1,11 +1,12 @@
-import {Component, View, OnChanges} from "angular2/core";
+import {Component, View, OnChanges, EventEmitter} from "angular2/core";
 import {CORE_DIRECTIVES} from "angular2/common";
 import {RelationshipService, HttpErrorHandler, UserService} from "app/services";
-import {User} from "../../interfaces";
+import {User} from "app/interfaces";
 
 @Component({
   selector: 'follow-btn',
   properties: ['followerId'],
+  events: ['updated'],
 })
 @View({
   template: require('./follow-btn.html'),
@@ -18,6 +19,8 @@ export class FollowBtn implements OnChanges {
 
   followerId:string;
   busy:boolean = false;
+
+  private updated:EventEmitter<any> = new EventEmitter();
 
   constructor(private relationshipService:RelationshipService,
               private userService:UserService,
@@ -37,6 +40,7 @@ export class FollowBtn implements OnChanges {
       .subscribe(() => {
         this.canShowFollowBtn = !this.canShowFollowBtn;
         this.canShowUnfollowBtn = !this.canShowUnfollowBtn;
+        this.updated.emit({});
       }, e => this.errorHandler.handle(e))
     ;
   }
@@ -48,6 +52,7 @@ export class FollowBtn implements OnChanges {
       .subscribe(() => {
         this.canShowFollowBtn = !this.canShowFollowBtn;
         this.canShowUnfollowBtn = !this.canShowUnfollowBtn;
+        this.updated.emit({});
       }, e => this.errorHandler.handle(e))
     ;
   }

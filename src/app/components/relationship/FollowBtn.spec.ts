@@ -1,4 +1,10 @@
-import {Component, View, provide, DebugElement} from "angular2/core";
+import {
+  Component,
+  View,
+  provide,
+  DebugElement,
+  EventEmitter
+} from "angular2/core";
 import {By} from "angular2/platform/common_dom";
 import {
   beforeEachProviders,
@@ -12,11 +18,15 @@ import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext} from "app/testing";
 import {RelationshipService} from "app/services";
 import {Response, ResponseOptions} from "angular2/http";
+import {ObservableWrapper} from "angular2/src/facade/async";
 
 describe('FollowBtn', () => {
 
   var ctx:TestContext;
+
   var cmpDebugElement:DebugElement;
+  var testCmpDebugElement:DebugElement;
+
   var relationshipService:RelationshipService;
 
   const notSignedInResponse = new Response(new ResponseOptions({
@@ -82,7 +92,8 @@ describe('FollowBtn', () => {
     ctx.init(TestCmp)
       .finally(done)
       .subscribe(() => {
-        cmpDebugElement = ctx.fixture.debugElement.query(By.directive(FollowBtn));
+        testCmpDebugElement = ctx.fixture.debugElement;
+        cmpDebugElement = testCmpDebugElement.query(By.directive(FollowBtn));
       });
   };
 
@@ -113,13 +124,15 @@ describe('FollowBtn', () => {
       expect(unfollowBtn.nativeElement).toHaveText('Unfollow');
     });
 
-    it('can unfollow the user', () => {
+    it('can unfollow the user', (done) => {
       const cmp:FollowBtn = cmpDebugElement.componentInstance;
+      const testCmp:TestCmp = testCmpDebugElement.componentInstance;
       const unfollowBtn = cmpDebugElement.query(By.css('.follow-btn'));
       unfollowBtn.nativeElement.click();
       expect(cmp.canShowFollowBtn).toBeTruthy();
       expect(cmp.canShowUnfollowBtn).toBeFalsy();
       expect(relationshipService.unfollow).toHaveBeenCalledWith('1');
+      ObservableWrapper.subscribe(testCmp.doneSomething, done);
     });
   });
 
@@ -132,13 +145,15 @@ describe('FollowBtn', () => {
       expect(followBtn.nativeElement).toHaveText('Follow');
     });
 
-    it('can follow the user', () => {
+    it('can follow the user', (done) => {
       const cmp:FollowBtn = cmpDebugElement.componentInstance;
+      const testCmp:TestCmp = testCmpDebugElement.componentInstance;
       const followBtn = cmpDebugElement.query(By.css('.follow-btn'));
       followBtn.nativeElement.click();
       expect(cmp.canShowFollowBtn).toBeFalsy();
       expect(cmp.canShowUnfollowBtn).toBeTruthy();
       expect(relationshipService.follow).toHaveBeenCalledWith('1');
+      ObservableWrapper.subscribe(testCmp.doneSomething, done);
     });
   });
 
@@ -146,8 +161,13 @@ describe('FollowBtn', () => {
 
 @Component({selector: 'test-cmp'})
 @View({
-  template: `<follow-btn followerId="1"></follow-btn>`,
+  template: `<follow-btn followerId="1" (updated)="doSomething()"></follow-btn>`,
   directives: [FollowBtn],
 })
 class TestCmp {
+  doneSomething:EventEmitter<any> = new EventEmitter();
+
+  doSomething() {
+    this.doneSomething.emit({});
+  }
 }

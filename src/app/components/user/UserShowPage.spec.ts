@@ -5,6 +5,7 @@ import {
   beforeEach,
   expect,
   it,
+  iit,
   inject
 } from "angular2/testing";
 import {RouteParams, ROUTER_PRIMARY_COMPONENT} from "angular2/router";
@@ -43,7 +44,7 @@ describe('UserShowPage', () => {
   beforeEach(createTestContext(_ => ctx = _));
   // required to show FollowBtn
   beforeEach(inject([UserService], userService => {
-    spyOn(userService, 'get').and.returnValue(Observable.empty())
+    spyOn(userService, 'get').and.returnValue(Observable.empty());
   }));
   beforeEach(done => {
     ctx.init(TestCmp)
@@ -64,6 +65,13 @@ describe('UserShowPage', () => {
     expect(micropostListDebugElement.componentInstance.userId).toEqual('1');
     expect(followBtnDebugElement).toBeTruthy();
     expect(followBtnDebugElement.componentInstance.followerId).toEqual('1');
+  });
+  
+  it('reload user stats when following status was updated', () => {
+    const userStats:UserStats = userStatsDebugElement.componentInstance;
+    spyOn(userStats, 'ngOnChanges');
+    followBtnDebugElement.triggerEventHandler('updated', null);
+    expect(userStats.ngOnChanges).toHaveBeenCalled();
   });
 
 });
