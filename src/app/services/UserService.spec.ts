@@ -2,10 +2,7 @@ import {
   inject,
   beforeEachProviders,
   beforeEach,
-  afterEach,
-  expect,
-  describe,
-  it
+  afterEach
 } from "angular2/testing";
 import {
   ResponseOptions,

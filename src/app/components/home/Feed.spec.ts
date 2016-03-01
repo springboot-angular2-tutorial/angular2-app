@@ -1,13 +1,7 @@
 import {Component, View, provide, DebugElement} from "angular2/core";
 import {By} from "angular2/platform/common_dom";
 import {DOM} from "angular2/src/platform/dom/dom_adapter";
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  expect,
-  it
-} from "angular2/testing";
+import {inject, beforeEachProviders, beforeEach} from "angular2/testing";
 import {ObservableWrapper} from "angular2/src/facade/async";
 import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
 import {ResponseOptions, Response} from "angular2/http";
@@ -90,11 +84,11 @@ describe('Feed', () => {
     expect(gravatarDebugElement.componentInstance.alt).toEqual('test user1');
 
     const userLink = DOM.querySelector(el, '.user>a');
-    expect(userLink).toHaveText('test user1');
+    expect(userLink.innerHTML).toEqual("test user1");
     expect(userLink.getAttribute('href')).toEqual('/users/1');
 
     const content = DOM.querySelector(el, '.content');
-    expect(content).toHaveText('content1');
+    expect(content.innerHTML).toEqual('content1');
 
     const timestamp = DOM.querySelector(el, '.timestamp');
     expect(timestamp.innerText).toMatch(/1 day ago/);

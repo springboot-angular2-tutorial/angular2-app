@@ -1,13 +1,7 @@
 import {Component, View, provide, DebugElement} from "angular2/core";
 import {By} from "angular2/platform/common_dom";
 import {DOM} from "angular2/src/platform/dom/dom_adapter";
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  expect,
-  it
-} from "angular2/testing";
+import {inject, beforeEachProviders, beforeEach} from "angular2/testing";
 import {ResponseOptions, Response} from "angular2/http";
 import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
 import {MicropostList, App} from "app/components";
@@ -84,7 +78,7 @@ describe('MicropostList', () => {
     expect(DOM.querySelectorAll(el, 'li>.content').length).toEqual(2);
 
     const content = DOM.querySelector(el, '.content');
-    expect(content).toHaveText('content1');
+    expect(content.innerHTML).toEqual('content1');
 
     const timestamp = DOM.querySelector(el, '.timestamp');
     expect(timestamp.innerText).toMatch(/1 day ago/);

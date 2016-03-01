@@ -1,17 +1,8 @@
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  expect,
-  describe,
-  it
-} from "angular2/testing";
+import {inject, beforeEachProviders, beforeEach} from "angular2/testing";
 import {Response, BaseResponseOptions, RequestMethod} from "angular2/http";
 import {MockBackend} from "angular2/http/testing";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {MicropostService} from "app/services";
-import {Micropost} from "app/interfaces";
-import {LoginService} from "./LoginService";
 
 describe('MicropostService', () => {
 

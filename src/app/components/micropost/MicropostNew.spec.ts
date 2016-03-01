@@ -1,13 +1,6 @@
 import {Component, View, provide, DebugElement} from "angular2/core";
 import {By} from "angular2/platform/common_dom";
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  expect,
-  describe,
-  it
-} from "angular2/testing";
+import {inject, beforeEachProviders, beforeEach} from "angular2/testing";
 import {Response, BaseResponseOptions} from "angular2/http";
 import {ObservableWrapper} from "angular2/src/facade/async";
 import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";

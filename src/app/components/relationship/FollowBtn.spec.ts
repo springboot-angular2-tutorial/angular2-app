@@ -6,12 +6,7 @@ import {
   EventEmitter
 } from "angular2/core";
 import {By} from "angular2/platform/common_dom";
-import {
-  beforeEachProviders,
-  beforeEach,
-  expect,
-  inject
-} from "angular2/testing";
+import {beforeEachProviders, beforeEach, inject} from "angular2/testing";
 import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
 import {FollowBtn, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
@@ -121,7 +116,7 @@ describe('FollowBtn', () => {
       expect(cmpDebugElement).toBeTruthy();
       const unfollowBtn = cmpDebugElement.query(By.css('.follow-btn'));
       expect(unfollowBtn).toBeTruthy();
-      expect(unfollowBtn.nativeElement).toHaveText('Unfollow');
+      expect(unfollowBtn.nativeElement.innerText).toEqual('Unfollow');
     });
 
     it('can unfollow the user', (done) => {
@@ -142,7 +137,7 @@ describe('FollowBtn', () => {
       expect(cmpDebugElement).toBeTruthy();
       const followBtn = cmpDebugElement.query(By.css('.follow-btn'));
       expect(followBtn).toBeTruthy();
-      expect(followBtn.nativeElement).toHaveText('Follow');
+      expect(followBtn.nativeElement.innerText).toEqual('Follow');
     });
 
     it('can follow the user', (done) => {

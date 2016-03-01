@@ -1,12 +1,6 @@
 import {Component, View, provide, DebugElement} from "angular2/core";
 import {By} from "angular2/platform/common_dom";
-import {
-  beforeEachProviders,
-  beforeEach,
-  expect,
-  describe,
-  it
-} from "angular2/testing";
+import {beforeEachProviders, beforeEach} from "angular2/testing";
 import {RouteParams, ROUTER_PRIMARY_COMPONENT} from "angular2/router";
 import {FollowerListPage, UserStats, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";

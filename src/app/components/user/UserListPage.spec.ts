@@ -4,9 +4,6 @@ import {DOM} from "angular2/src/platform/dom/dom_adapter";
 import {
   beforeEachProviders,
   beforeEach,
-  expect,
-  describe,
-  it
 } from "angular2/testing";
 import {ResponseOptions, Response} from "angular2/http";
 import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
@@ -61,8 +58,8 @@ describe('UserListPage', () => {
     expect(page.totalPages).toEqual(1);
 
     const el = cmpDebugElement.nativeElement;
-    expect(DOM.querySelectorAll(el, 'li>a')[0]).toHaveText('test1');
-    expect(DOM.querySelectorAll(el, 'li>a')[1]).toHaveText('test2');
+    expect(DOM.querySelectorAll(el, 'li>a')[0].innerText).toEqual('test1');
+    expect(DOM.querySelectorAll(el, 'li>a')[1].innerText).toEqual('test2');
 
     const gravatarDebugElement = cmpDebugElement.query(By.directive(Gravatar));
     expect(gravatarDebugElement).toBeTruthy();

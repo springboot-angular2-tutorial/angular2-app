@@ -1,11 +1,4 @@
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  expect,
-  describe,
-  it
-} from "angular2/testing";
+import {inject, beforeEachProviders, beforeEach} from "angular2/testing";
 import {ResponseOptions, Response, RequestMethod} from "angular2/http";
 import {MockBackend} from "angular2/http/testing";
 import {APP_TEST_PROVIDERS} from "app/providers";

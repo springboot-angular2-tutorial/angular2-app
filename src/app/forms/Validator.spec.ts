@@ -1,5 +1,4 @@
 import {Control} from "angular2/common";
-import {expect, describe, it} from "angular2/testing";
 import {Validators} from "app/forms";
 
 describe('Validator', () => {

@@ -5,10 +5,7 @@ import {
   inject,
   beforeEachProviders,
   beforeEach,
-  afterEach,
-  expect,
-  describe,
-  it
+  afterEach
 } from "angular2/testing";
 import {BaseResponseOptions, Response} from "angular2/http";
 import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";

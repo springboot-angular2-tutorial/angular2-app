@@ -1,13 +1,6 @@
 import {Component, View, provide, DebugElement} from "angular2/core";
 import {By} from "angular2/platform/common_dom";
-import {
-  beforeEachProviders,
-  beforeEach,
-  expect,
-  it,
-  iit,
-  inject
-} from "angular2/testing";
+import {beforeEachProviders, beforeEach, inject} from "angular2/testing";
 import {RouteParams, ROUTER_PRIMARY_COMPONENT} from "angular2/router";
 import {
   App,
@@ -66,7 +59,7 @@ describe('UserShowPage', () => {
     expect(followBtnDebugElement).toBeTruthy();
     expect(followBtnDebugElement.componentInstance.followerId).toEqual('1');
   });
-  
+
   it('reload user stats when following status was updated', () => {
     const userStats:UserStats = userStatsDebugElement.componentInstance;
     spyOn(userStats, 'ngOnChanges');

@@ -11,8 +11,6 @@ import {
   beforeEachProviders,
   beforeEach,
   expect as _expect,
-  describe,
-  it,
   NgMatchers
 } from "angular2/testing";
 import {MockBackend} from "angular2/http/testing";

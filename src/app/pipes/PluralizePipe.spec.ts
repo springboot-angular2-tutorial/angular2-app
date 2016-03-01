@@ -1,4 +1,4 @@
-import {beforeEach, expect, describe, it} from "angular2/testing";
+import {beforeEach} from "angular2/testing";
 import {PluralizePipe} from "app/pipes";
 
 describe('PluralizePipe', () => {

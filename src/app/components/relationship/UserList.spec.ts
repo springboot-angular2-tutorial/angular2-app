@@ -2,13 +2,7 @@ import {Observable} from "rxjs/Observable";
 import {Component, View, provide, DebugElement} from "angular2/core";
 import {By} from "angular2/platform/common_dom";
 import {DOM} from "angular2/src/platform/dom/dom_adapter";
-import {
-  beforeEachProviders,
-  beforeEach,
-  expect,
-  describe,
-  it
-} from "angular2/testing";
+import {beforeEachProviders, beforeEach} from "angular2/testing";
 import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
 import {Gravatar, App} from "app/components";
 import {UserList} from "./UserList";
@@ -53,7 +47,7 @@ describe('relationship.UserList', () => {
     expect(gravatarDebugElement.componentInstance.email).toEqual('test1@test.com');
 
     const userLink:HTMLElement = cmpDebugElement.query(By.css('.users>li>a')).nativeElement;
-    expect(userLink).toHaveText('test1');
+    expect(userLink.innerText).toEqual('test1');
     expect(userLink.getAttribute('href')).toEqual('/users/1');
   });
 
