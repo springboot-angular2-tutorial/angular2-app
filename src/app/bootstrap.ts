@@ -8,6 +8,10 @@ import {APP_PROVIDERS} from "app/providers";
 import {ComponentRef, enableProdMode} from "angular2/core";
 import {appInjector} from "./app-injector";
 
+require("expose?$!expose?jQuery!jquery");
+require('bootstrap-loader');
+require("!style!css!toastr/build/toastr.css");
+
 const ENV_PROVIDERS = [];
 
 if ('production' === process.env.ENV) {

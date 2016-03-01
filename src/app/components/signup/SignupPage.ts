@@ -38,7 +38,7 @@ export class SignupPage {
 
   onSubmit(params) {
     this.userService.create(params)
-      .flatMap(() => {
+      .mergeMap(() => {
         return this.loginService.login(params.email, params.password);
       })
       .subscribe(() => {

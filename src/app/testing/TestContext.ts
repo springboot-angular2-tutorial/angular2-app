@@ -1,4 +1,4 @@
-import * as Rx from "rxjs/Rx";
+import {Observable} from "rxjs/Observable";
 import {MockBackend} from "angular2/http/testing";
 import {Router, Location} from "angular2/router";
 import {inject, ComponentFixture, TestComponentBuilder} from "angular2/testing";
@@ -37,13 +37,13 @@ export class TestContext {
     this._backend = backend;
   }
 
-  init(rootComponent:Function):Rx.Observable<void> {
+  init(rootComponent:Function):Observable<void> {
     const promise = this._tcb.createAsync(rootComponent)
       .then(fixture => {
         this._fixture = fixture;
         fixture.detectChanges();
       });
-    return Rx.Observable.fromPromise(promise);
+    return Observable.fromPromise(promise);
   }
 
   get router():Router {
