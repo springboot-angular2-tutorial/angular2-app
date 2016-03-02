@@ -4,11 +4,11 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['jasmine'],
     files: [
-      {pattern: 'spec.bundle.js', watched: false}
+      {pattern: 'spec-bundle.js', watched: false}
     ],
     exclude: [],
     preprocessors: {
-      'spec.bundle.js': ['webpack', 'sourcemap']
+      'spec-bundle.js': ['webpack', 'sourcemap']
     },
     webpack: testWebpackConfig,
     webpackServer: {
