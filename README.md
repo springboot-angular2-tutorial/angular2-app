@@ -2,7 +2,7 @@
 
 This repository is an example application for angular2 tutorial.
 
-[Demo](http://micropost.hana053.com/)
+[Demo](https://micropost.hana053.com/)
 
 ## Getting Started
 
