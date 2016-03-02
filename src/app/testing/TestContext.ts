@@ -7,12 +7,7 @@ const tokens = [TestComponentBuilder, Router, Location, MockBackend];
 
 export function createTestContext(fn:Function) {
   return inject(tokens, (tcb, router, location, backend) => {
-    const ctx = new TestContext({
-      tcb: tcb,
-      router: router,
-      location: location,
-      backend: backend,
-    });
+    const ctx = new TestContext({tcb, router, location, backend});
     fn(ctx);
   });
 }

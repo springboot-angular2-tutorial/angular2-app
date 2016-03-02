@@ -18,7 +18,7 @@ module.exports = {
 
   entry: {
     'polyfills': './src/polyfills.ts',
-    'app': './src/app/bootstrap'
+    'main': './src/main.ts'
   },
 
   output: {
