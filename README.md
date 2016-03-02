@@ -2,9 +2,7 @@
 
 This repository is an example application for angular2 tutorial.
 
-[![Build Status][travis-image]][travis-url]
-
-You can try out [Demo page](http://micropost.hana053.com/).
+[Demo](http://micropost.hana053.com/) [![Build Status][travis-image]][travis-url]
 
 ## Getting Started
 
@@ -34,6 +32,11 @@ npm test
 ## Tutorial
 
 Under construction...
+
+## Related Projects
+
+* [Spring Boot app](https://github.com/springboot-angular2-tutorial/boot-app).
+* :new: [Android app](https://github.com/springboot-angular2-tutorial/android-app) is also available now.
 
 ## Credits
 
