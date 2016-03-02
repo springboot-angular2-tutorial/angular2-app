@@ -17,7 +17,7 @@ module.exports = {
   debug: true,
 
   entry: {
-    'vendor': './src/vendor.ts',
+    'polyfills': './src/polyfills.ts',
     'app': './src/app/bootstrap'
   },
 
@@ -85,8 +85,8 @@ module.exports = {
   plugins: [
     new OccurenceOrderPlugin(true),
     new CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor.bundle.js',
+      name: 'polyfills',
+      filename: 'polyfills.bundle.js',
       minChunks: Infinity
     }),
     new DefinePlugin({

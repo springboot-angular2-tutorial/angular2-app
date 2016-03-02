@@ -1,4 +1,4 @@
-require('src/vendor');
+require('src/polyfills');
 require('rxjs');
 require('zone.js/dist/jasmine-patch.js');
 
