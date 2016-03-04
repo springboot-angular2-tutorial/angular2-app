@@ -13,6 +13,8 @@ import {User} from "app/interfaces";
 import {PrivatePage} from "app/routes";
 import {appInjector} from "app/app-injector";
 
+const isEmpty = require("lodash/isEmpty");
+const omitBy = require("lodash/omitBy");
 const toastr = require('toastr');
 
 @Component({
@@ -49,7 +51,8 @@ export class UserEditPage {
     this.passwordConfirmation.updateValueAndValidity({});
     this.passwordConfirmation.markAsTouched();
     if (!this.myForm.valid) return;
-    this.userService.updateMe(this.withoutBlank(params))
+
+    this.userService.updateMe(omitBy(params, isEmpty))
       .subscribe(() => {
         toastr.success('Successfully updated.');
       }, this.handleError);
@@ -85,15 +88,6 @@ export class UserEditPage {
           toastr.error('This email is already taken.');
         }
     }
-  }
-
-  private withoutBlank(params:any):any {
-    return Object.keys(params)
-      .filter(k => params[k] !== "")
-      .reduce((prev, current) => {
-        prev[current] = params[current];
-        return prev;
-      }, {});
   }
 
 }
