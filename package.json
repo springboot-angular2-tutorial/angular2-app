@@ -61,7 +61,6 @@
     "node-sass": "^3.4.2",
     "phantomjs-prebuilt": "^2.1.4",
     "raw-loader": "^0.5.1",
-    "resolve-url-loader": "^1.4.3",
     "rimraf": "2.5.2",
     "sass-loader": "^3.1.2",
     "source-map-loader": "^0.1.5",
