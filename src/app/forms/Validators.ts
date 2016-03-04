@@ -1,8 +1,6 @@
 import {Control} from "angular2/common";
 
-function isBlank(val:string) {
-  return val === '';
-}
+export const EMAIL_PATTERN = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
 
 export class Validators {
 
@@ -10,14 +8,6 @@ export class Validators {
     return (c2) => {
       if (c1.value !== c2.value) return {matched: false};
     };
-  }
-
-  static email(c:Control) {
-    if (isBlank(c.value)) return;
-    const emailPattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
-    if (!new RegExp(emailPattern).test(c.value)) {
-      return {email: false};
-    }
   }
 
 }

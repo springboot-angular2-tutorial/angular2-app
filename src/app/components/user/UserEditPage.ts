@@ -7,11 +7,11 @@ import {
   Validators
 } from "angular2/common";
 import {RouteParams, CanActivate, ComponentInstruction} from "angular2/router";
-import {Validators as AppValidators} from "app/forms";
+import {Validators as AppValidators, EMAIL_PATTERN} from "app/forms";
 import {UserService} from "app/services";
 import {User} from "app/interfaces";
 import {PrivatePage} from "app/routes";
-import {appInjector} from "../../app-injector";
+import {appInjector} from "app/app-injector";
 
 const toastr = require('toastr');
 
@@ -62,7 +62,7 @@ export class UserEditPage {
     ]));
     this.email = new Control(this.user.email, Validators.compose([
       Validators.required,
-      AppValidators.email
+      Validators.pattern(EMAIL_PATTERN),
     ]));
     this.password = new Control('', Validators.compose([
       Validators.minLength(8),

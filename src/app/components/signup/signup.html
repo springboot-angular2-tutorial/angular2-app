@@ -30,7 +30,7 @@
       [ngFormControl]="email"/>
       <span *ngIf="email.hasError('required') && email.touched"
             class="help-block">Email is required</span>
-      <span *ngIf="email.hasError('email') && email.touched"
+      <span *ngIf="email.hasError('pattern') && email.touched"
             class="help-block">Invalid format</span>
   </div>
 
@@ -60,8 +60,9 @@
       id="passwordConfirmationInput"
       placeholder="Confirm Password"
       [ngFormControl]="passwordConfirmation"/>
-      <span *ngIf="passwordConfirmation.hasError('required') && passwordConfirmation.touched"
-            class="help-block">Password confirmation is required</span>
+      <span
+        *ngIf="passwordConfirmation.hasError('required') && passwordConfirmation.touched"
+        class="help-block">Password confirmation is required</span>
       <span
         *ngIf="passwordConfirmation.hasError('matched') && passwordConfirmation.touched"
         class="help-block">Doesn't match</span>

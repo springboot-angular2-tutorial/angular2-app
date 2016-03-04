@@ -7,7 +7,7 @@ import {
   Validators
 } from "angular2/common";
 import {Router} from "angular2/router";
-import {Validators as AppValidators} from "app/forms";
+import {Validators as AppValidators, EMAIL_PATTERN} from "app/forms";
 import {UserService, LoginService} from "app/services";
 import {PublicPage} from "app/routes";
 
@@ -54,7 +54,7 @@ export class SignupPage {
     ]));
     this.email = new Control('', Validators.compose([
       Validators.required,
-      AppValidators.email
+      Validators.pattern(EMAIL_PATTERN),
     ]));
     this.password = new Control('', Validators.compose([
       Validators.required,

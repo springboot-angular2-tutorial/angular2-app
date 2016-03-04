@@ -12,13 +12,4 @@ describe('Validator', () => {
     });
   }); // .match
 
-  describe('.email', () => {
-    it('validates email', () => {
-      const validEmail = new Control('test@test.com');
-      const invalidEmail = new Control('test');
-      expect(Validators.email(validEmail)).toBeUndefined();
-      expect(Validators.email(invalidEmail)).toEqual({email: false});
-    });
-  }); // .email
-
 });
