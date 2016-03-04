@@ -1,5 +1,4 @@
-var path = require('path');
-var zlib = require('zlib');
+var helpers = require('./helpers');
 
 var webpack = require('webpack');
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
@@ -12,9 +11,9 @@ var CompressionPlugin = require('compression-webpack-plugin');
 
 var ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 
-module.exports = {
-  devtool: 'source-map',
-  debug: true,
+module.exports = helpers.defaults({
+  debug: false,
+  cache: false,
 
   entry: {
     'polyfills': './src/polyfills.ts',
@@ -22,19 +21,11 @@ module.exports = {
   },
 
   output: {
-    path: root('dist'),
-    filename: '[name].bundle.js',
-    sourceMapFilename: '[name].map',
-    chunkFilename: '[id].chunk.js'
+    path: helpers.root('dist')
   },
 
   resolve: {
-    root: __dirname,
-    cache: false,
-    extensions: ['', '.ts', '.js', '.json'],
-    alias: {
-      'app': 'src/app'
-    }
+    cache: false
   },
 
   module: {
@@ -43,26 +34,21 @@ module.exports = {
         test: /\.js$/,
         loader: "source-map-loader",
         exclude: [
-          root('node_modules/rxjs'),
-          root('node_modules/bootstrap-webpack/bootstrap.config.js')
+          helpers.root('node_modules/rxjs')
         ]
       }
     ],
     loaders: [
-      {test: /\.json$/, loader: 'json'},
       {test: /\.css$/, loader: 'raw'},
-      {
-        test: /\.scss$/,
-        loaders: ["raw", "sass"]
-      },
+      {test: /\.scss$/, loaders: ["raw", "sass"]},
       {test: /\.html$/, loader: 'raw'},
       {
         test: /\.ts$/,
         loader: 'ts',
         query: {
-          'ignoreDiagnostics': [
-            2300 // 2300 -> Duplicate identifier
-          ]
+          'compilerOptions': {
+            'removeComments': true
+          }
         },
         exclude: [/\.spec\.ts$/]
       },
@@ -95,31 +81,18 @@ module.exports = {
         'NODE_ENV': JSON.stringify(ENV)
       }
     }),
-    new ProvidePlugin({
-      'Reflect': 'es7-reflect-metadata/dist/browser'
-    }),
     new DedupePlugin(),
     new UglifyJsPlugin({
       beautify: false,
       mangle: false,
-      compress : { screw_ie8 : true},
+      compress: {screw_ie8: true},
       comments: false
     }),
     new CompressionPlugin({
-      algorithm: gzipMaxLevel,
+      algorithm: helpers.gzipMaxLevel,
       regExp: /\.css$|\.html$|\.js$|\.map$/,
       threshold: 2 * 1024
     })
   ]
 
-};
-
-function root(args) {
-  args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [__dirname].concat(args));
-}
-
-function gzipMaxLevel(buffer, callback) {
-  return zlib['gzip'](buffer, {level: 9}, callback)
-}
-
+});

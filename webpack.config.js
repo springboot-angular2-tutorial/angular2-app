@@ -1,5 +1,5 @@
-var path = require('path');
 var webpack = require('webpack');
+var helpers = require('./helpers');
 
 var ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
@@ -8,37 +8,16 @@ var metadata = {
   port: 3001
 };
 
-module.exports = {
-  devtool: 'source-map',
-  debug: true,
-
+module.exports = helpers.defaults({
   entry: {
     'polyfills': './src/polyfills.ts',
     'main': './src/main.ts'
   },
 
   output: {
-    path: root('dist'),
-    filename: '[name].bundle.js',
-    sourceMapFilename: '[name].map',
-    chunkFilename: '[id].chunk.js',
+    path: helpers.root('dist'),
     // required for hot module replacement
     publicPath: 'http://' + metadata.host + ':' + metadata.port + '/'
-  },
-
-  devServer: {
-    port: metadata.port,
-    host: metadata.host,
-    historyApiFallback: true,
-    watchOptions: {aggregateTimeout: 300, poll: 1000}
-  },
-
-  resolve: {
-    root: __dirname,
-    extensions: ['', '.ts', '.js', '.json'],
-    alias: {
-      'app': 'src/app'
-    }
   },
 
   module: {
@@ -47,35 +26,22 @@ module.exports = {
         test: /\.ts$/,
         loader: 'tslint-loader',
         exclude: [
-          root('node_modules')
+          helpers.root('node_modules')
         ]
       },
       {
         test: /\.js$/,
         loader: "source-map-loader",
         exclude: [
-          root('node_modules/rxjs')
+          helpers.root('node_modules/rxjs')
         ]
       }
     ],
     loaders: [
-      {test: /\.json$/, loader: 'json'},
       {test: /\.css$/, loader: 'raw'},
-      {
-        test: /\.scss$/,
-        loaders: ["raw", "sass"]
-      },
+      {test: /\.scss$/, loaders: ["raw", "sass"]},
       {test: /\.html$/, loader: 'raw'},
-      {
-        test: /\.ts$/,
-        loader: 'ts',
-        query: {
-          'ignoreDiagnostics': [
-            2300 // 2300 -> Duplicate identifier
-          ]
-        },
-        exclude: [/\.spec\.ts$/]
-      },
+      {test: /\.ts$/, loader: 'ts', exclude: [/\.spec\.ts$/]},
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url?limit=10000&mimetype=application/font-woff'
@@ -107,24 +73,8 @@ module.exports = {
     })
   ],
 
-  tslint: {
-    emitErrors: false,
-    failOnHint: false,
-    resourcePath: 'src'
-  },
-
-  node: {
-    global: 'window',
-    progress: false,
-    crypto: 'empty',
-    module: false,
-    clearImmediate: false,
-    setImmediate: false
+  devServer: {
+    port: metadata.port,
+    host: metadata.host
   }
-
-};
-
-function root(args) {
-  args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [__dirname].concat(args));
-}
+});

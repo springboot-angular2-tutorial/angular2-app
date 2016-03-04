@@ -1,22 +1,10 @@
-var path = require('path');
+var helpers = require('./helpers');
 
-var ProvidePlugin = require('webpack/lib/ProvidePlugin');
-var DefinePlugin  = require('webpack/lib/DefinePlugin');
-
+var DefinePlugin = require('webpack/lib/DefinePlugin');
 var ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 
-module.exports = {
+module.exports = helpers.defaults({
   devtool: 'inline-source-map',
-  debug: false,
-
-  resolve: {
-    root: __dirname,
-    cache: false,
-    extensions: ['', '.ts', '.js', '.json'],
-    alias: {
-      'app': 'src/app'
-    }
-  },
 
   module: {
     preLoaders: [
@@ -24,33 +12,28 @@ module.exports = {
         test: /\.ts$/,
         loader: 'tslint-loader',
         exclude: [
-          root('node_modules')
+          helpers.root('node_modules')
         ]
       },
       {
         test: /\.js$/,
         loader: "source-map-loader",
         exclude: [
-          root('node_modules/rxjs'),
-          root('node_modules/bootstrap-webpack/bootstrap.config.js')
+          helpers.root('node_modules/rxjs')
         ]
       }
     ],
     loaders: [
-      {test: /\.json$/, loader: 'json'},
       {test: /\.css$/, loader: 'raw'},
-      {
-        test: /\.scss$/,
-        loaders: ["raw", "sass"]
-      },
+      {test: /\.scss$/, loaders: ["raw", "sass"]},
       {test: /\.html$/, loader: 'raw'},
       {
         test: /\.ts$/,
         loader: 'ts',
         query: {
-          'ignoreDiagnostics': [
-            2300 // 2300 -> Duplicate identifier
-          ]
+          'compilerOptions': {
+            'removeComments': true
+          }
         }
       },
       {
@@ -66,14 +49,8 @@ module.exports = {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url?limit=10000&mimetype=image/svg+xml'
       }
-    ],
-    noParse: [
-      root('zone.js/dist'),
-      root('angular2/bundles')
     ]
   },
-
-  stats: { colors: true, reasons: true },
 
   plugins: [
     new DefinePlugin({
@@ -81,24 +58,6 @@ module.exports = {
         'ENV': JSON.stringify(ENV),
         'NODE_ENV': JSON.stringify(ENV)
       }
-    }),
-    new ProvidePlugin({
-      'Reflect': 'es7-reflect-metadata/dist/browser'
     })
-  ],
-
-  node: {
-    global: 'window',
-    progress: false,
-    crypto: 'empty',
-    module: false,
-    clearImmediate: false,
-    setImmediate: false
-  }
-
-};
-
-function root(args) {
-  args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [__dirname].concat(args));
-}
+  ]
+});
