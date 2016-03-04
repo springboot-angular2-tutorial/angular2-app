@@ -34,7 +34,8 @@ module.exports = helpers.defaults({
         test: /\.js$/,
         loader: "source-map-loader",
         exclude: [
-          helpers.root('node_modules/rxjs')
+          helpers.root('node_modules/rxjs'),
+          helpers.root('node_modules/bootstrap-webpack/bootstrap.config.js')
         ]
       }
     ],
