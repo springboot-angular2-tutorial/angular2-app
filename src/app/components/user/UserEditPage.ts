@@ -45,18 +45,11 @@ export class UserEditPage {
     this.initForm();
   }
 
-  onSubmit(value) {
+  onSubmit(params) {
     this.passwordConfirmation.updateValueAndValidity({});
     this.passwordConfirmation.markAsTouched();
     if (!this.myForm.valid) return;
-
-    const params = Object.keys(value)
-      .filter(k => value[k] !== "")
-      .reduce((prev, current) => {
-        prev[current] = value[current];
-        return prev;
-      }, {});
-    this.userService.updateMe(params)
+    this.userService.updateMe(this.withoutBlank(params))
       .subscribe(() => {
         toastr.success('Successfully updated.');
       }, this.handleError);
@@ -92,6 +85,15 @@ export class UserEditPage {
           toastr.error('This email is already taken.');
         }
     }
+  }
+
+  private withoutBlank(params:any):any {
+    return Object.keys(params)
+      .filter(k => params[k] !== "")
+      .reduce((prev, current) => {
+        prev[current] = params[current];
+        return prev;
+      }, {});
   }
 
 }
