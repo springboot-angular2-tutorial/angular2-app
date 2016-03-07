@@ -84,7 +84,10 @@ module.exports = helpers.defaults({
     new DedupePlugin(),
     new UglifyJsPlugin({
       beautify: false,
-      mangle: false,
+      mangle: {
+        screw_ie8 : true,
+        except: ['RouterLink'] // needed for uglify RouterLink problem
+      },
       compress: {screw_ie8: true},
       comments: false
     }),
