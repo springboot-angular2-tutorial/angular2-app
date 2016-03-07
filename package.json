@@ -9,7 +9,7 @@
     "clean-start": "npm run clean && npm start",
     "watch": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
     "build": "webpack --progress --profile --colors --display-error-details --display-cached",
-    "build:prod": "webpack --config webpack.prod.config.js --progress --profile --colors --display-error-details --display-cached --bail",
+    "build:prod": "webpack --config webpack.prod.config.js --progress --profile --colors --display-error-details --display-cached",
     "server": "webpack-dev-server --hot --inline --progress --profile --colors --watch --display-error-details --display-cached  --content-base src/",
     "test": "karma start",
     "docs": "typedoc  --options typedoc.json  src/**/*.ts",
