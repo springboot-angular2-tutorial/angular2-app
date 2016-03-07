@@ -7,7 +7,7 @@ cache:
 node_js:
 - '5.0.0'
 
-pre-deploy: npm run build:prod
+before_deploy: npm run build:prod
 deploy:
   provider: s3
   access_key_id: $AWS_ACCESS_KEY_ID
