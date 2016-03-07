@@ -8,6 +8,7 @@ var DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 var UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 var CompressionPlugin = require('compression-webpack-plugin');
+var ManifestPlugin = require('webpack-manifest-plugin');
 
 var ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 
@@ -21,7 +22,10 @@ module.exports = helpers.defaults({
   },
 
   output: {
-    path: helpers.root('dist')
+    path: helpers.root('dist'),
+    filename: '[name].[chunkhash].js',
+    sourceMapFilename: '[name].[chunkhash].map',
+    chunkFilename: '[id].[chunkhash].chunk.js'
   },
 
   resolve: {
@@ -72,9 +76,10 @@ module.exports = helpers.defaults({
     new OccurenceOrderPlugin(true),
     new CommonsChunkPlugin({
       name: 'polyfills',
-      filename: 'polyfills.bundle.js',
+      filename: 'polyfills.[chunkhash].js',
       minChunks: Infinity
     }),
+    new ManifestPlugin(),
     new DefinePlugin({
       'process.env': {
         'ENV': JSON.stringify(ENV),

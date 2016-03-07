@@ -62,7 +62,7 @@ module.exports = helpers.defaults({
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'polyfills',
-      filename: 'polyfills.bundle.js',
+      filename: 'polyfills.js',
       minChunks: Infinity
     }),
     new webpack.DefinePlugin({

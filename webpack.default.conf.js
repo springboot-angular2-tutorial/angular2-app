@@ -12,7 +12,7 @@ module.exports = {
   },
   debug: true,
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
   },
