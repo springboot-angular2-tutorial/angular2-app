@@ -29,12 +29,20 @@ module.exports = helpers.defaults({
       {test: /\.html$/, loader: 'raw'},
       {
         test: /\.ts$/,
-        loader: 'ts',
+        loader: 'ts-loader',
         query: {
           'compilerOptions': {
             'removeComments': true
-          }
-        }
+          },
+          'ignoreDiagnostics': [
+            2300, // Duplicate identifier
+            2374, // Duplicate string index signature
+            2375 // Duplicate number index signature
+          ]
+        },
+        exclude: [
+          helpers.root('node_modules')
+        ]
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,

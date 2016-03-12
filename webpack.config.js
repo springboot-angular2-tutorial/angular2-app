@@ -41,7 +41,21 @@ module.exports = helpers.defaults({
       {test: /\.css$/, loader: 'raw'},
       {test: /\.scss$/, loaders: ["raw", "sass"]},
       {test: /\.html$/, loader: 'raw'},
-      {test: /\.ts$/, loader: 'ts', exclude: [/\.spec\.ts$/]},
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        query: {
+          'ignoreDiagnostics': [
+            2300, // Duplicate identifier
+            2374, // Duplicate string index signature
+            2375 // Duplicate number index signature
+          ]
+        },
+        exclude: [
+          /\.spec\.ts$/,
+          helpers.root('node_modules')
+        ]
+      },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url?limit=10000&mimetype=application/font-woff'
