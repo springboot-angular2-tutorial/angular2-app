@@ -7,7 +7,6 @@ var OccurenceOrderPlugin = require('webpack/lib/optimize/OccurenceOrderPlugin');
 var DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 var UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-var CompressionPlugin = require('compression-webpack-plugin');
 var ManifestPlugin = require('webpack-manifest-plugin');
 
 var ENV = process.env.NODE_ENV = process.env.ENV = 'production';
@@ -100,11 +99,6 @@ module.exports = helpers.defaults({
       mangle: false,
       compress: {screw_ie8: true},
       comments: false
-    }),
-    new CompressionPlugin({
-      algorithm: helpers.gzipMaxLevel,
-      regExp: /\.css$|\.html$|\.js$|\.map$/,
-      threshold: 2 * 1024
     })
   ]
 
