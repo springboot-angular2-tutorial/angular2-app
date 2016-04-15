@@ -14,7 +14,7 @@ export class LoginService {
       email: email,
       password: password,
     })).do(resp => {
-      localStorage.setItem('jwt', resp.headers.get('X-AUTH-TOKEN'));
+      localStorage.setItem('jwt', resp.headers.get('x-auth-token'));
     });
   }
 

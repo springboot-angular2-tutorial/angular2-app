@@ -12,9 +12,9 @@ import {
 const mergeAuthToken = (options:RequestOptionsArgs) => {
   let newOptions = new RequestOptions({}).merge(options);
   let newHeaders = new Headers(newOptions.headers);
-  newHeaders.set('X-AUTH-TOKEN', localStorage.getItem('jwt'));
-  newHeaders.set('Accept', 'application/json');
-  newHeaders.set('Content-Type', 'application/json');
+  newHeaders.set('x-auth-token', localStorage.getItem('jwt'));
+  newHeaders.set('accept', 'application/json');
+  newHeaders.set('content-type', 'application/json');
   newOptions.headers = newHeaders;
   return newOptions;
 };

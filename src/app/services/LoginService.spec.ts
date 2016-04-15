@@ -18,7 +18,7 @@ describe('LoginService', () => {
     it('can login', (done) => {
       backend.connections.subscribe(conn => {
         conn.mockRespond(new Response(new ResponseOptions({
-          headers: new Headers({'X-AUTH-TOKEN': 'my jwt'}),
+          headers: new Headers({'x-auth-token': 'my jwt'}),
         })));
         expect(conn.request.method).toEqual(RequestMethod.Post);
         expect(conn.request.url).toEqual('/api/login');

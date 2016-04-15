@@ -11,7 +11,7 @@ import {
   beforeEachProviders,
   beforeEach,
   expect as _expect,
-  NgMatchers
+  NgMatchers,
 } from "angular2/testing";
 import {MockBackend} from "angular2/http/testing";
 import {Http} from "app/http";
@@ -43,9 +43,10 @@ describe('Http', () => {
       toBeJsonRequestVia: () => {
         return {
           compare: (actual, expectedMethod) => {
-            let pass = (actual.headers.get('X-AUTH-TOKEN') === 'my jwt')
-              && (actual.headers.get('Accept') === 'application/json')
-              && (actual.headers.get('Content-Type') === 'application/json')
+            console.log(actual);
+            let pass = (actual.headers.get('x-auth-token') === 'my jwt')
+              && (actual.headers.get('accept') === 'application/json')
+              && (actual.headers.get('content-type') === 'application/json')
               && (actual.method === expectedMethod);
             let msg = `Expected json request via ${RequestMethod[actual.method]}`
               + ` to equal ${RequestMethod[expectedMethod]}`;
