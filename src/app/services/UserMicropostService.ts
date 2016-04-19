@@ -1,6 +1,6 @@
 import {Observable} from "rxjs/Observable";
 import {Injectable} from "angular2/core";
-import {Http} from "app/http";
+import {MyHttp} from "app/http";
 import {objToSearchParams} from "./helpers";
 import {Micropost} from "app/interfaces";
 
@@ -9,7 +9,7 @@ const url = (userId:string):string => `/api/users/${userId}/microposts`;
 @Injectable()
 export class UserMicropostService {
 
-  constructor(private http:Http) {
+  constructor(private http:MyHttp) {
   }
 
   list(userId:string, params:{maxId:number, count:number}):Observable<Micropost[]> {

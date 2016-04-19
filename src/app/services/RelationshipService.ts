@@ -1,14 +1,14 @@
 import {Observable} from "rxjs/Observable";
 import {Injectable} from "angular2/core";
 import {Response} from "angular2/http";
-import {Http} from "app/http";
+import {MyHttp} from "app/http";
 
 const url = '/api/relationships';
 
 @Injectable()
 export class RelationshipService {
 
-  constructor(private http:Http) {
+  constructor(private http:MyHttp) {
   }
 
   follow(followerId:string):Observable<Response> {

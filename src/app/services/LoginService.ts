@@ -1,12 +1,12 @@
 import {Observable} from "rxjs/Observable";
 import {Injectable} from "angular2/core";
 import {Response} from "angular2/http";
-import {Http} from "app/http";
+import {MyHttp} from "app/http";
 
 @Injectable()
 export class LoginService {
 
-  constructor(private http:Http) {
+  constructor(private http:MyHttp) {
   }
 
   login(email, password):Observable<Response> {

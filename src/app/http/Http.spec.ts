@@ -1,120 +1,72 @@
-import {provide} from "angular2/core";
+import {beforeEachProviders, inject, beforeEach} from "angular2/testing";
 import {
-  HTTP_PROVIDERS,
   BaseResponseOptions,
   Response,
-  BaseRequestOptions,
+  Http,
   RequestMethod
 } from "angular2/http";
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  expect as _expect,
-  NgMatchers,
-} from "angular2/testing";
+import {MyHttp} from "./Http";
 import {MockBackend} from "angular2/http/testing";
-import {Http} from "app/http";
+import {APP_TEST_PROVIDERS} from "../providers";
 
-interface CustomMatchers extends NgMatchers {
-  toBeJsonRequestVia(expectedMethod:any):boolean;
-}
-const expect:(actual:any) => CustomMatchers = <any>_expect;
-
-describe('Http', () => {
+describe('MyHttp', () => {
+  var myHttp:MyHttp;
   var http:Http;
   var backend:MockBackend;
 
-  beforeEachProviders(() => [
-    HTTP_PROVIDERS,
-    BaseRequestOptions,
-    MockBackend,
-    provide(Http, {
-      useFactory: (backend, defaultOptions) => new Http(backend, defaultOptions),
-      deps: [MockBackend, BaseRequestOptions],
-    }),
-  ]);
-  beforeEach(inject([Http, MockBackend], (..._) => {
-    [http, backend] = _;
+  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+  beforeEach(inject([MyHttp, Http, MockBackend], (..._) => {
+    [myHttp, http, backend] = _;
   }));
-  beforeEach(() => {
-    spyOn(localStorage, 'getItem').and.returnValue('my jwt');
-    jasmine.addMatchers({
-      toBeJsonRequestVia: () => {
-        return {
-          compare: (actual, expectedMethod) => {
-            console.log(actual);
-            let pass = (actual.headers.get('x-auth-token') === 'my jwt')
-              && (actual.headers.get('accept') === 'application/json')
-              && (actual.headers.get('content-type') === 'application/json')
-              && (actual.method === expectedMethod);
-            let msg = `Expected json request via ${RequestMethod[actual.method]}`
-              + ` to equal ${RequestMethod[expectedMethod]}`;
-            return {pass: pass, message: msg};
-          }
-        };
-      }
-    });
-  });
+
+  const expectCustomRequest = (method:RequestMethod) => (conn) => {
+    conn.mockRespond(new Response(new BaseResponseOptions()));
+    expect(conn.request.method).toEqual(method);
+    expect(conn.request.headers.has('x-auth-token')).toBeTruthy();
+    expect(conn.request.headers.get('accept')).toEqual('application/json');
+    expect(conn.request.headers.get('content-type')).toEqual('application/json');
+  };
 
   describe('#get', () => {
     it('performs a get request', (done) => {
-      backend.connections.subscribe(conn => {
-        conn.mockRespond(new Response(new BaseResponseOptions()));
-        expect(conn.request).toBeJsonRequestVia(RequestMethod.Get);
-      });
-      http.get('http://www.google.com').subscribe(done);
+      backend.connections.subscribe(expectCustomRequest(RequestMethod.Get));
+      myHttp.get('http://www.google.com').subscribe(done);
     });
   });
 
   describe('#post', () => {
     it('performs a post request', (done) => {
-      backend.connections.subscribe(conn => {
-        conn.mockRespond(new Response(new BaseResponseOptions()));
-        expect(conn.request).toBeJsonRequestVia(RequestMethod.Post);
-      });
-      http.post('http://www.google.com', '').subscribe(done);
+      backend.connections.subscribe(expectCustomRequest(RequestMethod.Post));
+      myHttp.post('http://www.google.com', '').subscribe(done);
     });
   });
 
   describe('#put', () => {
     it('performs a put request', (done) => {
-      backend.connections.subscribe(conn => {
-        conn.mockRespond(new Response(new BaseResponseOptions()));
-        expect(conn.request).toBeJsonRequestVia(RequestMethod.Put);
-      });
-      http.put('http://www.google.com', '').subscribe(done);
+      backend.connections.subscribe(expectCustomRequest(RequestMethod.Put));
+      myHttp.put('http://www.google.com', '').subscribe(done);
     });
   });
 
   describe('#delete', () => {
     it('performs a delete request', (done) => {
-      backend.connections.subscribe(conn => {
-        conn.mockRespond(new Response(new BaseResponseOptions()));
-        expect(conn.request).toBeJsonRequestVia(RequestMethod.Delete);
-      });
-      http.delete('http://www.google.com').subscribe(done);
+      backend.connections.subscribe(expectCustomRequest(RequestMethod.Delete));
+      myHttp.delete('http://www.google.com').subscribe(done);
     });
   });
 
   describe('#patch', () => {
     it('performs a patch request', (done) => {
-      backend.connections.subscribe(conn => {
-        conn.mockRespond(new Response(new BaseResponseOptions()));
-        expect(conn.request).toBeJsonRequestVia(RequestMethod.Patch);
-      });
-      http.patch('http://www.google.com', '').subscribe(done);
+      backend.connections.subscribe(expectCustomRequest(RequestMethod.Patch));
+      myHttp.patch('http://www.google.com', '').subscribe(done);
     });
   });
 
   describe('#head', () => {
     it('performs a head request', (done) => {
-      backend.connections.subscribe(conn => {
-        conn.mockRespond(new Response(new BaseResponseOptions()));
-        expect(conn.request).toBeJsonRequestVia(RequestMethod.Head);
-      });
-      http.head('http://www.google.com').subscribe(done);
+      backend.connections.subscribe(expectCustomRequest(RequestMethod.Head));
+      myHttp.head('http://www.google.com').subscribe(done);
     });
   });
-});
 
+});

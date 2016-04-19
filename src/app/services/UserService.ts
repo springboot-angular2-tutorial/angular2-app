@@ -1,7 +1,7 @@
 import {Observable} from "rxjs/Observable";
 import {Injectable} from "angular2/core";
 import {Response} from "angular2/http";
-import {Http} from "app/http";
+import {MyHttp} from "app/http";
 import {objToSearchParams} from "./helpers";
 import {User, Page, PageRequest, UserParams} from "app/interfaces";
 
@@ -11,7 +11,7 @@ const defaultPageRequest:PageRequest = {page: 1, size: 5};
 @Injectable()
 export class UserService {
 
-  constructor(private http:Http) {
+  constructor(private http:MyHttp) {
   }
 
   list(pageRequest:PageRequest = defaultPageRequest):Observable<Page<User>> {

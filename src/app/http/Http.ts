@@ -1,13 +1,12 @@
 import {Observable} from "rxjs/Observable";
 import {Injectable} from "angular2/core";
 import {
-  Http as NgHttp,
+  Http,
   RequestOptionsArgs,
   RequestOptions,
   Headers,
   Response
 } from "angular2/http";
-
 
 const mergeAuthToken = (options:RequestOptionsArgs) => {
   let newOptions = new RequestOptions({}).merge(options);
@@ -20,34 +19,33 @@ const mergeAuthToken = (options:RequestOptionsArgs) => {
 };
 
 @Injectable()
-export class Http extends NgHttp {
+export class MyHttp {
 
-  constructor(protected _backend:any, protected _defaultOptions:any) {
-    super(_backend, _defaultOptions);
+  constructor(public http: Http) {
   }
 
   get(url:string, options?:RequestOptionsArgs):Observable<Response> {
-    return super.get(url, mergeAuthToken(options));
+    return this.http.get(url, mergeAuthToken(options));
   }
 
   post(url:string, body:string, options?:RequestOptionsArgs):Observable<Response> {
-    return super.post(url, body, mergeAuthToken(options));
+    return this.http.post(url, body, mergeAuthToken(options));
   }
 
   put(url:string, body:string, options?:RequestOptionsArgs):Observable<Response> {
-    return super.put(url, body, mergeAuthToken(options));
+    return this.http.put(url, body, mergeAuthToken(options));
   }
 
   delete(url:string, options?:RequestOptionsArgs):Observable<Response> {
-    return super.delete(url, mergeAuthToken(options));
+    return this.http.delete(url, mergeAuthToken(options));
   }
 
   patch(url:string, body:string, options?:RequestOptionsArgs):Observable<Response> {
-    return super.patch(url, body, mergeAuthToken(options));
+    return this.http.patch(url, body, mergeAuthToken(options));
   }
 
   head(url:string, options?:RequestOptionsArgs):Observable<Response> {
-    return super.head(url, mergeAuthToken(options));
+    return this.http.head(url, mergeAuthToken(options));
   }
 
 }

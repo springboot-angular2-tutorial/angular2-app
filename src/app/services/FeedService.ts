@@ -1,6 +1,6 @@
 import {Observable} from "rxjs/Observable";
 import {Injectable} from "angular2/core";
-import {Http} from "app/http";
+import {MyHttp} from "app/http";
 import {Micropost} from "app/interfaces";
 
 const url = '/api/feed';
@@ -8,7 +8,7 @@ const url = '/api/feed';
 @Injectable()
 export class FeedService {
 
-  constructor(private http:Http) {
+  constructor(private http:MyHttp) {
   }
 
   showFeed():Observable<Micropost[]> {

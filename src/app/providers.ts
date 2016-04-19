@@ -1,12 +1,10 @@
-import {provide, DirectiveResolver} from 'angular2/core';
-import {BaseRequestOptions, HTTP_PROVIDERS, XHRBackend} from 'angular2/http';
-import {MockBackend} from 'angular2/http/testing';
-import {Router, RouteRegistry, Location} from 'angular2/router';
-import {SpyLocation} from 'angular2/src/mock/location_mock';
-import {RootRouter} from 'angular2/src/router/router';
-
-import {Http} from 'app/http';
-import {App} from 'app/components';
+import {provide, DirectiveResolver} from "angular2/core";
+import {Http, HTTP_PROVIDERS, XHRBackend, RequestOptions} from "angular2/http";
+import {MockBackend} from "angular2/http/testing";
+import {Router, RouteRegistry, Location} from "angular2/router";
+import {SpyLocation} from "angular2/src/mock/location_mock";
+import {RootRouter} from "angular2/src/router/router";
+import {MyHttp} from "app/http";
 import {
   HttpErrorHandler,
   FeedService,
@@ -14,17 +12,18 @@ import {
   MicropostService,
   RelationshipService,
   UserMicropostService,
-  UserService,
-} from 'app/services';
+  UserService
+} from "app/services";
 
 const APP_HTTP_PROVIDERS = [
   HTTP_PROVIDERS,
-  XHRBackend,
-  BaseRequestOptions,
-  provide(Http, {
-    useFactory: (backend, defaultOptions) => new Http(backend, defaultOptions),
-    deps: [XHRBackend, BaseRequestOptions],
-  }),
+  provide(MyHttp, {
+    useFactory: (xhrBackend:XHRBackend, requestOptions:RequestOptions) => {
+      const ngHttp = new Http(xhrBackend, requestOptions);
+      return new MyHttp(ngHttp);
+    },
+    deps: [XHRBackend, RequestOptions]
+  })
 ];
 
 const APP_SERVICE_PROVIDERS = [
@@ -46,12 +45,14 @@ export const APP_PROVIDERS = [
 
 const APP_TEST_HTTP_PROVIDERS = [
   HTTP_PROVIDERS,
-  BaseRequestOptions,
   MockBackend,
-  provide(Http, {
-    useFactory: (backend, defaultOptions) => new Http(backend, defaultOptions),
-    deps: [MockBackend, BaseRequestOptions],
-  }),
+  provide(MyHttp, {
+    useFactory: (mockBackend:MockBackend, requestOptions:RequestOptions) => {
+      const http = new Http(mockBackend, requestOptions);
+      return new MyHttp(http);
+    },
+    deps: [MockBackend, RequestOptions]
+  })
 ];
 
 const APP_TEST_ROUTER_PROVIDERS = [
