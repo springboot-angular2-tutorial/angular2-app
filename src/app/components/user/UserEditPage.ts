@@ -26,7 +26,7 @@ const toastr = require('toastr');
   // work around https://github.com/angular/angular/issues/4112#issuecomment-153811572
   const userService:UserService = appInjector().get(UserService);
   return userService.get('me')
-    .do(user => next.params['user'] = user)
+    .do(user => next.params['user'] = <any>user)
     .map(() => true)
     .toPromise();
 })

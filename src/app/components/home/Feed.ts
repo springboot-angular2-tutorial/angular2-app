@@ -1,4 +1,4 @@
-import {Component, View, EventEmitter} from "angular2/core";
+import {Component, EventEmitter} from "angular2/core";
 import {CORE_DIRECTIVES} from "angular2/common";
 import {ROUTER_DIRECTIVES} from "angular2/router";
 import {MicropostService, FeedService, HttpErrorHandler} from "app/services";
@@ -9,8 +9,6 @@ import {Gravatar} from "app/components";
 @Component({
   selector: 'feed',
   events: ['deleted'],
-})
-@View({
   styles: [require('./feed.scss')],
   template: require('./feed.html'),
   directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, Gravatar],

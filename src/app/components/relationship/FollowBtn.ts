@@ -1,4 +1,4 @@
-import {Component, View, OnChanges, EventEmitter} from "angular2/core";
+import {Component, OnChanges, EventEmitter} from "angular2/core";
 import {CORE_DIRECTIVES} from "angular2/common";
 import {RelationshipService, HttpErrorHandler, UserService} from "app/services";
 import {User} from "app/interfaces";
@@ -7,8 +7,6 @@ import {User} from "app/interfaces";
   selector: 'follow-btn',
   properties: ['followerId'],
   events: ['updated'],
-})
-@View({
   template: require('./follow-btn.html'),
   directives: CORE_DIRECTIVES,
 })
