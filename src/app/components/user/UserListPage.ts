@@ -1,10 +1,10 @@
 import {Component, OnInit} from "angular2/core";
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "angular2/common";
-import {ROUTER_DIRECTIVES} from "angular2/router";
+import {ROUTER_DIRECTIVES, CanActivate} from "angular2/router";
 import {UserService, HttpErrorHandler} from "app/services";
 import {User} from "app/interfaces";
-import {PrivatePage} from "app/routes";
 import {Gravatar, Pager} from "app/components";
+import {activateIfSignedIn} from "app/routes";
 
 @Component({
   selector: 'user-list-page',
@@ -18,7 +18,7 @@ import {Gravatar, Pager} from "app/components";
     Pager,
   ],
 })
-@PrivatePage()
+@CanActivate(() => activateIfSignedIn())
 export class UserListPage implements OnInit {
 
   users:User[];

@@ -1,7 +1,7 @@
 import {Observable} from "rxjs/Observable";
-import {Component, provide, DebugElement, Injector} from "angular2/core";
+import {Component, provide, DebugElement} from "angular2/core";
 import {beforeEachProviders, beforeEach, inject} from "angular2/testing";
-import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
+import {ROUTER_PRIMARY_COMPONENT, ROUTER_DIRECTIVES} from "angular2/router";
 import {By} from "angular2/platform/common_dom";
 import {DOM} from "angular2/src/platform/dom/dom_adapter";
 import {BaseResponseOptions, Response} from "angular2/http";
@@ -10,8 +10,6 @@ import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext, signin} from "app/testing";
 import {UserService} from "app/services";
 import {User} from "app/interfaces";
-import {SecurityRouterOutlet} from "app/routes";
-import {appInjector} from "../../app-injector";
 
 describe('UserEditPage', () => {
 
@@ -27,12 +25,9 @@ describe('UserEditPage', () => {
   ]);
   beforeEach(createTestContext(_ => ctx = _));
 
-  beforeEach(inject([UserService], _ => {
-    appInjector(Injector.resolveAndCreate([
-      provide(UserService, {useValue: _}),
-    ]));
-    userService = appInjector().get(UserService);
-    spyOn(userService, 'get').and.returnValue(Observable.of(user));
+  beforeEach(inject([UserService], _userService => {
+    userService = _userService;
+    spyOn(_userService, 'get').and.returnValue(Observable.of(user));
   }));
   beforeEach(signin(user));
   beforeEach(done => {
@@ -107,7 +102,7 @@ describe('UserEditPage', () => {
 @Component({
   selector: 'test-cmp',
   template: `<router-outlet></router-outlet>`,
-  directives: [SecurityRouterOutlet],
+  directives: [ROUTER_DIRECTIVES],
 })
 class TestCmp {
 }

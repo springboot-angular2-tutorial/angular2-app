@@ -1,6 +1,5 @@
 import {Component} from "angular2/core";
-import {RouteConfig} from "angular2/router";
-import {SecurityRouterOutlet} from "app/routes";
+import {RouteConfig, ROUTER_DIRECTIVES} from "angular2/router";
 import {
   Header,
   HomePage,
@@ -19,7 +18,7 @@ import {
   selector: 'app',
   styles: [require('./app.scss')],
   template: require('./app.html'),
-  directives: [SecurityRouterOutlet, Header],
+  directives: [ROUTER_DIRECTIVES, Header],
 })
 @RouteConfig([
   {path: '/home', name: 'Home', component: HomePage},

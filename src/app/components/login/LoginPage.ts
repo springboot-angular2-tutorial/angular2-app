@@ -1,7 +1,7 @@
 import {Component} from "angular2/core";
-import {ROUTER_DIRECTIVES, Router} from "angular2/router";
+import {ROUTER_DIRECTIVES, Router, CanActivate} from "angular2/router";
 import {LoginService} from "app/services";
-import {PublicPage} from "app/routes";
+import {activateIfNotSignedIn} from "app/routes";
 
 const toastr = require('toastr/toastr');
 
@@ -11,9 +11,7 @@ const toastr = require('toastr/toastr');
   template: require('./login.html'),
   directives: [ROUTER_DIRECTIVES]
 })
-@PublicPage({
-  whenSignedIn: (router) => router.navigate(['/Home'])
-})
+@CanActivate(() => activateIfNotSignedIn())
 export class LoginPage {
   constructor(private router:Router,
               private loginService:LoginService) {

@@ -1,6 +1,6 @@
 import {Component} from "angular2/core";
-import {ROUTER_DIRECTIVES} from "angular2/router";
-import {PublicPage} from "app/routes";
+import {ROUTER_DIRECTIVES, CanActivate} from "angular2/router";
+import {activateIfNotSignedIn} from "app/routes";
 
 @Component({
   selector: 'top-page',
@@ -8,8 +8,6 @@ import {PublicPage} from "app/routes";
   template: require('./top.html'),
   directives: [ROUTER_DIRECTIVES],
 })
-@PublicPage({
-  whenSignedIn: (router) => router.navigate(['/Home'])
-})
+@CanActivate(() => activateIfNotSignedIn())
 export class TopPage {
 }

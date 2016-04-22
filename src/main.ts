@@ -1,5 +1,5 @@
 import {ComponentRef, enableProdMode} from "angular2/core";
-import {bootstrap} from "angular2/bootstrap";
+import {bootstrap} from "angular2/platform/browser";
 import {ROUTER_PROVIDERS} from "angular2/router";
 import {FORM_PROVIDERS} from "angular2/common";
 import {HTTP_PROVIDERS} from "angular2/http";
@@ -20,8 +20,8 @@ if ('production' === process.env.ENV) {
   ENV_PROVIDERS.push(ELEMENT_PROBE_PROVIDERS);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  bootstrap(App, [
+function main():Promise<any> {
+  return bootstrap(App, [
     ...FORM_PROVIDERS,
     ...ROUTER_PROVIDERS,
     ...HTTP_PROVIDERS,
@@ -30,20 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
   ]).then((appRef:ComponentRef) => {
     appInjector(appRef.injector);
   }).catch(e => console.error(e));
-});
-
+}
 
 declare let module:any;
 if (module.hot) {
-  bootstrap(App, [
-    ...FORM_PROVIDERS,
-    ...ROUTER_PROVIDERS,
-    ...HTTP_PROVIDERS,
-    ...ENV_PROVIDERS,
-    ...APP_PROVIDERS,
-  ]).then((appRef:ComponentRef) => {
-    appInjector(appRef.injector);
-  }).catch(e => console.error(e));
+  let ngHmr = require('angular2-hmr');
+  ngHmr.hotModuleReplacement(main, module);
+} else {
+  document.addEventListener('DOMContentLoaded', () => main());
 
-  module.hot.accept();
 }

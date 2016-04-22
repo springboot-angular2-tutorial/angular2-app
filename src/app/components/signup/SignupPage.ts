@@ -6,10 +6,10 @@ import {
   ControlGroup,
   Validators
 } from "angular2/common";
-import {Router} from "angular2/router";
+import {Router, CanActivate} from "angular2/router";
 import {Validators as AppValidators, EMAIL_PATTERN} from "app/forms";
 import {UserService, LoginService} from "app/services";
-import {PublicPage} from "app/routes";
+import {activateIfNotSignedIn} from "app/routes";
 
 const toastr = require('toastr');
 
@@ -19,9 +19,7 @@ const toastr = require('toastr');
   template: require('./signup.html'),
   directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
 })
-@PublicPage({
-  whenSignedIn: (router) => router.navigate(['/Home'])
-})
+@CanActivate(() => activateIfNotSignedIn())
 export class SignupPage {
 
   myForm:ControlGroup;

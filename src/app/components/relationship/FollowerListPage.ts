@@ -1,11 +1,11 @@
 import {Observable} from "rxjs/Observable";
 import {Component} from "angular2/core";
+import {CanActivate, RouteParams, ROUTER_DIRECTIVES} from "angular2/router";
 import {CORE_DIRECTIVES} from "angular2/common";
-import {RouteParams, ROUTER_DIRECTIVES} from "angular2/router";
 import {UserService} from "app/services";
 import {UserStats} from "app/components";
 import {RelatedUser} from "app/interfaces";
-import {PrivatePage} from "app/routes";
+import {activateIfSignedIn} from "app/routes";
 import {UserList} from "./UserList";
 
 @Component({
@@ -18,7 +18,7 @@ import {UserList} from "./UserList";
     UserList,
   ],
 })
-@PrivatePage()
+@CanActivate(() => activateIfSignedIn())
 export class FollowerListPage {
 
   userId:string;

@@ -1,6 +1,7 @@
 import {Component} from "angular2/core";
 import {Feed, MicropostNew, UserStats} from "app/components";
-import {PrivatePage} from "app/routes";
+import {CanActivate} from "angular2/router";
+import {activateIfSignedIn} from "app/routes";
 
 @Component({
   selector: 'home-page',
@@ -8,6 +9,6 @@ import {PrivatePage} from "app/routes";
   template: require('./home.html'),
   directives: [MicropostNew, Feed, UserStats],
 })
-@PrivatePage()
+@CanActivate(() => activateIfSignedIn())
 export class HomePage {
 }

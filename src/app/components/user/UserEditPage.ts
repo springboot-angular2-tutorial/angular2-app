@@ -8,9 +8,9 @@ import {
 } from "angular2/common";
 import {RouteParams, CanActivate, ComponentInstruction} from "angular2/router";
 import {Validators as AppValidators, EMAIL_PATTERN} from "app/forms";
-import {UserService} from "app/services";
+import {UserService, LoginService} from "app/services";
 import {User} from "app/interfaces";
-import {PrivatePage} from "app/routes";
+import {activateIfSignedIn} from "app/routes";
 import {appInjector} from "app/app-injector";
 
 const isEmpty = require("lodash/isEmpty");
@@ -23,14 +23,15 @@ const toastr = require('toastr');
   directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
 })
 @CanActivate((next:ComponentInstruction) => {
-  // work around https://github.com/angular/angular/issues/4112#issuecomment-153811572
+  const loginService:LoginService = appInjector().get(LoginService);
+  if (!loginService.isSignedIn()) return activateIfSignedIn();
+
   const userService:UserService = appInjector().get(UserService);
   return userService.get('me')
     .do(user => next.params['user'] = <any>user)
     .map(() => true)
     .toPromise();
 })
-@PrivatePage()
 export class UserEditPage {
 
   myForm:ControlGroup;

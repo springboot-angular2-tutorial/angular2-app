@@ -1,7 +1,7 @@
-import "es6-shim";
-import "es6-promise";
-import "es7-reflect-metadata";
-import "zone.js/dist/zone-microtask";
+import 'core-js/es6';
+import 'core-js/es7/reflect';
+require('zone.js/dist/zone');
+
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/mergeMap";
 import "rxjs/add/operator/finally";

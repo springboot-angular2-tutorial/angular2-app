@@ -1,1 +1,1 @@
-export * from './routes/SecurityRouterOutlet'
+export * from './routes/route-helpers'
