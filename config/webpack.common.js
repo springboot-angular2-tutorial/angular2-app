@@ -6,6 +6,7 @@ const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin
 module.exports = {
   entry: {
     'polyfills': './src/polyfills.ts',
+    'vendor': './src/vendor.ts',
     'main': './src/main.ts'
   },
   resolve: {
@@ -54,7 +55,7 @@ module.exports = {
     new ForkCheckerPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['polyfills']
+      name: helpers.reverse(['polyfills', 'vendor'])
     })
   ],
 
