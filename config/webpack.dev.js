@@ -20,7 +20,7 @@ module.exports = webpackMerge(commonConfig, {
   output: {
     path: helpers.root('dist'),
     // required for hot module replacement
-    // publicPath: 'http://' + METADATA.host + ':' + METADATA.port + '/',
+    publicPath: 'http://' + METADATA.host + ':' + METADATA.port + '/',
     filename: '[name].js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
