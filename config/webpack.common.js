@@ -1,13 +1,13 @@
 const webpack = require('webpack');
 const helpers = require('./helpers');
 
+const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+
 module.exports = {
   entry: {
     'polyfills': './src/polyfills.ts',
     'main': './src/main.ts'
   },
-  // devtool: 'source-map',
-  // stats: {colors: true, reasons: true},
   resolve: {
     extensions: ['', '.ts', '.js'],
     root: helpers.root('src'),
@@ -29,17 +29,8 @@ module.exports = {
     loaders: [
       {
         test: /\.ts$/,
-        loader: 'ts-loader',
-        query: {
-          'ignoreDiagnostics': [
-            2300, // Duplicate identifier
-            2374, // Duplicate string index signature
-            2375 // Duplicate number index signature
-          ]
-        },
-        exclude: [
-          /\.spec\.ts$/
-        ]
+        loader: 'awesome-typescript-loader',
+        exclude: [/\.spec\.ts$/]
       },
       {test: /\.css$/, loader: 'raw-loader'},
       {test: /\.scss$/, loaders: ["raw-loader", "sass-loader"]},
@@ -60,15 +51,11 @@ module.exports = {
     ]
   },
   plugins: [
+    new ForkCheckerPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.CommonsChunkPlugin({
       name: ['polyfills']
     })
-    //
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   // name: helpers.reverse(['polyfills', 'vendor'])
-    //   name: helpers.reverse(['polyfills'])
-    // })
   ],
 
   node: {
