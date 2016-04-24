@@ -39,7 +39,7 @@
   "homepage": "https://github.com/springboot-angular2-tutorial/angular2-app",
   "dependencies": {
     "angular2": "2.0.0-beta.15",
-    "core-js": "^2.2.2",
+    "core-js": "^2.3.0",
     "jquery": "^2.1.4",
     "md5-hex": "^1.1.0",
     "moment": "^2.12.0",
@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "angular2-hmr": "~0.5.5",
-    "awesome-typescript-loader": "^0.17.0-rc.7",
+    "awesome-typescript-loader": "^0.17.0",
     "bootstrap-loader": "^1.0.8",
     "bootstrap-sass": "^3.3.6",
     "css-loader": "^0.23.1",
@@ -89,6 +89,6 @@
     "webpack": "^1.12.15",
     "webpack-dev-server": "^1.14.1",
     "webpack-manifest-plugin": "^1.0.0",
-    "webpack-merge": "^0.8.3"
+    "webpack-merge": "^0.12.0"
   }
 }

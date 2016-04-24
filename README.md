@@ -17,8 +17,8 @@ mvn spring-boot:run
 Serve frontend app by webpack-dev-server.
 
 ```
+npm install typings webpack-dev-server rimraf webpack -g
 npm install
-npm install -g webpack webpack-dev-server karma-cli
 npm run server
 open http://localhost:8080
 ```
