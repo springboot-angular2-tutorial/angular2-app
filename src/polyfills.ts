@@ -6,6 +6,7 @@ import "rxjs/add/operator/finally";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/toPromise";
 require('zone.js/dist/zone');
+import 'ts-helpers';
 
 if ('production' === process.env.ENV) {
 } else {
