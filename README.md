@@ -19,7 +19,7 @@ Serve frontend app by webpack-dev-server.
 ```
 npm install typings webpack-dev-server rimraf webpack -g
 npm install
-npm run server
+npm start
 open http://localhost:8080
 ```
 
