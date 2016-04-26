@@ -8,6 +8,8 @@
 </ul>
 
 <div class="clearfix">
-  <pager class="pull-left" (pageChanged)="list($event.page)"
-         [totalPages]="totalPages"></pager>
+  <pager class="pull-left"
+         (pageChanged)="onPageChanged($event.page)"
+         [totalPages]="totalPages"
+         [currentPage]="page"></pager>
 </div>

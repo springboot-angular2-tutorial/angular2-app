@@ -1,6 +1,11 @@
 import {Component, OnInit} from "angular2/core";
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "angular2/common";
-import {ROUTER_DIRECTIVES, CanActivate} from "angular2/router";
+import {
+  ROUTER_DIRECTIVES,
+  CanActivate,
+  RouteParams,
+  Router
+} from "angular2/router";
 import {UserService, HttpErrorHandler} from "app/services";
 import {User} from "app/interfaces";
 import {Gravatar, Pager} from "app/components";
@@ -23,16 +28,24 @@ export class UserListPage implements OnInit {
 
   users:User[];
   totalPages:number;
+  page:number;
 
   constructor(private userService:UserService,
-              private errorHandler:HttpErrorHandler) {
+              private errorHandler:HttpErrorHandler,
+              private params:RouteParams,
+              private router:Router) {
+    this.page = <any>params.get('page') || 1;
   }
 
   ngOnInit():any {
-    this.list(1);
+    this.list(this.page);
   }
 
-  list(page) {
+  onPageChanged(page) {
+    this.router.navigate(['/UserList', {page: page}]);
+  }
+
+  private list(page) {
     this.userService.list({page: page, size: 5})
       .subscribe(usersPage => {
         this.users = usersPage.content;

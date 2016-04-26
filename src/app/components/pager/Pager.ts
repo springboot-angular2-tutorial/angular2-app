@@ -3,7 +3,7 @@ import {CORE_DIRECTIVES} from "angular2/common";
 
 @Component({
   selector: 'pager',
-  properties: ['totalPages'],
+  properties: ['totalPages', 'currentPage'],
   events: ['pageChanged'],
   template: require('./pager.html'),
   directives: [CORE_DIRECTIVES],
