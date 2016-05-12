@@ -1,5 +1,5 @@
 <ul class="users list-unstyled">
-  <li *ngFor="var u of users">
+  <li *ngFor="let u of users">
     <gravatar [alt]="u.name" [email]="u.email" size="50"></gravatar>
     <a [routerLink]="['/UserShow', {id: u.id}]">{{u.name}}</a>
   </li>

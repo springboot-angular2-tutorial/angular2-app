@@ -1,8 +1,8 @@
-import {Component, provide, DebugElement} from "angular2/core";
-import {By} from "angular2/platform/common_dom";
-import {DOM} from "angular2/src/platform/dom/dom_adapter";
-import {beforeEachProviders, beforeEach} from "angular2/testing";
-import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
+import {Component, provide, DebugElement} from "@angular/core";
+import {By} from "@angular/platform-browser/src/dom/debug/by";
+import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
+import {beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {ROUTER_PRIMARY_COMPONENT} from "@angular/router-deprecated";
 import {Gravatar, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext} from "app/testing";
@@ -34,7 +34,7 @@ describe('Gravatar', () => {
     expect(cmp.size).toEqual('1');
 
     const el = cmpDebugElement.nativeElement;
-    expect(DOM.querySelector(el, 'img').getAttribute('src'))
+    expect(getDOM().querySelector(el, 'img').getAttribute('src'))
       .toEqual('https://secure.gravatar.com/avatar/b642b4217b34b1e8d3bd915fc65c4452?s=1');
   });
 

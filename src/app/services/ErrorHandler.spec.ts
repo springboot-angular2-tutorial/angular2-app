@@ -1,6 +1,6 @@
-import {provide} from "angular2/core";
-import {Router, ROUTER_PRIMARY_COMPONENT} from "angular2/router";
-import {inject, beforeEachProviders, beforeEach} from "angular2/testing";
+import {provide} from "@angular/core";
+import {Router, ROUTER_PRIMARY_COMPONENT} from "@angular/router-deprecated";
+import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
 import {App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {HttpErrorHandler, LoginService} from "app/services";

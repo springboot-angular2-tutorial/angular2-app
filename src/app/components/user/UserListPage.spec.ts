@@ -1,9 +1,12 @@
-import {Component, provide, DebugElement} from "angular2/core";
-import {By} from "angular2/platform/common_dom";
-import {DOM} from "angular2/src/platform/dom/dom_adapter";
-import {beforeEachProviders, beforeEach} from "angular2/testing";
-import {ResponseOptions, Response} from "angular2/http";
-import {ROUTER_PRIMARY_COMPONENT, ROUTER_DIRECTIVES} from "angular2/router";
+import {Component, provide, DebugElement} from "@angular/core";
+import {By} from "@angular/platform-browser/src/dom/debug/by";
+import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
+import {beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {ResponseOptions, Response} from "@angular/http";
+import {
+  ROUTER_PRIMARY_COMPONENT,
+  ROUTER_DIRECTIVES
+} from "@angular/router-deprecated";
 import {App, UserListPage, Gravatar, Pager} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext, signin} from "app/testing";
@@ -64,8 +67,8 @@ describe('UserListPage', () => {
     expect(page.totalPages).toEqual(1);
 
     const el = cmpDebugElement.nativeElement;
-    expect(DOM.querySelectorAll(el, 'li>a')[0].innerText).toEqual('test1');
-    expect(DOM.querySelectorAll(el, 'li>a')[1].innerText).toEqual('test2');
+    expect(getDOM().querySelectorAll(el, 'li>a')[0].innerText).toEqual('test1');
+    expect(getDOM().querySelectorAll(el, 'li>a')[1].innerText).toEqual('test2');
 
     const gravatarDebugElement = cmpDebugElement.query(By.directive(Gravatar));
     expect(gravatarDebugElement).toBeTruthy();

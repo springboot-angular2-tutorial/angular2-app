@@ -3,7 +3,7 @@
   <aside class="col-md-4">
     <user-stats [userId]="userId"></user-stats>
     <div class="user_avatars">
-      <a *ngFor="var u of users" [routerLink]="['/UserShow', {id: u.id}]">
+      <a *ngFor="let u of users" [routerLink]="['/UserShow', {id: u.id}]">
         <gravatar [alt]="u.name" [email]="u.email" size="30"></gravatar>
       </a>
     </div>

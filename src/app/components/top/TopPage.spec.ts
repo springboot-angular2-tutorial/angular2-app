@@ -1,7 +1,7 @@
-import {Component, provide, DebugElement} from "angular2/core";
-import {By} from "angular2/platform/common_dom";
-import {beforeEachProviders, beforeEach} from "angular2/testing";
-import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
+import {Component, provide, DebugElement} from "@angular/core";
+import {By} from "@angular/platform-browser/src/dom/debug/by";
+import {beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {ROUTER_PRIMARY_COMPONENT} from "@angular/router-deprecated";
 import {TopPage, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext} from "app/testing";

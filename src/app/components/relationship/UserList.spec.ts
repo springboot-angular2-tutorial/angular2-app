@@ -1,9 +1,9 @@
 import {Observable} from "rxjs/Observable";
-import {Component, provide, DebugElement} from "angular2/core";
-import {By} from "angular2/platform/common_dom";
-import {DOM} from "angular2/src/platform/dom/dom_adapter";
-import {beforeEachProviders, beforeEach} from "angular2/testing";
-import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
+import {Component, provide, DebugElement} from "@angular/core";
+import {By} from "@angular/platform-browser/src/dom/debug/by";
+import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
+import {beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {ROUTER_PRIMARY_COMPONENT} from "@angular/router-deprecated";
 import {Gravatar, App} from "app/components";
 import {UserList} from "./UserList";
 import {APP_TEST_PROVIDERS} from "app/providers";
@@ -39,7 +39,7 @@ describe('relationship.UserList', () => {
     const cmp:UserList = cmpDebugElement.componentInstance;
     expect(cmp.users.length).toEqual(2);
 
-    expect(DOM.querySelectorAll(cmpDebugElement.nativeElement, '.users>li').length).toEqual(2);
+    expect(getDOM().querySelectorAll(cmpDebugElement.nativeElement, '.users>li').length).toEqual(2);
 
     const gravatarDebugElement = cmpDebugElement.query(By.directive(Gravatar));
     expect(gravatarDebugElement).toBeTruthy();
@@ -53,7 +53,7 @@ describe('relationship.UserList', () => {
 
   it('can load more', () => {
     const cmp:UserList = cmpDebugElement.componentInstance;
-    const moreBtn = DOM.querySelector(cmpDebugElement.nativeElement, '.moreBtn');
+    const moreBtn = getDOM().querySelector(cmpDebugElement.nativeElement, '.moreBtn');
     spyOn(cmp, 'listProvider').and.callThrough();
     moreBtn.click();
     expect(cmp.users.length).toEqual(4);

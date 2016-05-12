@@ -1,4 +1,4 @@
-import {Control} from "angular2/common";
+import {Control} from "@angular/common";
 
 export const EMAIL_PATTERN = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
 

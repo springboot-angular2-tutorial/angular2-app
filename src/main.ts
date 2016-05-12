@@ -1,8 +1,8 @@
-import {ComponentRef} from "angular2/core";
-import {bootstrap} from "angular2/platform/browser";
-import {ROUTER_PROVIDERS} from "angular2/router";
-import {FORM_PROVIDERS} from "angular2/common";
-import {HTTP_PROVIDERS} from "angular2/http";
+import {ComponentRef} from "@angular/core";
+import {bootstrap} from "@angular/platform-browser-dynamic";
+import {ROUTER_PROVIDERS} from "@angular/router-deprecated";
+import {FORM_PROVIDERS} from "@angular/common";
+import {HTTP_PROVIDERS} from "@angular/http";
 import {App} from "app/components";
 import {APP_PROVIDERS} from "app/providers";
 import {appInjector} from "app/app-injector";
@@ -19,7 +19,7 @@ function main():Promise<any> {
     ...HTTP_PROVIDERS,
     ...ENV_PROVIDERS,
     ...APP_PROVIDERS,
-  ]).then((appRef:ComponentRef) => {
+  ]).then((appRef:ComponentRef<any>) => {
     appInjector(appRef.injector);
   }).catch(e => console.error(e));
 }

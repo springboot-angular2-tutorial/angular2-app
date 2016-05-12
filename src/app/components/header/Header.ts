@@ -1,6 +1,6 @@
-import {Component} from "angular2/core";
-import {CORE_DIRECTIVES} from "angular2/common";
-import {Router, ROUTER_DIRECTIVES, Location} from "angular2/router";
+import {Component} from "@angular/core";
+import {CORE_DIRECTIVES, Location} from "@angular/common";
+import {Router, ROUTER_DIRECTIVES} from "@angular/router-deprecated";
 import {LoginService} from "app/services";
 
 @Component({

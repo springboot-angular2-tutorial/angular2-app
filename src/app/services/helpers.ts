@@ -1,4 +1,4 @@
-import {URLSearchParams} from "angular2/http";
+import {URLSearchParams} from "@angular/http";
 
 export const objToSearchParams = (obj:any):URLSearchParams => {
   let params = new URLSearchParams();

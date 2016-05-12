@@ -1,7 +1,10 @@
-import {Component, provide, DebugElement} from "angular2/core";
-import {By} from "angular2/platform/common_dom";
-import {beforeEachProviders, beforeEach, inject} from "angular2/testing";
-import {RouteParams, ROUTER_PRIMARY_COMPONENT} from "angular2/router";
+import {Component, provide, DebugElement} from "@angular/core";
+import {By} from "@angular/platform-browser/src/dom/debug/by";
+import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {
+  RouteParams,
+  ROUTER_PRIMARY_COMPONENT
+} from "@angular/router-deprecated";
 import {
   App,
   UserShowPage,

@@ -1,13 +1,13 @@
-import {Component, provide, DebugElement, EventEmitter} from "angular2/core";
-import {By} from "angular2/platform/common_dom";
-import {beforeEachProviders, beforeEach, inject} from "angular2/testing";
-import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
+import {Component, provide, DebugElement, EventEmitter} from "@angular/core";
+import {By} from "@angular/platform-browser/src/dom/debug/by";
+import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {ROUTER_PRIMARY_COMPONENT} from "@angular/router-deprecated";
+import {Response, ResponseOptions} from "@angular/http";
+import {ObservableWrapper} from "@angular/common/src/facade/async";
 import {FollowBtn, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext} from "app/testing";
 import {RelationshipService} from "app/services";
-import {Response, ResponseOptions} from "angular2/http";
-import {ObservableWrapper} from "angular2/src/facade/async";
 
 describe('FollowBtn', () => {
 

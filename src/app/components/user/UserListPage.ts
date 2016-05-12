@@ -1,11 +1,11 @@
-import {Component, OnInit} from "angular2/core";
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "angular2/common";
+import {Component, OnInit} from "@angular/core";
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "@angular/common";
 import {
   ROUTER_DIRECTIVES,
   CanActivate,
   RouteParams,
   Router
-} from "angular2/router";
+} from "@angular/router-deprecated";
 import {UserService, HttpErrorHandler} from "app/services";
 import {User} from "app/interfaces";
 import {Gravatar, Pager} from "app/components";

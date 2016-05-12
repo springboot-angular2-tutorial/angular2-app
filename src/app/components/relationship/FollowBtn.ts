@@ -1,5 +1,5 @@
-import {Component, OnChanges, EventEmitter} from "angular2/core";
-import {CORE_DIRECTIVES} from "angular2/common";
+import {Component, OnChanges, EventEmitter} from "@angular/core";
+import {CORE_DIRECTIVES} from "@angular/common";
 import {RelationshipService, HttpErrorHandler, UserService} from "app/services";
 import {User} from "app/interfaces";
 
@@ -60,8 +60,8 @@ export class FollowBtn implements OnChanges {
     this.userService.get(this.followerId)
       .finally(() => this.busy = false)
       .subscribe(user => {
-        this.canShowFollowBtn = this._canShowFollowBtn(user);
-        this.canShowUnfollowBtn = this._canShowUnfollowBtn(user);
+        this.canShowFollowBtn = this._canShowFollowBtn(<User>user);
+        this.canShowUnfollowBtn = this._canShowUnfollowBtn(<User>user);
       }, e => this.errorHandler.handle(e))
     ;
   }

@@ -1,6 +1,6 @@
-import {Component} from "angular2/core";
-import {CORE_DIRECTIVES} from "angular2/common";
-import {RouteParams} from "angular2/router";
+import {Component} from "@angular/core";
+import {CORE_DIRECTIVES} from "@angular/common";
+import {RouteParams} from "@angular/router-deprecated";
 import {FollowBtn, UserStats, MicropostList} from "app/components";
 
 @Component({

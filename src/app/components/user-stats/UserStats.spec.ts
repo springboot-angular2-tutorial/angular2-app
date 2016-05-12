@@ -1,9 +1,9 @@
-import {Component, provide, DebugElement} from "angular2/core";
-import {By} from "angular2/platform/common_dom";
-import {DOM} from "angular2/src/platform/dom/dom_adapter";
-import {beforeEachProviders, beforeEach} from "angular2/testing";
-import {ResponseOptions, Response} from "angular2/http";
-import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
+import {Component, provide, DebugElement} from "@angular/core";
+import {By} from "@angular/platform-browser/src/dom/debug/by";
+import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
+import {beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {ResponseOptions, Response} from "@angular/http";
+import {ROUTER_PRIMARY_COMPONENT} from "@angular/router-deprecated";
 import {UserStats, Gravatar, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext} from "app/testing";
@@ -61,23 +61,23 @@ describe('UserStats', () => {
     expect(gravatarDebugElement.componentInstance.alt).toEqual('test1');
 
     const el = cmpDebugElement.nativeElement;
-    const header = DOM.querySelector(el, 'h2');
+    const header = getDOM().querySelector(el, 'h2');
     expect(header.innerText).toMatch(/test1/);
 
-    const profileLink = DOM.querySelector(el, 'a.profile-link');
+    const profileLink = getDOM().querySelector(el, 'a.profile-link');
     expect(profileLink).toBeTruthy();
     expect(profileLink.getAttribute('href')).toEqual('/users/1');
 
-    const postCnt = DOM.querySelector(el, '.microposts');
+    const postCnt = getDOM().querySelector(el, '.microposts');
     expect(postCnt).toBeTruthy();
     expect(postCnt.innerText).toMatch(/2 microposts/);
 
-    const followingsLink = DOM.querySelector(el, 'a.followings');
+    const followingsLink = getDOM().querySelector(el, 'a.followings');
     expect(followingsLink).toBeTruthy();
     expect(followingsLink.getAttribute('href')).toEqual('/users/1/followings');
     expect(followingsLink.innerText).toMatch(/3[\s\S]*?followings/);
 
-    const followersLink = DOM.querySelector(el, 'a.followers');
+    const followersLink = getDOM().querySelector(el, 'a.followers');
     expect(followersLink).toBeTruthy();
     expect(followersLink.getAttribute('href')).toEqual('/users/1/followers');
     expect(followersLink.innerText).toMatch(/4[\s\S]*?followers/);
@@ -91,12 +91,12 @@ describe('UserStats', () => {
     });
 
     it('does not show profile link', () => {
-      const profileLink = DOM.querySelector(cmpDebugElement.nativeElement, 'a.profile-link');
+      const profileLink = getDOM().querySelector(cmpDebugElement.nativeElement, 'a.profile-link');
       expect(profileLink).toBeFalsy();
     });
 
     it('does not show post counts', () => {
-      const postCnt = DOM.querySelector(cmpDebugElement.nativeElement, '.microposts');
+      const postCnt = getDOM().querySelector(cmpDebugElement.nativeElement, '.microposts');
       expect(postCnt).toBeFalsy();
     });
   });

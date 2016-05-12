@@ -1,6 +1,6 @@
-import {inject, beforeEachProviders, beforeEach} from "angular2/testing";
-import {ResponseOptions, Response, RequestMethod} from "angular2/http";
-import {MockBackend} from "angular2/http/testing";
+import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {ResponseOptions, Response, RequestMethod} from "@angular/http";
+import {MockBackend} from "@angular/http/testing";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {UserMicropostService} from "app/services";
 

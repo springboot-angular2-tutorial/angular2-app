@@ -1,4 +1,4 @@
-import {Pipe} from "angular2/core";
+import {Pipe} from "@angular/core";
 
 const ta = require('time-ago')();
 

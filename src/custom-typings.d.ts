@@ -1,3 +1,12 @@
+/// <reference path="../node_modules/rxjs/add/observable/fromPromise.d.ts" />
+/// <reference path="../node_modules/rxjs/add/observable/of.d.ts" />
+/// <reference path="../node_modules/rxjs/add/observable/empty.d.ts" />
+/// <reference path="../node_modules/rxjs/add/operator/finally.d.ts" />
+/// <reference path="../node_modules/rxjs/add/operator/mergeMap.d.ts" />
+/// <reference path="../node_modules/rxjs/add/operator/do.d.ts" />
+/// <reference path="../node_modules/rxjs/add/operator/map.d.ts" />
+/// <reference path="../node_modules/rxjs/add/operator/toPromise.d.ts" />
+
 declare var ENV: string;
 declare var HMR: boolean;
 interface GlobalEnvironment {

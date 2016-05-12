@@ -1,10 +1,13 @@
 import {Observable} from "rxjs/Observable";
-import {Component, provide, DebugElement} from "angular2/core";
-import {beforeEachProviders, beforeEach, inject} from "angular2/testing";
-import {ROUTER_PRIMARY_COMPONENT, ROUTER_DIRECTIVES} from "angular2/router";
-import {By} from "angular2/platform/common_dom";
-import {DOM} from "angular2/src/platform/dom/dom_adapter";
-import {BaseResponseOptions, Response} from "angular2/http";
+import {Component, provide, DebugElement} from "@angular/core";
+import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {
+  ROUTER_PRIMARY_COMPONENT,
+  ROUTER_DIRECTIVES
+} from "@angular/router-deprecated";
+import {By} from "@angular/platform-browser/src/dom/debug/by";
+import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
+import {BaseResponseOptions, Response} from "@angular/http";
 import {UserEditPage, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext, signin} from "app/testing";
@@ -49,17 +52,17 @@ describe('UserEditPage', () => {
     expect(cmp.user).toEqual(user);
 
     const el = cmpDebugElement.nativeElement;
-    const nameInput = <HTMLInputElement>DOM.querySelector(el, '#nameInput');
+    const nameInput = <HTMLInputElement>getDOM().querySelector(el, '#nameInput');
     expect(nameInput.value).toEqual('test user');
 
-    const emailInput = <HTMLInputElement>DOM.querySelector(el, '#emailInput');
+    const emailInput = <HTMLInputElement>getDOM().querySelector(el, '#emailInput');
     expect(emailInput.value).toEqual('test@test.com');
 
-    const passwordInput = <HTMLInputElement>DOM.querySelector(el, '#passwordInput');
+    const passwordInput = <HTMLInputElement>getDOM().querySelector(el, '#passwordInput');
     expect(passwordInput.value).toEqual('');
 
     const passwordConfirmationInput = <HTMLInputElement>
-      DOM.querySelector(el, '#passwordConfirmationInput');
+      getDOM().querySelector(el, '#passwordConfirmationInput');
     expect(passwordConfirmationInput.value).toEqual('');
   });
 

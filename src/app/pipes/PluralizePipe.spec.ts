@@ -1,4 +1,4 @@
-import {beforeEach} from "angular2/testing";
+import {beforeEach} from "@angular/core/testing";
 import {PluralizePipe} from "app/pipes";
 
 describe('PluralizePipe', () => {
@@ -10,8 +10,8 @@ describe('PluralizePipe', () => {
   });
 
   it('pluralize a word', () => {
-    expect(pipe.transform(1, ['mouse'])).toEqual('1 mouse');
-    expect(pipe.transform(2, ['mouse'])).toEqual('2 mice');
+    expect(pipe.transform(1, 'mouse')).toEqual('1 mouse');
+    expect(pipe.transform(2, 'mouse')).toEqual('2 mice');
   });
 
 });

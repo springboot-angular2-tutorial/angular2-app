@@ -1,12 +1,12 @@
-import {beforeEachProviders, inject, beforeEach} from "angular2/testing";
+import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
 import {
   BaseResponseOptions,
   Response,
   Http,
   RequestMethod
-} from "angular2/http";
+} from "@angular/http";
+import {MockBackend} from "@angular/http/testing";
 import {MyHttp} from "./Http";
-import {MockBackend} from "angular2/http/testing";
 import {APP_TEST_PROVIDERS} from "../providers";
 
 describe('MyHttp', () => {

@@ -1,9 +1,9 @@
-import {Component, provide, DebugElement} from "angular2/core";
-import {By} from "angular2/platform/common_dom";
-import {DOM} from "angular2/src/platform/dom/dom_adapter";
-import {inject, beforeEachProviders, beforeEach} from "angular2/testing";
-import {BaseResponseOptions, Response} from "angular2/http";
-import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
+import {Component, provide, DebugElement} from "@angular/core";
+import {By} from "@angular/platform-browser/src/dom/debug/by";
+import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
+import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {BaseResponseOptions, Response} from "@angular/http";
+import {ROUTER_PRIMARY_COMPONENT} from "@angular/router-deprecated";
 import {App, LoginPage} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext} from "app/testing";
@@ -51,7 +51,7 @@ describe('LoginPage', () => {
 
   it('can navigate to signup page', (done) => {
     const el = cmpDebugElement.nativeElement;
-    DOM.querySelector(el, 'a').click();
+    getDOM().querySelector(el, 'a').click();
     ctx.router.subscribe(() => {
       expect(ctx.location.path()).toEqual('/signup');
       done();

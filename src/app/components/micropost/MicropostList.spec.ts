@@ -1,9 +1,9 @@
-import {Component, provide, DebugElement} from "angular2/core";
-import {By} from "angular2/platform/common_dom";
-import {DOM} from "angular2/src/platform/dom/dom_adapter";
-import {inject, beforeEachProviders, beforeEach} from "angular2/testing";
-import {ResponseOptions, Response} from "angular2/http";
-import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
+import {Component, provide, DebugElement} from "@angular/core";
+import {By} from "@angular/platform-browser/src/dom/debug/by";
+import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
+import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {ResponseOptions, Response} from "@angular/http";
+import {ROUTER_PRIMARY_COMPONENT} from "@angular/router-deprecated";
 import {MicropostList, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext} from "app/testing";
@@ -75,28 +75,28 @@ describe('MicropostList', () => {
     expect(cmp.posts.length).toEqual(2);
 
     const el = cmpDebugElement.nativeElement;
-    expect(DOM.querySelectorAll(el, 'li>.content').length).toEqual(2);
+    expect(getDOM().querySelectorAll(el, 'li>.content').length).toEqual(2);
 
-    const content = DOM.querySelector(el, '.content');
+    const content = getDOM().querySelector(el, '.content');
     expect(content.innerHTML).toEqual('content1');
 
-    const timestamp = DOM.querySelector(el, '.timestamp');
+    const timestamp = getDOM().querySelector(el, '.timestamp');
     expect(timestamp.innerText).toMatch(/1 day ago/);
 
-    const deleteLinks = DOM.querySelectorAll(el, '.delete');
+    const deleteLinks = getDOM().querySelectorAll(el, '.delete');
     expect(deleteLinks[0]).toBeTruthy();
     expect(deleteLinks[1]).toBeFalsy();
   });
 
   it('can load more', () => {
     const cmp:MicropostList = cmpDebugElement.componentInstance;
-    const moreBtn = DOM.querySelector(cmpDebugElement.nativeElement, '.moreBtn');
+    const moreBtn = getDOM().querySelector(cmpDebugElement.nativeElement, '.moreBtn');
     moreBtn.click();
     expect(cmp.posts.length).toEqual(4);
   });
 
   it('does not delete micropost when not confirmed', () => {
-    const deleteLink = DOM.querySelector(cmpDebugElement.nativeElement, '.delete');
+    const deleteLink = getDOM().querySelector(cmpDebugElement.nativeElement, '.delete');
     spyOn(window, 'confirm').and.returnValue(false);
     spyOn(micropostService, 'delete');
     deleteLink.click();
@@ -105,7 +105,7 @@ describe('MicropostList', () => {
 
   it('deletes micropost when confirmed', () => {
     const cmp:MicropostList = cmpDebugElement.componentInstance;
-    const deleteLink = DOM.querySelector(cmpDebugElement.nativeElement, '.delete');
+    const deleteLink = getDOM().querySelector(cmpDebugElement.nativeElement, '.delete');
     spyOn(window, 'confirm').and.returnValue(true);
     deleteLink.click();
     expect(cmp.posts.length).toEqual(1);

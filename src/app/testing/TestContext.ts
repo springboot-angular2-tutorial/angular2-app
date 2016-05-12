@@ -1,10 +1,15 @@
 import {Observable} from "rxjs/Observable";
-import {MockBackend} from "angular2/http/testing";
-import {Router, Location} from "angular2/router";
-import {inject, ComponentFixture, TestComponentBuilder} from "angular2/testing";
+import {Location} from "@angular/common";
+import {MockBackend} from "@angular/http/testing";
+import {Router} from "@angular/router-deprecated";
+import {inject} from "@angular/core/testing";
+import {
+  ComponentFixture,
+  TestComponentBuilder
+} from "@angular/compiler/testing";
 import {UserService} from "../services/UserService";
 import {LoginService} from "../services/LoginService";
-import {Injector, provide} from "angular2/core";
+import {ReflectiveInjector, provide} from "@angular/core";
 import {appInjector} from "../app-injector";
 
 const tokens = [
@@ -21,7 +26,7 @@ export function createTestContext(fn:Function) {
   return inject(tokens, (tcb, router, location, backend, userService, loginService) => {
     // TODO it's not a good idea, but I have no other way.
     // It must be resolved in https://github.com/angular/angular/issues/4112
-    appInjector(Injector.resolveAndCreate([
+    appInjector(ReflectiveInjector.resolveAndCreate([
       provide(UserService, {useValue: userService}),
       provide(LoginService, {useValue: loginService}),
       provide(Router, {useValue: router}),
@@ -37,7 +42,7 @@ export class TestContext {
   private _router:Router;
   private _location:Location;
   private _backend:MockBackend;
-  private _fixture:ComponentFixture;
+  private _fixture:ComponentFixture<any>;
 
   constructor({tcb, router, location, backend}:{
     tcb:TestComponentBuilder,
@@ -72,7 +77,7 @@ export class TestContext {
     return this._backend;
   }
 
-  get fixture():ComponentFixture {
+  get fixture():ComponentFixture<any> {
     return this._fixture;
   }
 }

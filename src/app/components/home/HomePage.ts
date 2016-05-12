@@ -1,6 +1,6 @@
-import {Component} from "angular2/core";
+import {Component} from "@angular/core";
 import {Feed, MicropostNew, UserStats} from "app/components";
-import {CanActivate} from "angular2/router";
+import {CanActivate} from "@angular/router-deprecated";
 import {activateIfSignedIn} from "app/routes";
 
 @Component({

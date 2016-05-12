@@ -1,9 +1,10 @@
-import {provide, DirectiveResolver} from "angular2/core";
-import {Http, HTTP_PROVIDERS, XHRBackend, RequestOptions} from "angular2/http";
-import {MockBackend} from "angular2/http/testing";
-import {Router, RouteRegistry, Location} from "angular2/router";
-import {SpyLocation} from "angular2/src/mock/location_mock";
-import {RootRouter} from "angular2/src/router/router";
+import {provide} from "@angular/core";
+import {Http, HTTP_PROVIDERS, XHRBackend, RequestOptions} from "@angular/http";
+import {MockBackend} from "@angular/http/testing";
+import {Router, RouteRegistry} from "@angular/router-deprecated";
+import {RootRouter} from "@angular/router-deprecated/src/router";
+import {Location} from "@angular/common";
+import {SpyLocation} from "@angular/common/testing";
 import {MyHttp} from "app/http";
 import {
   HttpErrorHandler,
@@ -57,7 +58,6 @@ const APP_TEST_HTTP_PROVIDERS = [
 
 const APP_TEST_ROUTER_PROVIDERS = [
   RouteRegistry,
-  DirectiveResolver,
   provide(Location, {useClass: SpyLocation}),
   provide(Router, {useClass: RootRouter}),
 ];

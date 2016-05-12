@@ -1,5 +1,5 @@
 import {Observable} from "rxjs/Observable";
-import {Injectable} from "angular2/core";
+import {Injectable} from "@angular/core";
 import {MyHttp} from "app/http";
 import {objToSearchParams} from "./helpers";
 import {Micropost} from "app/interfaces";

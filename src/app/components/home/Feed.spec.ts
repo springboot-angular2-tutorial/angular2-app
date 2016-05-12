@@ -1,10 +1,10 @@
-import {Component, provide, DebugElement} from "angular2/core";
-import {By} from "angular2/platform/common_dom";
-import {DOM} from "angular2/src/platform/dom/dom_adapter";
-import {inject, beforeEachProviders, beforeEach} from "angular2/testing";
-import {ObservableWrapper} from "angular2/src/facade/async";
-import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
-import {ResponseOptions, Response} from "angular2/http";
+import {Component, provide, DebugElement} from "@angular/core";
+import {By} from "@angular/platform-browser/src/dom/debug/by";
+import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
+import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {ObservableWrapper} from "@angular/common/src/facade/async";
+import {ROUTER_PRIMARY_COMPONENT} from "@angular/router-deprecated";
+import {ResponseOptions, Response} from "@angular/http";
 import {Feed, Gravatar, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {MicropostService} from "app/services";
@@ -73,9 +73,9 @@ describe('Feed', () => {
     expect(cmp.feed.length).toEqual(2);
 
     const el = cmpDebugElement.nativeElement;
-    expect(DOM.querySelectorAll(el, 'li .content').length).toEqual(2);
+    expect(getDOM().querySelectorAll(el, 'li .content').length).toEqual(2);
 
-    const avatarLink = DOM.querySelector(el, 'li>a');
+    const avatarLink = getDOM().querySelector(el, 'li>a');
     expect(avatarLink.getAttribute('href')).toEqual('/users/1');
 
     const gravatarDebugElement = cmpDebugElement.query(By.directive(Gravatar));
@@ -83,24 +83,24 @@ describe('Feed', () => {
     expect(gravatarDebugElement.componentInstance.email).toEqual('test1@test.com');
     expect(gravatarDebugElement.componentInstance.alt).toEqual('test user1');
 
-    const userLink = DOM.querySelector(el, '.user>a');
+    const userLink = getDOM().querySelector(el, '.user>a');
     expect(userLink.innerHTML).toEqual("test user1");
     expect(userLink.getAttribute('href')).toEqual('/users/1');
 
-    const content = DOM.querySelector(el, '.content');
+    const content = getDOM().querySelector(el, '.content');
     expect(content.innerHTML).toEqual('content1');
 
-    const timestamp = DOM.querySelector(el, '.timestamp');
+    const timestamp = getDOM().querySelector(el, '.timestamp');
     expect(timestamp.innerText).toMatch(/1 day ago/);
 
-    const deleteLinks = DOM.querySelectorAll(el, '.delete');
+    const deleteLinks = getDOM().querySelectorAll(el, '.delete');
     expect(deleteLinks[0]).toBeTruthy();
     expect(deleteLinks[1]).toBeFalsy();
   });
 
 
   it('does not delete micropost when not confirmed', () => {
-    const deleteLink = DOM.querySelector(cmpDebugElement.nativeElement, '.delete');
+    const deleteLink = getDOM().querySelector(cmpDebugElement.nativeElement, '.delete');
     spyOn(window, 'confirm').and.returnValue(false);
     spyOn(micropostService, 'delete');
     deleteLink.click();
@@ -110,7 +110,7 @@ describe('Feed', () => {
   it('deletes micropost when confirmed', done => {
     const cmp:Feed = cmpDebugElement.componentInstance;
     const testCmp:TestCmp = ctx.fixture.debugElement.componentInstance;
-    const deleteLink = DOM.querySelector(cmpDebugElement.nativeElement, '.delete');
+    const deleteLink = getDOM().querySelector(cmpDebugElement.nativeElement, '.delete');
     spyOn(window, 'confirm').and.returnValue(true);
     spyOn(cmp, 'list');
     spyOn(testCmp, 'listenDeleted');

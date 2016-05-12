@@ -1,4 +1,4 @@
-import {Component, EventEmitter} from "angular2/core";
+import {Component, EventEmitter} from "@angular/core";
 import {MicropostService, HttpErrorHandler} from "app/services";
 
 const toastr = require('toastr');

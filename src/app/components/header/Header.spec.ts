@@ -1,8 +1,8 @@
-import {Component, provide, DebugElement} from "angular2/core";
-import {By} from "angular2/platform/common_dom";
-import {DOM} from "angular2/src/platform/dom/dom_adapter";
-import {inject, beforeEachProviders, beforeEach} from "angular2/testing";
-import {ROUTER_PRIMARY_COMPONENT} from "angular2/router";
+import {Component, provide, DebugElement} from "@angular/core";
+import {By} from "@angular/platform-browser/src/dom/debug/by";
+import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
+import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {ROUTER_PRIMARY_COMPONENT} from "@angular/router-deprecated";
 import {Header, App} from "app/components";
 import {APP_TEST_PROVIDERS} from "app/providers";
 import {TestContext, createTestContext, signin} from "app/testing";
@@ -43,7 +43,7 @@ describe('Header', () => {
     });
 
     it('shows a nav link to home', (done) => {
-      const link = DOM.querySelector(cmpDebugElement.nativeElement, '#navbar li.home>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.home>a');
       expect(link).toBeTruthy();
       link.click();
       ctx.router.subscribe(() => {
@@ -55,12 +55,12 @@ describe('Header', () => {
     });
 
     it('does not show a nav link to top', () => {
-      const link = DOM.querySelector(cmpDebugElement.nativeElement, '#navbar li.top>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.top>a');
       expect(link).toBeNull();
     });
 
     it('shows a nav link to users', (done) => {
-      const link = DOM.querySelector(cmpDebugElement.nativeElement, '#navbar li.users>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.users>a');
       expect(link).toBeTruthy();
       link.click();
       ctx.router.subscribe(() => {
@@ -72,7 +72,7 @@ describe('Header', () => {
     });
 
     it('shows a nav link to help', (done) => {
-      const link = DOM.querySelector(cmpDebugElement.nativeElement, '#navbar li.help>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.help>a');
       expect(link).toBeTruthy();
       link.click();
       ctx.router.subscribe(() => {
@@ -84,7 +84,7 @@ describe('Header', () => {
     });
 
     it('shows a nav link to profile', (done) => {
-      const link = DOM.querySelector(cmpDebugElement.nativeElement, '#navbar li.profile>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.profile>a');
       expect(link).toBeTruthy();
       link.click();
       ctx.router.subscribe(() => {
@@ -99,7 +99,7 @@ describe('Header', () => {
         spyOn(userService, 'get').and.returnValue(Observable.of({}));
       }));
       it('shows a nav link to settings', (done) => {
-        const link = DOM.querySelector(cmpDebugElement.nativeElement, '#navbar li.settings>a');
+        const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.settings>a');
         expect(link).toBeTruthy();
         link.click();
         ctx.router.subscribe(() => {
@@ -111,7 +111,7 @@ describe('Header', () => {
     });
 
     it('shows a nav link to logout', () => {
-      const link = DOM.querySelector(cmpDebugElement.nativeElement, '#navbar li.logout>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.logout>a');
       expect(link).toBeTruthy();
       spyOn(loginService, 'logout');
       link.click();
@@ -127,12 +127,12 @@ describe('Header', () => {
     });
 
     it('does not show a nav link to home', () => {
-      const link = DOM.querySelector(cmpDebugElement.nativeElement, '#navbar li.home>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.home>a');
       expect(link).toBeNull();
     });
 
     it('shows a nav link to top', (done) => {
-      const link = DOM.querySelector(cmpDebugElement.nativeElement, '#navbar li.top>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.top>a');
       expect(link).toBeTruthy();
       link.click();
       ctx.router.subscribe(() => {
@@ -143,12 +143,12 @@ describe('Header', () => {
     });
 
     it('does not show a nav link to users', () => {
-      const link = DOM.querySelector(cmpDebugElement.nativeElement, '#navbar li.users>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.users>a');
       expect(link).toBeNull();
     });
 
     it('shows a nav link to help', (done) => {
-      const link = DOM.querySelector(cmpDebugElement.nativeElement, '#navbar li.help>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.help>a');
       expect(link).toBeTruthy();
       link.click();
       ctx.router.subscribe(() => {
@@ -160,17 +160,17 @@ describe('Header', () => {
     });
 
     it('does not show a nav link to profile', () => {
-      const link = DOM.querySelector(cmpDebugElement.nativeElement, '#navbar li.profile>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.profile>a');
       expect(link).toBeNull();
     });
 
     it('does not show a nav link to settings', () => {
-      const link = DOM.querySelector(cmpDebugElement.nativeElement, '#navbar li.settings>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.settings>a');
       expect(link).toBeNull();
     });
 
     it('shows a nav link to sign in', (done) => {
-      const link = DOM.querySelector(cmpDebugElement.nativeElement, '#navbar li.login>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.login>a');
       expect(link).toBeTruthy();
       link.click();
       ctx.router.subscribe(() => {

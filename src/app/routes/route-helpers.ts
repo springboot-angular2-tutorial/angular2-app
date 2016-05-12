@@ -1,4 +1,4 @@
-import {Router} from "angular2/router";
+import {Router} from "@angular/router-deprecated";
 import {appInjector} from "app/app-injector";
 import {LoginService} from "app/services";
 

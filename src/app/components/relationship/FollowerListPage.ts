@@ -1,7 +1,7 @@
 import {Observable} from "rxjs/Observable";
-import {Component} from "angular2/core";
-import {CanActivate, RouteParams, ROUTER_DIRECTIVES} from "angular2/router";
-import {CORE_DIRECTIVES} from "angular2/common";
+import {Component} from "@angular/core";
+import {CanActivate, RouteParams, ROUTER_DIRECTIVES} from "@angular/router-deprecated";
+import {CORE_DIRECTIVES} from "@angular/common";
 import {UserService} from "app/services";
 import {UserStats} from "app/components";
 import {RelatedUser} from "app/interfaces";

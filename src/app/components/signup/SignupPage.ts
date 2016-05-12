@@ -1,12 +1,12 @@
-import {Component} from "angular2/core";
+import {Component} from "@angular/core";
 import {
   CORE_DIRECTIVES,
   FORM_DIRECTIVES,
   Control,
   ControlGroup,
   Validators
-} from "angular2/common";
-import {Router, CanActivate} from "angular2/router";
+} from "@angular/common";
+import {Router, CanActivate} from "@angular/router-deprecated";
 import {Validators as AppValidators, EMAIL_PATTERN} from "app/forms";
 import {UserService, LoginService} from "app/services";
 import {activateIfNotSignedIn} from "app/routes";
