@@ -1,0 +1,15 @@
+<h1>All users</h1>
+
+<ul class="users list-unstyled">
+  <li *ngFor="let u of users">
+    <mpt-gravatar [email]="u.email" size="50" [alt]="u.name"></mpt-gravatar>
+    <a [routerLink]="['/UserShow', {id: u.id}]">{{u.name}}</a>
+  </li>
+</ul>
+
+<div class="clearfix">
+  <mpt-pager class="pull-left"
+         (pageChanged)="onPageChanged($event.page)"
+         [totalPages]="totalPages"
+         [currentPage]="page"></mpt-pager>
+</div>

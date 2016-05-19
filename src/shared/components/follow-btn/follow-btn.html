@@ -1,0 +1,4 @@
+<button type="button" *ngIf="canShowFollowBtn" class="btn btn-lg btn-primary"
+        (click)="follow(); $event.preventDefault()" [disabled]="busy">Follow</button>
+<button type="button" *ngIf="canShowUnfollowBtn" class="btn btn-lg btn-default"
+        (click)="unfollow(); $event.preventDefault()" [disabled]="busy">Unfollow</button>

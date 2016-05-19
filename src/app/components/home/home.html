@@ -1,15 +1,15 @@
 <div class="row">
 
   <aside class="col-md-4">
-    <user-stats #us [userId]="'me'"></user-stats>
+    <mpt-user-stats #us [userId]="'me'"></mpt-user-stats>
     <section>
-      <micropost-new (created)="f.list(); us.ngOnChanges()"></micropost-new>
+      <mpt-micropost-new (created)="f.list(); us.ngOnChanges()"></mpt-micropost-new>
     </section>
   </aside>
 
   <div class="col-md-8">
     <h3>Micropost Feed</h3>
-    <feed #f (deleted)="us.ngOnChanges()"></feed>
+    <mpt-feed #f (deleted)="us.ngOnChanges()"></mpt-feed>
   </div>
 
 </div>

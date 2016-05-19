@@ -1,0 +1,10 @@
+<ul class="users list-unstyled">
+  <li *ngFor="let u of users">
+    <mpt-gravatar [alt]="u.name" [email]="u.email" size="50"></mpt-gravatar>
+    <a [routerLink]="['/UserShow', {id: u.id}]">{{u.name}}</a>
+  </li>
+</ul>
+
+<button class="btn btn-default moreBtn" type="button" (click)="loadMore()"
+        [disabled]="noMoreUsers">More
+</button>

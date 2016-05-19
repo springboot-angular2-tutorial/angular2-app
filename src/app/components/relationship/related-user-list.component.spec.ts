@@ -1,0 +1,81 @@
+import {Observable} from "rxjs/Observable";
+import {Component, DebugElement} from "@angular/core";
+import {By} from "@angular/platform-browser/src/dom/debug/by";
+import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
+import {
+  beforeEachProviders,
+  beforeEach,
+  inject,
+  async
+} from "@angular/core/testing";
+import {
+  TestComponentBuilder,
+  ComponentFixture
+} from "@angular/compiler/testing";
+import {RelatedUserListComponent} from "./related-user-list.component";
+import {RelatedUser} from "../../../shared/domains";
+import {GravatarComponent} from "../../../shared/components";
+import {APP_TEST_PROVIDERS} from "../../index";
+import {prepareAppInjector} from "../../../shared/testing";
+
+describe('RelatedUserListComponent', () => {
+
+  let cmpDebugElement:DebugElement;
+
+  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+  beforeEach(prepareAppInjector());
+  beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
+    tcb
+      .createAsync(TestCmp)
+      .then((fixture:ComponentFixture<any>) => {
+        cmpDebugElement = fixture.debugElement.query(By.directive(RelatedUserListComponent));
+        fixture.detectChanges();
+      });
+  })));
+
+  it('can be shown', () => {
+    expect(cmpDebugElement).toBeTruthy();
+
+    const cmp:RelatedUserListComponent = cmpDebugElement.componentInstance;
+    expect(cmp.users.length).toEqual(2);
+
+    expect(getDOM().querySelectorAll(cmpDebugElement.nativeElement, '.users>li').length).toEqual(2);
+
+    const gravatarDebugElement = cmpDebugElement.query(By.directive(GravatarComponent));
+    expect(gravatarDebugElement).toBeTruthy();
+    expect(gravatarDebugElement.componentInstance.alt).toEqual('test1');
+    expect(gravatarDebugElement.componentInstance.email).toEqual('test1@test.com');
+
+    const userLink:HTMLElement = cmpDebugElement.query(By.css('.users>li>a')).nativeElement;
+    expect(userLink.innerText).toEqual('test1');
+    expect(userLink.getAttribute('href')).toEqual('/users/1');
+  });
+
+  it('can load more', () => {
+    const cmp:RelatedUserListComponent = cmpDebugElement.componentInstance;
+    const moreBtn = getDOM().querySelector(cmpDebugElement.nativeElement, '.moreBtn');
+    spyOn(cmp, 'listProvider').and.callThrough();
+    moreBtn.click();
+    expect(cmp.users.length).toEqual(4);
+    expect(cmp.listProvider).toHaveBeenCalledWith({maxId: 100, count: 5});
+  });
+
+});
+
+@Component({
+  selector: 'test-cmp',
+  template: `<mpt-related-user-list [listProvider]="listProvider"></mpt-related-user-list>`,
+  directives: [RelatedUserListComponent],
+})
+class TestCmp {
+  listProvider:(params:any) => Observable<RelatedUser[]>;
+
+  constructor() {
+    this.listProvider = () => {
+      return Observable.of([
+        {id: 1, email: 'test1@test.com', name: 'test1', relationshipId: 1},
+        {id: 2, email: 'test2@test.com', name: 'test2', relationshipId: 100},
+      ]);
+    };
+  }
+}

@@ -1,0 +1,18 @@
+<div>
+
+  <h3>Microposts ({{userStats?.micropostCnt}})</h3>
+  <ol class="posts list-unstyled">
+    <li *ngFor="let p of posts">
+      <span class="content">{{p.content}}</span>
+      <span class="timestamp">Posted about {{p.createdAt | timeAgo}}.</span>
+      <a *ngIf="p.isMyPost" href="#" class="delete"
+         (click)="delete(p.id); $event.preventDefault()">delete</a>
+    </li>
+  </ol>
+
+  <button class="btn btn-default moreBtn" type="button" (click)="loadMore()"
+          [disabled]="noMorePosts">More
+  </button>
+
+</div>
+

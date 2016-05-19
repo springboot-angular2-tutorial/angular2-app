@@ -1,17 +1,17 @@
 <div class="row">
 
   <aside class="col-md-4">
-    <user-stats [userId]="userId"></user-stats>
+    <mpt-user-stats [userId]="userId"></mpt-user-stats>
     <div class="user_avatars">
       <a *ngFor="let u of users" [routerLink]="['/UserShow', {id: u.id}]">
-        <gravatar [alt]="u.name" [email]="u.email" size="30"></gravatar>
+        <mpt-gravatar [alt]="u.name" [email]="u.email" size="30"></mpt-gravatar>
       </a>
     </div>
   </aside>
 
   <div class="col-md-8">
     <h3>Following</h3>
-    <user-list [listProvider]="listProvider"></user-list>
+    <mpt-related-user-list [listProvider]="listProvider"></mpt-related-user-list>
   </div>
 
 </div>

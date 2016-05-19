@@ -2,7 +2,7 @@
 
   <li *ngFor="let f of feed">
     <a [routerLink]="['/UserShow', {id: f.user.id}]">
-      <gravatar [email]="f.user.email" size="50" [alt]="f.user.name"></gravatar>
+      <mpt-gravatar [email]="f.user.email" size="50" [alt]="f.user.name"></mpt-gravatar>
     </a>
     <span class="user">
       <a [routerLink]="['/UserShow', {id: f.user.id}]">{{f.user.name}}</a>
