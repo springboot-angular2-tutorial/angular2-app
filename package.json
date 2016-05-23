@@ -62,6 +62,7 @@
     "awesome-typescript-loader": "^0.17.0",
     "bootstrap-loader": "^1.0.8",
     "bootstrap-sass": "^3.3.6",
+    "codelyzer": "~0.0.19",
     "css-loader": "^0.23.1",
     "es6-promise": "^3.1.2",
     "es6-shim": "^0.35.0",

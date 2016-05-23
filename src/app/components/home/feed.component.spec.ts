@@ -62,7 +62,7 @@ describe('FeedComponent', () => {
   beforeEach(() => jasmine.clock().mockDate(new Date(24 * 60 * 60 * 1000)));
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
-      .createAsync(TestCmp)
+      .createAsync(TestComponent)
       .then((fixture:ComponentFixture<any>) => {
         testCmpDebugElement = fixture.debugElement;
         cmpDebugElement = fixture.debugElement.query(By.directive(FeedComponent));
@@ -113,7 +113,7 @@ describe('FeedComponent', () => {
 
   it('deletes micropost when confirmed', done => {
     const cmp:FeedComponent = cmpDebugElement.componentInstance;
-    const testCmp:TestCmp = testCmpDebugElement.componentInstance;
+    const testCmp:TestComponent = testCmpDebugElement.componentInstance;
     const deleteLink = getDOM().querySelector(cmpDebugElement.nativeElement, '.delete');
     spyOn(window, 'confirm').and.returnValue(true);
     spyOn(cmp, 'list');
@@ -129,11 +129,11 @@ describe('FeedComponent', () => {
 });
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'mpt-test',
   template: `<mpt-feed (deleted)="listenDeleted()"></mpt-feed>`,
   directives: [FeedComponent],
 })
-class TestCmp {
+class TestComponent {
   listenDeleted() {
   }
 }

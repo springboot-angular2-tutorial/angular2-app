@@ -40,7 +40,7 @@ describe('UserEditComponent', () => {
   beforeEach(login());
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
-      .createAsync(TestCmp)
+      .createAsync(TestComponent)
       .then((fixture:ComponentFixture<any>) => {
         return router.navigate(['/MeEdit']).then(() => {
           fixture.detectChanges();
@@ -106,9 +106,9 @@ describe('UserEditComponent', () => {
 });
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'mpt-test',
   template: `<router-outlet></router-outlet>`,
   directives: [ROUTER_DIRECTIVES],
 })
-class TestCmp {
+class TestComponent {
 }

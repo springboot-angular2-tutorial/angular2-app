@@ -30,7 +30,7 @@ describe('HomeComponent', () => {
   beforeEach(prepareAppInjector());
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
-      .createAsync(TestCmp)
+      .createAsync(TestComponent)
       .then((fixture:ComponentFixture<any>) => {
         cmpDebugElement = fixture.debugElement.query(By.directive(HomeComponent));
         userStatsDebugElement = cmpDebugElement.query(By.directive(UserStatsComponent));
@@ -72,9 +72,9 @@ describe('HomeComponent', () => {
 });
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'mpt-test',
   template: `<mpt-home></mpt-home>`,
   directives: [HomeComponent],
 })
-class TestCmp {
+class TestComponent {
 }

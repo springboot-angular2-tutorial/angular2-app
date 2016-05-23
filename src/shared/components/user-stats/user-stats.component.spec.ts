@@ -46,7 +46,7 @@ describe('UserStatsComponent', () => {
   }));
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
-      .createAsync(TestCmp)
+      .createAsync(TestComponent)
       .then(_ => {
         fixture = _;
         cmpDebugElement = fixture.debugElement.query(By.directive(UserStatsComponent));
@@ -113,9 +113,9 @@ describe('UserStatsComponent', () => {
 });
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'mpt-test',
   template: `<mpt-user-stats userId="1" [shownOnProfile]="false"></mpt-user-stats>`,
   directives: [UserStatsComponent],
 })
-class TestCmp {
+class TestComponent {
 }

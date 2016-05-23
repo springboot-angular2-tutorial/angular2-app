@@ -22,7 +22,7 @@ describe('TopComponent', () => {
   beforeEach(prepareAppInjector());
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
-      .createAsync(TestCmp)
+      .createAsync(TestComponent)
       .then((fixture:ComponentFixture<any>) => {
         cmpDebugElement = fixture.debugElement.query(By.directive(TopComponent));
         fixture.detectChanges();
@@ -39,9 +39,9 @@ describe('TopComponent', () => {
 });
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'mpt-test',
   template: `<mpt-top></mpt-top>`,
   directives: [TopComponent],
 })
-class TestCmp {
+class TestComponent {
 }

@@ -35,7 +35,7 @@ describe('SignupComponent', () => {
   }));
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
-      .createAsync(TestCmp)
+      .createAsync(TestComponent)
       .then((fixture:ComponentFixture<any>) => {
         cmpDebugElement = fixture.debugElement.query(By.directive(SignupComponent));
         fixture.detectChanges();
@@ -82,9 +82,9 @@ describe('SignupComponent', () => {
 });
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'mpt-test',
   template: `<mpt-signup></mpt-signup>`,
   directives: [SignupComponent],
 })
-class TestCmp {
+class TestComponent {
 }

@@ -30,7 +30,7 @@ describe('MicropostNewComponent', () => {
   }));
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
-      .createAsync(TestCmp)
+      .createAsync(TestComponent)
       .then((fixture:ComponentFixture<any>) => {
         cmpDebugElement = fixture.debugElement.query(By.directive(MicropostNewComponent));
         fixture.detectChanges();
@@ -70,9 +70,9 @@ describe('MicropostNewComponent', () => {
 });
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'mpt-test',
   template: `<mpt-micropost-new></mpt-micropost-new>`,
   directives: [MicropostNewComponent],
 })
-class TestCmp {
+class TestComponent {
 }

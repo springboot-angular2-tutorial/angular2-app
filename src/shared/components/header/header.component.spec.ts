@@ -36,7 +36,7 @@ describe('HeaderComponent', () => {
   const initComponent = ():Function => {
     return async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
       tcb
-        .createAsync(TestCmp)
+        .createAsync(TestComponent)
         .then(_ => {
           fixture = _;
           cmpDebugElement = fixture.debugElement.query(By.directive(HeaderComponent));
@@ -220,9 +220,9 @@ describe('HeaderComponent', () => {
 });
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'mpt-test',
   template: `<mpt-header></mpt-header>`,
   directives: [HeaderComponent],
 })
-class TestCmp {
+class TestComponent {
 }

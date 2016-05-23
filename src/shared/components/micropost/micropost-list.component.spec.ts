@@ -61,7 +61,7 @@ describe('MicropostListComponent', () => {
   beforeEach(() => jasmine.clock().mockDate(new Date(24 * 60 * 60 * 1000)));
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
-      .createAsync(TestCmp)
+      .createAsync(TestComponent)
       .then((fixture:ComponentFixture<any>) => {
         cmpDebugElement = fixture.debugElement.query(By.directive(MicropostListComponent));
         fixture.detectChanges();
@@ -116,9 +116,9 @@ describe('MicropostListComponent', () => {
 });
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'mpt-test',
   template: `<mpt-micropost-list userId="1"></mpt-micropost-list>`,
   directives: [MicropostListComponent],
 })
-class TestCmp {
+class TestComponent {
 }

@@ -26,7 +26,7 @@ describe('RelatedUserListComponent', () => {
   beforeEach(prepareAppInjector());
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
-      .createAsync(TestCmp)
+      .createAsync(TestComponent)
       .then((fixture:ComponentFixture<any>) => {
         cmpDebugElement = fixture.debugElement.query(By.directive(RelatedUserListComponent));
         fixture.detectChanges();
@@ -63,11 +63,11 @@ describe('RelatedUserListComponent', () => {
 });
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'mpt-test',
   template: `<mpt-related-user-list [listProvider]="listProvider"></mpt-related-user-list>`,
   directives: [RelatedUserListComponent],
 })
-class TestCmp {
+class TestComponent {
   listProvider:(params:any) => Observable<RelatedUser[]>;
 
   constructor() {

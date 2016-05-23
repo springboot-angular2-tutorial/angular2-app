@@ -24,7 +24,7 @@ describe('PagerComponent', () => {
   beforeEach(prepareAppInjector());
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
-      .createAsync(TestCmp)
+      .createAsync(TestComponent)
       .then((fixture:ComponentFixture<any>) => {
         testCmpDebugElement = fixture.debugElement;
         cmpDebugElement = fixture.debugElement.query(By.directive(PagerComponent));
@@ -46,7 +46,7 @@ describe('PagerComponent', () => {
 
     it('shows previous page, when current page is greater than 1', (done) => {
       const pager:PagerComponent = cmpDebugElement.componentInstance;
-      const testCmp:TestCmp = testCmpDebugElement.componentInstance;
+      const testCmp:TestComponent = testCmpDebugElement.componentInstance;
       pager.currentPage = 2;
       pager.showPrev();
       expect(pager.currentPage).toBe(1);
@@ -65,7 +65,7 @@ describe('PagerComponent', () => {
 
     it('shows next page, when it has next page', (done) => {
       const pager:PagerComponent = cmpDebugElement.componentInstance;
-      const testCmp:TestCmp = testCmpDebugElement.componentInstance;
+      const testCmp:TestComponent = testCmpDebugElement.componentInstance;
       pager.currentPage = 1;
       pager.totalPages = 2;
       pager.showNext();
@@ -77,11 +77,11 @@ describe('PagerComponent', () => {
 });
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'mpt-test',
   template: `<mpt-pager (pageChanged)="doSomething()"></mpt-pager>`,
   directives: [PagerComponent],
 })
-class TestCmp {
+class TestComponent {
   doneSomething:EventEmitter<any> = new EventEmitter();
 
   doSomething() {

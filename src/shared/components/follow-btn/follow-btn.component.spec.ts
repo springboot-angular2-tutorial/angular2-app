@@ -94,7 +94,7 @@ describe('FollowBtnComponent', () => {
         .overrideProviders(FollowBtnComponent, [
           provide(FollowBtnService, {useValue: followBtnService})
         ])
-        .createAsync(TestCmp)
+        .createAsync(TestComponent)
         .then((fixture:ComponentFixture<any>) => {
           testCmpDebugElement = fixture.debugElement;
           cmpDebugElement = testCmpDebugElement.query(By.directive(FollowBtnComponent));
@@ -135,7 +135,7 @@ describe('FollowBtnComponent', () => {
 
     it('can unfollow the user', (done) => {
       const cmp:FollowBtnComponent = cmpDebugElement.componentInstance;
-      const testCmp:TestCmp = testCmpDebugElement.componentInstance;
+      const testCmp:TestComponent = testCmpDebugElement.componentInstance;
       const unfollowBtn = cmpDebugElement.query(By.css('button'));
       unfollowBtn.nativeElement.click();
       expect(cmp.canShowFollowBtn).toBeTruthy();
@@ -157,7 +157,7 @@ describe('FollowBtnComponent', () => {
 
     it('can follow the user', (done) => {
       const cmp:FollowBtnComponent = cmpDebugElement.componentInstance;
-      const testCmp:TestCmp = testCmpDebugElement.componentInstance;
+      const testCmp:TestComponent = testCmpDebugElement.componentInstance;
       const followBtn = cmpDebugElement.query(By.css('button'));
       followBtn.nativeElement.click();
       expect(cmp.canShowFollowBtn).toBeFalsy();
@@ -170,11 +170,11 @@ describe('FollowBtnComponent', () => {
 });
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'mpt-test',
   template: `<mpt-follow-btn followerId="1" (updated)="doSomething()"></mpt-follow-btn>`,
   directives: [FollowBtnComponent],
 })
-class TestCmp {
+class TestComponent {
   doneSomething:EventEmitter<any> = new EventEmitter();
 
   doSomething() {

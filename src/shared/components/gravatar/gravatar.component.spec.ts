@@ -21,7 +21,7 @@ describe('GravatarComponent', () => {
   beforeEachProviders(() => [APP_TEST_PROVIDERS]);
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
-      .createAsync(TestCmp)
+      .createAsync(TestComponent)
       .then((fixture:ComponentFixture<any>) => {
         cmpDebugElement = fixture.debugElement.query(By.directive(GravatarComponent));
         fixture.detectChanges();
@@ -44,9 +44,9 @@ describe('GravatarComponent', () => {
 });
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'mpt-test',
   template: `<mpt-gravatar email="test@test.com" alt="test-alt" size="1"></mpt-gravatar>`,
   directives: [GravatarComponent],
 })
-class TestCmp {
+class TestComponent {
 }

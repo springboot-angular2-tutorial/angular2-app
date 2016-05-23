@@ -48,7 +48,7 @@ describe('UserShowComponent', () => {
   }));
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
-      .createAsync(TestCmp)
+      .createAsync(TestComponent)
       .then((fixture:ComponentFixture<any>) => {
         return router.navigate(['/MeEdit']).then(() => {
           cmpDebugElement = fixture.debugElement.query(By.directive(UserShowComponent));
@@ -80,9 +80,9 @@ describe('UserShowComponent', () => {
 });
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'mpt-test',
   template: `<mpt-user-show></mpt-user-show>`,
   directives: [UserShowComponent],
 })
-class TestCmp {
+class TestComponent {
 }

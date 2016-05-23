@@ -36,7 +36,7 @@ describe('FollowerListComponent', () => {
   beforeEach(prepareAppInjector());
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
-      .createAsync(TestCmp)
+      .createAsync(TestComponent)
       .then((fixture:ComponentFixture<any>) => {
         cmpDebugElement = fixture.debugElement.query(By.directive(FollowerListComponent));
         userStatsDebugElement = cmpDebugElement.query(By.directive(UserStatsComponent));
@@ -59,9 +59,9 @@ describe('FollowerListComponent', () => {
 });
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'mpt-test',
   template: `<mpt-follower-list></mpt-follower-list>`,
   directives: [FollowerListComponent],
 })
-class TestCmp {
+class TestComponent {
 }

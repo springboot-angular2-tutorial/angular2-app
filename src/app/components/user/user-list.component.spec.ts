@@ -48,7 +48,7 @@ describe('UserListComponent', () => {
   beforeEach(login());
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
-      .createAsync(TestCmp)
+      .createAsync(TestComponent)
       .then((_fixture:ComponentFixture<any>) => {
         fixture = _fixture;
         return router.navigate(['/UserList']).then(() => {
@@ -98,9 +98,9 @@ describe('UserListComponent', () => {
 });
 
 @Component({
-  selector: 'test-cmp',
+  selector: 'mpt-test',
   template: `<router-outlet></router-outlet>`,
   directives: [ROUTER_DIRECTIVES],
 })
-class TestCmp {
+class TestComponent {
 }
