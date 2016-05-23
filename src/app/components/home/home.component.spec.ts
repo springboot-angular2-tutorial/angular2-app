@@ -12,7 +12,10 @@ import {
 } from "@angular/compiler/testing";
 import {FeedComponent} from "./feed.component";
 import {HomeComponent} from "./home.component";
-import {MicropostNewComponent, UserStatsComponent} from "../../../shared/components";
+import {
+  MicropostNewComponent,
+  UserStatsComponent
+} from "../../../shared/components";
 import {prepareAppInjector} from "../../../shared/testing";
 import {APP_TEST_PROVIDERS} from "../../index";
 

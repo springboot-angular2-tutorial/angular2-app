@@ -1,4 +1,4 @@
-import {Component, OnChanges, EventEmitter} from "@angular/core";
+import {Component, OnChanges, EventEmitter, Output, Input} from "@angular/core";
 import {CORE_DIRECTIVES} from "@angular/common";
 import {User} from "../../domains";
 import {FollowBtnService} from "./follow-btn.service";
@@ -6,8 +6,6 @@ import {HttpErrorHandler, UserService} from "../../services";
 
 @Component({
   selector: 'mpt-follow-btn',
-  properties: ['followerId'],
-  events: ['updated'],
   template: require('./follow-btn.html'),
   directives: CORE_DIRECTIVES,
   providers: [FollowBtnService]
@@ -17,10 +15,10 @@ export class FollowBtnComponent implements OnChanges {
   canShowFollowBtn:boolean;
   canShowUnfollowBtn:boolean;
 
-  followerId:string;
   busy:boolean = false;
 
-  private updated:EventEmitter<any> = new EventEmitter();
+  @Input() followerId:string;
+  @Output() updated = new EventEmitter();
 
   constructor(private followBtnService:FollowBtnService,
               private userService:UserService,

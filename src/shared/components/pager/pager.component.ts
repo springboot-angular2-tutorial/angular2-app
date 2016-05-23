@@ -1,18 +1,17 @@
-import {Component, EventEmitter} from "@angular/core";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {CORE_DIRECTIVES} from "@angular/common";
 
 @Component({
   selector: 'mpt-pager',
-  properties: ['totalPages', 'currentPage'],
-  events: ['pageChanged'],
   template: require('./pager.html'),
   directives: [CORE_DIRECTIVES],
 })
 export class PagerComponent {
 
-  currentPage:number = 1;
-  totalPages:number;
-  pageChanged:EventEmitter<any> = new EventEmitter();
+  @Input() currentPage:number = 1;
+  @Input() totalPages:number;
+
+  @Output() pageChanged = new EventEmitter();
 
   showPrev() {
     if (this.currentPage === 1) return;

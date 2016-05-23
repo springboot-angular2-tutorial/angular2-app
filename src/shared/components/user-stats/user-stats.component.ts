@@ -1,4 +1,4 @@
-import {Component, OnChanges} from "@angular/core";
+import {Component, OnChanges, Input} from "@angular/core";
 import {CORE_DIRECTIVES} from "@angular/common";
 import {ROUTER_DIRECTIVES} from "@angular/router-deprecated";
 import {User} from "../../domains";
@@ -8,7 +8,6 @@ import {PluralizePipe} from "../../pipes";
 
 @Component({
   selector: 'mpt-user-stats',
-  properties: ['userId', 'shownOnProfile'],
   styles: [require('./user-stats.scss')],
   template: require('./user-stats.html'),
   directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, GravatarComponent],
@@ -16,10 +15,10 @@ import {PluralizePipe} from "../../pipes";
 })
 export class UserStatsComponent implements OnChanges {
 
-  userId:string;
-  user:User;
+  @Input() userId:string;
+  @Input() shownOnProfile:boolean = false;
 
-  shownOnProfile:boolean = false;
+  user:User;
 
   constructor(private userService:UserService,
               private errorHandler:HttpErrorHandler) {

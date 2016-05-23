@@ -6,10 +6,6 @@ import {HTTP_PROVIDERS} from "@angular/http";
 import {ENV_PROVIDERS} from "./platform/environment";
 import {AppComponent, APP_PROVIDERS, appInjector} from "./app";
 
-require("expose?$!expose?jQuery!jquery");
-require('bootstrap-loader');
-require("!style!css!toastr/build/toastr.css");
-
 function main():Promise<any> {
   return bootstrap(AppComponent, [
     ...FORM_PROVIDERS,

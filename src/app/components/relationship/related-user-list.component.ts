@@ -1,5 +1,5 @@
 import {Observable} from "rxjs/Observable";
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, Input} from "@angular/core";
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "@angular/common";
 import {ROUTER_DIRECTIVES} from "@angular/router-deprecated";
 import {RelatedUser} from "../../../shared/domains";
@@ -8,7 +8,6 @@ import {HttpErrorHandler} from "../../../shared/services";
 
 @Component({
   selector: 'mpt-related-user-list',
-  properties: ['listProvider'],
   styles: [require('./related-user-list.scss')],
   template: require('./related-user-list.html'),
   directives: [
@@ -21,7 +20,8 @@ import {HttpErrorHandler} from "../../../shared/services";
 })
 export class RelatedUserListComponent implements OnInit {
 
-  listProvider:(params:{maxId:number, count:number}) => Observable<RelatedUser[]>;
+  @Input() listProvider:(params:{maxId:number, count:number}) => Observable<RelatedUser[]>;
+
   users:RelatedUser[] = [];
   noMoreUsers:boolean = false;
 

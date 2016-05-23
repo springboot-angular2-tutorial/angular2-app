@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, Input} from "@angular/core";
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "@angular/common";
 import {Micropost, UserStats} from "../../domains";
 import {HttpErrorHandler, MicropostService, UserService} from "../../services";
@@ -7,7 +7,6 @@ import {TimeAgoPipe} from "../../pipes";
 
 @Component({
   selector: 'mpt-micropost-list',
-  properties: ['userId'],
   styles: [require('./micropost-list.scss')],
   template: require('./micropost-list.html'),
   directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
@@ -16,7 +15,8 @@ import {TimeAgoPipe} from "../../pipes";
 })
 export class MicropostListComponent implements OnInit {
 
-  userId:string;
+  @Input() userId:string;
+
   posts:Micropost[] = [];
   noMorePosts:boolean = false;
   userStats:UserStats;

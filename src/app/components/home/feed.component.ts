@@ -1,4 +1,4 @@
-import {Component, EventEmitter} from "@angular/core";
+import {Component, EventEmitter, Output} from "@angular/core";
 import {CORE_DIRECTIVES} from "@angular/common";
 import {ROUTER_DIRECTIVES} from "@angular/router-deprecated";
 import {Micropost} from "../../../shared/domains";
@@ -9,7 +9,6 @@ import {TimeAgoPipe} from "../../../shared/pipes";
 
 @Component({
   selector: 'mpt-feed',
-  events: ['deleted'],
   styles: [require('./feed.scss')],
   template: require('./feed.html'),
   directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, GravatarComponent],
@@ -19,7 +18,8 @@ import {TimeAgoPipe} from "../../../shared/pipes";
 export class FeedComponent {
 
   feed:Micropost[];
-  deleted:EventEmitter<any> = new EventEmitter();
+
+  @Output() deleted = new EventEmitter();
 
   constructor(private micropostService:MicropostService,
               private feedService:FeedService,

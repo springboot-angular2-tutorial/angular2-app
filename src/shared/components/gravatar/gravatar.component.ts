@@ -1,20 +1,20 @@
-import {Component, OnChanges} from "@angular/core";
+import {Component, OnChanges, Input} from "@angular/core";
 import {CORE_DIRECTIVES} from "@angular/common";
 
 const md5Hex = require('md5-hex');
 
 @Component({
   selector: 'mpt-gravatar',
-  properties: ['email', 'size', 'alt'],
   template: require('./gravatar.html'),
   directives: [CORE_DIRECTIVES],
 })
 export class GravatarComponent implements OnChanges {
 
-  email:string;
-  size:number;
-  alt:string;
   imageUrl:string;
+
+  @Input() email:string;
+  @Input() size:number;
+  @Input() alt:string;
 
   ngOnChanges() {
     if (this.email) {
