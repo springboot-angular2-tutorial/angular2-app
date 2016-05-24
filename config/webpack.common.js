@@ -12,10 +12,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.ts', '.js'],
     root: helpers.root('src'),
-    modulesDirectories: ['node_modules'],
-    alias: {
-      'app': helpers.root('src/app')
-    }
+    modulesDirectories: ['node_modules']
   },
   module: {
     preLoaders: [
