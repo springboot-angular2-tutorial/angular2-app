@@ -21,7 +21,7 @@ describe('PagerComponent', () => {
     directives: [PagerComponent],
   })
   class TestComponent {
-    doneSomething:EventEmitter<any> = new EventEmitter();
+    doneSomething = new EventEmitter();
 
     doSomething() {
       this.doneSomething.emit({});

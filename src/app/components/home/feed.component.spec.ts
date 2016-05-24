@@ -7,7 +7,6 @@ import {
   beforeEach,
   async
 } from "@angular/core/testing";
-import {ObservableWrapper} from "@angular/common/src/facade/async";
 import {ResponseOptions, Response} from "@angular/http";
 import {
   TestComponentBuilder,
@@ -126,7 +125,7 @@ describe('FeedComponent', () => {
     spyOn(window, 'confirm').and.returnValue(true);
     spyOn(cmp, 'list');
     spyOn(testCmp, 'listenDeleted');
-    ObservableWrapper.subscribe(cmp.deleted, () => {
+    cmp.deleted.subscribe(() => {
       expect(cmp.list).toHaveBeenCalled();
       expect(testCmp.listenDeleted).toHaveBeenCalled();
       done();

@@ -7,7 +7,6 @@ import {
   async
 } from "@angular/core/testing";
 import {Response, BaseResponseOptions} from "@angular/http";
-import {ObservableWrapper} from "@angular/common/src/facade/async";
 import {
   ComponentFixture,
   TestComponentBuilder
@@ -56,7 +55,7 @@ describe('MicropostNewComponent', () => {
     backend.connections.subscribe(conn => {
       conn.mockRespond(new Response(new BaseResponseOptions()));
     });
-    ObservableWrapper.subscribe(cmp.created, () => {
+    cmp.created.subscribe(() => {
       expect(inputEl.value).toEqual('');
       done();
     });

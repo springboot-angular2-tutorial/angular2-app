@@ -24,7 +24,7 @@ describe('FollowBtnComponent', () => {
     directives: [FollowBtnComponent],
   })
   class TestComponent {
-    doneSomething:EventEmitter<any> = new EventEmitter();
+    doneSomething = new EventEmitter();
 
     doSomething() {
       this.doneSomething.emit({});
