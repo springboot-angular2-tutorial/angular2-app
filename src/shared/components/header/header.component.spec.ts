@@ -220,7 +220,6 @@ describe('HeaderComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<mpt-header></mpt-header>`,
   directives: [HeaderComponent],
 })

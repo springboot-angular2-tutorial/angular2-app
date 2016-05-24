@@ -39,7 +39,6 @@ describe('TopComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<mpt-top></mpt-top>`,
   directives: [TopComponent],
 })

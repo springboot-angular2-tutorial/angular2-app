@@ -113,7 +113,6 @@ describe('UserStatsComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<mpt-user-stats userId="1" [shownOnProfile]="false"></mpt-user-stats>`,
   directives: [UserStatsComponent],
 })

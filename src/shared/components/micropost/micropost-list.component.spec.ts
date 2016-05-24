@@ -116,7 +116,6 @@ describe('MicropostListComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<mpt-micropost-list userId="1"></mpt-micropost-list>`,
   directives: [MicropostListComponent],
 })

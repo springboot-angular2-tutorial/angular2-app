@@ -74,7 +74,6 @@ describe('LoginComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<mpt-login></mpt-login>`,
   directives: [LoginComponent],
 })

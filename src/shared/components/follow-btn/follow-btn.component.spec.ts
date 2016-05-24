@@ -170,7 +170,6 @@ describe('FollowBtnComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<mpt-follow-btn followerId="1" (updated)="doSomething()"></mpt-follow-btn>`,
   directives: [FollowBtnComponent],
 })

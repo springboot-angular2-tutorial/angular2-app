@@ -70,7 +70,6 @@ describe('MicropostNewComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<mpt-micropost-new></mpt-micropost-new>`,
   directives: [MicropostNewComponent],
 })

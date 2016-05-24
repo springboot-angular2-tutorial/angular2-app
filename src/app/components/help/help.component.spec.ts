@@ -36,7 +36,6 @@ describe('HelpComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<mpt-help></mpt-help>`,
   directives: [HelpComponent],
 })

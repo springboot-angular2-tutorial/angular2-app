@@ -129,7 +129,6 @@ describe('FeedComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<mpt-feed (deleted)="listenDeleted()"></mpt-feed>`,
   directives: [FeedComponent],
 })

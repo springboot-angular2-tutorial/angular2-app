@@ -44,7 +44,6 @@ describe('GravatarComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<mpt-gravatar email="test@test.com" alt="test-alt" size="1"></mpt-gravatar>`,
   directives: [GravatarComponent],
 })

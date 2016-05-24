@@ -82,7 +82,6 @@ describe('SignupComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<mpt-signup></mpt-signup>`,
   directives: [SignupComponent],
 })

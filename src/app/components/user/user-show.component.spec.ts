@@ -80,7 +80,6 @@ describe('UserShowComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<mpt-user-show></mpt-user-show>`,
   directives: [UserShowComponent],
 })

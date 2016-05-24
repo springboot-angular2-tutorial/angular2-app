@@ -106,7 +106,6 @@ describe('UserEditComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<router-outlet></router-outlet>`,
   directives: [ROUTER_DIRECTIVES],
 })

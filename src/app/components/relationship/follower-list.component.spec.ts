@@ -59,7 +59,6 @@ describe('FollowerListComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<mpt-follower-list></mpt-follower-list>`,
   directives: [FollowerListComponent],
 })

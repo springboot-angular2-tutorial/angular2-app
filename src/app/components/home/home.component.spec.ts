@@ -72,7 +72,6 @@ describe('HomeComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<mpt-home></mpt-home>`,
   directives: [HomeComponent],
 })

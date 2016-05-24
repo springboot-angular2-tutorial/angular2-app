@@ -63,7 +63,6 @@ describe('RelatedUserListComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<mpt-related-user-list [listProvider]="listProvider"></mpt-related-user-list>`,
   directives: [RelatedUserListComponent],
 })

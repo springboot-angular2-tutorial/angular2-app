@@ -77,7 +77,6 @@ describe('PagerComponent', () => {
 });
 
 @Component({
-  selector: 'mpt-test',
   template: `<mpt-pager (pageChanged)="doSomething()"></mpt-pager>`,
   directives: [PagerComponent],
 })
