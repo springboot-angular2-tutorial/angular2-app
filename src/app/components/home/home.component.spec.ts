@@ -21,6 +21,13 @@ import {APP_TEST_PROVIDERS} from "../../index";
 
 describe('HomeComponent', () => {
 
+  @Component({
+    template: `<mpt-home></mpt-home>`,
+    directives: [HomeComponent],
+  })
+  class TestComponent {
+  }
+
   let cmpDebugElement:DebugElement;
   let userStatsDebugElement:DebugElement;
   let micropostNewDebugElement:DebugElement;
@@ -70,10 +77,3 @@ describe('HomeComponent', () => {
   });
 
 });
-
-@Component({
-  template: `<mpt-home></mpt-home>`,
-  directives: [HomeComponent],
-})
-class TestComponent {
-}

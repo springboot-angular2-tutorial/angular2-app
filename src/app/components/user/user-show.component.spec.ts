@@ -24,6 +24,13 @@ import {prepareAppInjector} from "../../../shared/testing";
 
 describe('UserShowComponent', () => {
 
+  @Component({
+    template: `<mpt-user-show></mpt-user-show>`,
+    directives: [UserShowComponent],
+  })
+  class TestComponent {
+  }
+
   let cmpDebugElement:DebugElement;
   let userStatsDebugElement:DebugElement;
   let followBtnDebugElement:DebugElement;
@@ -78,10 +85,3 @@ describe('UserShowComponent', () => {
   });
 
 });
-
-@Component({
-  template: `<mpt-user-show></mpt-user-show>`,
-  directives: [UserShowComponent],
-})
-class TestComponent {
-}

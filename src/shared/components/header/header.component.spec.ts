@@ -21,6 +21,13 @@ import {login, prepareAppInjector} from "../../testing";
 
 describe('HeaderComponent', () => {
 
+  @Component({
+    template: `<mpt-header></mpt-header>`,
+    directives: [HeaderComponent],
+  })
+  class TestComponent {
+  }
+
   let cmpDebugElement:DebugElement;
 
   let router:Router;
@@ -218,10 +225,3 @@ describe('HeaderComponent', () => {
   }); // .isActive
 
 });
-
-@Component({
-  template: `<mpt-header></mpt-header>`,
-  directives: [HeaderComponent],
-})
-class TestComponent {
-}

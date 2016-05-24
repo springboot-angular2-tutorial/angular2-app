@@ -10,12 +10,23 @@ import {
   TestComponentBuilder,
   ComponentFixture
 } from "@angular/compiler/testing";
-import {ObservableWrapper} from "@angular/compiler/src/facade/async";
 import {APP_TEST_PROVIDERS} from "../../../app/index";
 import {prepareAppInjector} from "../../../shared/testing";
 import {PagerComponent} from "./pager.component";
 
 describe('PagerComponent', () => {
+
+  @Component({
+    template: `<mpt-pager (pageChanged)="doSomething()"></mpt-pager>`,
+    directives: [PagerComponent],
+  })
+  class TestComponent {
+    doneSomething:EventEmitter<any> = new EventEmitter();
+
+    doSomething() {
+      this.doneSomething.emit({});
+    }
+  }
 
   let cmpDebugElement:DebugElement;
   let testCmpDebugElement:DebugElement;
@@ -50,7 +61,7 @@ describe('PagerComponent', () => {
       pager.currentPage = 2;
       pager.showPrev();
       expect(pager.currentPage).toBe(1);
-      ObservableWrapper.subscribe(testCmp.doneSomething, done);
+      testCmp.doneSomething.subscribe(done);
     });
   });
 
@@ -70,20 +81,8 @@ describe('PagerComponent', () => {
       pager.totalPages = 2;
       pager.showNext();
       expect(pager.currentPage).toBe(2);
-      ObservableWrapper.subscribe(testCmp.doneSomething, done);
+      testCmp.doneSomething.subscribe(done);
     });
   });
 
 });
-
-@Component({
-  template: `<mpt-pager (pageChanged)="doSomething()"></mpt-pager>`,
-  directives: [PagerComponent],
-})
-class TestComponent {
-  doneSomething:EventEmitter<any> = new EventEmitter();
-
-  doSomething() {
-    this.doneSomething.emit({});
-  }
-}

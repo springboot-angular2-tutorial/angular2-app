@@ -21,6 +21,13 @@ import {login, prepareAppInjector} from "../../../shared/testing";
 
 describe('UserListComponent', () => {
 
+  @Component({
+    template: `<router-outlet></router-outlet>`,
+    directives: [ROUTER_DIRECTIVES],
+  })
+  class TestComponent {
+  }
+
   let cmpDebugElement:DebugElement;
   let pagerDebugElement:DebugElement;
 
@@ -96,10 +103,3 @@ describe('UserListComponent', () => {
   });
 
 });
-
-@Component({
-  template: `<router-outlet></router-outlet>`,
-  directives: [ROUTER_DIRECTIVES],
-})
-class TestComponent {
-}

@@ -23,6 +23,13 @@ import {login, prepareAppInjector} from "../../../shared/testing";
 
 describe('UserEditComponent', () => {
 
+  @Component({
+    template: `<router-outlet></router-outlet>`,
+    directives: [ROUTER_DIRECTIVES],
+  })
+  class TestComponent {
+  }
+
   let cmpDebugElement:DebugElement;
 
   let userService:UserService;
@@ -64,8 +71,8 @@ describe('UserEditComponent', () => {
     const passwordInput = <HTMLInputElement>getDOM().querySelector(el, '#passwordInput');
     expect(passwordInput.value).toEqual('');
 
-    const passwordConfirmationInput = <HTMLInputElement>
-      getDOM().querySelector(el, '#passwordConfirmationInput');
+    const passwordConfirmationInput = <HTMLInputElement> getDOM()
+      .querySelector(el, '#passwordConfirmationInput');
     expect(passwordConfirmationInput.value).toEqual('');
   });
 
@@ -104,10 +111,3 @@ describe('UserEditComponent', () => {
   });
 
 });
-
-@Component({
-  template: `<router-outlet></router-outlet>`,
-  directives: [ROUTER_DIRECTIVES],
-})
-class TestComponent {
-}

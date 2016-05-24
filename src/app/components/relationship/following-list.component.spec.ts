@@ -19,6 +19,13 @@ import {prepareAppInjector} from "../../../shared/testing/helpers";
 
 describe('FollowingListComponent', () => {
 
+  @Component({
+    template: `<mpt-following-list></mpt-following-list>`,
+    directives: [FollowingListComponent],
+  })
+  class TestComponent {
+  }
+
   let cmpDebugElement:DebugElement;
   let userStatsDebugElement:DebugElement;
   let userListDebugElement:DebugElement;
@@ -58,9 +65,3 @@ describe('FollowingListComponent', () => {
 
 });
 
-@Component({
-  template: `<mpt-following-list></mpt-following-list>`,
-  directives: [FollowingListComponent],
-})
-class TestComponent {
-}

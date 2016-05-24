@@ -20,6 +20,13 @@ import {prepareAppInjector} from "../../testing";
 
 describe('MicropostListComponent', () => {
 
+  @Component({
+    template: `<mpt-micropost-list userId="1"></mpt-micropost-list>`,
+    directives: [MicropostListComponent],
+  })
+  class TestComponent {
+  }
+
   let cmpDebugElement:DebugElement;
 
   let micropostService:MicropostService;
@@ -114,10 +121,3 @@ describe('MicropostListComponent', () => {
   });
 
 });
-
-@Component({
-  template: `<mpt-micropost-list userId="1"></mpt-micropost-list>`,
-  directives: [MicropostListComponent],
-})
-class TestComponent {
-}

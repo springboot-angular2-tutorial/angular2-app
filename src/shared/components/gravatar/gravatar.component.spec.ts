@@ -16,6 +16,13 @@ import {APP_TEST_PROVIDERS} from "../../../app";
 
 describe('GravatarComponent', () => {
 
+  @Component({
+    template: `<mpt-gravatar email="test@test.com" alt="test-alt" size="1"></mpt-gravatar>`,
+    directives: [GravatarComponent],
+  })
+  class TestComponent {
+  }
+
   let cmpDebugElement:DebugElement;
 
   beforeEachProviders(() => [APP_TEST_PROVIDERS]);
@@ -42,10 +49,3 @@ describe('GravatarComponent', () => {
   });
 
 });
-
-@Component({
-  template: `<mpt-gravatar email="test@test.com" alt="test-alt" size="1"></mpt-gravatar>`,
-  directives: [GravatarComponent],
-})
-class TestComponent {
-}

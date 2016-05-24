@@ -8,7 +8,6 @@ import {
 } from "@angular/core/testing";
 import {Response, ResponseOptions} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
-import {ObservableWrapper} from "@angular/common/src/facade/async";
 import {
   TestComponentBuilder,
   ComponentFixture
@@ -19,6 +18,18 @@ import {prepareAppInjector} from "../../testing";
 import {APP_TEST_PROVIDERS} from "../../../app";
 
 describe('FollowBtnComponent', () => {
+
+  @Component({
+    template: `<mpt-follow-btn followerId="1" (updated)="doSomething()"></mpt-follow-btn>`,
+    directives: [FollowBtnComponent],
+  })
+  class TestComponent {
+    doneSomething:EventEmitter<any> = new EventEmitter();
+
+    doSomething() {
+      this.doneSomething.emit({});
+    }
+  }
 
   let cmpDebugElement:DebugElement;
   let testCmpDebugElement:DebugElement;
@@ -141,7 +152,7 @@ describe('FollowBtnComponent', () => {
       expect(cmp.canShowFollowBtn).toBeTruthy();
       expect(cmp.canShowUnfollowBtn).toBeFalsy();
       expect(followBtnService.unfollow).toHaveBeenCalledWith('1');
-      ObservableWrapper.subscribe(testCmp.doneSomething, done);
+      testCmp.doneSomething.subscribe(done);
     });
   });
 
@@ -163,20 +174,8 @@ describe('FollowBtnComponent', () => {
       expect(cmp.canShowFollowBtn).toBeFalsy();
       expect(cmp.canShowUnfollowBtn).toBeTruthy();
       expect(followBtnService.follow).toHaveBeenCalledWith('1');
-      ObservableWrapper.subscribe(testCmp.doneSomething, done);
+      testCmp.doneSomething.subscribe(done);
     });
   });
 
 });
-
-@Component({
-  template: `<mpt-follow-btn followerId="1" (updated)="doSomething()"></mpt-follow-btn>`,
-  directives: [FollowBtnComponent],
-})
-class TestComponent {
-  doneSomething:EventEmitter<any> = new EventEmitter();
-
-  doSomething() {
-    this.doneSomething.emit({});
-  }
-}

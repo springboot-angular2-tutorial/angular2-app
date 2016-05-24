@@ -22,6 +22,15 @@ import {APP_TEST_PROVIDERS} from "../../index";
 
 describe('FeedComponent', () => {
 
+  @Component({
+    template: `<mpt-feed (deleted)="listenDeleted()"></mpt-feed>`,
+    directives: [FeedComponent],
+  })
+  class TestComponent {
+    listenDeleted() {
+    }
+  }
+
   let testCmpDebugElement:DebugElement;
   let cmpDebugElement:DebugElement;
   let micropostService:MicropostService;
@@ -102,7 +111,6 @@ describe('FeedComponent', () => {
     expect(deleteLinks[1]).toBeFalsy();
   });
 
-
   it('does not delete micropost when not confirmed', () => {
     const deleteLink = getDOM().querySelector(cmpDebugElement.nativeElement, '.delete');
     spyOn(window, 'confirm').and.returnValue(false);
@@ -127,12 +135,3 @@ describe('FeedComponent', () => {
   });
 
 });
-
-@Component({
-  template: `<mpt-feed (deleted)="listenDeleted()"></mpt-feed>`,
-  directives: [FeedComponent],
-})
-class TestComponent {
-  listenDeleted() {
-  }
-}

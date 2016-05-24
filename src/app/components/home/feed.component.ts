@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Output} from "@angular/core";
 import {CORE_DIRECTIVES} from "@angular/common";
 import {ROUTER_DIRECTIVES} from "@angular/router-deprecated";
-import {Micropost} from "../../../shared/domains";
 import {FeedService} from "./feed.service";
+import {Micropost} from "../../../shared/domains";
 import {GravatarComponent} from "../../../shared/components";
 import {HttpErrorHandler, MicropostService} from "../../../shared/services";
 import {TimeAgoPipe} from "../../../shared/pipes";

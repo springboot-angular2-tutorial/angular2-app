@@ -19,6 +19,13 @@ import {MicropostService} from "../../services";
 
 describe('MicropostNewComponent', () => {
 
+  @Component({
+    template: `<mpt-micropost-new></mpt-micropost-new>`,
+    directives: [MicropostNewComponent],
+  })
+  class TestComponent {
+  }
+
   let cmpDebugElement:DebugElement;
 
   let micropostService:MicropostService;
@@ -68,10 +75,3 @@ describe('MicropostNewComponent', () => {
   });
 
 });
-
-@Component({
-  template: `<mpt-micropost-new></mpt-micropost-new>`,
-  directives: [MicropostNewComponent],
-})
-class TestComponent {
-}

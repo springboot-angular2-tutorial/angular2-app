@@ -16,6 +16,13 @@ import {prepareAppInjector} from "../../../shared/testing";
 
 describe('TopComponent', () => {
 
+  @Component({
+    template: `<mpt-top></mpt-top>`,
+    directives: [TopComponent],
+  })
+  class TestComponent {
+  }
+
   let cmpDebugElement:DebugElement;
 
   beforeEachProviders(() => [APP_TEST_PROVIDERS]);
@@ -31,16 +38,8 @@ describe('TopComponent', () => {
 
   it('can be shown', () => {
     expect(cmpDebugElement).toBeTruthy();
-
     const signupLink = cmpDebugElement.query(By.css('a')).nativeElement;
     expect(signupLink.getAttribute('href')).toEqual('/signup');
   });
 
 });
-
-@Component({
-  template: `<mpt-top></mpt-top>`,
-  directives: [TopComponent],
-})
-class TestComponent {
-}

@@ -6,12 +6,12 @@ import {APP_TEST_PROVIDERS} from "../../../app";
 
 describe('FollowBtnService', () => {
 
-  let relationshipService:FollowBtnService;
+  let followBtnService:FollowBtnService;
   let backend:MockBackend;
 
   beforeEachProviders(() => [APP_TEST_PROVIDERS, FollowBtnService]);
   beforeEach(inject([FollowBtnService, MockBackend], (..._) => {
-    [relationshipService, backend] = _;
+    [followBtnService, backend] = _;
   }));
 
   describe('.follow', () => {
@@ -21,7 +21,7 @@ describe('FollowBtnService', () => {
         expect(conn.request.method).toEqual(RequestMethod.Post);
         expect(conn.request.url).toEqual('/api/relationships/to/1');
       });
-      relationshipService.follow('1').subscribe(() => {
+      followBtnService.follow('1').subscribe(() => {
         done();
       });
     });
@@ -34,7 +34,7 @@ describe('FollowBtnService', () => {
         expect(conn.request.method).toEqual(RequestMethod.Delete);
         expect(conn.request.url).toEqual('/api/relationships/to/1');
       });
-      relationshipService.unfollow('1').subscribe(() => {
+      followBtnService.unfollow('1').subscribe(() => {
         done();
       });
     });

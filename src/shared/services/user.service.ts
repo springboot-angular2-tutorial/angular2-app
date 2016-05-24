@@ -1,7 +1,7 @@
 import {Observable} from "rxjs/Observable";
 import {Injectable} from "@angular/core";
 import {Response} from "@angular/http";
-import {User} from "../domains";
+import {User, RelatedUser} from "../domains";
 import {objToSearchParams} from "./helpers";
 import {PageRequest, Page, UserParams} from "../dto";
 import {MyHttp} from "../http";
@@ -38,13 +38,13 @@ export class UserService {
       });
   }
 
-  listFollowings(userId:string, params:{maxId:number, count:number}):Observable<User[]> {
+  listFollowings(userId:string, params:{maxId:number, count:number}):Observable<RelatedUser[]> {
     return this.http.get(`${url}/${userId}/followings`, {search: objToSearchParams(params)})
       .map(res => res.json())
       ;
   }
 
-  listFollowers(userId:string, params:{maxId:number, count:number}):Observable<User[]> {
+  listFollowers(userId:string, params:{maxId:number, count:number}):Observable<RelatedUser[]> {
     return this.http.get(`${url}/${userId}/followers`, {search: objToSearchParams(params)})
       .map(res => res.json())
       ;

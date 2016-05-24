@@ -20,6 +20,23 @@ import {prepareAppInjector} from "../../../shared/testing";
 
 describe('RelatedUserListComponent', () => {
 
+  @Component({
+    template: `<mpt-related-user-list [listProvider]="listProvider"></mpt-related-user-list>`,
+    directives: [RelatedUserListComponent],
+  })
+  class TestComponent {
+    listProvider:(params:any) => Observable<RelatedUser[]>;
+
+    constructor() {
+      this.listProvider = () => {
+        return Observable.of([
+          {id: 1, email: 'test1@test.com', name: 'test1', relationshipId: 1},
+          {id: 2, email: 'test2@test.com', name: 'test2', relationshipId: 100},
+        ]);
+      };
+    }
+  }
+
   let cmpDebugElement:DebugElement;
 
   beforeEachProviders(() => [APP_TEST_PROVIDERS]);
@@ -61,20 +78,3 @@ describe('RelatedUserListComponent', () => {
   });
 
 });
-
-@Component({
-  template: `<mpt-related-user-list [listProvider]="listProvider"></mpt-related-user-list>`,
-  directives: [RelatedUserListComponent],
-})
-class TestComponent {
-  listProvider:(params:any) => Observable<RelatedUser[]>;
-
-  constructor() {
-    this.listProvider = () => {
-      return Observable.of([
-        {id: 1, email: 'test1@test.com', name: 'test1', relationshipId: 1},
-        {id: 2, email: 'test2@test.com', name: 'test2', relationshipId: 100},
-      ]);
-    };
-  }
-}

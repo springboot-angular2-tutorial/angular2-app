@@ -20,6 +20,13 @@ import {prepareAppInjector} from "../../testing";
 
 describe('UserStatsComponent', () => {
 
+  @Component({
+    template: `<mpt-user-stats userId="1" [shownOnProfile]="false"></mpt-user-stats>`,
+    directives: [UserStatsComponent],
+  })
+  class TestComponent {
+  }
+
   let cmpDebugElement:DebugElement;
 
   let backend:MockBackend;
@@ -111,10 +118,3 @@ describe('UserStatsComponent', () => {
   });
 
 });
-
-@Component({
-  template: `<mpt-user-stats userId="1" [shownOnProfile]="false"></mpt-user-stats>`,
-  directives: [UserStatsComponent],
-})
-class TestComponent {
-}

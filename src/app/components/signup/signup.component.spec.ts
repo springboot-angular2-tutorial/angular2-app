@@ -21,6 +21,13 @@ import {prepareAppInjector} from "../../../shared/testing";
 
 describe('SignupComponent', () => {
 
+  @Component({
+    template: `<mpt-signup></mpt-signup>`,
+    directives: [SignupComponent],
+  })
+  class TestComponent {
+  }
+
   let cmpDebugElement:DebugElement;
 
   let loginService:LoginService;
@@ -80,10 +87,3 @@ describe('SignupComponent', () => {
   });
 
 });
-
-@Component({
-  template: `<mpt-signup></mpt-signup>`,
-  directives: [SignupComponent],
-})
-class TestComponent {
-}

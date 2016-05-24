@@ -5,7 +5,6 @@ import {
   inject,
   beforeEachProviders,
   beforeEach,
-  ddescribe,
   async
 } from "@angular/core/testing";
 import {BaseResponseOptions, Response} from "@angular/http";
@@ -22,6 +21,13 @@ import {MockBackend} from "@angular/http/testing";
 import {Router} from "@angular/router-deprecated";
 
 describe('LoginComponent', () => {
+
+  @Component({
+    template: `<mpt-login></mpt-login>`,
+    directives: [LoginComponent],
+  })
+  class TestComponent {
+  }
 
   let cmpDebugElement:DebugElement;
 
@@ -72,10 +78,3 @@ describe('LoginComponent', () => {
   });
 
 });
-
-@Component({
-  template: `<mpt-login></mpt-login>`,
-  directives: [LoginComponent],
-})
-class TestComponent {
-}

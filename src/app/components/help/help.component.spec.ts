@@ -16,6 +16,13 @@ import {prepareAppInjector} from "../../../shared/testing";
 
 describe('HelpComponent', () => {
 
+  @Component({
+    template: `<mpt-help></mpt-help>`,
+    directives: [HelpComponent],
+  })
+  class TestComponent {
+  }
+
   let cmpDebugElement:DebugElement;
 
   beforeEachProviders(() => [APP_TEST_PROVIDERS]);
@@ -35,9 +42,3 @@ describe('HelpComponent', () => {
 
 });
 
-@Component({
-  template: `<mpt-help></mpt-help>`,
-  directives: [HelpComponent],
-})
-class TestComponent {
-}

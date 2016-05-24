@@ -12,13 +12,12 @@ import {HttpErrorHandler, UserService} from "../../services";
 })
 export class FollowBtnComponent implements OnChanges {
 
-  canShowFollowBtn:boolean;
-  canShowUnfollowBtn:boolean;
-
-  busy:boolean = false;
-
   @Input() followerId:string;
   @Output() updated = new EventEmitter();
+
+  canShowFollowBtn:boolean;
+  canShowUnfollowBtn:boolean;
+  busy:boolean = false;
 
   constructor(private followBtnService:FollowBtnService,
               private userService:UserService,
