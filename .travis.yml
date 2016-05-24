@@ -1,11 +1,11 @@
-sudo: required
+udo: required
 dist: trusty
 language: node_js
 cache:
   directories:
   - node_modules
 node_js:
-- '5.0.0'
+- '6.2.0'
 
 before_deploy: npm run build:prod
 deploy:
