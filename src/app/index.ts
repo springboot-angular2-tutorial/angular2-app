@@ -1,3 +1,4 @@
+import { disableDeprecatedForms, provideForms } from '@angular/forms';
 import {
   APP_HTTP_PROVIDERS,
   APP_TEST_HTTP_PROVIDERS
@@ -17,6 +18,8 @@ export const APP_PROVIDERS = [
 ];
 
 export const APP_TEST_PROVIDERS = [
+  disableDeprecatedForms(),
+  provideForms(),
   APP_TEST_SERVICE_PROVIDERS,
   APP_TEST_ROUTER_PROVIDERS,
   APP_TEST_HTTP_PROVIDERS,

@@ -68,13 +68,10 @@ describe('LoginComponent', () => {
     });
   });
 
-  it('can navigate to signup page', (done) => {
+  it('can navigate to signup page', () => {
     const el = cmpDebugElement.nativeElement;
     getDOM().querySelector(el, 'a').click();
-    router.subscribe(() => {
-      expect(location.path()).toEqual('/signup');
-      done();
-    });
+    expect(location.path()).toEqual('/signup');
   });
 
 });
