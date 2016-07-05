@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {RouteConfig, ROUTER_DIRECTIVES} from "@angular/router-deprecated";
+import {ROUTER_DIRECTIVES} from "@angular/router";
 import {
   HelpComponent,
   HomeComponent,
@@ -14,15 +14,8 @@ import {
 } from "./components";
 import {HeaderComponent} from "../shared/components";
 
-@Component({
-  selector: 'mpt-app',
-  styles: [require('./app.scss')],
-  template: require('./app.html'),
-  // directives: [ROUTER_DIRECTIVES, HeaderComponent],
-  directives: [ROUTER_DIRECTIVES],
-})
-@RouteConfig([
-  {path: '/home', name: 'Home', component: HomeComponent},
+// @RouteConfig([
+//   {path: '/home', name: 'Home', component: HomeComponent},
   // {path: '/login', name: 'Login', component: LoginComponent},
   // {path: '/signup', name: 'Signup', component: SignupComponent},
   // {path: '/users', name: 'UserList', component: UserListComponent},
@@ -40,6 +33,13 @@ import {HeaderComponent} from "../shared/components";
   // },
   // {path: '/help', name: 'Help', component: HelpComponent},
   // {path: '/', name: 'Top', component: TopComponent},
-])
+// ])
+@Component({
+  selector: 'mpt-app',
+  styles: [require('./app.scss')],
+  template: require('./app.html'),
+  // directives: [ROUTER_DIRECTIVES, HeaderComponent],
+  directives: [ROUTER_DIRECTIVES],
+})
 export class AppComponent {
 }

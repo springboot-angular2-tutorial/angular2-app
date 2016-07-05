@@ -1,6 +1,5 @@
 import {ComponentRef} from "@angular/core";
 import {bootstrap} from "@angular/platform-browser-dynamic";
-import {ROUTER_PROVIDERS} from "@angular/router-deprecated";
 import {ENV_PROVIDERS, decorateComponentRef} from "./platform/environment";
 import {AppComponent, APP_PROVIDERS, appInjector} from "./app";
 import {PLATFORM_PROVIDERS} from "./platform/browser";
@@ -8,7 +7,6 @@ import {PLATFORM_PROVIDERS} from "./platform/browser";
 function main():Promise<any> {
   return bootstrap(AppComponent, [
     ...PLATFORM_PROVIDERS,
-    ...ROUTER_PROVIDERS,
     ...ENV_PROVIDERS,
     ...APP_PROVIDERS,
   ]).then((appRef:ComponentRef<any>) => {
