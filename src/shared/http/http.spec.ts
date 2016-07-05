@@ -37,14 +37,14 @@ describe('MyHttp', () => {
   describe('#post', () => {
     it('performs a post request', (done) => {
       backend.connections.subscribe(expectCustomRequest(RequestMethod.Post));
-      myHttp.post('http://www.google.com', '').subscribe(done);
+      myHttp.post('http://www.google.com', {}).subscribe(done);
     });
   });
 
   describe('#put', () => {
     it('performs a put request', (done) => {
       backend.connections.subscribe(expectCustomRequest(RequestMethod.Put));
-      myHttp.put('http://www.google.com', '').subscribe(done);
+      myHttp.put('http://www.google.com', {}).subscribe(done);
     });
   });
 
@@ -58,7 +58,7 @@ describe('MyHttp', () => {
   describe('#patch', () => {
     it('performs a patch request', (done) => {
       backend.connections.subscribe(expectCustomRequest(RequestMethod.Patch));
-      myHttp.patch('http://www.google.com', '').subscribe(done);
+      myHttp.patch('http://www.google.com', {}).subscribe(done);
     });
   });
 

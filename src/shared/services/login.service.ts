@@ -10,10 +10,11 @@ export class LoginService {
   }
 
   login(email, password):Observable<Response> {
-    return this.http.post('/api/login', JSON.stringify({
+    const body = {
       email: email,
       password: password,
-    })).do(resp => {
+    };
+    return this.http.post('/api/login', body).do(resp => {
       localStorage.setItem('jwt', resp.headers.get('x-auth-token'));
     });
   }

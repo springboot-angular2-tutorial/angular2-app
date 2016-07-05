@@ -12,8 +12,7 @@ export class MicropostService {
   }
 
   create(content:string):Observable<Response> {
-    const body = JSON.stringify({content: content});
-    return this.http.post(url, body);
+    return this.http.post(url, {content: content});
   }
 
   delete(id:Number):Observable<Response> {

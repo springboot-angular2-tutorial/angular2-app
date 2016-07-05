@@ -12,7 +12,7 @@ export class FollowBtnService {
   }
 
   follow(followerId:string):Observable<Response> {
-    return this.http.post(`${url}/to/${followerId}`, '');
+    return this.http.post(`${url}/to/${followerId}`, {});
   }
 
   unfollow(followerId:string):Observable<Response> {

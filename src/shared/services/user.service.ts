@@ -28,11 +28,11 @@ export class UserService {
   }
 
   create(params:UserParams):Observable<Response> {
-    return this.http.post(url, JSON.stringify(params));
+    return this.http.post(url, params);
   }
 
   updateMe(userParam:UserParams):Observable<Response> {
-    return this.http.patch(`${url}/me`, JSON.stringify(userParam))
+    return this.http.patch(`${url}/me`, userParam)
       .do(resp => {
         localStorage.setItem('jwt', resp.headers.get('x-auth-token'));
       });

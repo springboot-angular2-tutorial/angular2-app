@@ -12,8 +12,6 @@ const mergeAuthToken = (options:RequestOptionsArgs) => {
   let newOptions = new RequestOptions({}).merge(options);
   let newHeaders = new Headers(newOptions.headers);
   newHeaders.set('x-auth-token', localStorage.getItem('jwt'));
-  newHeaders.set('accept', 'application/json');
-  newHeaders.set('content-type', 'application/json');
   newOptions.headers = newHeaders;
   return newOptions;
 };
@@ -28,11 +26,11 @@ export class MyHttp {
     return this.http.get(url, mergeAuthToken(options));
   }
 
-  post(url:string, body:string, options?:RequestOptionsArgs):Observable<Response> {
+  post(url:string, body:any, options?:RequestOptionsArgs):Observable<Response> {
     return this.http.post(url, body, mergeAuthToken(options));
   }
 
-  put(url:string, body:string, options?:RequestOptionsArgs):Observable<Response> {
+  put(url:string, body:any, options?:RequestOptionsArgs):Observable<Response> {
     return this.http.put(url, body, mergeAuthToken(options));
   }
 
@@ -40,7 +38,7 @@ export class MyHttp {
     return this.http.delete(url, mergeAuthToken(options));
   }
 
-  patch(url:string, body:string, options?:RequestOptionsArgs):Observable<Response> {
+  patch(url:string, body:any, options?:RequestOptionsArgs):Observable<Response> {
     return this.http.patch(url, body, mergeAuthToken(options));
   }
 
