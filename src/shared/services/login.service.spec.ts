@@ -22,7 +22,7 @@ describe('LoginService', () => {
         })));
         expect(conn.request.method).toEqual(RequestMethod.Post);
         expect(conn.request.url).toEqual('/api/login');
-        expect(conn.request.text()).toEqual(JSON.stringify({
+        expect(conn.request.json()).toEqual(JSON.stringify({
           email: 'test@test.com',
           password: 'secret',
         }));

@@ -23,8 +23,6 @@ describe('MyHttp', () => {
     conn.mockRespond(new Response(new BaseResponseOptions()));
     expect(conn.request.method).toEqual(method);
     expect(conn.request.headers.has('x-auth-token')).toBeTruthy();
-    expect(conn.request.headers.get('accept')).toEqual('application/json');
-    expect(conn.request.headers.get('content-type')).toEqual('application/json');
   };
 
   describe('#get', () => {

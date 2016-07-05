@@ -20,7 +20,7 @@ describe('MicropostService', () => {
         conn.mockRespond(new Response(new BaseResponseOptions()));
         expect(conn.request.method).toEqual(RequestMethod.Post);
         expect(conn.request.url).toEqual('/api/microposts');
-        expect(conn.request.text()).toEqual(JSON.stringify({
+        expect(conn.request.json()).toEqual(JSON.stringify({
           content: 'my post',
         }));
       });

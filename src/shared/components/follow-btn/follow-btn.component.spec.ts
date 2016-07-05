@@ -1,4 +1,4 @@
-import {Component, provide, DebugElement, EventEmitter} from "@angular/core";
+import {Component, provide, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {
   inject,
@@ -24,10 +24,7 @@ describe('FollowBtnComponent', () => {
     directives: [FollowBtnComponent],
   })
   class TestComponent {
-    doneSomething = new EventEmitter();
-
     doSomething() {
-      this.doneSomething.emit({});
     }
   }
 
@@ -144,15 +141,16 @@ describe('FollowBtnComponent', () => {
       expect(unfollowBtn.nativeElement.innerText).toEqual('Unfollow');
     });
 
-    it('can unfollow the user', (done) => {
+    it('can unfollow the user', () => {
       const cmp:FollowBtnComponent = cmpDebugElement.componentInstance;
       const testCmp:TestComponent = testCmpDebugElement.componentInstance;
+      spyOn(testCmp, 'doSomething');
       const unfollowBtn = cmpDebugElement.query(By.css('button'));
       unfollowBtn.nativeElement.click();
       expect(cmp.canShowFollowBtn).toBeTruthy();
       expect(cmp.canShowUnfollowBtn).toBeFalsy();
       expect(followBtnService.unfollow).toHaveBeenCalledWith('1');
-      testCmp.doneSomething.subscribe(done);
+      expect(testCmp.doSomething).toHaveBeenCalled();
     });
   });
 
@@ -166,15 +164,16 @@ describe('FollowBtnComponent', () => {
       expect(followBtn.nativeElement.innerText).toEqual('Follow');
     });
 
-    it('can follow the user', (done) => {
+    it('can follow the user', () => {
       const cmp:FollowBtnComponent = cmpDebugElement.componentInstance;
       const testCmp:TestComponent = testCmpDebugElement.componentInstance;
+      spyOn(testCmp, 'doSomething');
       const followBtn = cmpDebugElement.query(By.css('button'));
       followBtn.nativeElement.click();
       expect(cmp.canShowFollowBtn).toBeFalsy();
       expect(cmp.canShowUnfollowBtn).toBeTruthy();
       expect(followBtnService.follow).toHaveBeenCalledWith('1');
-      testCmp.doneSomething.subscribe(done);
+      expect(testCmp.doSomething).toHaveBeenCalled();
     });
   });
 

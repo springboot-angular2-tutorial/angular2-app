@@ -3,6 +3,7 @@ import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
 import {HttpErrorHandler} from "./http-error-handler";
 import {LoginService} from "./login.service";
 import {APP_TEST_PROVIDERS} from "../../app";
+import {prepareAppInjector} from "../testing/helpers";
 
 describe('HttpErrorHandler', () => {
 
@@ -11,6 +12,7 @@ describe('HttpErrorHandler', () => {
   let router:Router;
 
   beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+  beforeEach(prepareAppInjector());
   beforeEach(inject([HttpErrorHandler, LoginService, Router], (..._) => {
     [errorHandler, loginService, router] = _;
     spyOn(loginService, 'logout');

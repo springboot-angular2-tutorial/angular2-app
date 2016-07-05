@@ -1,4 +1,4 @@
-import {Component, DebugElement, EventEmitter} from "@angular/core";
+import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {
   inject,
@@ -21,10 +21,7 @@ describe('PagerComponent', () => {
     directives: [PagerComponent],
   })
   class TestComponent {
-    doneSomething = new EventEmitter();
-
     doSomething() {
-      this.doneSomething.emit({});
     }
   }
 
@@ -55,13 +52,14 @@ describe('PagerComponent', () => {
       expect(pager.currentPage).toBe(1);
     });
 
-    it('shows previous page, when current page is greater than 1', (done) => {
+    it('shows previous page, when current page is greater than 1', () => {
       const pager:PagerComponent = cmpDebugElement.componentInstance;
       const testCmp:TestComponent = testCmpDebugElement.componentInstance;
+      spyOn(testCmp, 'doSomething');
       pager.currentPage = 2;
       pager.showPrev();
       expect(pager.currentPage).toBe(1);
-      testCmp.doneSomething.subscribe(done);
+      expect(testCmp.doSomething).toHaveBeenCalled();
     });
   });
 
@@ -74,14 +72,15 @@ describe('PagerComponent', () => {
       expect(pager.currentPage).toBe(2);
     });
 
-    it('shows next page, when it has next page', (done) => {
+    it('shows next page, when it has next page', () => {
       const pager:PagerComponent = cmpDebugElement.componentInstance;
       const testCmp:TestComponent = testCmpDebugElement.componentInstance;
+      spyOn(testCmp, 'doSomething');
       pager.currentPage = 1;
       pager.totalPages = 2;
       pager.showNext();
       expect(pager.currentPage).toBe(2);
-      testCmp.doneSomething.subscribe(done);
+      expect(testCmp.doSomething).toHaveBeenCalled();
     });
   });
 

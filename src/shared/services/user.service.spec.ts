@@ -99,7 +99,7 @@ describe('UserService', () => {
         conn.mockRespond(new Response(new BaseResponseOptions()));
         expect(conn.request.method).toEqual(RequestMethod.Post);
         expect(conn.request.url).toEqual('/api/users');
-        expect(conn.request.text()).toEqual(JSON.stringify(params));
+        expect(conn.request.json()).toEqual(JSON.stringify(params));
       });
       userService.create(params).subscribe(() => {
         done();
@@ -118,7 +118,7 @@ describe('UserService', () => {
         conn.mockRespond(new Response(new BaseResponseOptions()));
         expect(conn.request.method).toEqual(RequestMethod.Patch);
         expect(conn.request.url).toEqual('/api/users/me');
-        expect(conn.request.text()).toEqual(JSON.stringify(params));
+        expect(conn.request.json()).toEqual(JSON.stringify(params));
       });
       userService.updateMe(params).subscribe(() => {
         done();

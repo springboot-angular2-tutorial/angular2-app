@@ -63,16 +63,13 @@ describe('HeaderComponent', () => {
       expect(cmpDebugElement).toBeTruthy();
     });
 
-    it('shows a nav link to home', (done) => {
+    it('shows a nav link to home', () => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.home>a');
       expect(link).toBeTruthy();
       link.click();
-      router.subscribe(() => {
-        fixture.detectChanges();
-        expect(location.path()).toEqual('/home');
-        expect(link.parentElement.classList).toContain('active');
-        done();
-      });
+      fixture.detectChanges();
+      expect(location.path()).toEqual('/home');
+      expect(link.parentElement.classList).toContain('active');
     });
 
     it('does not show a nav link to top', () => {
@@ -80,54 +77,42 @@ describe('HeaderComponent', () => {
       expect(link).toBeNull();
     });
 
-    it('shows a nav link to users', (done) => {
+    it('shows a nav link to users', () => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.users>a');
       expect(link).toBeTruthy();
       link.click();
-      router.subscribe(() => {
-        fixture.detectChanges();
-        expect(location.path()).toEqual('/users');
-        expect(link.parentElement.classList).toContain('active');
-        done();
-      });
+      fixture.detectChanges();
+      expect(location.path()).toEqual('/users');
+      expect(link.parentElement.classList).toContain('active');
     });
 
-    it('shows a nav link to help', (done) => {
+    it('shows a nav link to help', () => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.help>a');
       expect(link).toBeTruthy();
       link.click();
-      router.subscribe(() => {
-        fixture.detectChanges();
-        expect(location.path()).toEqual('/help');
-        expect(link.parentElement.classList).toContain('active');
-        done();
-      });
+      fixture.detectChanges();
+      expect(location.path()).toEqual('/help');
+      expect(link.parentElement.classList).toContain('active');
     });
 
-    it('shows a nav link to profile', (done) => {
+    it('shows a nav link to profile', () => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.profile>a');
       expect(link).toBeTruthy();
       link.click();
-      router.subscribe(() => {
-        fixture.detectChanges();
-        expect(location.path()).toEqual('/users/me');
-        done();
-      });
+      fixture.detectChanges();
+      expect(location.path()).toEqual('/users/me');
     });
 
     describe('navigate to settings', () => {
       beforeEach(inject([UserService], userService => {
         spyOn(userService, 'get').and.returnValue(Observable.of({}));
       }));
-      it('shows a nav link to settings', (done) => {
+      it('shows a nav link to settings', () => {
         const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.settings>a');
         expect(link).toBeTruthy();
         link.click();
-        router.subscribe(() => {
-          fixture.detectChanges();
-          expect(location.path()).toEqual('/users/me/edit');
-          done();
-        });
+        fixture.detectChanges();
+        expect(location.path()).toEqual('/users/me/edit');
       });
     });
 
@@ -152,15 +137,12 @@ describe('HeaderComponent', () => {
       expect(link).toBeNull();
     });
 
-    it('shows a nav link to top', (done) => {
+    it('shows a nav link to top', () => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.top>a');
       expect(link).toBeTruthy();
       link.click();
-      router.subscribe(() => {
-        fixture.detectChanges();
-        expect(location.path()).toEqual('');
-        done();
-      });
+      fixture.detectChanges();
+      expect(location.path()).toEqual('');
     });
 
     it('does not show a nav link to users', () => {
@@ -168,16 +150,13 @@ describe('HeaderComponent', () => {
       expect(link).toBeNull();
     });
 
-    it('shows a nav link to help', (done) => {
+    it('shows a nav link to help', () => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.help>a');
       expect(link).toBeTruthy();
       link.click();
-      router.subscribe(() => {
-        fixture.detectChanges();
-        expect(location.path()).toEqual('/help');
-        expect(link.parentElement.classList).toContain('active');
-        done();
-      });
+      fixture.detectChanges();
+      expect(location.path()).toEqual('/help');
+      expect(link.parentElement.classList).toContain('active');
     });
 
     it('does not show a nav link to profile', () => {
@@ -190,15 +169,12 @@ describe('HeaderComponent', () => {
       expect(link).toBeNull();
     });
 
-    it('shows a nav link to sign in', (done) => {
+    it('shows a nav link to sign in', () => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.login>a');
       expect(link).toBeTruthy();
       link.click();
-      router.subscribe(() => {
-        fixture.detectChanges();
-        expect(location.path()).toEqual('/login');
-        done();
-      });
+      fixture.detectChanges();
+      expect(location.path()).toEqual('/login');
     });
   }); // when not signed in
 
