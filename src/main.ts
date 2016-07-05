@@ -5,12 +5,14 @@ import {FORM_PROVIDERS} from "@angular/common";
 import {HTTP_PROVIDERS} from "@angular/http";
 import {ENV_PROVIDERS} from "./platform/environment";
 import {AppComponent, APP_PROVIDERS, appInjector} from "./app";
+import {PLATFORM_PROVIDERS} from "./platform/browser";
 
 function main():Promise<any> {
   return bootstrap(AppComponent, [
-    ...FORM_PROVIDERS,
+    ...PLATFORM_PROVIDERS,
+    // ...FORM_PROVIDERS,
     ...ROUTER_PROVIDERS,
-    ...HTTP_PROVIDERS,
+    // ...HTTP_PROVIDERS,
     ...ENV_PROVIDERS,
     ...APP_PROVIDERS,
   ]).then((appRef:ComponentRef<any>) => {

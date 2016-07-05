@@ -46,6 +46,7 @@
     "@angular/platform-browser-dynamic": "2.0.0-rc.4",
     "@angular/platform-server": "2.0.0-rc.4",
     "@angular/router-deprecated": "2.0.0-rc.2",
+    "@angular/forms": "^0.2.0",
     "core-js": "^2.4.0",
     "jquery": "^2.2.4",
     "md5-hex": "^1.1.0",
