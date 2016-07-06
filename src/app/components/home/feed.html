@@ -1,11 +1,11 @@
 <ol class="feed list-unstyled">
 
   <li *ngFor="let f of feed">
-    <a [routerLink]="['/UserShow', {id: f.user.id}]">
+    <a [routerLink]="['/users', f.user.id]">
       <mpt-gravatar [email]="f.user.email" size="50" [alt]="f.user.name"></mpt-gravatar>
     </a>
     <span class="user">
-      <a [routerLink]="['/UserShow', {id: f.user.id}]">{{f.user.name}}</a>
+      <a [routerLink]="['/users', f.user.id]">{{f.user.name}}</a>
     </span>
     <span class="content">{{f.content}}</span>
     <span class="timestamp">Posted less than {{f.createdAt | timeAgo}}.</span>
