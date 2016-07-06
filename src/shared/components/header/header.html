@@ -16,7 +16,7 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="home" [class.active]="isActive('/home')" *ngIf="isSignedIn">
-          <a [routerLink]="['/Home']">Home</a>
+          <a [routerLink]="['/home']">Home</a>
         </li>
         <li class="top" *ngIf="!isSignedIn">
           <a [routerLink]="['/Top']">Home</a>

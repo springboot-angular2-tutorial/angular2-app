@@ -38,8 +38,7 @@ import {HeaderComponent} from "../shared/components";
   selector: 'mpt-app',
   styles: [require('./app.scss')],
   template: require('./app.html'),
-  // directives: [ROUTER_DIRECTIVES, HeaderComponent],
-  directives: [ROUTER_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, HeaderComponent],
 })
 export class AppComponent {
 }
