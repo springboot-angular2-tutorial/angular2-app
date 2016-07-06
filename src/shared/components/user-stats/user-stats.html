@@ -14,10 +14,10 @@
 
   <section class="relationships clearfix">
     <div>
-      <a class="followings" [routerLink]="['/FollowingList', {id: user?.id}]">
+      <a class="followings" [routerLink]="['/users', (user?.id || ''), 'followings']">
         <strong class="stat">{{user?.userStats?.followingCnt || 0}}</strong> followings
       </a>
-      <a class="followers" [routerLink]="['/FollowerList', {id: user?.id}]">
+      <a class="followings" [routerLink]="['/users', (user?.id || ''), 'followers']">
         <strong class="stat">{{user?.userStats?.followerCnt || 0}}</strong> followers
       </a>
     </div>
