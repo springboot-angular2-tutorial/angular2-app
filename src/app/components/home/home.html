@@ -1,16 +1,16 @@
 <div class="row">
-  HOME
 
-  <!--<aside class="col-md-4">-->
-    <!--<mpt-user-stats #us [userId]="'me'"></mpt-user-stats>-->
-    <!--<section>-->
-      <!--<mpt-micropost-new (created)="f.list(); us.ngOnChanges()"></mpt-micropost-new>-->
-    <!--</section>-->
-  <!--</aside>-->
+  <aside class="col-md-4">
+    <mpt-user-stats #us [userId]="'me'"></mpt-user-stats>
+    <section>
+      <mpt-micropost-new (created)="f.list(); us.ngOnChanges()"></mpt-micropost-new>
+    </section>
+  </aside>
 
-  <!--<div class="col-md-8">-->
-    <!--<h3>Micropost Feed</h3>-->
-    <!--<mpt-feed #f (deleted)="us.ngOnChanges()"></mpt-feed>-->
-  <!--</div>-->
+  <div class="col-md-8">
+    <h3>Micropost Feed</h3>
+    <mpt-feed #f (deleted)="us.ngOnChanges()"></mpt-feed>
+  </div>
 
 </div>
+

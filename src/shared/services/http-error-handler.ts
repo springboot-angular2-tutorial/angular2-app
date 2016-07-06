@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
-import {Router} from "@angular/router-deprecated";
+// import {Router} from "@angular/router-deprecated";
+import {Router} from "@angular/router";
 import {LoginService} from "./login.service";
 
 const toastr = require('toastr');
@@ -16,7 +17,8 @@ export class HttpErrorHandler {
     if (error.status === 401) {
       toastr.error('Please sign in');
       this.loginService.logout();
-      this.router.navigate(['/Login']);
+      // this.router.navigate(['/Login']);
+      this.router.navigate(['login']);
     }
   }
 

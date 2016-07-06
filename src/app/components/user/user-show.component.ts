@@ -1,6 +1,6 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {CORE_DIRECTIVES} from "@angular/common";
-import {RouteParams} from "@angular/router-deprecated";
+import {ActivatedRoute} from "@angular/router";
 import {
   MicropostListComponent,
   FollowBtnComponent,
@@ -13,12 +13,18 @@ import {
   styles: [require('./user-show.scss')],
   directives: [CORE_DIRECTIVES, FollowBtnComponent, UserStatsComponent, MicropostListComponent],
 })
-export class UserShowComponent {
-
+export class UserShowComponent implements OnInit {
+  
   userId:string;
 
-  constructor(private params:RouteParams) {
-    this.userId = params.get('id');
+  constructor(private route:ActivatedRoute) {
+  }
+
+  ngOnInit():any {
+    console.log(1);
+    this.route.params.subscribe(params => {
+      this.userId = params['id'];
+    });
   }
 
 }

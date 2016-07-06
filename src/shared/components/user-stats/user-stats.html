@@ -6,7 +6,8 @@
       {{user?.name}}
     </h2>
     <span *ngIf="!shownOnProfile">
-      <a class="profile-link" [routerLink]="['/UserShow', {id: user?.id}]">view my profile</a>
+      <!-- TODO https://github.com/angular/angular/issues/9801 -->
+      <a class="profile-link" [routerLink]="['/users', (user?.id || '')]">view my profile</a>
     </span>
     <span class="microposts" *ngIf="!shownOnProfile">{{user?.userStats?.micropostCnt | pluralize:'micropost'}}</span>
   </section>

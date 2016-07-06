@@ -1,6 +1,6 @@
-import {Component, OnChanges, Input} from "@angular/core";
+import {Component, OnInit, Input} from "@angular/core";
 import {CORE_DIRECTIVES} from "@angular/common";
-import {ROUTER_DIRECTIVES} from "@angular/router-deprecated";
+import {ROUTER_DIRECTIVES} from "@angular/router";
 import {User} from "../../domains";
 import {GravatarComponent} from "../../../shared/components";
 import {HttpErrorHandler, UserService} from "../../services";
@@ -13,7 +13,7 @@ import {PluralizePipe} from "../../pipes";
   directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, GravatarComponent],
   pipes: [PluralizePipe],
 })
-export class UserStatsComponent implements OnChanges {
+export class UserStatsComponent implements OnInit {
 
   @Input() userId:string;
   @Input() shownOnProfile:boolean = false;
@@ -24,17 +24,11 @@ export class UserStatsComponent implements OnChanges {
               private errorHandler:HttpErrorHandler) {
   }
 
-  ngOnChanges():void {
-    if (!this.userId) return;
-    this.loadUser();
-  }
-
-  private loadUser() {
+  ngOnInit():any {
     this.userService.get(this.userId)
       .subscribe(user => this.user = user,
         e => this.errorHandler.handle(e)
-      )
-    ;
+      );
   }
 
 }
