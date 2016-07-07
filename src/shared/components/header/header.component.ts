@@ -1,6 +1,11 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {CORE_DIRECTIVES, Location} from "@angular/common";
-import {Router, ROUTER_DIRECTIVES} from "@angular/router";
+import {
+  Router,
+  ROUTER_DIRECTIVES,
+  Event,
+  NavigationStart
+} from "@angular/router";
 import {LoginService} from "../../services";
 
 @Component({
@@ -8,17 +13,22 @@ import {LoginService} from "../../services";
   template: require('./header.html'),
   directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
   isSignedIn:boolean;
 
   constructor(private router:Router,
               private location:Location,
               private loginService:LoginService) {
-    this.isSignedIn = loginService.isSignedIn();
-    // router.subscribe(() => {
-    //   this.isSignedIn = loginService.isSignedIn();
-    // });
+  }
+
+  ngOnInit():any {
+    // TODO subscribe custom event of loginService
+    this.router.events.subscribe((e:Event) => {
+      if (e instanceof NavigationStart) {
+        this.isSignedIn = this.loginService.isSignedIn();
+      }
+    });
   }
 
   isActive(path:string):boolean {
@@ -29,4 +39,5 @@ export class HeaderComponent {
     this.loginService.logout();
     this.router.navigate(['/login']);
   }
+  
 }
