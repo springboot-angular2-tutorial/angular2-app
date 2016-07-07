@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {
   CORE_DIRECTIVES,
   FORM_DIRECTIVES,
@@ -6,16 +6,13 @@ import {
   ControlGroup,
   Validators
 } from "@angular/common";
-import {
-  RouteParams,
-  CanActivate,
-  ComponentInstruction
-} from "@angular/router-deprecated";
+import {ActivatedRoute} from "@angular/router";
 import {User} from "../../../shared/domains";
-import {LoginService, UserService} from "../../../shared/services";
-import {Validators as AppValidators, EMAIL_PATTERN} from "../../../shared/forms/index";
-import {activateIfSignedIn} from "../../../shared/routes";
-import {appInjector} from "../../app-injector";
+import {UserService} from "../../../shared/services";
+import {
+  Validators as AppValidators,
+  EMAIL_PATTERN
+} from "../../../shared/forms/index";
 
 const isEmpty = require("lodash/isEmpty");
 const omitBy = require("lodash/omitBy");
@@ -26,17 +23,12 @@ const toastr = require('toastr');
   template: require('./user-edit.html'),
   directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
 })
-@CanActivate((next:ComponentInstruction) => {
-  const loginService:LoginService = appInjector().get(LoginService);
-  if (!loginService.isSignedIn()) return activateIfSignedIn();
-
-  const userService:UserService = appInjector().get(UserService);
-  return userService.get('me')
-    .do(user => next.params['user'] = <any>user)
-    .map(() => true)
-    .toPromise();
-})
-export class UserEditComponent {
+// @CanActivate((next:ComponentInstruction) => {
+//   const loginService:LoginService = appInjector().get(LoginService);
+//   if (!loginService.isSignedIn()) return activateIfSignedIn();
+//
+// })
+export class UserEditComponent implements OnInit {
 
   myForm:ControlGroup;
   name:Control;
@@ -46,10 +38,15 @@ export class UserEditComponent {
 
   user:User;
 
-  constructor(private params:RouteParams,
+  constructor(private route:ActivatedRoute,
               private userService:UserService) {
-    this.user = <any>params.get('user');
-    this.initForm();
+  }
+
+  ngOnInit():any {
+    this.route.data.subscribe(data => {
+      this.user = data['profile'];
+      this.initForm();
+    });
   }
 
   onSubmit(params) {

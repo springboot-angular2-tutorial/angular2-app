@@ -5,6 +5,8 @@ import {FollowingListComponent} from "./components/relationship/following-list.c
 import {FollowerListComponent} from "./components/relationship/follower-list.component";
 import {UserListComponent} from "./components/user/user-list.component";
 import {HelpComponent} from "./components/help/help.component";
+import {UserEditComponent} from "./components/user/user-edit.component";
+import {ProfileDataResolver} from "../shared/routes/profile-data.resolver";
 
 export const routes:RouterConfig = [
   {path: 'home', component: <any>HomeComponent},
@@ -13,4 +15,9 @@ export const routes:RouterConfig = [
   {path: 'users/:id/followers', component: FollowerListComponent},
   {path: 'users', component: UserListComponent},
   {path: 'help', component: HelpComponent},
+  {
+    path: 'users/me/edit',
+    component: UserEditComponent,
+    resolve: {profile: ProfileDataResolver}
+  },
 ];

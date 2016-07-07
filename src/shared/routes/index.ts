@@ -7,8 +7,14 @@ import {RootRouter} from "@angular/router-deprecated/src/router";
 import {Location} from "@angular/common";
 import {SpyLocation} from "@angular/common/testing";
 import {AppComponent} from "../../app/app.component";
+import {ProfileDataResolver} from "./profile-data.resolver";
 
 export * from './route-helpers';
+export * from './profile-data.resolver';
+
+export const APP_RESOLVER_PROVIDERS = [
+  ProfileDataResolver
+];
 
 export const APP_TEST_ROUTER_PROVIDERS = [
   RouteRegistry,
