@@ -1,7 +1,6 @@
 import {Component} from "@angular/core";
-import {ROUTER_DIRECTIVES, Router, CanActivate} from "@angular/router-deprecated";
+import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 import {LoginService} from "../../../shared/services";
-import {activateIfNotSignedIn} from "../../../shared/routes";
 
 const toastr = require('toastr/toastr');
 
@@ -11,7 +10,7 @@ const toastr = require('toastr/toastr');
   template: require('./login.html'),
   directives: [ROUTER_DIRECTIVES]
 })
-@CanActivate(() => activateIfNotSignedIn())
+// @CanActivate(() => activateIfNotSignedIn())
 export class LoginComponent {
   constructor(private router:Router,
               private loginService:LoginService) {
@@ -20,7 +19,7 @@ export class LoginComponent {
   login(email, password) {
     this.loginService.login(email, password)
       .subscribe(() => {
-        this.router.navigate(['/Home']);
+        this.router.navigate(['/home']);
       }, this.handleError)
     ;
   }

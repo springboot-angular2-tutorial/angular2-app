@@ -7,6 +7,7 @@ import {UserListComponent} from "./components/user/user-list.component";
 import {HelpComponent} from "./components/help/help.component";
 import {UserEditComponent} from "./components/user/user-edit.component";
 import {ProfileDataResolver} from "../shared/routes/profile-data.resolver";
+import {LoginComponent} from "./components/login/login.component";
 
 export const routes:RouterConfig = [
   {path: 'home', component: <any>HomeComponent},
@@ -20,4 +21,5 @@ export const routes:RouterConfig = [
     component: UserEditComponent,
     resolve: {profile: ProfileDataResolver}
   },
+  {path: 'login', component: LoginComponent},
 ];
