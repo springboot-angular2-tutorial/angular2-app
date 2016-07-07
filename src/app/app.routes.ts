@@ -4,6 +4,7 @@ import {UserShowComponent} from "./components/user/user-show.component";
 import {FollowingListComponent} from "./components/relationship/following-list.component";
 import {FollowerListComponent} from "./components/relationship/follower-list.component";
 import {UserListComponent} from "./components/user/user-list.component";
+import {HelpComponent} from "./components/help/help.component";
 
 export const routes:RouterConfig = [
   {path: 'home', component: <any>HomeComponent},
@@ -11,4 +12,5 @@ export const routes:RouterConfig = [
   {path: 'users/:id/followings', component: FollowingListComponent},
   {path: 'users/:id/followers', component: FollowerListComponent},
   {path: 'users', component: UserListComponent},
+  {path: 'help', component: HelpComponent},
 ];
