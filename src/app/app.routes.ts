@@ -8,6 +8,7 @@ import {HelpComponent} from "./components/help/help.component";
 import {UserEditComponent} from "./components/user/user-edit.component";
 import {ProfileDataResolver} from "../shared/routes/profile-data.resolver";
 import {LoginComponent} from "./components/login/login.component";
+import {SignupComponent} from "./components/signup/signup.component";
 
 export const routes:RouterConfig = [
   {path: 'home', component: <any>HomeComponent},
@@ -22,4 +23,5 @@ export const routes:RouterConfig = [
     resolve: {profile: ProfileDataResolver}
   },
   {path: 'login', component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
 ];

@@ -6,11 +6,10 @@ import {
   ControlGroup,
   Validators
 } from "@angular/common";
-import {Router, CanActivate} from "@angular/router-deprecated";
+import {Router} from "@angular/router";
 import {LoginService, UserService} from "../../../shared/services";
 import {Validators as AppValidators} from "../../../shared/forms";
 import {EMAIL_PATTERN} from "../../../shared/forms/index";
-import {activateIfNotSignedIn} from "../../../shared/routes";
 
 const toastr = require('toastr');
 
@@ -20,7 +19,7 @@ const toastr = require('toastr');
   template: require('./signup.html'),
   directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
 })
-@CanActivate(() => activateIfNotSignedIn())
+// @CanActivate(() => activateIfNotSignedIn())
 export class SignupComponent {
 
   myForm:ControlGroup;
@@ -41,7 +40,7 @@ export class SignupComponent {
         return this.loginService.login(params.email, params.password);
       })
       .subscribe(() => {
-        this.router.navigate(['/Home']);
+        this.router.navigate(['/home']);
       }, this.handleError)
     ;
   }
