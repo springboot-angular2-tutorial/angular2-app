@@ -1,6 +1,5 @@
 import {Component} from "@angular/core";
-import {ROUTER_DIRECTIVES, CanActivate} from "@angular/router-deprecated";
-import {activateIfNotSignedIn} from "../../../shared/routes";
+import {ROUTER_DIRECTIVES} from "@angular/router";
 
 @Component({
   selector: 'mpt-top',
@@ -8,6 +7,6 @@ import {activateIfNotSignedIn} from "../../../shared/routes";
   template: require('./top.html'),
   directives: [ROUTER_DIRECTIVES],
 })
-@CanActivate(() => activateIfNotSignedIn())
+// @CanActivate(() => activateIfNotSignedIn())
 export class TopComponent {
 }

@@ -10,7 +10,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" [routerLink]="['/Top']">SAMPLE APP</a>
+      <a class="navbar-brand" [routerLink]="['/']">SAMPLE APP</a>
     </div>
 
     <div id="navbar" class="collapse navbar-collapse">
@@ -19,7 +19,7 @@
           <a [routerLink]="['/home']">Home</a>
         </li>
         <li class="top" *ngIf="!isSignedIn">
-          <a [routerLink]="['/Top']">Home</a>
+          <a [routerLink]="['/']">Home</a>
         </li>
         <li class="users" [class.active]="isActive('/users')" *ngIf="isSignedIn">
           <a [routerLink]="['/users']">Users</a>
