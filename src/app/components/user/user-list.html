@@ -3,7 +3,7 @@
 <ul class="users list-unstyled">
   <li *ngFor="let u of users">
     <mpt-gravatar [email]="u.email" size="50" [alt]="u.name"></mpt-gravatar>
-    <a [routerLink]="['/UserShow', {id: u.id}]">{{u.name}}</a>
+    <a [routerLink]="['/users', u.id]">{{u.name}}</a>
   </li>
 </ul>
 

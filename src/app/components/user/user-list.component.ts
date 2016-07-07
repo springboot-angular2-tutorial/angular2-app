@@ -1,15 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "@angular/common";
-import {
-  ROUTER_DIRECTIVES,
-  CanActivate,
-  RouteParams,
-  Router
-} from "@angular/router-deprecated";
+import {ROUTER_DIRECTIVES, ActivatedRoute, Router} from "@angular/router";
 import {User} from "../../../shared/domains";
 import {GravatarComponent, PagerComponent} from "../../../shared/components";
 import {HttpErrorHandler, UserService} from "../../../shared/services";
-import {activateIfSignedIn} from "../../../shared/routes";
 
 @Component({
   selector: 'mpt-user-list',
@@ -23,7 +17,7 @@ import {activateIfSignedIn} from "../../../shared/routes";
     PagerComponent,
   ],
 })
-@CanActivate(() => activateIfSignedIn())
+// @CanActivate(() => activateIfSignedIn())
 export class UserListComponent implements OnInit {
 
   users:User[];
@@ -32,17 +26,19 @@ export class UserListComponent implements OnInit {
 
   constructor(private userService:UserService,
               private errorHandler:HttpErrorHandler,
-              private params:RouteParams,
+              private route:ActivatedRoute,
               private router:Router) {
-    this.page = <any>params.get('page') || 1;
   }
 
   ngOnInit():any {
-    this.list(this.page);
+    this.route.params.subscribe(params => {
+      this.page = <any>params['page'] || 1;
+      this.list(this.page);
+    });
   }
 
   onPageChanged(page) {
-    this.router.navigate(['/UserList', {page: page}]);
+    this.router.navigate(['/users', {page: page}]);
   }
 
   private list(page) {
