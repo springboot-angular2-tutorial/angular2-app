@@ -33,7 +33,7 @@
             Account<span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li class="profile"><a [routerLink]="['/UserShow', {id: 'me'}]">Profile</a></li>
+            <li class="profile"><a [routerLink]="['/users', 'me']">Profile</a></li>
             <li class="settings"><a [routerLink]="['/MeEdit']">Settings</a></li>
             <li role="separator" class="divider"></li>
             <li class="logout"><a href="#" (click)="logout(); $event.preventDefault()">Sign out</a></li>
