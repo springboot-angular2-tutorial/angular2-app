@@ -2,11 +2,6 @@
 
   <aside class="col-md-4">
     <mpt-user-stats [userId]="userId"></mpt-user-stats>
-    <div class="user_avatars">
-      <a *ngFor="let u of users" [routerLink]="['/UserShow', {id: u.id}]">
-        <mpt-gravatar [alt]="u.name" [email]="u.email" size="30"></mpt-gravatar>
-      </a>
-    </div>
   </aside>
 
   <div class="col-md-8">
