@@ -1,18 +1,12 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
-import {
-  beforeEachProviders,
-  beforeEach,
-  inject,
-  async
-} from "@angular/core/testing";
+import {inject, async} from "@angular/core/testing";
 import {
   TestComponentBuilder,
   ComponentFixture
 } from "@angular/compiler/testing";
 import {GravatarComponent} from "./gravatar.component";
-import {APP_TEST_PROVIDERS} from "../../../app";
 
 describe('GravatarComponent', () => {
 
@@ -25,7 +19,6 @@ describe('GravatarComponent', () => {
 
   let cmpDebugElement:DebugElement;
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
       .createAsync(TestComponent)
