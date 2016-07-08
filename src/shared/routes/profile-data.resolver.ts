@@ -9,12 +9,12 @@ import {UserService} from "../services/user.service";
 
 @Injectable()
 export class ProfileDataResolver implements Resolve<any> {
-  
+
   constructor(private userService:UserService) {
   }
 
   resolve(route:ActivatedRouteSnapshot, state:RouterStateSnapshot) {
     return this.userService.get('me');
   }
-  
+
 }

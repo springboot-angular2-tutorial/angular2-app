@@ -14,7 +14,7 @@ import {
   directives: [CORE_DIRECTIVES, FollowBtnComponent, UserStatsComponent, MicropostListComponent],
 })
 export class UserShowComponent implements OnInit {
-  
+
   userId:string;
 
   constructor(private route:ActivatedRoute) {
