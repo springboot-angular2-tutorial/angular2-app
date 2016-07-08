@@ -1,11 +1,6 @@
 import {Component, provide, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  async
-} from "@angular/core/testing";
+import {inject, async, addProviders} from "@angular/core/testing";
 import {Response, ResponseOptions} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {
@@ -14,8 +9,10 @@ import {
 } from "@angular/compiler/testing";
 import {FollowBtnComponent} from "./follow-btn.component";
 import {FollowBtnService} from "./follow-btn.service";
-import {prepareAppInjector} from "../../testing";
-import {APP_TEST_PROVIDERS} from "../../../app";
+import {Router} from "@angular/router";
+import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
+import {APP_SERVICE_PROVIDERS} from "../../services/index";
+import {MockRouter} from "../../testing";
 
 describe('FollowBtnComponent', () => {
 
@@ -77,18 +74,23 @@ describe('FollowBtnComponent', () => {
     })
   }));
 
-  beforeEachProviders(() => [
-    APP_TEST_PROVIDERS,
+
+  beforeEach(() => addProviders([
+    {
+      provide: Router,
+      useClass: MockRouter,
+    },
+    ...APP_TEST_HTTP_PROVIDERS,
+    ...APP_SERVICE_PROVIDERS,
     FollowBtnService,
-  ]);
-  beforeEach(prepareAppInjector());
+  ]));
   beforeEach(inject([FollowBtnService], _ => {
     followBtnService = _;
     spyOn(followBtnService, 'follow').and.callThrough();
     spyOn(followBtnService, 'unfollow').and.callThrough();
   }));
 
-  const mockBackendBy = (response:Response):Function => {
+  const mockBackendBy = (response:Response) => {
     return inject([MockBackend], (backend:MockBackend) => {
       backend.connections.subscribe(conn => {
         conn.mockRespond(response);
@@ -96,7 +98,7 @@ describe('FollowBtnComponent', () => {
     });
   };
 
-  const initComponent = ():Function => {
+  const initComponent = () => {
     return async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
       tcb
         .overrideProviders(FollowBtnComponent, [
