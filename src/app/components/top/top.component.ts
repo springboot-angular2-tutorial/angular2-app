@@ -7,6 +7,5 @@ import {ROUTER_DIRECTIVES} from "@angular/router";
   template: require('./top.html'),
   directives: [ROUTER_DIRECTIVES],
 })
-// @CanActivate(() => activateIfNotSignedIn())
 export class TopComponent {
 }

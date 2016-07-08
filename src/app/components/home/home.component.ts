@@ -11,6 +11,5 @@ import {
   template: require('./home.html'),
   directives: [MicropostNewComponent, FeedComponent, UserStatsComponent],
 })
-// @CanActivate(() => activateIfSignedIn())
 export class HomeComponent {
 }

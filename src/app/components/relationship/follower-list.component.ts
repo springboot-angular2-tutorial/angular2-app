@@ -17,7 +17,6 @@ import {UserService} from "../../../shared/services";
     RelatedUserListComponent,
   ],
 })
-// @CanActivate(() => activateIfSignedIn())
 export class FollowerListComponent implements OnInit {
 
   userId:string;

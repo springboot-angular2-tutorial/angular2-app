@@ -17,7 +17,6 @@ import {HttpErrorHandler, UserService} from "../../../shared/services";
     PagerComponent,
   ],
 })
-// @CanActivate(() => activateIfSignedIn())
 export class UserListComponent implements OnInit {
 
   users:User[];

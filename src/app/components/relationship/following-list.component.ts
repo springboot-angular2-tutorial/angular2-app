@@ -21,7 +21,6 @@ import {UserService} from "../../../shared/services";
     GravatarComponent,
   ],
 })
-// @CanActivate(() => activateIfSignedIn())
 export class FollowingListComponent implements OnInit {
 
   userId:string;

@@ -23,11 +23,6 @@ const toastr = require('toastr');
   template: require('./user-edit.html'),
   directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
 })
-// @CanActivate((next:ComponentInstruction) => {
-//   const loginService:LoginService = appInjector().get(LoginService);
-//   if (!loginService.isSignedIn()) return activateIfSignedIn();
-//
-// })
 export class UserEditComponent implements OnInit {
 
   myForm:ControlGroup;

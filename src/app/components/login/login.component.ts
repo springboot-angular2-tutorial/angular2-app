@@ -10,9 +10,8 @@ const toastr = require('toastr/toastr');
   template: require('./login.html'),
   directives: [ROUTER_DIRECTIVES]
 })
-// @CanActivate(() => activateIfNotSignedIn())
 export class LoginComponent {
-  
+
   constructor(private router:Router,
               private loginService:LoginService) {
   }

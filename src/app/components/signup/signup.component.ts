@@ -19,7 +19,6 @@ const toastr = require('toastr');
   template: require('./signup.html'),
   directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
 })
-// @CanActivate(() => activateIfNotSignedIn())
 export class SignupComponent {
 
   myForm:ControlGroup;
