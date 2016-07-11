@@ -1,15 +1,18 @@
-import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {inject, addProviders} from "@angular/core/testing";
 import {Headers, ResponseOptions, Response, RequestMethod} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {LoginService} from "./login.service";
-import {APP_TEST_PROVIDERS} from "../../app";
+import {APP_TEST_HTTP_PROVIDERS} from "../http/index";
 
 describe('LoginService', () => {
 
   let loginService:LoginService;
   let backend:MockBackend;
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+  beforeEach(() => addProviders([
+    ...APP_TEST_HTTP_PROVIDERS,
+    LoginService,
+  ]));
   beforeEach(inject([LoginService, MockBackend], (..._) => {
     [loginService, backend] = _;
   }));
