@@ -1,8 +1,8 @@
-import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {inject, addProviders} from "@angular/core/testing";
 import {ResponseOptions, Response, RequestMethod} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {MicropostListService} from "./micropost-list.service";
-import {APP_TEST_PROVIDERS} from "../../../app";
+import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
 
 describe('MicropostListService', () => {
 
@@ -32,7 +32,10 @@ describe('MicropostListService', () => {
     },
   ];
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS, MicropostListService]);
+  beforeEach(() => addProviders([
+    ...APP_TEST_HTTP_PROVIDERS,
+    MicropostListService,
+  ]));
   beforeEach(inject([MicropostListService, MockBackend], (..._) => {
     [micropostListService, backend] = _;
   }));
