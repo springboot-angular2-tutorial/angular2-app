@@ -1,4 +1,3 @@
-import {beforeEach} from "@angular/core/testing";
 import {TimeAgoPipe} from "./time-ago.pipe";
 
 describe('TimeAgoPipe', () => {
