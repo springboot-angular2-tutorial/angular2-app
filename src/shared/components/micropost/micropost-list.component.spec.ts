@@ -1,12 +1,7 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  async
-} from "@angular/core/testing";
+import {inject, async, addProviders} from "@angular/core/testing";
 import {ResponseOptions, Response} from "@angular/http";
 import {
   ComponentFixture,
@@ -14,9 +9,10 @@ import {
 } from "@angular/compiler/testing";
 import {MockBackend} from "@angular/http/testing";
 import {MicropostListComponent} from "./micropost-list.component";
-import {APP_TEST_PROVIDERS} from "../../../app";
-import {MicropostService} from "../../services";
-import {prepareAppInjector} from "../../testing";
+import {MicropostService, APP_SERVICE_PROVIDERS} from "../../services";
+import {Router} from "@angular/router";
+import {MockRouter} from "../../testing/mock-router";
+import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
 
 describe('MicropostListComponent', () => {
 
@@ -59,8 +55,14 @@ describe('MicropostListComponent', () => {
     ]),
   }));
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
-  beforeEach(prepareAppInjector());
+  beforeEach(() => addProviders([
+    {
+      provide: Router,
+      useClass: MockRouter,
+    },
+    ...APP_TEST_HTTP_PROVIDERS,
+    ...APP_SERVICE_PROVIDERS,
+  ]));
   beforeEach(inject([MicropostService, MockBackend], (..._) => {
     [micropostService, backend] = _;
     backend.connections.subscribe(conn => conn.mockRespond(dummyResponse));
