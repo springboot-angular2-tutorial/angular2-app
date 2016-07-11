@@ -1,17 +1,10 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  async
-} from "@angular/core/testing";
+import {inject, async} from "@angular/core/testing";
 import {
   TestComponentBuilder,
   ComponentFixture
 } from "@angular/compiler/testing";
-import {APP_TEST_PROVIDERS} from "../../../app/index";
-import {prepareAppInjector} from "../../../shared/testing";
 import {PagerComponent} from "./pager.component";
 
 describe('PagerComponent', () => {
@@ -28,8 +21,6 @@ describe('PagerComponent', () => {
   let cmpDebugElement:DebugElement;
   let testCmpDebugElement:DebugElement;
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
-  beforeEach(prepareAppInjector());
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
       .createAsync(TestComponent)
