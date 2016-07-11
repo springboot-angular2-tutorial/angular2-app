@@ -1,4 +1,3 @@
-import {beforeEach} from "@angular/core/testing";
 import {PluralizePipe} from "./pluralize.pipe";
 
 describe('PluralizePipe', () => {
