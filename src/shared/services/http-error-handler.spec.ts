@@ -1,9 +1,10 @@
-import {Router} from "@angular/router-deprecated";
-import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {inject, addProviders} from "@angular/core/testing";
+import {Router} from "@angular/router";
 import {HttpErrorHandler} from "./http-error-handler";
 import {LoginService} from "./login.service";
-import {APP_TEST_PROVIDERS} from "../../app";
-import {prepareAppInjector} from "../testing/helpers";
+import {APP_TEST_HTTP_PROVIDERS} from "../http/index";
+import {APP_SERVICE_PROVIDERS} from "./index";
+import {MockRouter} from "../testing/mock-router";
 
 describe('HttpErrorHandler', () => {
 
@@ -11,8 +12,14 @@ describe('HttpErrorHandler', () => {
   let loginService:LoginService;
   let router:Router;
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
-  beforeEach(prepareAppInjector());
+  beforeEach(() => addProviders([
+    {
+      provide: Router,
+      useClass: MockRouter,
+    },
+    ...APP_TEST_HTTP_PROVIDERS,
+    ...APP_SERVICE_PROVIDERS,
+  ]));
   beforeEach(inject([HttpErrorHandler, LoginService, Router], (..._) => {
     [errorHandler, loginService, router] = _;
     spyOn(loginService, 'logout');
@@ -23,7 +30,7 @@ describe('HttpErrorHandler', () => {
     it('handles 401 response', () => {
       errorHandler.handle({status: 401});
       expect(loginService.logout).toHaveBeenCalled();
-      expect(router.navigate).toHaveBeenCalledWith(['/Login']);
+      expect(router.navigate).toHaveBeenCalledWith(['login']);
     });
 
     it('does not handle other errors', () => {

@@ -1,2 +1,6 @@
 export class MockRouter {
+
+  navigate() {
+  }
+
 }
