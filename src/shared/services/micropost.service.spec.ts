@@ -1,15 +1,18 @@
-import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {inject, addProviders} from "@angular/core/testing";
 import {Response, BaseResponseOptions, RequestMethod} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {MicropostService} from "./micropost.service";
-import {APP_TEST_PROVIDERS} from "../../app";
+import {APP_TEST_HTTP_PROVIDERS} from "../http/index";
 
 describe('MicropostService', () => {
 
   let micropostService:MicropostService;
   let backend:MockBackend;
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+  beforeEach(() => addProviders([
+    ...APP_TEST_HTTP_PROVIDERS,
+    MicropostService,
+  ]));
   beforeEach(inject([MicropostService, MockBackend], (..._) => {
     [micropostService, backend] = _;
   }));
