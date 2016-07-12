@@ -1,11 +1,6 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
-import {
-  beforeEachProviders,
-  beforeEach,
-  inject,
-  async
-} from "@angular/core/testing";
+import {inject, async, addProviders} from "@angular/core/testing";
 import {
   TestComponentBuilder,
   ComponentFixture
@@ -16,8 +11,9 @@ import {
   MicropostNewComponent,
   UserStatsComponent
 } from "../../../shared/components";
-import {prepareAppInjector} from "../../../shared/testing";
-import {APP_TEST_PROVIDERS} from "../../index";
+import {provideFakeRouter} from "../../../shared/routes/router-testing-providers";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 
 describe('HomeComponent', () => {
 
@@ -33,8 +29,11 @@ describe('HomeComponent', () => {
   let micropostNewDebugElement:DebugElement;
   let feedDebugElement:DebugElement;
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
-  beforeEach(prepareAppInjector());
+  beforeEach(() => addProviders([
+    provideFakeRouter(TestComponent),
+    ...APP_TEST_HTTP_PROVIDERS,
+    ...APP_SERVICE_PROVIDERS,
+  ]));
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
       .createAsync(TestComponent)
@@ -57,9 +56,9 @@ describe('HomeComponent', () => {
 
   it('reload user stats when created new micropost', () => {
     const userStats:UserStatsComponent = userStatsDebugElement.componentInstance;
-    spyOn(userStats, 'ngOnChanges');
+    spyOn(userStats, 'ngOnInit');
     micropostNewDebugElement.triggerEventHandler('created', null);
-    expect(userStats.ngOnChanges).toHaveBeenCalled();
+    expect(userStats.ngOnInit).toHaveBeenCalled();
   });
 
   it('reload feed when created new micropost', () => {
@@ -71,9 +70,9 @@ describe('HomeComponent', () => {
 
   it('reload user stats when deleted a micropost', () => {
     const userStats:UserStatsComponent = userStatsDebugElement.componentInstance;
-    spyOn(userStats, 'ngOnChanges');
+    spyOn(userStats, 'ngOnInit');
     feedDebugElement.triggerEventHandler('deleted', null);
-    expect(userStats.ngOnChanges).toHaveBeenCalled();
+    expect(userStats.ngOnInit).toHaveBeenCalled();
   });
 
 });
