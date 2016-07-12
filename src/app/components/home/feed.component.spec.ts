@@ -1,12 +1,7 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  async
-} from "@angular/core/testing";
+import {inject, async, addProviders} from "@angular/core/testing";
 import {ResponseOptions, Response} from "@angular/http";
 import {
   TestComponentBuilder,
@@ -15,9 +10,12 @@ import {
 import {MockBackend} from "@angular/http/testing";
 import {FeedComponent} from "./feed.component";
 import {GravatarComponent} from "../../../shared/components";
-import {MicropostService} from "../../../shared/services";
-import {prepareAppInjector} from "../../../shared/testing";
-import {APP_TEST_PROVIDERS} from "../../index";
+import {
+  MicropostService,
+  APP_SERVICE_PROVIDERS
+} from "../../../shared/services";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {provideFakeRouter} from "../../../shared/routes/router-testing-providers";
 
 describe('FeedComponent', () => {
 
@@ -61,8 +59,11 @@ describe('FeedComponent', () => {
     ]),
   }));
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
-  beforeEach(prepareAppInjector());
+  beforeEach(() => addProviders([
+    provideFakeRouter(TestComponent),
+    ...APP_TEST_HTTP_PROVIDERS,
+    ...APP_SERVICE_PROVIDERS,
+  ]));
   beforeEach(inject([MicropostService], _ => micropostService = _));
   beforeEach(inject([MockBackend], _ => {
     _.connections.subscribe(conn => conn.mockRespond(dummyResponse));
