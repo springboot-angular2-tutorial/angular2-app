@@ -1,4 +1,4 @@
-import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {inject, addProviders} from "@angular/core/testing";
 import {
   ResponseOptions,
   Response,
@@ -7,8 +7,8 @@ import {
 } from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {UserService} from "./user.service";
-import {APP_TEST_PROVIDERS} from "../../app";
 import {UserParams} from "../dto";
+import {APP_TEST_HTTP_PROVIDERS} from "../http/index";
 
 const dummyListJson = [
   {
@@ -51,7 +51,10 @@ describe('UserService', () => {
   let userService:UserService;
   let backend:MockBackend;
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+  beforeEach(() => addProviders([
+    ...APP_TEST_HTTP_PROVIDERS,
+    UserService,
+  ]));
   beforeEach(inject([UserService, MockBackend], (..._) => {
     [userService, backend] = _;
   }));
