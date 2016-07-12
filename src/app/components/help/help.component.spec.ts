@@ -1,18 +1,11 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
-import {
-  beforeEachProviders,
-  beforeEach,
-  async,
-  inject
-} from "@angular/core/testing";
+import {async, inject} from "@angular/core/testing";
 import {
   TestComponentBuilder,
   ComponentFixture
 } from "@angular/compiler/testing";
 import {HelpComponent} from "./help.component";
-import {APP_TEST_PROVIDERS} from "../../index";
-import {prepareAppInjector} from "../../../shared/testing";
 
 describe('HelpComponent', () => {
 
@@ -25,8 +18,6 @@ describe('HelpComponent', () => {
 
   let cmpDebugElement:DebugElement;
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
-  beforeEach(prepareAppInjector());
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
       .createAsync(TestComponent)
