@@ -42,9 +42,7 @@ describe('LoginComponent', () => {
   let location:Location;
 
   beforeEach(() => addProviders([
-    provideFakeRouter(TestComponent, [
-      {path: 'signup', component: BlankCmp},
-    ]),
+    provideFakeRouter(TestComponent),
     ...APP_TEST_HTTP_PROVIDERS,
     ...APP_SERVICE_PROVIDERS,
   ]));

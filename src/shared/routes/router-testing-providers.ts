@@ -9,18 +9,7 @@ import {
 } from "@angular/router";
 import {SpyLocation} from "@angular/common/testing";
 import {ComponentResolver, Injector, Type} from "@angular/core";
-
-class MockLocationStrategy {
-  internalBaseHref:string = '/';
-
-  prepareExternalUrl(internal:string):string {
-    if (internal.startsWith('/') && this.internalBaseHref.endsWith('/')) {
-      return this.internalBaseHref + internal.substring(1);
-    }
-    return this.internalBaseHref + internal;
-  }
-
-}
+import {MockLocationStrategy} from "./mock-location-strategy";
 
 export const provideFakeRouter = (rootComponentType:Type, config:RouterConfig = []) => {
   return [
