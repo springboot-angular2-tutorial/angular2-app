@@ -1,4 +1,4 @@
-import {inject} from "@angular/core/testing";
+import {inject, ComponentFixture, tick} from "@angular/core/testing";
 import {Router} from "@angular/router-deprecated";
 import {ReflectiveInjector, provide} from "@angular/core";
 import {appInjector} from "../../app";
@@ -19,3 +19,9 @@ export function prepareAppInjector():Function {
     ]));
   });
 }
+
+export function advance(fixture: ComponentFixture<any>): void {
+  tick();
+  fixture.detectChanges();
+}
+

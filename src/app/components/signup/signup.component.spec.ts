@@ -3,9 +3,10 @@ import {Location} from "@angular/common";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {
   inject,
-  beforeEachProviders,
-  beforeEach,
-  async
+  async,
+  addProviders,
+  tick,
+  fakeAsync
 } from "@angular/core/testing";
 import {BaseResponseOptions, Response} from "@angular/http";
 import {
@@ -13,21 +14,30 @@ import {
   ComponentFixture
 } from "@angular/compiler/testing";
 import {MockBackend} from "@angular/http/testing";
-import {Router} from "@angular/router-deprecated";
+import {Router, ROUTER_DIRECTIVES} from "@angular/router";
 import {SignupComponent} from "./signup.component";
-import {LoginService} from "../../../shared/services";
-import {APP_TEST_PROVIDERS} from "../../index";
-import {prepareAppInjector} from "../../../shared/testing";
+import {LoginService, APP_SERVICE_PROVIDERS} from "../../../shared/services";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {provideFakeRouter} from "../../../shared/routes/router-testing-providers";
+import {advance} from "../../../shared/testing/helpers";
 
-describe('SignupComponent', () => {
+fdescribe('SignupComponent', () => {
 
+  // TODO make TestComponent just using router-outlet
   @Component({
-    template: `<mpt-signup></mpt-signup>`,
-    directives: [SignupComponent],
+    template: `<mpt-signup></mpt-signup><router-outlet></router-outlet>`,
+    directives: [SignupComponent, ROUTER_DIRECTIVES],
   })
   class TestComponent {
   }
 
+  @Component({
+    template: ``,
+  })
+  class BlankCmp {
+  }
+
+  let fixture:ComponentFixture<any>;
   let cmpDebugElement:DebugElement;
 
   let loginService:LoginService;
@@ -35,17 +45,26 @@ describe('SignupComponent', () => {
   let router:Router;
   let location:Location;
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
-  beforeEach(prepareAppInjector());
+  beforeEach(() => addProviders([
+    provideFakeRouter(TestComponent, [
+      {
+        path: 'home',
+        component: BlankCmp,
+      },
+    ]),
+    ...APP_TEST_HTTP_PROVIDERS,
+    ...APP_SERVICE_PROVIDERS,
+  ]));
   beforeEach(inject([LoginService, MockBackend, Router, Location], (..._) => {
     [loginService, backend, router, location] = _;
   }));
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
       .createAsync(TestComponent)
-      .then((fixture:ComponentFixture<any>) => {
-        cmpDebugElement = fixture.debugElement.query(By.directive(SignupComponent));
-        fixture.detectChanges();
+      .then((_fixture:ComponentFixture<any>) => {
+        fixture = _fixture;
+        cmpDebugElement = _fixture.debugElement.query(By.directive(SignupComponent));
+        _fixture.detectChanges();
       });
   })));
 
@@ -67,7 +86,7 @@ describe('SignupComponent', () => {
     expect(page.myForm.valid).toBeTruthy();
   });
 
-  it('can signup', (done) => {
+  it('can signup', fakeAsync(() => {
     const page:SignupComponent = cmpDebugElement.componentInstance;
     spyOn(loginService, 'login').and.callThrough();
     backend.connections.subscribe(conn => {
@@ -79,11 +98,8 @@ describe('SignupComponent', () => {
       name: 'akira',
     });
     expect(loginService.login).toHaveBeenCalledWith('test@test.com', 'secret');
-
-    router.subscribe(() => {
-      expect(location.path()).toEqual('/home');
-      done();
-    });
-  });
+    advance(fixture);
+    expect(location.path()).toEqual('/home');
+  }));
 
 });
