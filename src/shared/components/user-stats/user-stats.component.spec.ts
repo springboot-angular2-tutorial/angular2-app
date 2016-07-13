@@ -1,22 +1,18 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
-import {
-  beforeEachProviders,
-  beforeEach,
-  inject,
-  async
-} from "@angular/core/testing";
+import {inject, async, addProviders} from "@angular/core/testing";
 import {ResponseOptions, Response} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {
   TestComponentBuilder,
   ComponentFixture
 } from "@angular/compiler/testing";
-import {APP_TEST_PROVIDERS} from "../../../app";
 import {UserStatsComponent} from "./user-stats.component";
 import {GravatarComponent} from "../../../shared/components";
-import {prepareAppInjector} from "../../testing";
+import {provideFakeRouter} from "../../routes/router-testing-providers";
+import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
+import {APP_SERVICE_PROVIDERS} from "../../services/index";
 
 describe('UserStatsComponent', () => {
 
@@ -45,8 +41,11 @@ describe('UserStatsComponent', () => {
     }
   }));
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
-  beforeEach(prepareAppInjector());
+  beforeEach(() => addProviders([
+    provideFakeRouter(TestComponent),
+    ...APP_TEST_HTTP_PROVIDERS,
+    ...APP_SERVICE_PROVIDERS,
+  ]));
   beforeEach(inject([MockBackend], (..._) => {
     [backend] = _;
     backend.connections.subscribe(conn => conn.mockRespond(dummyResponse));
