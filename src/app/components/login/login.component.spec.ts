@@ -1,26 +1,31 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  async
-} from "@angular/core/testing";
+import {inject, async, addProviders} from "@angular/core/testing";
 import {BaseResponseOptions, Response} from "@angular/http";
 import {Location} from "@angular/common";
 import {LoginComponent} from "./login.component";
-import {LoginService} from "../../../shared/services";
-import {APP_TEST_PROVIDERS} from "../../index";
-import {prepareAppInjector} from "../../../shared/testing/helpers";
+import {LoginService, APP_SERVICE_PROVIDERS} from "../../../shared/services";
 import {
   TestComponentBuilder,
   ComponentFixture
 } from "@angular/compiler/testing";
 import {MockBackend} from "@angular/http/testing";
-import {Router} from "@angular/router-deprecated";
+import {Router} from "@angular/router";
+import {provideFakeRouter} from "../../../shared/routes/router-testing-providers";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {ROUTER_DIRECTIVES} from "@angular/router-deprecated";
 
 describe('LoginComponent', () => {
+
+  @Component({
+    selector: 'blank-cmp',
+    template: ``,
+    directives: ROUTER_DIRECTIVES
+  })
+  class BlankCmp {
+  }
+
 
   @Component({
     template: `<mpt-login></mpt-login>`,
@@ -36,11 +41,16 @@ describe('LoginComponent', () => {
   let router:Router;
   let location:Location;
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
+  beforeEach(() => addProviders([
+    provideFakeRouter(TestComponent, [
+      {path: 'signup', component: BlankCmp},
+    ]),
+    ...APP_TEST_HTTP_PROVIDERS,
+    ...APP_SERVICE_PROVIDERS,
+  ]));
   beforeEach(inject([LoginService, MockBackend, Router, Location], (..._) => {
     [loginService, backend, router, location] = _;
   }));
-  beforeEach(prepareAppInjector());
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
       .createAsync(TestComponent)

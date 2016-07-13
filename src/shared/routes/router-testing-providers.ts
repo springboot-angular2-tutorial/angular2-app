@@ -1,3 +1,4 @@
+import {Location, LocationStrategy} from "@angular/common";
 import {
   RouterOutletMap,
   UrlSerializer,
@@ -7,7 +8,6 @@ import {
   RouterConfig
 } from "@angular/router";
 import {SpyLocation} from "@angular/common/testing";
-import {LocationStrategy} from "@angular/common";
 import {ComponentResolver, Injector, Type} from "@angular/core";
 
 class MockLocationStrategy {
