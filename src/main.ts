@@ -1,7 +1,6 @@
-import {ComponentRef} from "@angular/core";
 import {bootstrap} from "@angular/platform-browser-dynamic";
 import {ENV_PROVIDERS, decorateComponentRef} from "./platform/environment";
-import {AppComponent, APP_PROVIDERS, appInjector} from "./app";
+import {AppComponent, APP_PROVIDERS} from "./app";
 import {PLATFORM_PROVIDERS} from "./platform/browser";
 
 function main():Promise<any> {
@@ -9,10 +8,9 @@ function main():Promise<any> {
     ...PLATFORM_PROVIDERS,
     ...ENV_PROVIDERS,
     ...APP_PROVIDERS,
-  ]).then((appRef:ComponentRef<any>) => {
-    appInjector(appRef.injector);
-    decorateComponentRef(appRef);
-  }).catch(e => console.error(e));
+  ])
+    .then(decorateComponentRef)
+    .catch(e => console.error(e));
 }
 
 if ('development' === ENV && HMR === true) {

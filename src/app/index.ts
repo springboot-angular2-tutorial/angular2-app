@@ -9,7 +9,6 @@ import {
 } from "../shared/services/index";
 
 export * from './app.component';
-export * from './app-injector';
 
 export const APP_PROVIDERS = [
   APP_HTTP_PROVIDERS,
