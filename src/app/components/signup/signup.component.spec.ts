@@ -1,13 +1,7 @@
 import {Component, DebugElement} from "@angular/core";
 import {Location} from "@angular/common";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
-import {
-  inject,
-  async,
-  addProviders,
-  tick,
-  fakeAsync
-} from "@angular/core/testing";
+import {inject, async, addProviders, fakeAsync} from "@angular/core/testing";
 import {BaseResponseOptions, Response} from "@angular/http";
 import {
   TestComponentBuilder,
@@ -21,7 +15,7 @@ import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {provideFakeRouter} from "../../../shared/routes/router-testing-providers";
 import {advance} from "../../../shared/testing/helpers";
 
-fdescribe('SignupComponent', () => {
+describe('SignupComponent', () => {
 
   // TODO make TestComponent just using router-outlet
   @Component({

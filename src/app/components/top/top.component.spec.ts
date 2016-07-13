@@ -1,18 +1,14 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
-import {
-  beforeEachProviders,
-  beforeEach,
-  inject,
-  async
-} from "@angular/core/testing";
+import {inject, async, addProviders} from "@angular/core/testing";
 import {
   TestComponentBuilder,
   ComponentFixture
 } from "@angular/compiler/testing";
 import {TopComponent} from "./top.component";
-import {APP_TEST_PROVIDERS} from "../../index";
-import {prepareAppInjector} from "../../../shared/testing";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
+import {provideFakeRouter} from "../../../shared/routes/router-testing-providers";
 
 describe('TopComponent', () => {
 
@@ -25,8 +21,11 @@ describe('TopComponent', () => {
 
   let cmpDebugElement:DebugElement;
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
-  beforeEach(prepareAppInjector());
+  beforeEach(() => addProviders([
+    provideFakeRouter(TestComponent),
+    ...APP_TEST_HTTP_PROVIDERS,
+    ...APP_SERVICE_PROVIDERS,
+  ]));
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
       .createAsync(TestComponent)
