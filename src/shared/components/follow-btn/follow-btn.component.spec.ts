@@ -1,4 +1,4 @@
-import {Component, provide, DebugElement} from "@angular/core";
+import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {inject, async, addProviders} from "@angular/core/testing";
 import {Response, ResponseOptions} from "@angular/http";
@@ -98,7 +98,7 @@ describe('FollowBtnComponent', () => {
     return async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
       tcb
         .overrideProviders(FollowBtnComponent, [
-          provide(FollowBtnService, {useValue: followBtnService})
+          {provide: FollowBtnService, useValue: followBtnService}
         ])
         .createAsync(TestComponent)
         .then((fixture:ComponentFixture<any>) => {
