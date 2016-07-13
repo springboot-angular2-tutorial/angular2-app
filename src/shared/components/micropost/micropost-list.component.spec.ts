@@ -10,9 +10,8 @@ import {
 import {MockBackend} from "@angular/http/testing";
 import {MicropostListComponent} from "./micropost-list.component";
 import {MicropostService, APP_SERVICE_PROVIDERS} from "../../services";
-import {Router} from "@angular/router";
-import {MockRouter} from "../../testing/mock-router";
 import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
+import {provideFakeRouter} from "../../routes/router-testing-providers";
 
 describe('MicropostListComponent', () => {
 
@@ -56,10 +55,7 @@ describe('MicropostListComponent', () => {
   }));
 
   beforeEach(() => addProviders([
-    {
-      provide: Router,
-      useClass: MockRouter,
-    },
+    provideFakeRouter(TestComponent),
     ...APP_TEST_HTTP_PROVIDERS,
     ...APP_SERVICE_PROVIDERS,
   ]));

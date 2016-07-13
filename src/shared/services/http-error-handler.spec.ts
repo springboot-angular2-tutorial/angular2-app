@@ -4,13 +4,17 @@ import {HttpErrorHandler} from "./http-error-handler";
 import {LoginService} from "./login.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../http/index";
 import {APP_SERVICE_PROVIDERS} from "./index";
-import {MockRouter} from "../testing/mock-router";
 
 describe('HttpErrorHandler', () => {
 
   let errorHandler:HttpErrorHandler;
   let loginService:LoginService;
   let router:Router;
+
+  class MockRouter {
+    navigate() {
+    }
+  }
 
   beforeEach(() => addProviders([
     {

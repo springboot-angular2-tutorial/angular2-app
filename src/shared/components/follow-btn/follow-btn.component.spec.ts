@@ -9,10 +9,9 @@ import {
 } from "@angular/compiler/testing";
 import {FollowBtnComponent} from "./follow-btn.component";
 import {FollowBtnService} from "./follow-btn.service";
-import {Router} from "@angular/router";
 import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
 import {APP_SERVICE_PROVIDERS} from "../../services/index";
-import {MockRouter} from "../../testing";
+import {provideFakeRouter} from "../../routes/router-testing-providers";
 
 describe('FollowBtnComponent', () => {
 
@@ -76,10 +75,7 @@ describe('FollowBtnComponent', () => {
 
 
   beforeEach(() => addProviders([
-    {
-      provide: Router,
-      useClass: MockRouter,
-    },
+    provideFakeRouter(TestComponent),
     ...APP_TEST_HTTP_PROVIDERS,
     ...APP_SERVICE_PROVIDERS,
     FollowBtnService,
