@@ -13,7 +13,7 @@ import {provideFakeRouter} from "../../../shared/routes/router-testing-providers
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 
-fdescribe('FollowerListComponent', () => {
+describe('FollowerListComponent', () => {
 
   @Component({
     template: `<router-outlet></router-outlet>`,

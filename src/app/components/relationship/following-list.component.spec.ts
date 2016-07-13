@@ -1,60 +1,60 @@
-import {Component, provide, DebugElement} from "@angular/core";
+import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
-import {
-  beforeEachProviders,
-  beforeEach,
-  inject,
-  async
-} from "@angular/core/testing";
-import {RouteParams} from "@angular/router-deprecated";
+import {inject, async, addProviders} from "@angular/core/testing";
 import {
   TestComponentBuilder,
   ComponentFixture
 } from "@angular/compiler/testing";
+import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 import {FollowingListComponent} from "./following-list.component";
 import {RelatedUserListComponent} from "./related-user-list.component";
 import {UserStatsComponent} from "../../../shared/components";
-import {APP_TEST_PROVIDERS} from "../../index";
-import {prepareAppInjector} from "../../../shared/testing/helpers";
+import {provideFakeRouter} from "../../../shared/routes/router-testing-providers";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 
 describe('FollowingListComponent', () => {
 
   @Component({
-    template: `<mpt-following-list></mpt-following-list>`,
-    directives: [FollowingListComponent],
+    template: `<router-outlet></router-outlet>`,
+    directives: [ROUTER_DIRECTIVES],
   })
   class TestComponent {
   }
 
+  let router:Router;
   let cmpDebugElement:DebugElement;
   let userStatsDebugElement:DebugElement;
   let userListDebugElement:DebugElement;
 
-  let routeParams:RouteParams;
-
-  beforeEachProviders(() => {
-    routeParams = jasmine.createSpyObj('routeParams', ['get']);
-    (<jasmine.Spy>routeParams.get).and.returnValue('1');
-    return [
-      APP_TEST_PROVIDERS,
-      provide(RouteParams, {useValue: routeParams}),
-    ];
-  });
-  beforeEach(prepareAppInjector());
+  beforeEach(() => addProviders([
+    provideFakeRouter(TestComponent, [
+      {
+        path: 'users/:id/followings',
+        component: FollowingListComponent,
+      },
+    ]),
+    ...APP_TEST_HTTP_PROVIDERS,
+    ...APP_SERVICE_PROVIDERS,
+  ]));
+  beforeEach(inject([Router], (..._) => {
+    [router] = _;
+  }));
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
       .createAsync(TestComponent)
       .then((fixture:ComponentFixture<any>) => {
-        cmpDebugElement = fixture.debugElement.query(By.directive(FollowingListComponent));
-        userStatsDebugElement = cmpDebugElement.query(By.directive(UserStatsComponent));
-        userListDebugElement = cmpDebugElement.query(By.directive(RelatedUserListComponent));
-        fixture.detectChanges();
+        return router.navigate(['/users', '1', 'followings']).then(() => {
+          cmpDebugElement = fixture.debugElement.query(By.directive(FollowingListComponent));
+          userStatsDebugElement = cmpDebugElement.query(By.directive(UserStatsComponent));
+          userListDebugElement = cmpDebugElement.query(By.directive(RelatedUserListComponent));
+          fixture.detectChanges();
+        });
       });
   })));
 
   it('can be shown', () => {
     expect(cmpDebugElement).toBeTruthy();
-    expect(routeParams.get).toHaveBeenCalledWith('id');
     expect(cmpDebugElement.componentInstance.userId).toEqual('1');
     expect(cmpDebugElement.componentInstance.listProvider).toBeTruthy();
     expect(userStatsDebugElement).toBeTruthy();
