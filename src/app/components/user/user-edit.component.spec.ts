@@ -12,10 +12,10 @@ import {
 import {MockBackend} from "@angular/http/testing";
 import {UserEditComponent} from "./user-edit.component";
 import {User} from "../../../shared/domains";
-import {UserService, APP_SERVICE_PROVIDERS} from "../../../shared/services";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {UserService} from "../../../shared/services";
 import {provideFakeRouter} from "../../../shared/routes/router-testing-providers";
 import {ProfileDataResolver} from "../../../shared/routes/profile-data.resolver";
+import {APP_TEST_PROVIDERS} from "../../index";
 
 describe('UserEditComponent', () => {
 
@@ -42,8 +42,7 @@ describe('UserEditComponent', () => {
         resolve: {profile: ProfileDataResolver},
       },
     ]),
-    ...APP_TEST_HTTP_PROVIDERS,
-    ...APP_SERVICE_PROVIDERS,
+    ...APP_TEST_PROVIDERS,
     ProfileDataResolver,
   ]));
   beforeEach(inject([UserService, Router, MockBackend, ProfileDataResolver], (..._) => {

@@ -1,6 +1,6 @@
 <h1>Sign up</h1>
 
-<form [ngFormModel]="myForm" (submit)="onSubmit(myForm.value)" novalidate>
+<form [formGroup]="myForm" (submit)="onSubmit(myForm.value)" novalidate>
 
   <div class="form-group"
        [class.has-error]="!name.valid && name.touched">
@@ -11,7 +11,7 @@
       id="nameInput"
       placeholder="Name"
       maxlength="30"
-      [ngFormControl]="name"/>
+      formControlName="name"/>
       <span *ngIf="name.hasError('required') && name.touched"
             class="help-block">Name is required</span>
       <span *ngIf="name.hasError('minlength') && name.touched"
@@ -27,7 +27,7 @@
       id="emailInput"
       placeholder="Email"
       maxlength="30"
-      [ngFormControl]="email"/>
+      formControlName="email"/>
       <span *ngIf="email.hasError('required') && email.touched"
             class="help-block">Email is required</span>
       <span *ngIf="email.hasError('pattern') && email.touched"
@@ -43,7 +43,7 @@
       id="passwordInput"
       placeholder="Password"
       maxlength="100"
-      [ngFormControl]="password"/>
+      formControlName="password"/>
       <span *ngIf="password.hasError('required') && password.touched"
             class="help-block">Password is required</span>
       <span *ngIf="password.hasError('minlength') && password.touched"
@@ -59,7 +59,7 @@
       class="form-control"
       id="passwordConfirmationInput"
       placeholder="Confirm Password"
-      [ngFormControl]="passwordConfirmation"/>
+      formControlName="passwordConfirmation"/>
       <span
         *ngIf="passwordConfirmation.hasError('required') && passwordConfirmation.touched"
         class="help-block">Password confirmation is required</span>

@@ -1,18 +1,18 @@
 import {Component, OnInit} from "@angular/core";
 import {
-  CORE_DIRECTIVES,
+  FormGroup,
   FORM_DIRECTIVES,
-  Control,
-  ControlGroup,
-  Validators
-} from "@angular/common";
+  FormControl,
+  Validators,
+  REACTIVE_FORM_DIRECTIVES
+} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {User} from "../../../shared/domains";
 import {UserService} from "../../../shared/services";
 import {
   Validators as AppValidators,
   EMAIL_PATTERN
-} from "../../../shared/forms/index";
+} from "../../../shared/forms";
 
 const isEmpty = require("lodash/isEmpty");
 const omitBy = require("lodash/omitBy");
@@ -21,15 +21,15 @@ const toastr = require('toastr');
 @Component({
   selector: 'mpt-user-edit',
   template: require('./user-edit.html'),
-  directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
+  directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES],
 })
 export class UserEditComponent implements OnInit {
 
-  myForm:ControlGroup;
-  name:Control;
-  email:Control;
-  password:Control;
-  passwordConfirmation:Control;
+  myForm:FormGroup;
+  name:FormControl;
+  email:FormControl;
+  password:FormControl;
+  passwordConfirmation:FormControl;
 
   user:User;
 
@@ -56,21 +56,21 @@ export class UserEditComponent implements OnInit {
   }
 
   private initForm() {
-    this.name = new Control(this.user.name, Validators.compose([
+    this.name = new FormControl(this.user.name, Validators.compose([
       Validators.required,
       Validators.minLength(4),
     ]));
-    this.email = new Control(this.user.email, Validators.compose([
+    this.email = new FormControl(this.user.email, Validators.compose([
       Validators.required,
       Validators.pattern(EMAIL_PATTERN),
     ]));
-    this.password = new Control('', Validators.compose([
+    this.password = new FormControl('', Validators.compose([
       Validators.minLength(8),
     ]));
-    this.passwordConfirmation = new Control('', Validators.compose([
+    this.passwordConfirmation = new FormControl('', Validators.compose([
       AppValidators.match(this.password),
     ]));
-    this.myForm = new ControlGroup({
+    this.myForm = new FormGroup({
       name: this.name,
       email: this.email,
       password: this.password,

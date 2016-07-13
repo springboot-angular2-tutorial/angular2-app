@@ -12,8 +12,7 @@ import {
   UserStatsComponent
 } from "../../../shared/components";
 import {provideFakeRouter} from "../../../shared/routes/router-testing-providers";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
-import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
+import {APP_TEST_PROVIDERS} from "../../index";
 
 describe('HomeComponent', () => {
 
@@ -31,8 +30,7 @@ describe('HomeComponent', () => {
 
   beforeEach(() => addProviders([
     provideFakeRouter(TestComponent),
-    ...APP_TEST_HTTP_PROVIDERS,
-    ...APP_SERVICE_PROVIDERS,
+    APP_TEST_PROVIDERS,
   ]));
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb

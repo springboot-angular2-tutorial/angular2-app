@@ -11,10 +11,10 @@ import {
 import {MockBackend} from "@angular/http/testing";
 import {Router, ROUTER_DIRECTIVES} from "@angular/router";
 import {LoginComponent} from "./login.component";
-import {LoginService, APP_SERVICE_PROVIDERS} from "../../../shared/services";
+import {LoginService} from "../../../shared/services";
 import {provideFakeRouter} from "../../../shared/routes/router-testing-providers";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {advance} from "../../../shared/testing/helpers";
+import {APP_TEST_PROVIDERS} from "../../index";
 
 describe('LoginComponent', () => {
 
@@ -43,8 +43,7 @@ describe('LoginComponent', () => {
     provideFakeRouter(TestComponent, [
       {path: 'home', component: BlankComponent},
     ]),
-    ...APP_TEST_HTTP_PROVIDERS,
-    ...APP_SERVICE_PROVIDERS,
+    ...APP_TEST_PROVIDERS,
   ]));
   beforeEach(inject([LoginService, MockBackend, Router, Location], (..._) => {
     [loginService, backend, router, location] = _;

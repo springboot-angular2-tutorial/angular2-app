@@ -1,15 +1,14 @@
 import {Component} from "@angular/core";
-import {
-  CORE_DIRECTIVES,
-  FORM_DIRECTIVES,
-  Control,
-  ControlGroup,
-  Validators
-} from "@angular/common";
 import {Router} from "@angular/router";
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FORM_DIRECTIVES,
+  REACTIVE_FORM_DIRECTIVES
+} from "@angular/forms";
 import {LoginService, UserService} from "../../../shared/services";
-import {Validators as AppValidators} from "../../../shared/forms";
-import {EMAIL_PATTERN} from "../../../shared/forms/index";
+import {EMAIL_PATTERN, Validators as AppValidators} from "../../../shared/forms/index";
 
 const toastr = require('toastr');
 
@@ -17,15 +16,15 @@ const toastr = require('toastr');
   selector: 'mpt-signup',
   styles: [require('./signup.scss')],
   template: require('./signup.html'),
-  directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
+  directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES],
 })
 export class SignupComponent {
 
-  myForm:ControlGroup;
-  name:Control;
-  email:Control;
-  password:Control;
-  passwordConfirmation:Control;
+  myForm:FormGroup;
+  name:FormControl;
+  email:FormControl;
+  password:FormControl;
+  passwordConfirmation:FormControl;
 
   constructor(private router:Router,
               private userService:UserService,
@@ -45,23 +44,23 @@ export class SignupComponent {
   }
 
   private initForm() {
-    this.name = new Control('', Validators.compose([
+    this.name = new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(4),
     ]));
-    this.email = new Control('', Validators.compose([
+    this.email = new FormControl('', Validators.compose([
       Validators.required,
       Validators.pattern(EMAIL_PATTERN),
     ]));
-    this.password = new Control('', Validators.compose([
+    this.password = new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(8),
     ]));
-    this.passwordConfirmation = new Control('', Validators.compose([
+    this.passwordConfirmation = new FormControl('', Validators.compose([
       Validators.required,
       AppValidators.match(this.password),
     ]));
-    this.myForm = new ControlGroup({
+    this.myForm = new FormGroup({
       name: this.name,
       email: this.email,
       password: this.password,

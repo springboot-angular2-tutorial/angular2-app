@@ -8,9 +8,9 @@ import {
 } from "@angular/compiler/testing";
 import {MockBackend} from "@angular/http/testing";
 import {MicropostNewComponent} from "./micropost-new.component";
-import {MicropostService, APP_SERVICE_PROVIDERS} from "../../services";
-import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
+import {MicropostService} from "../../services";
 import {provideFakeRouter} from "../../routes/router-testing-providers";
+import {APP_TEST_PROVIDERS} from "../../../app/index";
 
 describe('MicropostNewComponent', () => {
 
@@ -32,8 +32,7 @@ describe('MicropostNewComponent', () => {
 
   beforeEach(() => addProviders([
     provideFakeRouter(TestComponent),
-    ...APP_TEST_HTTP_PROVIDERS,
-    ...APP_SERVICE_PROVIDERS,
+    ...APP_TEST_PROVIDERS,
   ]));
   beforeEach(inject([MicropostService, MockBackend], (..._) => {
     [micropostService, backend] = _;
