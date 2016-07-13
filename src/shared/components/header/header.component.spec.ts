@@ -3,29 +3,31 @@ import {Component, DebugElement} from "@angular/core";
 import {Location} from "@angular/common";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  async
-} from "@angular/core/testing";
+import {inject, async, addProviders} from "@angular/core/testing";
 import {
   TestComponentBuilder,
   ComponentFixture
 } from "@angular/compiler/testing";
-import {Router} from "@angular/router-deprecated";
-import {APP_TEST_PROVIDERS} from "../../../app";
+import {Router, ROUTER_DIRECTIVES} from "@angular/router";
 import {HeaderComponent} from "./header.component";
-import {LoginService, UserService} from "../../services";
-import {login, prepareAppInjector} from "../../testing";
+import {LoginService, UserService, APP_SERVICE_PROVIDERS} from "../../services";
+import {login} from "../../testing";
+import {provideFakeRouter} from "../../routes/router-testing-providers";
+import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
 
 describe('HeaderComponent', () => {
 
   @Component({
-    template: `<mpt-header></mpt-header>`,
-    directives: [HeaderComponent],
+    template: `<mpt-header></mpt-header><router-outlet></router-outlet>`,
+    directives: [HeaderComponent, ROUTER_DIRECTIVES],
   })
   class TestComponent {
+  }
+
+  @Component({
+    template: ``,
+  })
+  class BlankComponent {
   }
 
   let cmpDebugElement:DebugElement;
@@ -34,8 +36,19 @@ describe('HeaderComponent', () => {
   let location:Location;
   let fixture:ComponentFixture<any>;
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
-  beforeEach(prepareAppInjector());
+  beforeEach(() => addProviders([
+    provideFakeRouter(TestComponent, [
+      {path: 'home', component: BlankComponent},
+      {path: 'users', component: BlankComponent},
+      {path: 'help', component: BlankComponent},
+      {path: 'users/:id', component: BlankComponent},
+      {path: 'users/me/edit', component: BlankComponent},
+      {path: 'login', component: BlankComponent},
+      {path: '', component: BlankComponent},
+    ]),
+    ...APP_TEST_HTTP_PROVIDERS,
+    ...APP_SERVICE_PROVIDERS,
+  ]));
   beforeEach(inject([Router, Location], (..._) => {
     [router, location] = _;
   }));
@@ -142,7 +155,7 @@ describe('HeaderComponent', () => {
       expect(link).toBeTruthy();
       link.click();
       fixture.detectChanges();
-      expect(location.path()).toEqual('');
+      expect(location.path()).toEqual('/');
     });
 
     it('does not show a nav link to users', () => {
@@ -193,7 +206,7 @@ describe('HeaderComponent', () => {
       expect(cmp.isActive('/users')).toBeTruthy();
     });
 
-    it('return false when path does not matche', () => {
+    it('return false when path does not match', () => {
       const cmp:HeaderComponent = cmpDebugElement.componentInstance;
       spyOn(location, 'path').and.returnValue('/home');
       expect(cmp.isActive('/users')).toBeFalsy();

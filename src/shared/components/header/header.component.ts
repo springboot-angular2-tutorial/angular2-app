@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit():any {
+    this.isSignedIn = this.loginService.isSignedIn();
     // TODO subscribe custom event of loginService
     this.router.events.subscribe((e:Event) => {
       if (e instanceof NavigationStart) {
