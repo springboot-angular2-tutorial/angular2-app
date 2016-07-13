@@ -1,15 +1,18 @@
-import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {inject, addProviders} from "@angular/core/testing";
 import {Response, BaseResponseOptions, RequestMethod} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {FollowBtnService} from "./follow-btn.service";
-import {APP_TEST_PROVIDERS} from "../../../app";
+import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
 
 describe('FollowBtnService', () => {
 
   let followBtnService:FollowBtnService;
   let backend:MockBackend;
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS, FollowBtnService]);
+  beforeEach(() => addProviders([
+    ...APP_TEST_HTTP_PROVIDERS,
+    FollowBtnService,
+  ]));
   beforeEach(inject([FollowBtnService, MockBackend], (..._) => {
     [followBtnService, backend] = _;
   }));
