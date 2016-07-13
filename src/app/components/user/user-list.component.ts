@@ -31,7 +31,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit():any {
     this.route.params.subscribe(params => {
-      this.page = <any>params['page'] || 1;
+      this.page = +(params['page'] || 1);
       this.list(this.page);
     });
   }

@@ -1,25 +1,22 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
-import {
-  beforeEachProviders,
-  beforeEach,
-  inject,
-  async
-} from "@angular/core/testing";
+import {inject, async, addProviders, fakeAsync} from "@angular/core/testing";
 import {ResponseOptions, Response} from "@angular/http";
-import {ROUTER_DIRECTIVES, Router} from "@angular/router-deprecated";
+import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 import {
   TestComponentBuilder,
   ComponentFixture
 } from "@angular/compiler/testing";
 import {MockBackend} from "@angular/http/testing";
 import {UserListComponent} from "./user-list.component";
-import {APP_TEST_PROVIDERS} from "../../index";
 import {GravatarComponent, PagerComponent} from "../../../shared/components";
-import {login, prepareAppInjector} from "../../../shared/testing";
+import {provideFakeRouter} from "../../../shared/routes/router-testing-providers";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
+import {advance} from "../../../shared/testing/helpers";
 
-describe('UserListComponent', () => {
+fdescribe('UserListComponent', () => {
 
   @Component({
     template: `<router-outlet></router-outlet>`,
@@ -46,19 +43,26 @@ describe('UserListComponent', () => {
     }),
   }));
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
-  beforeEach(prepareAppInjector());
+  beforeEach(() => addProviders([
+    provideFakeRouter(TestComponent, [
+      {
+        path: 'users',
+        component: UserListComponent,
+      },
+    ]),
+    ...APP_TEST_HTTP_PROVIDERS,
+    ...APP_SERVICE_PROVIDERS,
+  ]));
   beforeEach(inject([Router, MockBackend], (..._) => {
     [router, backend] = _;
     backend.connections.subscribe(conn => conn.mockRespond(dummyResponse));
   }));
-  beforeEach(login());
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
       .createAsync(TestComponent)
       .then((_fixture:ComponentFixture<any>) => {
         fixture = _fixture;
-        return router.navigate(['/UserList']).then(() => {
+        return router.navigate(['/users']).then(() => {
           cmpDebugElement = _fixture.debugElement.query(By.directive(UserListComponent));
           pagerDebugElement = cmpDebugElement.query(By.directive(PagerComponent));
           _fixture.detectChanges();
@@ -92,14 +96,12 @@ describe('UserListComponent', () => {
     expect(pager.totalPages).toEqual(1);
   });
 
-  it('list another page when page was changed', (done) => {
-    pagerDebugElement.triggerEventHandler('pageChanged', <any>{page: 2});
-    router.subscribe(() => {
-      cmpDebugElement = fixture.debugElement.query(By.directive(UserListComponent));
-      const cmp:UserListComponent = cmpDebugElement.componentInstance;
-      expect(cmp.page).toEqual(2);
-      done();
-    });
-  });
+  it('list another page when page was changed', fakeAsync(() => {
+    pagerDebugElement.triggerEventHandler('pageChanged', {page: 2});
+    advance(fixture);
+    cmpDebugElement = fixture.debugElement.query(By.directive(UserListComponent));
+    const cmp:UserListComponent = cmpDebugElement.componentInstance;
+    expect(cmp.page).toEqual(2);
+  }));
 
 });
