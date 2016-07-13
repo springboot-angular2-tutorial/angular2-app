@@ -1,12 +1,7 @@
 import {Observable} from "rxjs/Observable";
 import {Component, DebugElement} from "@angular/core";
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  async
-} from "@angular/core/testing";
-import {ROUTER_DIRECTIVES, Router} from "@angular/router-deprecated";
+import {inject, async, addProviders} from "@angular/core/testing";
+import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
 import {BaseResponseOptions, Response} from "@angular/http";
@@ -16,10 +11,11 @@ import {
 } from "@angular/compiler/testing";
 import {MockBackend} from "@angular/http/testing";
 import {UserEditComponent} from "./user-edit.component";
-import {APP_TEST_PROVIDERS} from "../../index";
 import {User} from "../../../shared/domains";
-import {UserService} from "../../../shared/services";
-import {login, prepareAppInjector} from "../../../shared/testing";
+import {UserService, APP_SERVICE_PROVIDERS} from "../../../shared/services";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {provideFakeRouter} from "../../../shared/routes/router-testing-providers";
+import {ProfileDataResolver} from "../../../shared/routes/profile-data.resolver";
 
 describe('UserEditComponent', () => {
 
@@ -38,18 +34,28 @@ describe('UserEditComponent', () => {
 
   const user:User = {id: 1, email: "test@test.com", name: "test user"};
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS]);
-  beforeEach(prepareAppInjector());
-  beforeEach(inject([UserService, Router, MockBackend], (..._) => {
-    [userService, router, backend] = _;
-    spyOn(userService, 'get').and.returnValue(Observable.of(user));
+  beforeEach(() => addProviders([
+    provideFakeRouter(TestComponent, [
+      {
+        path: 'users/me/edit',
+        component: UserEditComponent,
+        resolve: {profile: ProfileDataResolver},
+      },
+    ]),
+    ...APP_TEST_HTTP_PROVIDERS,
+    ...APP_SERVICE_PROVIDERS,
+    ProfileDataResolver,
+  ]));
+  beforeEach(inject([UserService, Router, MockBackend, ProfileDataResolver], (..._) => {
+    let pdr:ProfileDataResolver;
+    [userService, router, backend, pdr] = _;
+    spyOn(pdr, 'resolve').and.returnValue(Observable.of(user));
   }));
-  beforeEach(login());
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
       .createAsync(TestComponent)
       .then((fixture:ComponentFixture<any>) => {
-        return router.navigate(['/MeEdit']).then(() => {
+        return router.navigate(['/users', 'me', 'edit']).then(() => {
           fixture.detectChanges();
           cmpDebugElement = fixture.debugElement.query(By.directive(UserEditComponent));
         });
