@@ -7,7 +7,6 @@ import {
   APP_SERVICE_PROVIDERS,
   APP_TEST_SERVICE_PROVIDERS
 } from "../shared/services/index";
-import {APP_TEST_ROUTER_PROVIDERS} from "../shared/routes/index";
 
 export * from './app.component';
 export * from './app-injector';
@@ -21,6 +20,5 @@ export const APP_TEST_PROVIDERS = [
   disableDeprecatedForms(),
   provideForms(),
   APP_TEST_SERVICE_PROVIDERS,
-  APP_TEST_ROUTER_PROVIDERS,
   APP_TEST_HTTP_PROVIDERS,
 ];
