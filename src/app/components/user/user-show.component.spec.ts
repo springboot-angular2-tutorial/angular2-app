@@ -1,33 +1,26 @@
-import {Observable} from "rxjs/Observable";
-import {Component, provide, DebugElement} from "@angular/core";
+import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
-import {
-  inject,
-  beforeEachProviders,
-  beforeEach,
-  async
-} from "@angular/core/testing";
-import {RouteParams, Router} from "@angular/router-deprecated";
+import {inject, async, addProviders} from "@angular/core/testing";
+import {Router, ROUTER_DIRECTIVES} from "@angular/router";
 import {
   TestComponentBuilder,
   ComponentFixture
 } from "@angular/compiler/testing";
-import {APP_TEST_PROVIDERS} from "../../index";
 import {UserShowComponent} from "./user-show.component";
 import {
   MicropostListComponent,
   FollowBtnComponent,
   UserStatsComponent
 } from "../../../shared/components";
-import {UserService} from "../../../shared/services";
-import {prepareAppInjector} from "../../../shared/testing";
+import {APP_SERVICE_PROVIDERS} from "../../../shared/services";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {provideFakeRouter} from "../../../shared/routes/router-testing-providers";
 
-// TODO
-xdescribe('UserShowComponent', () => {
+describe('UserShowComponent', () => {
 
   @Component({
-    template: `<mpt-user-show></mpt-user-show>`,
-    directives: [UserShowComponent],
+    template: `<router-outlet></router-outlet>`,
+    directives: [ROUTER_DIRECTIVES],
   })
   class TestComponent {
   }
@@ -37,28 +30,21 @@ xdescribe('UserShowComponent', () => {
   let followBtnDebugElement:DebugElement;
   let micropostListDebugElement:DebugElement;
 
-  let userService:UserService;
-  let routeParams:RouteParams;
   let router:Router;
 
-  beforeEachProviders(() => {
-    routeParams = jasmine.createSpyObj('routeParams', ['get']);
-    (<jasmine.Spy>routeParams.get).and.returnValue('1');
-    return [
-      APP_TEST_PROVIDERS,
-      provide(RouteParams, {useValue: routeParams}),
-    ];
-  });
-  beforeEach(prepareAppInjector());
-  beforeEach(inject([UserService, Router], (..._) => {
-    [userService, router] = _;
-    spyOn(userService, 'get').and.returnValue(Observable.empty());
-  }));
+  beforeEach(() => addProviders([
+    provideFakeRouter(TestComponent, [
+      {path: 'users/:id', component: UserShowComponent},
+    ]),
+    ...APP_TEST_HTTP_PROVIDERS,
+    ...APP_SERVICE_PROVIDERS,
+  ]));
+  beforeEach(inject([Router], (..._) => [router] = _));
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
       .createAsync(TestComponent)
       .then((fixture:ComponentFixture<any>) => {
-        return router.navigate(['/UserShow', {id: 1}]).then(() => {
+        return router.navigate(['/users', '1']).then(() => {
           cmpDebugElement = fixture.debugElement.query(By.directive(UserShowComponent));
           userStatsDebugElement = cmpDebugElement.query(By.directive(UserStatsComponent));
           followBtnDebugElement = cmpDebugElement.query(By.directive(FollowBtnComponent));
@@ -81,9 +67,9 @@ xdescribe('UserShowComponent', () => {
 
   it('reload user stats when following status was updated', () => {
     const userStats:UserStatsComponent = userStatsDebugElement.componentInstance;
-    spyOn(userStats, 'ngOnChanges');
+    spyOn(userStats, 'ngOnInit');
     followBtnDebugElement.triggerEventHandler('updated', null);
-    expect(userStats.ngOnChanges).toHaveBeenCalled();
+    expect(userStats.ngOnInit).toHaveBeenCalled();
   });
 
 });

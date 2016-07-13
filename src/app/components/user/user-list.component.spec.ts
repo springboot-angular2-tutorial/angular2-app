@@ -16,7 +16,7 @@ import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {advance} from "../../../shared/testing/helpers";
 
-fdescribe('UserListComponent', () => {
+describe('UserListComponent', () => {
 
   @Component({
     template: `<router-outlet></router-outlet>`,
