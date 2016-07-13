@@ -1,8 +1,8 @@
-import {inject, beforeEachProviders, beforeEach} from "@angular/core/testing";
+import {inject, addProviders} from "@angular/core/testing";
 import {ResponseOptions, Response, RequestMethod} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {FeedService} from "./feed.service";
-import {APP_TEST_PROVIDERS} from "../../index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 
 describe('FeedService', () => {
 
@@ -32,7 +32,10 @@ describe('FeedService', () => {
     },
   ];
 
-  beforeEachProviders(() => [APP_TEST_PROVIDERS, FeedService]);
+  beforeEach(() => addProviders([
+    ...APP_TEST_HTTP_PROVIDERS,
+    FeedService,
+  ]));
   beforeEach(inject([FeedService, MockBackend], (..._) => {
     [feedService, backend] = _;
   }));
