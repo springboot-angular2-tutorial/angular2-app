@@ -31,5 +31,5 @@ export const provideFakeRouter = (rootComponentType:Type, config:RouterConfig = 
       useFactory: (r:Router) => r.routerState.root,
       deps: [Router]
     },
-  ]
+  ];
 };

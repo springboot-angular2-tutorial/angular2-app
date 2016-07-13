@@ -1,3 +1,4 @@
+/* tslint:disable */
 /**
  * Copy from https://github.com/angular/angular/blob/master/modules/%40angular/common/testing/mock_location_strategy.ts
  */
@@ -73,3 +74,4 @@ class _MockPopStateEvent {
   type: string = 'popstate';
   constructor(public newUrl: string) {}
 }
+/* tslint:enable */

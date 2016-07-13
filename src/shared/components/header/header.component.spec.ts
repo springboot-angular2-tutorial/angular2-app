@@ -53,7 +53,7 @@ describe('HeaderComponent', () => {
     [router, location] = _;
   }));
 
-  const initComponent = ():Function => {
+  const initComponent = () => {
     return async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
       tcb
         .createAsync(TestComponent)

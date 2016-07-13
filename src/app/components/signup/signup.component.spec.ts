@@ -17,7 +17,6 @@ import {advance} from "../../../shared/testing/helpers";
 
 describe('SignupComponent', () => {
 
-  // TODO make TestComponent just using router-outlet
   @Component({
     template: `<mpt-signup></mpt-signup><router-outlet></router-outlet>`,
     directives: [SignupComponent, ROUTER_DIRECTIVES],
@@ -28,7 +27,7 @@ describe('SignupComponent', () => {
   @Component({
     template: ``,
   })
-  class BlankCmp {
+  class BlankComponent {
   }
 
   let fixture:ComponentFixture<any>;
@@ -43,7 +42,7 @@ describe('SignupComponent', () => {
     provideFakeRouter(TestComponent, [
       {
         path: 'home',
-        component: BlankCmp,
+        component: BlankComponent,
       },
     ]),
     ...APP_TEST_HTTP_PROVIDERS,
