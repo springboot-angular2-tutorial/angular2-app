@@ -15,16 +15,20 @@ import {provideFakeRouter} from "../../routes/router-testing-providers";
 describe('MicropostNewComponent', () => {
 
   @Component({
-    template: `<mpt-micropost-new></mpt-micropost-new>`,
+    template: `<mpt-micropost-new (created)="doSomething()"></mpt-micropost-new>`,
     directives: [MicropostNewComponent],
   })
   class TestComponent {
+    doSomething() {
+    }
   }
 
   let cmpDebugElement:DebugElement;
+  let testCmpDebugElement:DebugElement;
 
   let micropostService:MicropostService;
   let backend:MockBackend;
+  let fixture:ComponentFixture<any>;
 
   beforeEach(() => addProviders([
     provideFakeRouter(TestComponent),
@@ -37,7 +41,9 @@ describe('MicropostNewComponent', () => {
   beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     tcb
       .createAsync(TestComponent)
-      .then((fixture:ComponentFixture<any>) => {
+      .then((_fixture:ComponentFixture<any>) => {
+        fixture = _fixture;
+        testCmpDebugElement = fixture.debugElement;
         cmpDebugElement = fixture.debugElement.query(By.directive(MicropostNewComponent));
         fixture.detectChanges();
       });
@@ -47,21 +53,18 @@ describe('MicropostNewComponent', () => {
     expect(cmpDebugElement).toBeTruthy();
   });
 
-  // TODO
-  xit('can create a post', done => {
+  it('can create a post', () => {
     const cmp:MicropostNewComponent = cmpDebugElement.componentInstance;
     const inputEl = <HTMLInputElement>cmpDebugElement.query(By.css('textarea')).nativeElement;
-    const formEl = cmpDebugElement.query(By.css('form')).nativeElement;
-
+    const testCmp:TestComponent = testCmpDebugElement.componentInstance;
     backend.connections.subscribe(conn => {
       conn.mockRespond(new Response(new BaseResponseOptions()));
     });
-    cmp.created.subscribe(() => {
-      expect(inputEl.value).toEqual('');
-      done();
-    });
     inputEl.value = 'my post';
-    formEl.dispatchEvent(new Event('submit'));
+    spyOn(testCmp, 'doSomething');
+    cmp.create(inputEl);
+    expect(inputEl.value).toEqual('');
+    expect(testCmp.doSomething).toHaveBeenCalled();
   });
 
   it('does not create a post when content is blank', () => {
