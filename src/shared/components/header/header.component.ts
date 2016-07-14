@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
   }
 
   isActive(path:string):boolean {
-    return this.location.path().split('?')[0] === path;
+    return this.location.path().split(/[;\\?]/)[0] === path;
   }
 
   logout() {

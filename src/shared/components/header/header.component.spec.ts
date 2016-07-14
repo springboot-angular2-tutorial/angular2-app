@@ -202,7 +202,7 @@ describe('HeaderComponent', () => {
 
     it('return true when path including query parameter matches', () => {
       const cmp:HeaderComponent = cmpDebugElement.componentInstance;
-      spyOn(location, 'path').and.returnValue('/users?page=1');
+      spyOn(location, 'path').and.returnValue('/users;page=1');
       expect(cmp.isActive('/users')).toBeTruthy();
     });
 
