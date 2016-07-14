@@ -1,5 +1,4 @@
 import {Component, OnInit, Input} from "@angular/core";
-import {CORE_DIRECTIVES} from "@angular/common";
 import {ROUTER_DIRECTIVES} from "@angular/router";
 import {User} from "../../domains";
 import {GravatarComponent} from "../../../shared/components";
@@ -8,9 +7,9 @@ import {PluralizePipe} from "../../pipes";
 
 @Component({
   selector: 'mpt-user-stats',
-  styles: [require('./user-stats.scss')],
-  template: require('./user-stats.html'),
-  directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, GravatarComponent],
+  styleUrls: ['./user-stats.scss'],
+  templateUrl: './user-stats.html',
+  directives: [ROUTER_DIRECTIVES, GravatarComponent],
   pipes: [PluralizePipe],
 })
 export class UserStatsComponent implements OnInit {

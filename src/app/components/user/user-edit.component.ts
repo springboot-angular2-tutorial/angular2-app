@@ -20,7 +20,7 @@ const toastr = require('toastr');
 
 @Component({
   selector: 'mpt-user-edit',
-  template: require('./user-edit.html'),
+  templateUrl: './user-edit.html',
   directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES],
 })
 export class UserEditComponent implements OnInit {

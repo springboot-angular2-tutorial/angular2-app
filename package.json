@@ -59,6 +59,7 @@
   },
   "devDependencies": {
     "angular2-hmr": "~0.8.1",
+    "angular2-template-loader": "^0.4.0",
     "awesome-typescript-loader": "^1.1.1",
     "bootstrap-loader": "^1.0.8",
     "bootstrap-sass": "^3.3.6",

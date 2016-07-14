@@ -7,8 +7,8 @@ import {
 
 @Component({
   selector: 'mpt-home',
-  styles: [require('./home.scss')],
-  template: require('./home.html'),
+  styleUrls: ['./home.scss'],
+  templateUrl: './home.html',
   directives: [MicropostNewComponent, FeedComponent, UserStatsComponent],
 })
 export class HomeComponent {

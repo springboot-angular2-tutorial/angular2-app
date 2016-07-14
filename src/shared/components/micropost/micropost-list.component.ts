@@ -1,5 +1,4 @@
 import {Component, OnInit, Input} from "@angular/core";
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "@angular/common";
 import {Micropost, UserStats} from "../../domains";
 import {HttpErrorHandler, MicropostService, UserService} from "../../services";
 import {MicropostListService} from "./micropost-list.service";
@@ -7,9 +6,8 @@ import {TimeAgoPipe} from "../../pipes";
 
 @Component({
   selector: 'mpt-micropost-list',
-  styles: [require('./micropost-list.scss')],
-  template: require('./micropost-list.html'),
-  directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
+  styleUrls: ['./micropost-list.scss'],
+  templateUrl: './micropost-list.html',
   pipes: [TimeAgoPipe],
   providers: [MicropostListService],
 })

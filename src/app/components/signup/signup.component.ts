@@ -14,8 +14,8 @@ const toastr = require('toastr');
 
 @Component({
   selector: 'mpt-signup',
-  styles: [require('./signup.scss')],
-  template: require('./signup.html'),
+  styleUrls: ['./signup.scss'],
+  templateUrl: './signup.html',
   directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES],
 })
 export class SignupComponent {

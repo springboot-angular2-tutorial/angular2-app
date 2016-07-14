@@ -1,12 +1,10 @@
 import {Component, OnChanges, Input} from "@angular/core";
-import {CORE_DIRECTIVES} from "@angular/common";
 
 const md5Hex = require('md5-hex');
 
 @Component({
   selector: 'mpt-gravatar',
-  template: require('./gravatar.html'),
-  directives: [CORE_DIRECTIVES],
+  templateUrl: './gravatar.html',
 })
 export class GravatarComponent implements OnChanges {
 

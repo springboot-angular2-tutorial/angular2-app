@@ -1,5 +1,4 @@
 import {Component, OnInit} from "@angular/core";
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "@angular/common";
 import {ROUTER_DIRECTIVES, ActivatedRoute, Router} from "@angular/router";
 import {User} from "../../../shared/domains";
 import {GravatarComponent, PagerComponent} from "../../../shared/components";
@@ -7,11 +6,9 @@ import {HttpErrorHandler, UserService} from "../../../shared/services";
 
 @Component({
   selector: 'mpt-user-list',
-  styles: [require('./user-list.scss')],
-  template: require('./user-list.html'),
+  styleUrls: ['./user-list.scss'],
+  templateUrl: './user-list.html',
   directives: [
-    CORE_DIRECTIVES,
-    FORM_DIRECTIVES,
     ROUTER_DIRECTIVES,
     GravatarComponent,
     PagerComponent,

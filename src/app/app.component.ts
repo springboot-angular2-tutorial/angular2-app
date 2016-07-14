@@ -4,8 +4,8 @@ import {HeaderComponent} from "../shared/components";
 
 @Component({
   selector: 'mpt-app',
-  styles: [require('./app.scss')],
-  template: require('./app.html'),
+  styleUrls: ['./app.scss'],
+  templateUrl: './app.html',
   directives: [ROUTER_DIRECTIVES, HeaderComponent],
 })
 export class AppComponent {

@@ -1,6 +1,5 @@
 import {Observable} from "rxjs/Observable";
 import {Component, OnInit, Input} from "@angular/core";
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from "@angular/common";
 import {ROUTER_DIRECTIVES} from "@angular/router";
 import {RelatedUser} from "../../../shared/domains";
 import {GravatarComponent, PagerComponent} from "../../../shared/components";
@@ -8,12 +7,10 @@ import {HttpErrorHandler} from "../../../shared/services";
 
 @Component({
   selector: 'mpt-related-user-list',
-  styles: [require('./related-user-list.scss')],
-  template: require('./related-user-list.html'),
+  styleUrls: ['./related-user-list.scss'],
+  templateUrl: './related-user-list.html',
   directives: [
-    CORE_DIRECTIVES,
     ROUTER_DIRECTIVES,
-    FORM_DIRECTIVES,
     GravatarComponent,
     PagerComponent,
   ],

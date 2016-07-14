@@ -30,12 +30,7 @@ module.exports = {
     loaders: [
       {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader',
-        query: {
-          compilerOptions: {
-            removeComments: true
-          }
-        }
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader']
       },
       {test: /\.css$/, loader: 'raw-loader'},
       {test: /\.scss$/, loaders: ["raw-loader", "sass-loader"]},

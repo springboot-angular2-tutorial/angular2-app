@@ -1,7 +1,6 @@
 import {Observable} from "rxjs/Observable";
 import {Component, OnInit} from "@angular/core";
 import {ROUTER_DIRECTIVES, ActivatedRoute} from "@angular/router";
-import {CORE_DIRECTIVES} from "@angular/common";
 import {RelatedUser} from "../../../shared/domains";
 import {RelatedUserListComponent} from "./related-user-list.component";
 import {UserStatsComponent} from "../../../shared/components";
@@ -9,9 +8,8 @@ import {UserService} from "../../../shared/services";
 
 @Component({
   selector: 'mpt-follower-list',
-  template: require('./follower-list.html'),
+  templateUrl: './follower-list.html',
   directives: [
-    CORE_DIRECTIVES,
     ROUTER_DIRECTIVES,
     UserStatsComponent,
     RelatedUserListComponent,

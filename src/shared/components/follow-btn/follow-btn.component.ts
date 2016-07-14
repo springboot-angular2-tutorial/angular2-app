@@ -1,13 +1,11 @@
 import {Component, OnChanges, EventEmitter, Output, Input} from "@angular/core";
-import {CORE_DIRECTIVES} from "@angular/common";
 import {User} from "../../domains";
 import {FollowBtnService} from "./follow-btn.service";
 import {HttpErrorHandler, UserService} from "../../services";
 
 @Component({
   selector: 'mpt-follow-btn',
-  template: require('./follow-btn.html'),
-  directives: CORE_DIRECTIVES,
+  templateUrl: './follow-btn.html',
   providers: [FollowBtnService]
 })
 export class FollowBtnComponent implements OnChanges {

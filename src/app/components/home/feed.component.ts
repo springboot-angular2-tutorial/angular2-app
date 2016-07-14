@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Output} from "@angular/core";
-import {CORE_DIRECTIVES} from "@angular/common";
 import {ROUTER_DIRECTIVES} from "@angular/router";
 import {FeedService} from "./feed.service";
 import {Micropost} from "../../../shared/domains";
@@ -9,9 +8,9 @@ import {TimeAgoPipe} from "../../../shared/pipes";
 
 @Component({
   selector: 'mpt-feed',
-  styles: [require('./feed.scss')],
-  template: require('./feed.html'),
-  directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, GravatarComponent],
+  styleUrls: ['./feed.scss'],
+  templateUrl: './feed.html',
+  directives: [ROUTER_DIRECTIVES, GravatarComponent],
   pipes: [TimeAgoPipe],
   providers: [FeedService],
 })

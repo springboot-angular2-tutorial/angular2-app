@@ -6,8 +6,8 @@ const toastr = require('toastr/toastr');
 
 @Component({
   selector: 'mpt-login',
-  styles: [require('./login.scss')],
-  template: require('./login.html'),
+  styleUrls: ['./login.scss'],
+  templateUrl: './login.html',
   directives: [ROUTER_DIRECTIVES]
 })
 export class LoginComponent {

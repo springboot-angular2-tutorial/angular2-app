@@ -1,10 +1,8 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
-import {CORE_DIRECTIVES} from "@angular/common";
 
 @Component({
   selector: 'mpt-pager',
-  template: require('./pager.html'),
-  directives: [CORE_DIRECTIVES],
+  templateUrl: './pager.html',
 })
 export class PagerComponent {
 

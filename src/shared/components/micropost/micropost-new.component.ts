@@ -5,8 +5,8 @@ const toastr = require('toastr');
 
 @Component({
   selector: 'mpt-micropost-new',
-  styles: [require('./micropost-new.scss')],
-  template: require('./micropost-new.html'),
+  styleUrls: ['./micropost-new.scss'],
+  templateUrl: './micropost-new.html',
 })
 export class MicropostNewComponent {
 

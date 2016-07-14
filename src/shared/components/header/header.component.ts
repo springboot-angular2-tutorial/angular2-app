@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {CORE_DIRECTIVES, Location} from "@angular/common";
+import {Location} from "@angular/common";
 import {
   Router,
   ROUTER_DIRECTIVES,
@@ -10,8 +10,8 @@ import {LoginService} from "../../services";
 
 @Component({
   selector: 'mpt-header',
-  template: require('./header.html'),
-  directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES],
+  templateUrl: './header.html',
+  directives: [ROUTER_DIRECTIVES],
 })
 export class HeaderComponent implements OnInit {
 
