@@ -69,7 +69,6 @@
     "expose-loader": "^0.7.1",
     "file-loader": "^0.9.0",
     "imports-loader": "^0.6.5",
-    "json-loader": "^0.5.4",
     "karma": "^1.1.1",
     "karma-chrome-launcher": "^1.0.1",
     "karma-jasmine": "~1.0.2",
