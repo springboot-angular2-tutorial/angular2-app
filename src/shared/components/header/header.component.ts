@@ -1,11 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Location} from "@angular/common";
-import {
-  Router,
-  ROUTER_DIRECTIVES,
-  Event,
-  NavigationStart
-} from "@angular/router";
+import {Router, ROUTER_DIRECTIVES} from "@angular/router";
 import {LoginService} from "../../services";
 
 @Component({
@@ -24,11 +19,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit():any {
     this.isSignedIn = this.loginService.isSignedIn();
-    // TODO subscribe custom event of loginService
-    this.router.events.subscribe((e:Event) => {
-      if (e instanceof NavigationStart) {
-        this.isSignedIn = this.loginService.isSignedIn();
-      }
+    this.loginService.events.subscribe(() => {
+      this.isSignedIn = this.loginService.isSignedIn();
     });
   }
 
