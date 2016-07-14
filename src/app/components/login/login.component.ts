@@ -1,8 +1,7 @@
 import {Component} from "@angular/core";
 import {ROUTER_DIRECTIVES, Router} from "@angular/router";
+import * as toastr from "toastr";
 import {LoginService} from "../../../shared/services";
-
-const toastr = require('toastr/toastr');
 
 @Component({
   selector: 'mpt-login',

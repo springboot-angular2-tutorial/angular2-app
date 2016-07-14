@@ -17,6 +17,7 @@
       "jasmine",
       "node",
       "source-map",
+      "toastr",
       "uglify-js",
       "webpack"
     ]

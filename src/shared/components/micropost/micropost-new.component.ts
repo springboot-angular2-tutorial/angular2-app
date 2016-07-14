@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Output} from "@angular/core";
+import * as toastr from "toastr";
 import {HttpErrorHandler, MicropostService} from "../../services";
-
-const toastr = require('toastr');
 
 @Component({
   selector: 'mpt-micropost-new',

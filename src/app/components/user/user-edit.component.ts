@@ -7,6 +7,7 @@ import {
   REACTIVE_FORM_DIRECTIVES
 } from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
+import * as toastr from "toastr";
 import {User} from "../../../shared/domains";
 import {UserService} from "../../../shared/services";
 import {
@@ -16,7 +17,6 @@ import {
 
 const isEmpty = require("lodash/isEmpty");
 const omitBy = require("lodash/omitBy");
-const toastr = require('toastr');
 
 @Component({
   selector: 'mpt-user-edit',

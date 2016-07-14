@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Router} from "@angular/router";
+import * as toastr from "toastr";
 import {LoginService} from "./login.service";
 
-const toastr = require('toastr');
 toastr.options.preventDuplicates = true;
 
 @Injectable()

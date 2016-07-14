@@ -7,10 +7,12 @@ import {
   FORM_DIRECTIVES,
   REACTIVE_FORM_DIRECTIVES
 } from "@angular/forms";
+import * as toastr from "toastr";
 import {LoginService, UserService} from "../../../shared/services";
-import {EMAIL_PATTERN, Validators as AppValidators} from "../../../shared/forms/index";
-
-const toastr = require('toastr');
+import {
+  EMAIL_PATTERN,
+  Validators as AppValidators
+} from "../../../shared/forms/index";
 
 @Component({
   selector: 'mpt-signup',
