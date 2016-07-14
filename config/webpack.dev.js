@@ -16,7 +16,7 @@ const METADATA = webpackMerge(commonConfig.metadata, {
 module.exports = webpackMerge(commonConfig, {
   metadata: METADATA,
   debug: true,
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-source-map',
   output: {
     path: helpers.root('dist'),
     // required for hot module replacement
