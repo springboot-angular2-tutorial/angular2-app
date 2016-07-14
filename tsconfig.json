@@ -17,6 +17,7 @@
       "jasmine",
       "lodash",
       "node",
+      "pluralize",
       "source-map",
       "toastr",
       "uglify-js",

@@ -1,6 +1,5 @@
 import {Pipe, PipeTransform} from "@angular/core";
-
-const pluralize = require('pluralize');
+import * as pluralize from "pluralize";
 
 @Pipe({name: 'pluralize'})
 export class PluralizePipe implements PipeTransform {
