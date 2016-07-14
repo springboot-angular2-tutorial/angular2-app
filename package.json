@@ -58,6 +58,7 @@
   "devDependencies": {
     "@types/core-js": "^0.9.27-alpha",
     "@types/jasmine": "^2.2.28-alpha",
+    "@types/lodash": "0.0.26-alpha",
     "@types/node": "^4.0.28-alpha",
     "@types/source-map": "^0.1.25-alpha",
     "@types/toastr": "^2.0.25-alpha",

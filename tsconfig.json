@@ -15,6 +15,7 @@
     "types": [
       "core-js",
       "jasmine",
+      "lodash",
       "node",
       "source-map",
       "toastr",
