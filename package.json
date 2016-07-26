@@ -20,7 +20,7 @@
     "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
     "server:dev:hmr": "npm run server:dev -- --hot --inline ",
     "server:prod": "http-server dist --cors",
-    "test": "node --max-old-space-size=4096 node_modules/karma/bin/karma start",
+    "test": "node_modules/karma/bin/karma start",
     "docs": "typedoc  --options typedoc.json  src/**/*.ts",
     "start": "npm run server:dev",
     "start:hmr": "npm run server:dev:hmr"
