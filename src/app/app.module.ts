@@ -20,6 +20,9 @@ import {UserStatsComponent} from "../shared/components/user-stats/user-stats.com
 import {TimeAgoPipe} from "../shared/pipes/time-ago.pipe";
 import {GravatarComponent} from "../shared/components/gravatar/gravatar.component";
 import {PluralizePipe} from "../shared/pipes/pluralize.pipe";
+import {UserShowComponent} from "./components/user/user-show.component";
+import {FollowBtnComponent} from "../shared/components/follow-btn/follow-btn.component";
+import {MicropostListComponent} from "../shared/components/micropost/micropost-list.component";
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -36,11 +39,14 @@ const APP_PROVIDERS = [
     HomeComponent,
     HelpComponent,
     HeaderComponent,
+    UserShowComponent,
 
     MicropostNewComponent,
     FeedComponent,
     UserStatsComponent,
     GravatarComponent,
+    FollowBtnComponent,
+    MicropostListComponent,
 
     TimeAgoPipe,
     PluralizePipe,
