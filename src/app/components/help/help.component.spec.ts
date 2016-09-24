@@ -1,35 +1,44 @@
-import {Component, DebugElement} from "@angular/core";
-import {By} from "@angular/platform-browser/src/dom/debug/by";
-import {async, inject} from "@angular/core/testing";
-import {
-  TestComponentBuilder,
-  ComponentFixture
-} from "@angular/compiler/testing";
+import {async} from "@angular/core/testing";
 import {HelpComponent} from "./help.component";
+import {TestBed, inject} from "@angular/core/testing/test_bed";
 
-describe('HelpComponent', () => {
+fdescribe('HelpComponent', () => {
 
-  @Component({
-    template: `<mpt-help></mpt-help>`,
-    directives: [HelpComponent],
-  })
-  class TestComponent {
-  }
+  // @Component({
+  //   template: `<mpt-help></mpt-help>`,
+  //   directives: [HelpComponent],
+  // })
+  // class TestComponent {
+  // }
 
-  let cmpDebugElement:DebugElement;
+  // let cmpDebugElement: DebugElement;
 
-  beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
-    tcb
-      .createAsync(TestComponent)
-      .then((fixture:ComponentFixture<any>) => {
-        cmpDebugElement = fixture.debugElement.query(By.directive(HelpComponent));
-        fixture.detectChanges();
-      });
-  })));
-
-  it('can be shown', () => {
-    expect(cmpDebugElement).toBeTruthy();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        HelpComponent,
+      ]
+      // declarations: [TestComponent],
+    });
   });
+
+  // beforeEach(async(() => {
+  //   TestBed.compileComponents().then(() => {
+  //     const fixture = TestBed.createComponent(TestComponent);
+  //     fixture.detectChanges();
+  //     cmpDebugElement = fixture.debugElement.query(By.directive(HelpComponent));
+  //   });
+  // }));
+
+  // it('can be shown', () => {
+  //   expect(cmpDebugElement).toBeTruthy();
+  // });
+
+  it('should have default data', inject([HelpComponent], (cmp: HelpComponent) => {
+    expect(cmp).toBeTruthy();
+    // expect(home.localState).toEqual({value: ''});
+  }));
+
 
 });
 

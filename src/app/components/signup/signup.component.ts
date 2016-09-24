@@ -1,12 +1,6 @@
 import {Component} from "@angular/core";
 import {Router} from "@angular/router";
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FORM_DIRECTIVES,
-  REACTIVE_FORM_DIRECTIVES
-} from "@angular/forms";
+import {FormGroup, FormControl, Validators} from "@angular/forms";
 import * as toastr from "toastr";
 import {LoginService, UserService} from "../../../shared/services";
 import {
@@ -18,19 +12,18 @@ import {
   selector: 'mpt-signup',
   styleUrls: ['./signup.scss'],
   templateUrl: './signup.html',
-  directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES],
 })
 export class SignupComponent {
 
-  myForm:FormGroup;
-  name:FormControl;
-  email:FormControl;
-  password:FormControl;
-  passwordConfirmation:FormControl;
+  myForm: FormGroup;
+  name: FormControl;
+  email: FormControl;
+  password: FormControl;
+  passwordConfirmation: FormControl;
 
-  constructor(private router:Router,
-              private userService:UserService,
-              private loginService:LoginService) {
+  constructor(private router: Router,
+              private userService: UserService,
+              private loginService: LoginService) {
     this.initForm();
   }
 

@@ -5,7 +5,7 @@ import {LoginService} from "./login.service";
 @Injectable()
 export class PublicPageGuard implements CanActivate {
 
-  constructor(private router:Router, private loginService:LoginService) {
+  constructor(private router: Router, private loginService: LoginService) {
   }
 
   canActivate() {

@@ -5,10 +5,10 @@ module.exports = function (config) {
     frameworks: ['jasmine'],
     exclude: [],
     files: [
-      {pattern: './config/spec-bundle.js', watched: false}
+      {pattern: './config/spec-bundle.ts', watched: false}
     ],
     preprocessors: {
-      './config/spec-bundle.js': ['webpack', 'sourcemap']
+      './config/spec-bundle.ts': ['webpack', 'sourcemap']
     },
     webpack: testWebpackConfig,
     webpackServer: {

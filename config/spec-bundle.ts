@@ -14,13 +14,17 @@ require('zone.js/dist/sync-test');
 
 require('rxjs/Rx');
 
-var testing = require('@angular/core/testing');
-var browser = require('@angular/platform-browser-dynamic/testing');
+import {TestBed} from "@angular/core/testing";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting
+} from "@angular/platform-browser-dynamic/testing";
 
-testing.setBaseTestProviders(
-  browser.TEST_BROWSER_DYNAMIC_PLATFORM_PROVIDERS,
-  browser.TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS
+TestBed.initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
 );
+
 var testContext = require.context('../src', true, /\.spec\.ts/);
 function requireAll(requireContext) {
   return requireContext.keys().map(requireContext);

@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {ROUTER_DIRECTIVES, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import * as toastr from "toastr";
 import {LoginService} from "../../../shared/services";
 
@@ -7,12 +7,11 @@ import {LoginService} from "../../../shared/services";
   selector: 'mpt-login',
   styleUrls: ['./login.scss'],
   templateUrl: './login.html',
-  directives: [ROUTER_DIRECTIVES]
 })
 export class LoginComponent {
 
-  constructor(private router:Router,
-              private loginService:LoginService) {
+  constructor(private router: Router,
+              private loginService: LoginService) {
   }
 
   login(email, password) {
