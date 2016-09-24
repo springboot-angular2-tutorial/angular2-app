@@ -23,6 +23,8 @@ import {PluralizePipe} from "../shared/pipes/pluralize.pipe";
 import {UserShowComponent} from "./components/user/user-show.component";
 import {FollowBtnComponent} from "../shared/components/follow-btn/follow-btn.component";
 import {MicropostListComponent} from "../shared/components/micropost/micropost-list.component";
+import {UserListComponent} from "./components/user/user-list.component";
+import {PagerComponent} from "../shared/components/pager/pager.component";
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -40,6 +42,7 @@ const APP_PROVIDERS = [
     HelpComponent,
     HeaderComponent,
     UserShowComponent,
+    UserListComponent,
 
     MicropostNewComponent,
     FeedComponent,
@@ -47,6 +50,7 @@ const APP_PROVIDERS = [
     GravatarComponent,
     FollowBtnComponent,
     MicropostListComponent,
+    PagerComponent,
 
     TimeAgoPipe,
     PluralizePipe,

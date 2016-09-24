@@ -30,11 +30,11 @@ export const ROUTES:Routes= [
   //   component: FollowerListComponent,
   //   canActivate: [PrivatePageGuard]
   // },
-  // {
-  //   path: 'users',
-  //   component: UserListComponent,
-  //   canActivate: [PrivatePageGuard]
-  // },
+  {
+    path: 'users',
+    component: UserListComponent,
+    canActivate: [PrivatePageGuard]
+  },
   {path: 'help', component: HelpComponent},
   // {
   //   path: 'users/me/edit',
