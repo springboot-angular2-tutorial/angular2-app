@@ -20,16 +20,16 @@ export const ROUTES:Routes= [
     canActivate: [PrivatePageGuard]
   },
   {path: 'users/:id', component: UserShowComponent},
-  // {
-  //   path: 'users/:id/followings',
-  //   component: FollowingListComponent,
-  //   canActivate: [PrivatePageGuard]
-  // },
-  // {
-  //   path: 'users/:id/followers',
-  //   component: FollowerListComponent,
-  //   canActivate: [PrivatePageGuard]
-  // },
+  {
+    path: 'users/:id/followings',
+    component: FollowingListComponent,
+    canActivate: [PrivatePageGuard]
+  },
+  {
+    path: 'users/:id/followers',
+    component: FollowerListComponent,
+    canActivate: [PrivatePageGuard]
+  },
   {
     path: 'users',
     component: UserListComponent,

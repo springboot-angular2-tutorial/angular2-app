@@ -25,6 +25,9 @@ import {FollowBtnComponent} from "../shared/components/follow-btn/follow-btn.com
 import {MicropostListComponent} from "../shared/components/micropost/micropost-list.component";
 import {UserListComponent} from "./components/user/user-list.component";
 import {PagerComponent} from "../shared/components/pager/pager.component";
+import {RelatedUserListComponent} from "./components/relationship/related-user-list.component";
+import {FollowingListComponent} from "./components/relationship/following-list.component";
+import {FollowerListComponent} from "./components/relationship/follower-list.component";
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -43,6 +46,8 @@ const APP_PROVIDERS = [
     HeaderComponent,
     UserShowComponent,
     UserListComponent,
+    FollowingListComponent,
+    FollowerListComponent,
 
     MicropostNewComponent,
     FeedComponent,
@@ -51,6 +56,7 @@ const APP_PROVIDERS = [
     FollowBtnComponent,
     MicropostListComponent,
     PagerComponent,
+    RelatedUserListComponent,
 
     TimeAgoPipe,
     PluralizePipe,
