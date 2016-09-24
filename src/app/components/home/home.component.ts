@@ -9,7 +9,6 @@ import {
   selector: 'mpt-home',
   styleUrls: ['./home.scss'],
   templateUrl: './home.html',
-  directives: [MicropostNewComponent, FeedComponent, UserStatsComponent],
 })
 export class HomeComponent {
 }

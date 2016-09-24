@@ -14,11 +14,11 @@ import {PrivatePageGuard} from "../shared/services/private-page.guard";
 import {PublicPageGuard} from "../shared/services/public-page.guard";
 
 export const ROUTES:Routes= [
-  // {
-  //   path: 'home',
-  //   component: HomeComponent,
-  //   canActivate: [PrivatePageGuard]
-  // },
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [PrivatePageGuard]
+  },
   // {path: 'users/:id', component: UserShowComponent},
   // {
   //   path: 'users/:id/followings',
@@ -44,5 +44,5 @@ export const ROUTES:Routes= [
   // },
   {path: 'login', component: LoginComponent, canActivate: [PublicPageGuard]},
   // {path: 'signup', component: SignupComponent, canActivate: [PublicPageGuard]},
-  // {path: '', component: TopComponent, canActivate: [PublicPageGuard]},
+  {path: '', component: TopComponent, canActivate: [PublicPageGuard]},
 ];

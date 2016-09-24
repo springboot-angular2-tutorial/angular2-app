@@ -11,11 +11,11 @@ export class MicropostNewComponent {
 
   @Output() created = new EventEmitter();
 
-  constructor(private micropostService:MicropostService,
-              private errorHandler:HttpErrorHandler) {
+  constructor(private micropostService: MicropostService,
+              private errorHandler: HttpErrorHandler) {
   }
 
-  create(content:HTMLInputElement) {
+  create(content: HTMLInputElement) {
     if (content.value === '') {
       toastr.warning('Type your post.');
       return;

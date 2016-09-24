@@ -12,6 +12,14 @@ import {HelpComponent} from "./components/help/help.component";
 import {APP_SERVICE_PROVIDERS} from "../shared/services/index";
 import {APP_HTTP_PROVIDERS} from "../shared/http/index";
 import {LoginComponent} from "./components/login/login.component";
+import {TopComponent} from "./components/top/top.component";
+import {HomeComponent} from "./components/home/home.component";
+import {MicropostNewComponent} from "../shared/components/micropost/micropost-new.component";
+import {FeedComponent} from "./components/home/feed.component";
+import {UserStatsComponent} from "../shared/components/user-stats/user-stats.component";
+import {TimeAgoPipe} from "../shared/pipes/time-ago.pipe";
+import {GravatarComponent} from "../shared/components/gravatar/gravatar.component";
+import {PluralizePipe} from "../shared/pipes/pluralize.pipe";
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -23,9 +31,19 @@ const APP_PROVIDERS = [
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
+    TopComponent,
     LoginComponent,
+    HomeComponent,
     HelpComponent,
     HeaderComponent,
+
+    MicropostNewComponent,
+    FeedComponent,
+    UserStatsComponent,
+    GravatarComponent,
+
+    TimeAgoPipe,
+    PluralizePipe,
   ],
   imports: [ // import Angular's modules
     BrowserModule,
