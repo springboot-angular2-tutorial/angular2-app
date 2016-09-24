@@ -17,12 +17,14 @@ module.exports = {
   module: {
     preLoaders: [
       {
-        test: /\.js$/,
-        loader: 'source-map-loader',
-        exclude: [
-          helpers.root('node_modules/rxjs'),
-          helpers.root('node_modules/@angular')
-        ]
+        test: /\.ts$/,
+        loader: 'string-replace-loader',
+        query: {
+          search: '(System|SystemJS)(.*[\\n\\r]\\s*\\.|\\.)import\\((.+)\\)',
+          replace: '$1.import($3).then(mod => (mod.__esModule && mod.default) ? mod.default : mod)',
+          flags: 'g'
+        },
+        include: [helpers.root('src')]
       }
     ],
     loaders: [
@@ -50,11 +52,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new ForkCheckerPlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(true),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['polyfills', 'vendor'].reverse()
-    })
+    new ForkCheckerPlugin()
   ],
 
   node: {
