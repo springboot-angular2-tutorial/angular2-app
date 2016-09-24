@@ -17,5 +17,4 @@ require("!style!css!toastr/build/toastr.css");
 
 if ('production' === ENV) {
 } else {
-  require('angular2-hmr');
 }

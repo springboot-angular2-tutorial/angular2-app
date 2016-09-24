@@ -1,11 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {
-  FormGroup,
-  FORM_DIRECTIVES,
-  FormControl,
-  Validators,
-  REACTIVE_FORM_DIRECTIVES
-} from "@angular/forms";
+import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {isEmpty, omitBy} from "lodash";
 import * as toastr from "toastr";
@@ -19,23 +13,22 @@ import {
 @Component({
   selector: 'mpt-user-edit',
   templateUrl: './user-edit.html',
-  directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES],
 })
 export class UserEditComponent implements OnInit {
 
-  myForm:FormGroup;
-  name:FormControl;
-  email:FormControl;
-  password:FormControl;
-  passwordConfirmation:FormControl;
+  myForm: FormGroup;
+  name: FormControl;
+  email: FormControl;
+  password: FormControl;
+  passwordConfirmation: FormControl;
 
-  user:User;
+  user: User;
 
-  constructor(private route:ActivatedRoute,
-              private userService:UserService) {
+  constructor(private route: ActivatedRoute,
+              private userService: UserService) {
   }
 
-  ngOnInit():any {
+  ngOnInit(): any {
     this.route.data.subscribe(data => {
       this.user = data['profile'];
       this.initForm();

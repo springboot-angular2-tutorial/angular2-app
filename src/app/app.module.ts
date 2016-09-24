@@ -65,14 +65,14 @@ const APP_PROVIDERS = [
     TimeAgoPipe,
     PluralizePipe,
   ],
-  imports: [ // import Angular's modules
+  imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, {useHash: false})
   ],
-  providers: [ // expose our Services and Providers into Angular's dependency injection
+  providers: [
     ENV_PROVIDERS,
     ...APP_PROVIDERS
   ]

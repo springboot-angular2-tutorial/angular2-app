@@ -14,6 +14,7 @@ import {PrivatePageGuard} from "../shared/services/private-page.guard";
 import {PublicPageGuard} from "../shared/services/public-page.guard";
 
 export const ROUTES: Routes = [
+  {path: '', component: TopComponent, canActivate: [PublicPageGuard]},
   {
     path: 'home',
     component: HomeComponent,
@@ -44,5 +45,4 @@ export const ROUTES: Routes = [
   },
   {path: 'login', component: LoginComponent, canActivate: [PublicPageGuard]},
   {path: 'signup', component: SignupComponent, canActivate: [PublicPageGuard]},
-  {path: '', component: TopComponent, canActivate: [PublicPageGuard]},
 ];
