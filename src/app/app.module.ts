@@ -1,6 +1,6 @@
 import {NgModule, ApplicationRef} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {RouterModule} from "@angular/router";
 import {ENV_PROVIDERS} from "./environment";
@@ -28,6 +28,7 @@ import {PagerComponent} from "../shared/components/pager/pager.component";
 import {RelatedUserListComponent} from "./components/relationship/related-user-list.component";
 import {FollowingListComponent} from "./components/relationship/following-list.component";
 import {FollowerListComponent} from "./components/relationship/follower-list.component";
+import {SignupComponent} from "./components/signup/signup.component";
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -48,6 +49,7 @@ const APP_PROVIDERS = [
     UserListComponent,
     FollowingListComponent,
     FollowerListComponent,
+    SignupComponent,
 
     MicropostNewComponent,
     FeedComponent,
@@ -64,6 +66,7 @@ const APP_PROVIDERS = [
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, {useHash: false})
   ],

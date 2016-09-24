@@ -43,6 +43,6 @@ export const ROUTES:Routes= [
   //   canActivate: [PrivatePageGuard],
   // },
   {path: 'login', component: LoginComponent, canActivate: [PublicPageGuard]},
-  // {path: 'signup', component: SignupComponent, canActivate: [PublicPageGuard]},
+  {path: 'signup', component: SignupComponent, canActivate: [PublicPageGuard]},
   {path: '', component: TopComponent, canActivate: [PublicPageGuard]},
 ];
