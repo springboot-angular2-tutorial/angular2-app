@@ -29,6 +29,7 @@ import {RelatedUserListComponent} from "./components/relationship/related-user-l
 import {FollowingListComponent} from "./components/relationship/following-list.component";
 import {FollowerListComponent} from "./components/relationship/follower-list.component";
 import {SignupComponent} from "./components/signup/signup.component";
+import {UserEditComponent} from "./components/user/user-edit.component";
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -50,6 +51,7 @@ const APP_PROVIDERS = [
     FollowingListComponent,
     FollowerListComponent,
     SignupComponent,
+    UserEditComponent,
 
     MicropostNewComponent,
     FeedComponent,
