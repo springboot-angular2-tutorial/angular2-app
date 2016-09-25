@@ -56,7 +56,6 @@ describe('FeedComponent', () => {
   }));
 
   beforeEach(() => {
-    // TODO consider creating FeedModule
     TestBed.configureTestingModule({
       imports: [
         HttpModule,

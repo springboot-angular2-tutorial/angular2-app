@@ -10,7 +10,7 @@ import {FeedService} from "./feed.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 
-fdescribe('FeedService', () => {
+describe('FeedService', () => {
 
   let feedService: FeedService;
   let backend: MockBackend;
