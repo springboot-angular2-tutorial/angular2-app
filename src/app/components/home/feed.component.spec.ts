@@ -13,7 +13,7 @@ import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {FeedService} from "./feed.service";
 import {MicropostService} from "../../../shared/services/micropost.service";
 
-fdescribe('FeedComponent', () => {
+describe('FeedComponent', () => {
 
   @Component({
     template: `<mpt-feed (deleted)="listenDeleted()"></mpt-feed>`,

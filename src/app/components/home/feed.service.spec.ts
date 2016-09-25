@@ -1,13 +1,19 @@
-import {inject, addProviders} from "@angular/core/testing";
-import {ResponseOptions, Response, RequestMethod} from "@angular/http";
+import {inject, TestBed} from "@angular/core/testing";
+import {
+  ResponseOptions,
+  Response,
+  RequestMethod,
+  HttpModule
+} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {FeedService} from "./feed.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 
-describe('FeedService', () => {
+fdescribe('FeedService', () => {
 
-  let feedService:FeedService;
-  let backend:MockBackend;
+  let feedService: FeedService;
+  let backend: MockBackend;
 
   const dummyJson = [
     {
@@ -32,10 +38,18 @@ describe('FeedService', () => {
     },
   ];
 
-  beforeEach(() => addProviders([
-    ...APP_TEST_HTTP_PROVIDERS,
-    FeedService,
-  ]));
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpModule,
+      ],
+      providers: [
+        FeedService,
+        APP_SERVICE_PROVIDERS,
+        APP_TEST_HTTP_PROVIDERS,
+      ],
+    });
+  });
   beforeEach(inject([FeedService, MockBackend], (..._) => {
     [feedService, backend] = _;
   }));
