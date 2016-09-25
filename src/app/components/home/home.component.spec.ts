@@ -15,11 +15,10 @@ import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {HttpModule} from "@angular/http";
 
-fdescribe('HomeComponent', () => {
+describe('HomeComponent', () => {
 
   @Component({
     template: `<mpt-home></mpt-home>`,
-    directives: [HomeComponent],
   })
   class TestComponent {
   }
