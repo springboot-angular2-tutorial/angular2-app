@@ -1,23 +1,19 @@
 import {Component, DebugElement} from "@angular/core";
-import {By} from "@angular/platform-browser/src/dom/debug/by";
-import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
-import {inject, async, addProviders} from "@angular/core/testing";
-import {ResponseOptions, Response} from "@angular/http";
-import {
-  TestComponentBuilder,
-  ComponentFixture
-} from "@angular/compiler/testing";
-import {MockBackend} from "@angular/http/testing";
+import {TestBed, inject, fakeAsync} from "@angular/core/testing";
+import {ResponseOptions, Response, HttpModule} from "@angular/http";
 import {FeedComponent} from "./feed.component";
-import {GravatarComponent} from "../../../shared/components";
-import {
-  MicropostService,
-  APP_SERVICE_PROVIDERS
-} from "../../../shared/services";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
-import {provideFakeRouter} from "../../../shared/routes/router-testing-providers";
+import {RouterTestingModule} from "@angular/router/testing";
+import {MockBackend} from "@angular/http/testing";
+import {By} from "@angular/platform-browser";
+import {getDOM} from "@angular/platform-browser-dynamic/testing/private_import_platform-browser";
+import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
+import {TimeAgoPipe} from "../../../shared/pipes/time-ago.pipe";
+import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
+import {FeedService} from "./feed.service";
+import {MicropostService} from "../../../shared/services/micropost.service";
 
-describe('FeedComponent', () => {
+fdescribe('FeedComponent', () => {
 
   @Component({
     template: `<mpt-feed (deleted)="listenDeleted()"></mpt-feed>`,
@@ -28,8 +24,8 @@ describe('FeedComponent', () => {
     }
   }
 
-  let testCmpDebugElement:DebugElement;
-  let cmpDebugElement:DebugElement;
+  let testCmpDebugElement: DebugElement;
+  let cmpDebugElement: DebugElement;
   let micropostService:MicropostService;
 
   const dummyResponse = new Response(new ResponseOptions({
@@ -59,30 +55,44 @@ describe('FeedComponent', () => {
     ]),
   }));
 
-  beforeEach(() => addProviders([
-    provideFakeRouter(TestComponent),
-    ...APP_TEST_HTTP_PROVIDERS,
-    ...APP_SERVICE_PROVIDERS,
-  ]));
+  beforeEach(() => {
+    // TODO consider creating FeedModule
+    TestBed.configureTestingModule({
+      imports: [
+        HttpModule,
+        RouterTestingModule.withRoutes([]),
+      ],
+      providers: [
+        FeedService,
+        APP_SERVICE_PROVIDERS,
+        APP_TEST_HTTP_PROVIDERS,
+      ],
+      declarations: [
+        TestComponent,
+        FeedComponent,
+        GravatarComponent,
+        TimeAgoPipe,
+      ]
+    });
+  });
   beforeEach(inject([MicropostService], _ => micropostService = _));
   beforeEach(inject([MockBackend], _ => {
     _.connections.subscribe(conn => conn.mockRespond(dummyResponse));
   }));
   beforeEach(() => jasmine.clock().mockDate(new Date(24 * 60 * 60 * 1000)));
-  beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
-    tcb
-      .createAsync(TestComponent)
-      .then((fixture:ComponentFixture<any>) => {
-        testCmpDebugElement = fixture.debugElement;
-        cmpDebugElement = fixture.debugElement.query(By.directive(FeedComponent));
-        fixture.detectChanges();
-      });
-  })));
+  beforeEach(fakeAsync(() => {
+    TestBed.compileComponents().then(() => {
+      const fixture = TestBed.createComponent(TestComponent);
+      fixture.detectChanges();
+      testCmpDebugElement = fixture.debugElement;
+      cmpDebugElement = fixture.debugElement.query(By.directive(FeedComponent));
+    });
+  }));
 
   it('can show feed', () => {
     expect(cmpDebugElement).toBeTruthy();
 
-    const cmp:FeedComponent = cmpDebugElement.componentInstance;
+    const cmp: FeedComponent = cmpDebugElement.componentInstance;
     expect(cmp.feed.length).toEqual(2);
 
     const el = cmpDebugElement.nativeElement;
