@@ -10,7 +10,7 @@ import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
 import {RouterTestingModule} from "@angular/router/testing";
 import {TimeAgoPipe} from "../../pipes/time-ago.pipe";
 
-fdescribe('MicropostListComponent', () => {
+describe('MicropostListComponent', () => {
 
   @Component({
     template: `<mpt-micropost-list userId="1"></mpt-micropost-list>`,

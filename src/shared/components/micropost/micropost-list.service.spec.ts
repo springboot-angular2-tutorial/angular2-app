@@ -1,13 +1,18 @@
-import {inject, addProviders} from "@angular/core/testing";
-import {ResponseOptions, Response, RequestMethod} from "@angular/http";
+import {inject, TestBed} from "@angular/core/testing";
+import {
+  ResponseOptions,
+  Response,
+  RequestMethod,
+  HttpModule
+} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {MicropostListService} from "./micropost-list.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
 
-describe('MicropostListService', () => {
+fdescribe('MicropostListService', () => {
 
-  let micropostListService:MicropostListService;
-  let backend:MockBackend;
+  let micropostListService: MicropostListService;
+  let backend: MockBackend;
 
   const dummyJson = [
     {
@@ -32,10 +37,17 @@ describe('MicropostListService', () => {
     },
   ];
 
-  beforeEach(() => addProviders([
-    ...APP_TEST_HTTP_PROVIDERS,
-    MicropostListService,
-  ]));
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpModule,
+      ],
+      providers: [
+        APP_TEST_HTTP_PROVIDERS,
+        MicropostListService,
+      ],
+    });
+  });
   beforeEach(inject([MicropostListService, MockBackend], (..._) => {
     [micropostListService, backend] = _;
   }));
