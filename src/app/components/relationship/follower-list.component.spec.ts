@@ -12,7 +12,7 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
 import {PluralizePipe} from "../../../shared/pipes/pluralize.pipe";
 
-fdescribe('FollowerListComponent', () => {
+describe('FollowerListComponent', () => {
 
   @Component({
     template: `<router-outlet></router-outlet>`,
