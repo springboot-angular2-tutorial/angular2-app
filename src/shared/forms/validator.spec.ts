@@ -1,7 +1,7 @@
 import {FormControl} from "@angular/forms";
 import {Validators} from "./validators";
 
-fdescribe('Validator', () => {
+describe('Validator', () => {
 
   describe('.match', () => {
     it('validates the match of two controls', () => {

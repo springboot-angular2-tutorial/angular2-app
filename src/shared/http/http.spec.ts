@@ -1,27 +1,35 @@
-import {inject, addProviders} from "@angular/core/testing";
+import {inject, TestBed} from "@angular/core/testing";
 import {
   BaseResponseOptions,
   Response,
   Http,
-  RequestMethod
+  RequestMethod,
+  HttpModule
 } from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {MyHttp} from "./http";
 import {APP_TEST_HTTP_PROVIDERS} from "./index";
 
-describe('MyHttp', () => {
-  let myHttp:MyHttp;
-  let http:Http;
-  let backend:MockBackend;
+fdescribe('MyHttp', () => {
+  let myHttp: MyHttp;
+  let http: Http;
+  let backend: MockBackend;
 
-  beforeEach(() => addProviders([
-    ...APP_TEST_HTTP_PROVIDERS,
-  ]));
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpModule,
+      ],
+      providers: [
+        APP_TEST_HTTP_PROVIDERS,
+      ],
+    });
+  });
   beforeEach(inject([MyHttp, Http, MockBackend], (..._) => {
     [myHttp, http, backend] = _;
   }));
 
-  const expectCustomRequest = (method:RequestMethod) => (conn) => {
+  const expectCustomRequest = (method: RequestMethod) => (conn) => {
     conn.mockRespond(new Response(new BaseResponseOptions()));
     expect(conn.request.method).toEqual(method);
     expect(conn.request.headers.has('x-auth-token')).toBeTruthy();
