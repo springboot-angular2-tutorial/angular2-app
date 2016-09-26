@@ -11,7 +11,7 @@ import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {HttpModule} from "@angular/http";
 import {RouterTestingModule} from "@angular/router/testing";
 
-fdescribe('RelatedUserListComponent', () => {
+describe('RelatedUserListComponent', () => {
 
   @Component({
     template: `<mpt-related-user-list [listProvider]="listProvider"></mpt-related-user-list>`,
