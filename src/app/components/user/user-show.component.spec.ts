@@ -16,7 +16,7 @@ import {TimeAgoPipe} from "../../../shared/pipes/time-ago.pipe";
 import {PluralizePipe} from "../../../shared/pipes/pluralize.pipe";
 import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
 
-fdescribe('UserShowComponent', () => {
+describe('UserShowComponent', () => {
 
   @Component({
     template: `<router-outlet></router-outlet>`,

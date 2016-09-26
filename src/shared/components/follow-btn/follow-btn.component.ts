@@ -6,23 +6,22 @@ import {HttpErrorHandler, UserService} from "../../services";
 @Component({
   selector: 'mpt-follow-btn',
   templateUrl: './follow-btn.html',
-  providers: [FollowBtnService]
 })
 export class FollowBtnComponent implements OnChanges {
 
-  @Input() followerId:string;
+  @Input() followerId: string;
   @Output() updated = new EventEmitter();
 
-  canShowFollowBtn:boolean;
-  canShowUnfollowBtn:boolean;
-  busy:boolean = false;
+  canShowFollowBtn: boolean;
+  canShowUnfollowBtn: boolean;
+  busy: boolean = false;
 
-  constructor(private followBtnService:FollowBtnService,
-              private userService:UserService,
-              private errorHandler:HttpErrorHandler) {
+  constructor(private followBtnService: FollowBtnService,
+              private userService: UserService,
+              private errorHandler: HttpErrorHandler) {
   }
 
-  ngOnChanges():void {
+  ngOnChanges(): void {
     if (this.followerId) {
       this.loadCurrentStatus();
     }
@@ -52,7 +51,7 @@ export class FollowBtnComponent implements OnChanges {
     ;
   }
 
-  loadCurrentStatus():void {
+  loadCurrentStatus(): void {
     this.busy = true;
     this.userService.get(this.followerId)
       .finally(() => this.busy = false)
@@ -63,14 +62,14 @@ export class FollowBtnComponent implements OnChanges {
     ;
   }
 
-  private _canShowFollowBtn(user:User):boolean {
+  private _canShowFollowBtn(user: User): boolean {
     if (user.isMyself === null) return false; // not signed in
     if (user.isMyself === true) return false; // myself
     if (user.userStats.followedByMe === true) return false; // already followed
     return true;
   }
 
-  private _canShowUnfollowBtn(user:User):boolean {
+  private _canShowUnfollowBtn(user: User): boolean {
     if (user.isMyself === null) return false; // not signed in
     if (user.isMyself === true) return false; // myself
     if (user.userStats.followedByMe === false) return false; // not followed yet

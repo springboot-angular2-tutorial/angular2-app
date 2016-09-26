@@ -4,6 +4,7 @@ import {MicropostService} from "./micropost.service";
 import {UserService} from "./user.service";
 import {PrivatePageGuard} from "./private-page.guard";
 import {PublicPageGuard} from "./public-page.guard";
+import {FollowBtnService} from "../components/follow-btn/follow-btn.service";
 
 export * from './http-error-handler';
 export * from './login.service';
@@ -17,6 +18,7 @@ export const APP_SERVICE_PROVIDERS = [
   LoginService,
   MicropostService,
   UserService,
+  FollowBtnService,
   PrivatePageGuard,
   PublicPageGuard,
 ];
