@@ -12,7 +12,7 @@ import {PluralizePipe} from "../../../shared/pipes/pluralize.pipe";
 import {HttpModule} from "@angular/http";
 import {RouterTestingModule} from "@angular/router/testing";
 
-fdescribe('FollowingListComponent', () => {
+describe('FollowingListComponent', () => {
 
   @Component({
     template: `<router-outlet></router-outlet>`,
