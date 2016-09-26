@@ -1,18 +1,31 @@
-import {inject, addProviders} from "@angular/core/testing";
-import {Headers, ResponseOptions, Response, RequestMethod} from "@angular/http";
+import {inject, TestBed} from "@angular/core/testing";
+import {
+  Headers,
+  ResponseOptions,
+  Response,
+  RequestMethod,
+  HttpModule
+} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {LoginService} from "./login.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../http/index";
 
-describe('LoginService', () => {
+fdescribe('LoginService', () => {
 
-  let loginService:LoginService;
-  let backend:MockBackend;
+  let loginService: LoginService;
+  let backend: MockBackend;
 
-  beforeEach(() => addProviders([
-    ...APP_TEST_HTTP_PROVIDERS,
-    LoginService,
-  ]));
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpModule,
+      ],
+      providers: [
+        APP_TEST_HTTP_PROVIDERS,
+        LoginService,
+      ],
+    });
+  });
   beforeEach(inject([LoginService, MockBackend], (..._) => {
     [loginService, backend] = _;
   }));
@@ -25,10 +38,10 @@ describe('LoginService', () => {
         })));
         expect(conn.request.method).toEqual(RequestMethod.Post);
         expect(conn.request.url).toEqual('/api/login');
-        expect(conn.request.json()).toEqual(JSON.stringify({
+        expect(conn.request.json()).toEqual({
           email: 'test@test.com',
           password: 'secret',
-        }));
+        });
       });
       loginService.login('test@test.com', 'secret').subscribe(() => {
         expect(localStorage.getItem('jwt')).toEqual('my jwt');

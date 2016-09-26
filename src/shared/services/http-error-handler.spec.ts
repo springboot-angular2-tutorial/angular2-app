@@ -6,7 +6,7 @@ import {APP_TEST_HTTP_PROVIDERS} from "../http/index";
 import {APP_SERVICE_PROVIDERS} from "./index";
 import {HttpModule} from "@angular/http";
 
-fdescribe('HttpErrorHandler', () => {
+describe('HttpErrorHandler', () => {
 
   let errorHandler:HttpErrorHandler;
   let loginService:LoginService;
