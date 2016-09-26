@@ -17,7 +17,7 @@ import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {advance} from "../../../shared/testing/helpers";
 import {RouterTestingModule} from "@angular/router/testing";
 
-fdescribe('UserListComponent', () => {
+describe('UserListComponent', () => {
 
   @Component({
     template: `<router-outlet></router-outlet>`,

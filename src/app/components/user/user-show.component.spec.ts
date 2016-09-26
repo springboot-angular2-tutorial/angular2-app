@@ -1,11 +1,7 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
-import {inject, async, addProviders} from "@angular/core/testing";
-import {Router, ROUTER_DIRECTIVES} from "@angular/router";
-import {
-  TestComponentBuilder,
-  ComponentFixture
-} from "@angular/compiler/testing";
+import {inject, TestBed, fakeAsync} from "@angular/core/testing";
+import {Router} from "@angular/router";
 import {UserShowComponent} from "./user-show.component";
 import {
   MicropostListComponent,
@@ -14,46 +10,64 @@ import {
 } from "../../../shared/components";
 import {APP_SERVICE_PROVIDERS} from "../../../shared/services";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
-import {provideFakeRouter} from "../../../shared/routes/router-testing-providers";
+import {HttpModule} from "@angular/http";
+import {RouterTestingModule} from "@angular/router/testing";
+import {TimeAgoPipe} from "../../../shared/pipes/time-ago.pipe";
+import {PluralizePipe} from "../../../shared/pipes/pluralize.pipe";
+import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
 
-describe('UserShowComponent', () => {
+fdescribe('UserShowComponent', () => {
 
   @Component({
     template: `<router-outlet></router-outlet>`,
-    directives: [ROUTER_DIRECTIVES],
   })
   class TestComponent {
   }
 
-  let cmpDebugElement:DebugElement;
-  let userStatsDebugElement:DebugElement;
-  let followBtnDebugElement:DebugElement;
-  let micropostListDebugElement:DebugElement;
+  let cmpDebugElement: DebugElement;
+  let userStatsDebugElement: DebugElement;
+  let followBtnDebugElement: DebugElement;
+  let micropostListDebugElement: DebugElement;
 
-  let router:Router;
+  let router: Router;
 
-  beforeEach(() => addProviders([
-    provideFakeRouter(TestComponent, [
-      {path: 'users/:id', component: UserShowComponent},
-    ]),
-    ...APP_TEST_HTTP_PROVIDERS,
-    ...APP_SERVICE_PROVIDERS,
-  ]));
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpModule,
+        RouterTestingModule.withRoutes([
+          {path: 'users/:id', component: UserShowComponent},
+        ]),
+      ],
+      providers: [
+        APP_SERVICE_PROVIDERS,
+        APP_TEST_HTTP_PROVIDERS,
+      ],
+      declarations: [
+        TestComponent,
+        UserShowComponent,
+        MicropostListComponent,
+        FollowBtnComponent,
+        UserStatsComponent,
+        GravatarComponent,
+        TimeAgoPipe,
+        PluralizePipe,
+      ]
+    });
+  });
   beforeEach(inject([Router], (..._) => [router] = _));
-  beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
-    tcb
-      .createAsync(TestComponent)
-      .then((fixture:ComponentFixture<any>) => {
-        return router.navigate(['/users', '1']).then(() => {
-          cmpDebugElement = fixture.debugElement.query(By.directive(UserShowComponent));
-          userStatsDebugElement = cmpDebugElement.query(By.directive(UserStatsComponent));
-          followBtnDebugElement = cmpDebugElement.query(By.directive(FollowBtnComponent));
-          micropostListDebugElement = cmpDebugElement.query(By.directive(MicropostListComponent));
-          fixture.detectChanges();
-        });
-      })
-      .catch(e => console.error(e));
-  })));
+  beforeEach(fakeAsync(() => {
+    TestBed.compileComponents().then(() => {
+      const fixture = TestBed.createComponent(TestComponent);
+      return router.navigate(['/users', '1']).then(() => {
+        cmpDebugElement = fixture.debugElement.query(By.directive(UserShowComponent));
+        userStatsDebugElement = cmpDebugElement.query(By.directive(UserStatsComponent));
+        followBtnDebugElement = cmpDebugElement.query(By.directive(FollowBtnComponent));
+        micropostListDebugElement = cmpDebugElement.query(By.directive(MicropostListComponent));
+        fixture.detectChanges();
+      });
+    });
+  }));
 
   it('can be shown', () => {
     expect(cmpDebugElement).toBeTruthy();
@@ -66,7 +80,7 @@ describe('UserShowComponent', () => {
   });
 
   it('reload user stats when following status was updated', () => {
-    const userStats:UserStatsComponent = userStatsDebugElement.componentInstance;
+    const userStats: UserStatsComponent = userStatsDebugElement.componentInstance;
     spyOn(userStats, 'ngOnInit');
     followBtnDebugElement.triggerEventHandler('updated', null);
     expect(userStats.ngOnInit).toHaveBeenCalled();
