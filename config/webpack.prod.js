@@ -28,7 +28,8 @@ module.exports = webpackMerge(commonConfig, {
   },
   plugins: [
     new ManifestPlugin(),
-    new DedupePlugin(),
+    // TODO waiting for fixing https://github.com/webpack/webpack/issues/2644
+    // new DedupePlugin(),
     new DefinePlugin({
       'ENV': JSON.stringify(METADATA.ENV),
       'HMR': METADATA.HMR,
