@@ -9,7 +9,7 @@ import {MockBackend} from "@angular/http/testing";
 import {FollowBtnService} from "./follow-btn.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
 
-fdescribe('FollowBtnService', () => {
+describe('FollowBtnService', () => {
 
   let followBtnService: FollowBtnService;
   let backend: MockBackend;
