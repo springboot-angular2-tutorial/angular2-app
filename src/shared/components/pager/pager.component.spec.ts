@@ -3,7 +3,7 @@ import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {TestBed, fakeAsync} from "@angular/core/testing";
 import {PagerComponent} from "./pager.component";
 
-fdescribe('PagerComponent', () => {
+describe('PagerComponent', () => {
 
   @Component({
     template: `<mpt-pager (pageChanged)="doSomething()"></mpt-pager>`,

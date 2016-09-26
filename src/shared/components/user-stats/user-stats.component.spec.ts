@@ -1,32 +1,33 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
-import {inject, async, addProviders} from "@angular/core/testing";
-import {ResponseOptions, Response} from "@angular/http";
-import {MockBackend} from "@angular/http/testing";
 import {
-  TestComponentBuilder,
-  ComponentFixture
-} from "@angular/compiler/testing";
+  inject,
+  ComponentFixture,
+  TestBed,
+  fakeAsync
+} from "@angular/core/testing";
+import {ResponseOptions, Response, HttpModule} from "@angular/http";
+import {MockBackend} from "@angular/http/testing";
 import {UserStatsComponent} from "./user-stats.component";
 import {GravatarComponent} from "../../../shared/components";
-import {provideFakeRouter} from "../../routes/router-testing-providers";
 import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
 import {APP_SERVICE_PROVIDERS} from "../../services/index";
+import {RouterTestingModule} from "@angular/router/testing";
+import {PluralizePipe} from "../../pipes/pluralize.pipe";
 
-describe('UserStatsComponent', () => {
+fdescribe('UserStatsComponent', () => {
 
   @Component({
     template: `<mpt-user-stats userId="1" [shownOnProfile]="false"></mpt-user-stats>`,
-    directives: [UserStatsComponent],
   })
   class TestComponent {
   }
 
-  let cmpDebugElement:DebugElement;
+  let cmpDebugElement: DebugElement;
 
-  let backend:MockBackend;
-  let fixture:ComponentFixture<any>;
+  let backend: MockBackend;
+  let fixture: ComponentFixture<any>;
 
   const dummyResponse = new Response(new ResponseOptions({
     body: {
@@ -41,29 +42,40 @@ describe('UserStatsComponent', () => {
     }
   }));
 
-  beforeEach(() => addProviders([
-    provideFakeRouter(TestComponent),
-    ...APP_TEST_HTTP_PROVIDERS,
-    ...APP_SERVICE_PROVIDERS,
-  ]));
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpModule,
+        RouterTestingModule.withRoutes([]),
+      ],
+      providers: [
+        APP_SERVICE_PROVIDERS,
+        APP_TEST_HTTP_PROVIDERS,
+      ],
+      declarations: [
+        TestComponent,
+        UserStatsComponent,
+        GravatarComponent,
+        PluralizePipe,
+      ]
+    });
+  });
   beforeEach(inject([MockBackend], (..._) => {
     [backend] = _;
     backend.connections.subscribe(conn => conn.mockRespond(dummyResponse));
   }));
-  beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
-    tcb
-      .createAsync(TestComponent)
-      .then(_ => {
-        fixture = _;
-        cmpDebugElement = fixture.debugElement.query(By.directive(UserStatsComponent));
-        fixture.detectChanges();
-      });
-  })));
+  beforeEach(fakeAsync(() => {
+    TestBed.compileComponents().then(() => {
+      fixture = TestBed.createComponent(TestComponent);
+      fixture.detectChanges();
+      cmpDebugElement = fixture.debugElement.query(By.directive(UserStatsComponent));
+    });
+  }));
 
   it('can be shown', () => {
     expect(cmpDebugElement).toBeTruthy();
 
-    const cmp:UserStatsComponent = cmpDebugElement.componentInstance;
+    const cmp: UserStatsComponent = cmpDebugElement.componentInstance;
     expect(cmp.userId).toEqual('1');
     expect(cmp.user).toBeTruthy();
     expect(cmp.user.id).toEqual(1);
@@ -100,7 +112,7 @@ describe('UserStatsComponent', () => {
 
   describe('when shown on profile', () => {
     beforeEach(() => {
-      const cmp:UserStatsComponent = cmpDebugElement.componentInstance;
+      const cmp: UserStatsComponent = cmpDebugElement.componentInstance;
       cmp.shownOnProfile = true;
       fixture.detectChanges();
     });
