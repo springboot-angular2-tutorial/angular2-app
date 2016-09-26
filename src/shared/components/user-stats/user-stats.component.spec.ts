@@ -16,7 +16,7 @@ import {APP_SERVICE_PROVIDERS} from "../../services/index";
 import {RouterTestingModule} from "@angular/router/testing";
 import {PluralizePipe} from "../../pipes/pluralize.pipe";
 
-fdescribe('UserStatsComponent', () => {
+describe('UserStatsComponent', () => {
 
   @Component({
     template: `<mpt-user-stats userId="1" [shownOnProfile]="false"></mpt-user-stats>`,

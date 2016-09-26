@@ -1,17 +1,7 @@
-import {
-  FormControl,
-  disableDeprecatedForms,
-  provideForms
-} from "@angular/forms";
+import {FormControl} from "@angular/forms";
 import {Validators} from "./validators";
-import {addProviders} from "@angular/core/testing";
 
-describe('Validator', () => {
-
-  beforeEach(() => addProviders([
-    disableDeprecatedForms(),
-    provideForms(),
-  ]));
+fdescribe('Validator', () => {
 
   describe('.match', () => {
     it('validates the match of two controls', () => {
