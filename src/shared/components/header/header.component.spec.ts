@@ -18,7 +18,7 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {HttpModule} from "@angular/http";
 import {advance} from "../../testing/helpers";
 
-fdescribe('HeaderComponent', () => {
+describe('HeaderComponent', () => {
 
   @Component({
     template: `<mpt-header></mpt-header><router-outlet></router-outlet>`,

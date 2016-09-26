@@ -1,31 +1,27 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
-import {inject, async, addProviders} from "@angular/core/testing";
-import {ResponseOptions, Response} from "@angular/http";
-import {
-  ComponentFixture,
-  TestComponentBuilder
-} from "@angular/compiler/testing";
+import {inject, TestBed, fakeAsync} from "@angular/core/testing";
+import {ResponseOptions, Response, HttpModule} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {MicropostListComponent} from "./micropost-list.component";
 import {MicropostService, APP_SERVICE_PROVIDERS} from "../../services";
 import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
-import {provideFakeRouter} from "../../routes/router-testing-providers";
+import {RouterTestingModule} from "@angular/router/testing";
+import {TimeAgoPipe} from "../../pipes/time-ago.pipe";
 
-describe('MicropostListComponent', () => {
+fdescribe('MicropostListComponent', () => {
 
   @Component({
     template: `<mpt-micropost-list userId="1"></mpt-micropost-list>`,
-    directives: [MicropostListComponent],
   })
   class TestComponent {
   }
 
-  let cmpDebugElement:DebugElement;
+  let cmpDebugElement: DebugElement;
 
-  let micropostService:MicropostService;
-  let backend:MockBackend;
+  let micropostService: MicropostService;
+  let backend: MockBackend;
 
   const dummyResponse = new Response(new ResponseOptions({
     body: JSON.stringify([
@@ -54,31 +50,42 @@ describe('MicropostListComponent', () => {
     ]),
   }));
 
-  beforeEach(() => addProviders([
-    provideFakeRouter(TestComponent),
-    ...APP_TEST_HTTP_PROVIDERS,
-    ...APP_SERVICE_PROVIDERS,
-  ]));
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpModule,
+        RouterTestingModule.withRoutes([]),
+      ],
+      providers: [
+        APP_SERVICE_PROVIDERS,
+        APP_TEST_HTTP_PROVIDERS,
+      ],
+      declarations: [
+        TestComponent,
+        MicropostListComponent,
+        TimeAgoPipe,
+      ]
+    });
+  });
   beforeEach(inject([MicropostService, MockBackend], (..._) => {
     [micropostService, backend] = _;
     backend.connections.subscribe(conn => conn.mockRespond(dummyResponse));
   }));
   beforeEach(() => jasmine.clock().mockDate(new Date(24 * 60 * 60 * 1000)));
-  beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
-    tcb
-      .createAsync(TestComponent)
-      .then((fixture:ComponentFixture<any>) => {
-        cmpDebugElement = fixture.debugElement.query(By.directive(MicropostListComponent));
-        fixture.detectChanges();
-      });
-  })));
+  beforeEach(fakeAsync(() => {
+    TestBed.compileComponents().then(() => {
+      const fixture = TestBed.createComponent(TestComponent);
+      fixture.detectChanges();
+      cmpDebugElement = fixture.debugElement.query(By.directive(MicropostListComponent));
+    });
+  }));
 
   it('can be shown', () => {
     expect(cmpDebugElement).toBeTruthy();
   });
 
   it('can show list of posts', () => {
-    const cmp:MicropostListComponent = cmpDebugElement.componentInstance;
+    const cmp: MicropostListComponent = cmpDebugElement.componentInstance;
     expect(cmp.posts.length).toEqual(2);
 
     const el = cmpDebugElement.nativeElement;
@@ -96,7 +103,7 @@ describe('MicropostListComponent', () => {
   });
 
   it('can load more', () => {
-    const cmp:MicropostListComponent = cmpDebugElement.componentInstance;
+    const cmp: MicropostListComponent = cmpDebugElement.componentInstance;
     const moreBtn = getDOM().querySelector(cmpDebugElement.nativeElement, '.moreBtn');
     moreBtn.click();
     expect(cmp.posts.length).toEqual(4);
@@ -111,7 +118,7 @@ describe('MicropostListComponent', () => {
   });
 
   it('deletes micropost when confirmed', () => {
-    const cmp:MicropostListComponent = cmpDebugElement.componentInstance;
+    const cmp: MicropostListComponent = cmpDebugElement.componentInstance;
     const deleteLink = getDOM().querySelector(cmpDebugElement.nativeElement, '.delete');
     spyOn(window, 'confirm').and.returnValue(true);
     deleteLink.click();
