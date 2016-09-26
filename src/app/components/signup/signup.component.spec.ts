@@ -17,7 +17,7 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
-fdescribe('SignupComponent', () => {
+describe('SignupComponent', () => {
 
   @Component({
     template: `<mpt-signup></mpt-signup><router-outlet></router-outlet>`,
