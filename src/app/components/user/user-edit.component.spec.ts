@@ -15,7 +15,7 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {APP_RESOLVER_PROVIDERS} from "../../../shared/routes/index";
 
-fdescribe('UserEditComponent', () => {
+describe('UserEditComponent', () => {
 
   @Component({
     template: `<router-outlet></router-outlet>`,

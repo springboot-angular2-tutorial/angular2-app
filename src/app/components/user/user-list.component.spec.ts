@@ -1,36 +1,36 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
-import {inject, async, addProviders, fakeAsync} from "@angular/core/testing";
-import {ResponseOptions, Response} from "@angular/http";
-import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 import {
-  TestComponentBuilder,
-  ComponentFixture
-} from "@angular/compiler/testing";
+  inject,
+  fakeAsync,
+  ComponentFixture,
+  TestBed
+} from "@angular/core/testing";
+import {ResponseOptions, Response, HttpModule} from "@angular/http";
+import {Router} from "@angular/router";
 import {MockBackend} from "@angular/http/testing";
 import {UserListComponent} from "./user-list.component";
 import {GravatarComponent, PagerComponent} from "../../../shared/components";
-import {provideFakeRouter} from "../../../shared/routes/router-testing-providers";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {advance} from "../../../shared/testing/helpers";
+import {RouterTestingModule} from "@angular/router/testing";
 
-describe('UserListComponent', () => {
+fdescribe('UserListComponent', () => {
 
   @Component({
     template: `<router-outlet></router-outlet>`,
-    directives: [ROUTER_DIRECTIVES],
   })
   class TestComponent {
   }
 
-  let cmpDebugElement:DebugElement;
-  let pagerDebugElement:DebugElement;
+  let cmpDebugElement: DebugElement;
+  let pagerDebugElement: DebugElement;
 
-  let router:Router;
-  let backend:MockBackend;
-  let fixture:ComponentFixture<any>;
+  let router: Router;
+  let backend: MockBackend;
+  let fixture: ComponentFixture<any>;
 
   const dummyResponse = new Response(new ResponseOptions({
     body: JSON.stringify({
@@ -43,32 +43,43 @@ describe('UserListComponent', () => {
     }),
   }));
 
-  beforeEach(() => addProviders([
-    provideFakeRouter(TestComponent, [
-      {
-        path: 'users',
-        component: UserListComponent,
-      },
-    ]),
-    ...APP_TEST_HTTP_PROVIDERS,
-    ...APP_SERVICE_PROVIDERS,
-  ]));
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpModule,
+        RouterTestingModule.withRoutes([
+          {
+            path: 'users',
+            component: UserListComponent,
+          },
+        ]),
+      ],
+      providers: [
+        APP_SERVICE_PROVIDERS,
+        APP_TEST_HTTP_PROVIDERS,
+      ],
+      declarations: [
+        TestComponent,
+        UserListComponent,
+        PagerComponent,
+        GravatarComponent,
+      ]
+    });
+  });
   beforeEach(inject([Router, MockBackend], (..._) => {
     [router, backend] = _;
     backend.connections.subscribe(conn => conn.mockRespond(dummyResponse));
   }));
-  beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
-    tcb
-      .createAsync(TestComponent)
-      .then((_fixture:ComponentFixture<any>) => {
-        fixture = _fixture;
-        return router.navigate(['/users']).then(() => {
-          cmpDebugElement = _fixture.debugElement.query(By.directive(UserListComponent));
-          pagerDebugElement = cmpDebugElement.query(By.directive(PagerComponent));
-          _fixture.detectChanges();
-        });
+  beforeEach(fakeAsync(() => {
+    TestBed.compileComponents().then(() => {
+      fixture = TestBed.createComponent(TestComponent);
+      return router.navigate(['/users']).then(() => {
+        cmpDebugElement = fixture.debugElement.query(By.directive(UserListComponent));
+        pagerDebugElement = cmpDebugElement.query(By.directive(PagerComponent));
+        fixture.detectChanges();
       });
-  })));
+    });
+  }));
 
   it('can be shown', () => {
     expect(cmpDebugElement).toBeTruthy();
@@ -76,7 +87,7 @@ describe('UserListComponent', () => {
   });
 
   it('can list users', () => {
-    const page:UserListComponent = cmpDebugElement.componentInstance;
+    const page: UserListComponent = cmpDebugElement.componentInstance;
     expect(page.users.length).toEqual(2);
     expect(page.totalPages).toEqual(1);
 
@@ -92,7 +103,7 @@ describe('UserListComponent', () => {
     const userShowLink = cmpDebugElement.query(By.css('li>a')).nativeElement;
     expect(userShowLink.getAttribute('href')).toEqual('/users/1');
 
-    const pager:PagerComponent = pagerDebugElement.componentInstance;
+    const pager: PagerComponent = pagerDebugElement.componentInstance;
     expect(pager.totalPages).toEqual(1);
   });
 
@@ -100,7 +111,7 @@ describe('UserListComponent', () => {
     pagerDebugElement.triggerEventHandler('pageChanged', {page: 2});
     advance(fixture);
     cmpDebugElement = fixture.debugElement.query(By.directive(UserListComponent));
-    const cmp:UserListComponent = cmpDebugElement.componentInstance;
+    const cmp: UserListComponent = cmpDebugElement.componentInstance;
     expect(cmp.page).toEqual(2);
   }));
 
