@@ -10,7 +10,7 @@ import {MockBackend} from "@angular/http/testing";
 import {MyHttp} from "./http";
 import {APP_TEST_HTTP_PROVIDERS} from "./index";
 
-fdescribe('MyHttp', () => {
+describe('MyHttp', () => {
   let myHttp: MyHttp;
   let http: Http;
   let backend: MockBackend;

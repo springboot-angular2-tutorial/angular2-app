@@ -1,11 +1,12 @@
-import {inject, addProviders} from "@angular/core/testing";
+import {inject, TestBed} from "@angular/core/testing";
 import {Router} from "@angular/router";
 import {HttpErrorHandler} from "./http-error-handler";
 import {LoginService} from "./login.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../http/index";
 import {APP_SERVICE_PROVIDERS} from "./index";
+import {HttpModule} from "@angular/http";
 
-describe('HttpErrorHandler', () => {
+fdescribe('HttpErrorHandler', () => {
 
   let errorHandler:HttpErrorHandler;
   let loginService:LoginService;
@@ -16,14 +17,22 @@ describe('HttpErrorHandler', () => {
     }
   }
 
-  beforeEach(() => addProviders([
-    {
-      provide: Router,
-      useClass: MockRouter,
-    },
-    ...APP_TEST_HTTP_PROVIDERS,
-    ...APP_SERVICE_PROVIDERS,
-  ]));
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpModule,
+      ],
+      providers: [
+        {
+          provide: Router,
+          useClass: MockRouter,
+        },
+        APP_TEST_HTTP_PROVIDERS,
+        APP_SERVICE_PROVIDERS,
+      ],
+    });
+  });
+
   beforeEach(inject([HttpErrorHandler, LoginService, Router], (..._) => {
     [errorHandler, loginService, router] = _;
     spyOn(loginService, 'logout');
