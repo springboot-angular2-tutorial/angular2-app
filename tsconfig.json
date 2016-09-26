@@ -5,6 +5,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "noEmitHelpers": true,
     "lib": ["es6", "dom"],
@@ -13,17 +14,18 @@
     "paths": [
     ],
     "types": [
-      "core-js",
       "jasmine",
       "lodash",
       "node",
       "pluralize",
+      "source-map",
       "toastr",
       "webpack"
     ]
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ],
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,

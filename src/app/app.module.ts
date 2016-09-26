@@ -70,7 +70,7 @@ const APP_PROVIDERS = [
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, {useHash: false})
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [
     ENV_PROVIDERS,
