@@ -4,7 +4,7 @@ import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
 import {TestBed, fakeAsync} from "@angular/core/testing";
 import {GravatarComponent} from "./gravatar.component";
 
-fdescribe('GravatarComponent', () => {
+describe('GravatarComponent', () => {
 
   @Component({
     template: `<mpt-gravatar email="test@test.com" alt="test-alt" size="1"></mpt-gravatar>`,

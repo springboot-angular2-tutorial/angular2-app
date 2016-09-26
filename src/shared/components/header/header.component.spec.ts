@@ -3,23 +3,25 @@ import {Component, DebugElement} from "@angular/core";
 import {Location} from "@angular/common";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
-import {inject, async, addProviders} from "@angular/core/testing";
 import {
-  TestComponentBuilder,
-  ComponentFixture
-} from "@angular/compiler/testing";
-import {Router, ROUTER_DIRECTIVES} from "@angular/router";
+  inject,
+  ComponentFixture,
+  TestBed,
+  fakeAsync
+} from "@angular/core/testing";
+import {Router} from "@angular/router";
 import {HeaderComponent} from "./header.component";
 import {LoginService, UserService, APP_SERVICE_PROVIDERS} from "../../services";
 import {login} from "../../testing";
-import {provideFakeRouter} from "../../routes/router-testing-providers";
 import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
+import {RouterTestingModule} from "@angular/router/testing";
+import {HttpModule} from "@angular/http";
+import {advance} from "../../testing/helpers";
 
-describe('HeaderComponent', () => {
+fdescribe('HeaderComponent', () => {
 
   @Component({
     template: `<mpt-header></mpt-header><router-outlet></router-outlet>`,
-    directives: [HeaderComponent, ROUTER_DIRECTIVES],
   })
   class TestComponent {
   }
@@ -30,43 +32,53 @@ describe('HeaderComponent', () => {
   class BlankComponent {
   }
 
-  let cmpDebugElement:DebugElement;
+  let cmpDebugElement: DebugElement;
 
-  let router:Router;
-  let location:Location;
-  let fixture:ComponentFixture<any>;
+  let router: Router;
+  let location: Location;
+  let fixture: ComponentFixture<any>;
 
-  beforeEach(() => addProviders([
-    provideFakeRouter(TestComponent, [
-      {path: 'home', component: BlankComponent},
-      {path: 'users', component: BlankComponent},
-      {path: 'help', component: BlankComponent},
-      {path: 'users/:id', component: BlankComponent},
-      {path: 'users/me/edit', component: BlankComponent},
-      {path: 'login', component: BlankComponent},
-      {path: '', component: BlankComponent},
-    ]),
-    ...APP_TEST_HTTP_PROVIDERS,
-    ...APP_SERVICE_PROVIDERS,
-  ]));
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpModule,
+        RouterTestingModule.withRoutes([
+          {path: 'home', component: BlankComponent},
+          {path: 'users', component: BlankComponent},
+          {path: 'help', component: BlankComponent},
+          {path: 'users/:id', component: BlankComponent},
+          {path: 'users/me/edit', component: BlankComponent},
+          {path: 'login', component: BlankComponent},
+          {path: '', component: BlankComponent},
+        ]),
+      ],
+      providers: [
+        APP_SERVICE_PROVIDERS,
+        APP_TEST_HTTP_PROVIDERS,
+      ],
+      declarations: [
+        TestComponent,
+        HeaderComponent,
+        BlankComponent,
+      ]
+    });
+  });
   beforeEach(inject([Router, Location], (..._) => {
     [router, location] = _;
   }));
 
   const initComponent = () => {
-    return async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
-      tcb
-        .createAsync(TestComponent)
-        .then(_ => {
-          fixture = _;
-          cmpDebugElement = fixture.debugElement.query(By.directive(HeaderComponent));
-          fixture.detectChanges();
-        });
-    }));
+    return fakeAsync(() => {
+      TestBed.compileComponents().then(() => {
+        fixture = TestBed.createComponent(TestComponent);
+        fixture.detectChanges();
+        cmpDebugElement = fixture.debugElement.query(By.directive(HeaderComponent));
+      });
+    });
   };
 
   describe('when signed in', () => {
-    let loginService:LoginService;
+    let loginService: LoginService;
 
     beforeEach(inject([LoginService], _ => loginService = _));
     beforeEach(login());
@@ -76,66 +88,66 @@ describe('HeaderComponent', () => {
       expect(cmpDebugElement).toBeTruthy();
     });
 
-    it('shows a nav link to home', () => {
+    it('shows a nav link to home', fakeAsync(() => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.home>a');
       expect(link).toBeTruthy();
       link.click();
-      fixture.detectChanges();
+      advance(fixture);
       expect(location.path()).toEqual('/home');
       expect(link.parentElement.classList).toContain('active');
-    });
+    }));
 
     it('does not show a nav link to top', () => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.top>a');
       expect(link).toBeNull();
     });
 
-    it('shows a nav link to users', () => {
+    it('shows a nav link to users', fakeAsync(() => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.users>a');
       expect(link).toBeTruthy();
       link.click();
-      fixture.detectChanges();
+      advance(fixture);
       expect(location.path()).toEqual('/users');
       expect(link.parentElement.classList).toContain('active');
-    });
+    }));
 
-    it('shows a nav link to help', () => {
+    it('shows a nav link to help', fakeAsync(() => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.help>a');
       expect(link).toBeTruthy();
       link.click();
-      fixture.detectChanges();
+      advance(fixture);
       expect(location.path()).toEqual('/help');
       expect(link.parentElement.classList).toContain('active');
-    });
+    }));
 
-    it('shows a nav link to profile', () => {
+    it('shows a nav link to profile', fakeAsync(() => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.profile>a');
       expect(link).toBeTruthy();
       link.click();
-      fixture.detectChanges();
+      advance(fixture);
       expect(location.path()).toEqual('/users/me');
-    });
+    }));
 
     describe('navigate to settings', () => {
       beforeEach(inject([UserService], userService => {
         spyOn(userService, 'get').and.returnValue(Observable.of({}));
       }));
-      it('shows a nav link to settings', () => {
+      it('shows a nav link to settings', fakeAsync(() => {
         const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.settings>a');
         expect(link).toBeTruthy();
         link.click();
-        fixture.detectChanges();
+        advance(fixture);
         expect(location.path()).toEqual('/users/me/edit');
-      });
+      }));
     });
 
-    it('shows a nav link to logout', () => {
+    it('shows a nav link to logout', fakeAsync(() => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.logout>a');
       expect(link).toBeTruthy();
       spyOn(loginService, 'logout');
       link.click();
       expect(loginService.logout).toHaveBeenCalled();
-    });
+    }));
   }); // when signed in
 
   describe('when not signed in', () => {
@@ -150,27 +162,27 @@ describe('HeaderComponent', () => {
       expect(link).toBeNull();
     });
 
-    it('shows a nav link to top', () => {
+    it('shows a nav link to top', fakeAsync(() => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.top>a');
       expect(link).toBeTruthy();
       link.click();
-      fixture.detectChanges();
+      advance(fixture);
       expect(location.path()).toEqual('/');
-    });
+    }));
 
     it('does not show a nav link to users', () => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.users>a');
       expect(link).toBeNull();
     });
 
-    it('shows a nav link to help', () => {
+    it('shows a nav link to help', fakeAsync(() => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.help>a');
       expect(link).toBeTruthy();
       link.click();
-      fixture.detectChanges();
+      advance(fixture);
       expect(location.path()).toEqual('/help');
       expect(link.parentElement.classList).toContain('active');
-    });
+    }));
 
     it('does not show a nav link to profile', () => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.profile>a');
@@ -182,32 +194,32 @@ describe('HeaderComponent', () => {
       expect(link).toBeNull();
     });
 
-    it('shows a nav link to sign in', () => {
+    it('shows a nav link to sign in', fakeAsync(() => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.login>a');
       expect(link).toBeTruthy();
       link.click();
-      fixture.detectChanges();
+      advance(fixture);
       expect(location.path()).toEqual('/login');
-    });
+    }));
   }); // when not signed in
 
   describe('.isActive', () => {
     beforeEach(initComponent());
 
     it('return true when path matches', () => {
-      const cmp:HeaderComponent = cmpDebugElement.componentInstance;
+      const cmp: HeaderComponent = cmpDebugElement.componentInstance;
       spyOn(location, 'path').and.returnValue('/users');
       expect(cmp.isActive('/users')).toBeTruthy();
     });
 
     it('return true when path including query parameter matches', () => {
-      const cmp:HeaderComponent = cmpDebugElement.componentInstance;
+      const cmp: HeaderComponent = cmpDebugElement.componentInstance;
       spyOn(location, 'path').and.returnValue('/users;page=1');
       expect(cmp.isActive('/users')).toBeTruthy();
     });
 
     it('return false when path does not match', () => {
-      const cmp:HeaderComponent = cmpDebugElement.componentInstance;
+      const cmp: HeaderComponent = cmpDebugElement.componentInstance;
       spyOn(location, 'path').and.returnValue('/home');
       expect(cmp.isActive('/users')).toBeFalsy();
     });
