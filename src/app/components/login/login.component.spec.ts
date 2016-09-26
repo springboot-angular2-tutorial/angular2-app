@@ -17,7 +17,7 @@ import {advance} from "../../../shared/testing/helpers";
 import {RouterTestingModule} from "@angular/router/testing";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 
-fdescribe('LoginComponent', () => {
+describe('LoginComponent', () => {
 
   @Component({
     template: `<mpt-login></mpt-login><router-outlet></router-outlet>`,
