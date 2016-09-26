@@ -9,7 +9,7 @@ import {MockBackend} from "@angular/http/testing";
 import {MicropostService} from "./micropost.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../http/index";
 
-fdescribe('MicropostService', () => {
+describe('MicropostService', () => {
 
   let micropostService: MicropostService;
   let backend: MockBackend;

@@ -1,9 +1,10 @@
-import {inject, addProviders} from "@angular/core/testing";
+import {inject, TestBed} from "@angular/core/testing";
 import {
   ResponseOptions,
   Response,
   BaseResponseOptions,
-  RequestMethod
+  RequestMethod,
+  HttpModule
 } from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {UserService} from "./user.service";
@@ -46,15 +47,22 @@ const dummyGetJson = {
   },
 };
 
-describe('UserService', () => {
+fdescribe('UserService', () => {
 
-  let userService:UserService;
-  let backend:MockBackend;
+  let userService: UserService;
+  let backend: MockBackend;
 
-  beforeEach(() => addProviders([
-    ...APP_TEST_HTTP_PROVIDERS,
-    UserService,
-  ]));
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpModule,
+      ],
+      providers: [
+        APP_TEST_HTTP_PROVIDERS,
+        UserService,
+      ],
+    });
+  });
   beforeEach(inject([UserService, MockBackend], (..._) => {
     [userService, backend] = _;
   }));
@@ -93,7 +101,7 @@ describe('UserService', () => {
 
   describe('.create', () => {
     it("create user", (done) => {
-      const params:UserParams = {
+      const params: UserParams = {
         email: 'test1@test.com',
         password: 'secret',
         name: 'test1',
@@ -102,7 +110,7 @@ describe('UserService', () => {
         conn.mockRespond(new Response(new BaseResponseOptions()));
         expect(conn.request.method).toEqual(RequestMethod.Post);
         expect(conn.request.url).toEqual('/api/users');
-        expect(conn.request.json()).toEqual(JSON.stringify(params));
+        expect(conn.request.json()).toEqual(params);
       });
       userService.create(params).subscribe(() => {
         done();
@@ -112,7 +120,7 @@ describe('UserService', () => {
 
   describe('.updateMe', () => {
     it("update me", (done) => {
-      const params:UserParams = {
+      const params: UserParams = {
         email: 'test1@test.com',
         password: 'secret',
         name: 'test1',
@@ -121,7 +129,7 @@ describe('UserService', () => {
         conn.mockRespond(new Response(new BaseResponseOptions()));
         expect(conn.request.method).toEqual(RequestMethod.Patch);
         expect(conn.request.url).toEqual('/api/users/me');
-        expect(conn.request.json()).toEqual(JSON.stringify(params));
+        expect(conn.request.json()).toEqual(params);
       });
       userService.updateMe(params).subscribe(() => {
         done();
