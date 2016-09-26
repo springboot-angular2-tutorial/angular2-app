@@ -10,7 +10,7 @@ import {MockBackend} from "@angular/http/testing";
 import {LoginService} from "./login.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../http/index";
 
-fdescribe('LoginService', () => {
+describe('LoginService', () => {
 
   let loginService: LoginService;
   let backend: MockBackend;
