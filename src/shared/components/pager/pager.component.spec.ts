@@ -1,35 +1,37 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
-import {inject, async} from "@angular/core/testing";
-import {
-  TestComponentBuilder,
-  ComponentFixture
-} from "@angular/compiler/testing";
+import {TestBed, fakeAsync} from "@angular/core/testing";
 import {PagerComponent} from "./pager.component";
 
-describe('PagerComponent', () => {
+fdescribe('PagerComponent', () => {
 
   @Component({
     template: `<mpt-pager (pageChanged)="doSomething()"></mpt-pager>`,
-    directives: [PagerComponent],
   })
   class TestComponent {
     doSomething() {
     }
   }
 
-  let cmpDebugElement:DebugElement;
-  let testCmpDebugElement:DebugElement;
+  let cmpDebugElement: DebugElement;
+  let testCmpDebugElement: DebugElement;
 
-  beforeEach(async(inject([TestComponentBuilder], (tcb:TestComponentBuilder) => {
-    tcb
-      .createAsync(TestComponent)
-      .then((fixture:ComponentFixture<any>) => {
-        testCmpDebugElement = fixture.debugElement;
-        cmpDebugElement = fixture.debugElement.query(By.directive(PagerComponent));
-        fixture.detectChanges();
-      });
-  })));
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        TestComponent,
+        PagerComponent,
+      ]
+    });
+  });
+  beforeEach(fakeAsync(() => {
+    TestBed.compileComponents().then(() => {
+      const fixture = TestBed.createComponent(TestComponent);
+      fixture.detectChanges();
+      testCmpDebugElement = fixture.debugElement;
+      cmpDebugElement = fixture.debugElement.query(By.directive(PagerComponent));
+    });
+  }));
 
   it('can be shown', () => {
     expect(cmpDebugElement).toBeTruthy();
@@ -37,15 +39,15 @@ describe('PagerComponent', () => {
 
   describe('.showPrev', () => {
     it('does not show previous page, when current page is 1', () => {
-      const pager:PagerComponent = cmpDebugElement.componentInstance;
+      const pager: PagerComponent = cmpDebugElement.componentInstance;
       pager.currentPage = 1;
       pager.showPrev();
       expect(pager.currentPage).toBe(1);
     });
 
     it('shows previous page, when current page is greater than 1', () => {
-      const pager:PagerComponent = cmpDebugElement.componentInstance;
-      const testCmp:TestComponent = testCmpDebugElement.componentInstance;
+      const pager: PagerComponent = cmpDebugElement.componentInstance;
+      const testCmp: TestComponent = testCmpDebugElement.componentInstance;
       spyOn(testCmp, 'doSomething');
       pager.currentPage = 2;
       pager.showPrev();
@@ -56,7 +58,7 @@ describe('PagerComponent', () => {
 
   describe('.showNext', () => {
     it('does not show next page, when current page is the last one', () => {
-      const pager:PagerComponent = cmpDebugElement.componentInstance;
+      const pager: PagerComponent = cmpDebugElement.componentInstance;
       pager.currentPage = 2;
       pager.totalPages = 2;
       pager.showNext();
@@ -64,8 +66,8 @@ describe('PagerComponent', () => {
     });
 
     it('shows next page, when it has next page', () => {
-      const pager:PagerComponent = cmpDebugElement.componentInstance;
-      const testCmp:TestComponent = testCmpDebugElement.componentInstance;
+      const pager: PagerComponent = cmpDebugElement.componentInstance;
+      const testCmp: TestComponent = testCmpDebugElement.componentInstance;
       spyOn(testCmp, 'doSomething');
       pager.currentPage = 1;
       pager.totalPages = 2;

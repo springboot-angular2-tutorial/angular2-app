@@ -8,7 +8,7 @@ import {MicropostService, APP_SERVICE_PROVIDERS} from "../../services";
 import {RouterTestingModule} from "@angular/router/testing";
 import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
 
-fdescribe('MicropostNewComponent', () => {
+describe('MicropostNewComponent', () => {
 
   @Component({
     template: `<mpt-micropost-new (created)="doSomething()"></mpt-micropost-new>`,
