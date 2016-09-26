@@ -47,7 +47,7 @@ const dummyGetJson = {
   },
 };
 
-fdescribe('UserService', () => {
+describe('UserService', () => {
 
   let userService: UserService;
   let backend: MockBackend;

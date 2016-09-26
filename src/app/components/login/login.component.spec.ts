@@ -33,7 +33,7 @@ describe('LoginComponent', () => {
 
   let cmpDebugElement: DebugElement;
 
-  let fixture: ComponentFixture;
+  let fixture: ComponentFixture<any>;
   let loginService: LoginService;
   let backend: MockBackend;
   let router: Router;

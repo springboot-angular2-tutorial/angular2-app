@@ -31,7 +31,7 @@ describe('SignupComponent', () => {
   class BlankComponent {
   }
 
-  let fixture: ComponentFixture;
+  let fixture: ComponentFixture<any>;
   let cmpDebugElement: DebugElement;
 
   let loginService: LoginService;
