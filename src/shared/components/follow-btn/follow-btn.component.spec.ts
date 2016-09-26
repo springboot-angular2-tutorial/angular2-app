@@ -9,7 +9,7 @@ import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
 import {APP_SERVICE_PROVIDERS} from "../../services/index";
 import {RouterTestingModule} from "@angular/router/testing";
 
-fdescribe('FollowBtnComponent', () => {
+describe('FollowBtnComponent', () => {
 
   @Component({
     template: `<mpt-follow-btn followerId="1" (updated)="doSomething()"></mpt-follow-btn>`,
