@@ -203,26 +203,4 @@ describe('HeaderComponent', () => {
     }));
   }); // when not signed in
 
-  describe('.isActive', () => {
-    beforeEach(initComponent());
-
-    it('return true when path matches', () => {
-      const cmp: HeaderComponent = cmpDebugElement.componentInstance;
-      spyOn(location, 'path').and.returnValue('/users');
-      expect(cmp.isActive('/users')).toBeTruthy();
-    });
-
-    it('return true when path including query parameter matches', () => {
-      const cmp: HeaderComponent = cmpDebugElement.componentInstance;
-      spyOn(location, 'path').and.returnValue('/users;page=1');
-      expect(cmp.isActive('/users')).toBeTruthy();
-    });
-
-    it('return false when path does not match', () => {
-      const cmp: HeaderComponent = cmpDebugElement.componentInstance;
-      spyOn(location, 'path').and.returnValue('/home');
-      expect(cmp.isActive('/users')).toBeFalsy();
-    });
-  }); // .isActive
-
 });

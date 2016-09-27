@@ -1,5 +1,4 @@
 import {Component, OnInit} from "@angular/core";
-import {Location} from "@angular/common";
 import {Router} from "@angular/router";
 import {LoginService} from "../../services";
 
@@ -9,22 +8,17 @@ import {LoginService} from "../../services";
 })
 export class HeaderComponent implements OnInit {
 
-  isSignedIn:boolean;
+  isSignedIn: boolean;
 
-  constructor(private router:Router,
-              private location:Location,
-              private loginService:LoginService) {
+  constructor(private router: Router,
+              private loginService: LoginService) {
   }
 
-  ngOnInit():any {
+  ngOnInit(): any {
     this.isSignedIn = this.loginService.isSignedIn();
     this.loginService.events.subscribe(() => {
       this.isSignedIn = this.loginService.isSignedIn();
     });
-  }
-
-  isActive(path:string):boolean {
-    return this.location.path().split(/[;\\?]/)[0] === path;
   }
 
   logout() {

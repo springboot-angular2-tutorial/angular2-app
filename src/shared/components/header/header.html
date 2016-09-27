@@ -10,22 +10,22 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" [routerLink]="['/']">SAMPLE APP</a>
+      <a class="navbar-brand" routerLink="/">SAMPLE APP</a>
     </div>
 
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="home" [class.active]="isActive('/home')" *ngIf="isSignedIn">
-          <a [routerLink]="['/home']">Home</a>
+        <li class="home" routerLinkActive="active" *ngIf="isSignedIn">
+          <a routerLink="/home">Home</a>
         </li>
         <li class="top" *ngIf="!isSignedIn">
-          <a [routerLink]="['/']">Home</a>
+          <a routerLink="/">Home</a>
         </li>
-        <li class="users" [class.active]="isActive('/users')" *ngIf="isSignedIn">
-          <a [routerLink]="['/users']">Users</a>
+        <li class="users" routerLinkActive="active" *ngIf="isSignedIn">
+          <a routerLink="/users">Users</a>
         </li>
-        <li class="help" [class.active]="isActive('/help')">
-          <a [routerLink]="['/help']">Help</a>
+        <li class="help" routerLinkActive="active">
+          <a routerLink="/help">Help</a>
         </li>
         <li class="dropdown" *ngIf="isSignedIn">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"
@@ -33,14 +33,14 @@
             Account<span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li class="profile"><a [routerLink]="['/users', 'me']">Profile</a></li>
-            <li class="settings"><a [routerLink]="['/users', 'me', 'edit']">Settings</a></li>
+            <li class="profile"><a routerLink="/users/me">Profile</a></li>
+            <li class="settings"><a routerLink="/users/me/edit">Settings</a></li>
             <li role="separator" class="divider"></li>
             <li class="logout"><a href="#" (click)="logout(); $event.preventDefault()">Sign out</a></li>
           </ul>
         </li>
         <li class="login" *ngIf="!isSignedIn">
-          <a [routerLink]="['/login']">Sign in</a>
+          <a routerLink="/login">Sign in</a>
         </li>
       </ul>
     </div>
