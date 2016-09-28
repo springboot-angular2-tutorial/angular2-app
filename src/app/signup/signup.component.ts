@@ -2,11 +2,12 @@ import {Component} from "@angular/core";
 import {Router} from "@angular/router";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import * as toastr from "toastr";
-import {LoginService, UserService} from "../../../shared/services";
 import {
   EMAIL_PATTERN,
   Validators as AppValidators
-} from "../../../shared/forms/index";
+} from "../../shared/forms/index";
+import {UserService} from "../../shared/services/user.service";
+import {LoginService} from "../../shared/services/login.service";
 
 @Component({
   selector: 'mpt-signup',

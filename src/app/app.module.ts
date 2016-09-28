@@ -28,7 +28,7 @@ import {PagerComponent} from "../shared/components/pager/pager.component";
 import {RelatedUserListComponent} from "./relationship/related-user-list.component";
 import {FollowingListComponent} from "./relationship/following-list.component";
 import {FollowerListComponent} from "./relationship/follower-list.component";
-import {SignupComponent} from "./components/signup/signup.component";
+import {SignupComponent} from "./signup/signup.component";
 import {UserEditComponent} from "./components/user/user-edit.component";
 
 const APP_PROVIDERS = [

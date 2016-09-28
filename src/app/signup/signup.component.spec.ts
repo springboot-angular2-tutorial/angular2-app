@@ -11,11 +11,12 @@ import {BaseResponseOptions, Response, HttpModule} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {Router} from "@angular/router";
 import {SignupComponent} from "./signup.component";
-import {LoginService, APP_SERVICE_PROVIDERS} from "../../../shared/services";
-import {advance} from "../../../shared/testing/helpers";
 import {RouterTestingModule} from "@angular/router/testing";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {LoginService} from "../../shared/services/login.service";
+import {APP_SERVICE_PROVIDERS} from "../../shared/services/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../shared/http/index";
+import {advance} from "../../shared/testing/helpers";
 
 describe('SignupComponent', () => {
 
