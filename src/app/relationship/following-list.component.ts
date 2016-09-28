@@ -1,8 +1,8 @@
 import {Observable} from "rxjs/Observable";
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
-import {RelatedUser} from "../../../shared/domains";
-import {UserService} from "../../../shared/services";
+import {RelatedUser} from "../../shared/domains";
+import {UserService} from "../../shared/services/user.service";
 
 @Component({
   selector: 'mpt-following-list',

@@ -4,13 +4,13 @@ import {inject, TestBed, fakeAsync} from "@angular/core/testing";
 import {Router} from "@angular/router";
 import {FollowerListComponent} from "./follower-list.component";
 import {RelatedUserListComponent} from "./related-user-list.component";
-import {UserStatsComponent} from "../../../shared/components";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
-import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {HttpModule} from "@angular/http";
 import {RouterTestingModule} from "@angular/router/testing";
-import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
-import {PluralizePipe} from "../../../shared/pipes/pluralize.pipe";
+import {APP_SERVICE_PROVIDERS} from "../../shared/services/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../shared/http/index";
+import {UserStatsComponent} from "../../shared/components/user-stats/user-stats.component";
+import {GravatarComponent} from "../../shared/components/gravatar/gravatar.component";
+import {PluralizePipe} from "../../shared/pipes/pluralize.pipe";
 
 describe('FollowerListComponent', () => {
 

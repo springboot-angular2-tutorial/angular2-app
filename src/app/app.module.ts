@@ -25,9 +25,9 @@ import {FollowBtnComponent} from "../shared/components/follow-btn/follow-btn.com
 import {MicropostListComponent} from "../shared/components/micropost/micropost-list.component";
 import {UserListComponent} from "./components/user/user-list.component";
 import {PagerComponent} from "../shared/components/pager/pager.component";
-import {RelatedUserListComponent} from "./components/relationship/related-user-list.component";
-import {FollowingListComponent} from "./components/relationship/following-list.component";
-import {FollowerListComponent} from "./components/relationship/follower-list.component";
+import {RelatedUserListComponent} from "./relationship/related-user-list.component";
+import {FollowingListComponent} from "./relationship/following-list.component";
+import {FollowerListComponent} from "./relationship/follower-list.component";
 import {SignupComponent} from "./components/signup/signup.component";
 import {UserEditComponent} from "./components/user/user-edit.component";
 
