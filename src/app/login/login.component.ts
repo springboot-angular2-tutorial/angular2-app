@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 import {Router} from "@angular/router";
+import {LoginService} from "../../shared/services/login.service";
 import * as toastr from "toastr";
-import {LoginService} from "../../../shared/services";
 
 @Component({
   selector: 'mpt-login',
