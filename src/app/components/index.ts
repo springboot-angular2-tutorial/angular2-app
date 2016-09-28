@@ -8,4 +8,4 @@ export * from './user/user-show.component';
 export * from './user/user-show.component';
 export * from '../relationship/follower-list.component';
 export * from '../relationship/following-list.component';
-export * from './top/top.component';
+export * from '../top/top.component';

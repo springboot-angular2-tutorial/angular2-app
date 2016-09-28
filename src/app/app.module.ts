@@ -12,7 +12,7 @@ import {HelpComponent} from "./help/help.component";
 import {APP_SERVICE_PROVIDERS} from "../shared/services/index";
 import {APP_HTTP_PROVIDERS} from "../shared/http/index";
 import {LoginComponent} from "./login/login.component";
-import {TopComponent} from "./components/top/top.component";
+import {TopComponent} from "./top/top.component";
 import {HomeComponent} from "./home/home.component";
 import {MicropostNewComponent} from "../shared/components/micropost/micropost-new.component";
 import {FeedComponent} from "./home/feed.component";
