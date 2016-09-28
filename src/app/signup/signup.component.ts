@@ -5,7 +5,7 @@ import * as toastr from "toastr";
 import {
   EMAIL_PATTERN,
   Validators as AppValidators
-} from "../../shared/forms/index";
+} from "../core/forms/index";
 import {UserService} from "../core/services/user.service";
 import {LoginService} from "../core/services/login.service";
 

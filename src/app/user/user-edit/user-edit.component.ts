@@ -4,11 +4,11 @@ import {ActivatedRoute} from "@angular/router";
 import {isEmpty, omitBy} from "lodash";
 import * as toastr from "toastr";
 import {User} from "../../../shared/domains";
-import {
-  Validators as AppValidators,
-  EMAIL_PATTERN
-} from "../../../shared/forms";
 import {UserService} from "../../core/services/user.service";
+import {
+  EMAIL_PATTERN,
+  Validators as AppValidators
+} from "../../core/forms/index";
 
 @Component({
   selector: 'mpt-user-edit',
