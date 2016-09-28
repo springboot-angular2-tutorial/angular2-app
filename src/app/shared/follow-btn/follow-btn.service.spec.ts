@@ -7,7 +7,7 @@ import {
 } from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {FollowBtnService} from "./follow-btn.service";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../app/core/http/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
 
 describe('FollowBtnService', () => {
 

@@ -5,7 +5,6 @@ import {HttpErrorHandler} from "./services/http-error-handler";
 import {LoginService} from "./services/login.service";
 import {MicropostService} from "./services/micropost.service";
 import {UserService} from "./services/user.service";
-import {FollowBtnService} from "../../shared/components/follow-btn/follow-btn.service";
 import {PrivatePageGuard} from "./services/private-page.guard";
 import {PublicPageGuard} from "./services/public-page.guard";
 import {MyHttp} from "./http/http";
@@ -16,11 +15,8 @@ import {XHRBackend, Http, RequestOptions, HttpModule} from "@angular/http";
     CommonModule,
     HttpModule,
   ],
-  declarations: [
-  ],
-  exports: [
-
-  ],
+  declarations: [],
+  exports: [],
   providers: [
     {
       provide: MyHttp,
@@ -34,14 +30,13 @@ import {XHRBackend, Http, RequestOptions, HttpModule} from "@angular/http";
     LoginService,
     MicropostService,
     UserService,
-    FollowBtnService,
     PrivatePageGuard,
     PublicPageGuard,
   ]
 })
 export class CoreModule {
 
-  constructor (@Optional() @SkipSelf() parentModule: CoreModule) {
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
     if (parentModule) {
       throw new Error(
         'CoreModule is already loaded. Import it in the AppModule only');

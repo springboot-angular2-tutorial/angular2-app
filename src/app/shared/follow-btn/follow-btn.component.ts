@@ -1,8 +1,8 @@
 import {Component, OnChanges, EventEmitter, Output, Input} from "@angular/core";
-import {User} from "../../domains";
 import {FollowBtnService} from "./follow-btn.service";
-import {UserService} from "../../../app/core/services/user.service";
-import {HttpErrorHandler} from "../../../app/core/services/http-error-handler";
+import {UserService} from "../../core/services/user.service";
+import {HttpErrorHandler} from "../../core/services/http-error-handler";
+import {User} from "../../../shared/domains";
 
 @Component({
   selector: 'mpt-follow-btn',

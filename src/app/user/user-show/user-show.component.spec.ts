@@ -6,7 +6,7 @@ import {UserShowComponent} from "./user-show.component";
 import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
 import {RouterTestingModule} from "@angular/router/testing";
 import {MicropostListComponent} from "../../../shared/components/micropost/micropost-list.component";
-import {FollowBtnComponent} from "../../../shared/components/follow-btn/follow-btn.component";
+import {FollowBtnComponent} from "../../shared/follow-btn/follow-btn.component";
 import {UserStatsComponent} from "../../../shared/components/user-stats/user-stats.component";
 import {SharedModule} from "../../shared/shared.module";
 import {CoreModule} from "../../core/core.module";
@@ -42,7 +42,6 @@ describe('UserShowComponent', () => {
         TestComponent,
         UserShowComponent,
         MicropostListComponent,
-        FollowBtnComponent,
         UserStatsComponent,
       ]
     });
