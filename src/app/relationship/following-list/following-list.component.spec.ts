@@ -7,7 +7,6 @@ import {RelatedUserListComponent} from "../shared/related-user-list.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
 import {UserStatsComponent} from "../../../shared/components/user-stats/user-stats.component";
-import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
 import {SharedModule} from "../../shared/shared.module";
 import {CoreModule} from "../../core/core.module";
 
@@ -44,7 +43,6 @@ describe('FollowingListComponent', () => {
         FollowingListComponent,
         UserStatsComponent,
         RelatedUserListComponent,
-        GravatarComponent,
       ]
     });
   });

@@ -15,7 +15,6 @@ import {HomeComponent} from "./home/home.component";
 import {MicropostNewComponent} from "../shared/components/micropost/micropost-new.component";
 import {FeedComponent} from "./home/feed/feed.component";
 import {UserStatsComponent} from "../shared/components/user-stats/user-stats.component";
-import {GravatarComponent} from "../shared/components/gravatar/gravatar.component";
 import {UserShowComponent} from "./user/user-show/user-show.component";
 import {FollowBtnComponent} from "../shared/components/follow-btn/follow-btn.component";
 import {MicropostListComponent} from "../shared/components/micropost/micropost-list.component";
@@ -52,7 +51,6 @@ const APP_PROVIDERS = [
     MicropostNewComponent,
     FeedComponent,
     UserStatsComponent,
-    GravatarComponent,
     FollowBtnComponent,
     MicropostListComponent,
     PagerComponent,

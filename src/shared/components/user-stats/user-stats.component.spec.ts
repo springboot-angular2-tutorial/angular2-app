@@ -55,7 +55,6 @@ describe('UserStatsComponent', () => {
       declarations: [
         TestComponent,
         UserStatsComponent,
-        GravatarComponent,
       ]
     });
   });

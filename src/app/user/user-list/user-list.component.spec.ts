@@ -15,8 +15,9 @@ import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
 import {advance} from "../../../shared/testing/helpers";
 import {RouterTestingModule} from "@angular/router/testing";
 import {PagerComponent} from "../../../shared/components/pager/pager.component";
-import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
+import {GravatarComponent} from "../../shared/gravatar/gravatar.component";
 import {CoreModule} from "../../core/core.module";
+import {SharedModule} from "../../shared/shared.module";
 
 describe('UserListComponent', () => {
 
@@ -54,6 +55,7 @@ describe('UserListComponent', () => {
           },
         ]),
         CoreModule,
+        SharedModule,
       ],
       providers: [
         APP_TEST_HTTP_PROVIDERS,
@@ -62,7 +64,6 @@ describe('UserListComponent', () => {
         TestComponent,
         UserListComponent,
         PagerComponent,
-        GravatarComponent,
       ]
     });
   });

@@ -6,8 +6,9 @@ import {TestBed, fakeAsync} from "@angular/core/testing";
 import {RelatedUserListComponent} from "./related-user-list.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {RelatedUser} from "../../../shared/domains";
-import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
+import {GravatarComponent} from "../../shared/gravatar/gravatar.component";
 import {CoreModule} from "../../core/core.module";
+import {SharedModule} from "../../shared/shared.module";
 
 describe('RelatedUserListComponent', () => {
 
@@ -34,11 +35,11 @@ describe('RelatedUserListComponent', () => {
       imports: [
         RouterTestingModule.withRoutes([]),
         CoreModule,
+        SharedModule,
       ],
       declarations: [
         TestComponent,
         RelatedUserListComponent,
-        GravatarComponent,
       ]
     });
   });
