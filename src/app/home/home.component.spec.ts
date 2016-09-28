@@ -3,17 +3,15 @@ import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {TestBed, fakeAsync} from "@angular/core/testing";
 import {FeedComponent} from "./feed.component";
 import {HomeComponent} from "./home.component";
-import {
-  MicropostNewComponent,
-  UserStatsComponent
-} from "../../../shared/components";
 import {RouterTestingModule} from "@angular/router/testing";
-import {TimeAgoPipe} from "../../../shared/pipes/time-ago.pipe";
-import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
-import {PluralizePipe} from "../../../shared/pipes/pluralize.pipe";
-import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {HttpModule} from "@angular/http";
+import {APP_SERVICE_PROVIDERS} from "../../shared/services/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../shared/http/index";
+import {MicropostNewComponent} from "../../shared/components/micropost/micropost-new.component";
+import {UserStatsComponent} from "../../shared/components/user-stats/user-stats.component";
+import {GravatarComponent} from "../../shared/components/gravatar/gravatar.component";
+import {TimeAgoPipe} from "../../shared/pipes/time-ago.pipe";
+import {PluralizePipe} from "../../shared/pipes/pluralize.pipe";
 
 describe('HomeComponent', () => {
 

@@ -2,16 +2,16 @@ import {Component, DebugElement} from "@angular/core";
 import {TestBed, inject, fakeAsync} from "@angular/core/testing";
 import {ResponseOptions, Response, HttpModule} from "@angular/http";
 import {FeedComponent} from "./feed.component";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {RouterTestingModule} from "@angular/router/testing";
 import {MockBackend} from "@angular/http/testing";
 import {By} from "@angular/platform-browser";
 import {getDOM} from "@angular/platform-browser-dynamic/testing/private_import_platform-browser";
-import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
-import {TimeAgoPipe} from "../../../shared/pipes/time-ago.pipe";
-import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {FeedService} from "./feed.service";
-import {MicropostService} from "../../../shared/services/micropost.service";
+import {APP_TEST_HTTP_PROVIDERS} from "../../shared/http/index";
+import {APP_SERVICE_PROVIDERS} from "../../shared/services/index";
+import {GravatarComponent} from "../../shared/components/gravatar/gravatar.component";
+import {MicropostService} from "../../shared/services/micropost.service";
+import {TimeAgoPipe} from "../../shared/pipes/time-ago.pipe";
 
 describe('FeedComponent', () => {
 
@@ -25,7 +25,7 @@ describe('FeedComponent', () => {
 
   let testCmpDebugElement: DebugElement;
   let cmpDebugElement: DebugElement;
-  let micropostService:MicropostService;
+  let micropostService: MicropostService;
 
   const dummyResponse = new Response(new ResponseOptions({
     body: JSON.stringify([
@@ -128,8 +128,8 @@ describe('FeedComponent', () => {
   });
 
   it('deletes micropost when confirmed', done => {
-    const cmp:FeedComponent = cmpDebugElement.componentInstance;
-    const testCmp:TestComponent = testCmpDebugElement.componentInstance;
+    const cmp: FeedComponent = cmpDebugElement.componentInstance;
+    const testCmp: TestComponent = testCmpDebugElement.componentInstance;
     const deleteLink = getDOM().querySelector(cmpDebugElement.nativeElement, '.delete');
     spyOn(window, 'confirm').and.returnValue(true);
     spyOn(cmp, 'list');

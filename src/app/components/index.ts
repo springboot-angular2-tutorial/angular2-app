@@ -1,5 +1,5 @@
 export * from '../help/help.component';
-export * from './home/home.component';
+export * from '../home/home.component';
 export * from './login/login.component';
 export * from './signup/signup.component';
 export * from './user/user-list.component';
