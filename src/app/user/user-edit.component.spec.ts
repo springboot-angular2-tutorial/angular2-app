@@ -7,13 +7,14 @@ import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
 import {BaseResponseOptions, Response, HttpModule} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {UserEditComponent} from "./user-edit.component";
-import {User} from "../../../shared/domains";
-import {UserService, APP_SERVICE_PROVIDERS} from "../../../shared/services";
-import {ProfileDataResolver} from "../../../shared/routes/profile-data.resolver";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterTestingModule} from "@angular/router/testing";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
-import {APP_RESOLVER_PROVIDERS} from "../../../shared/routes/index";
+import {UserService} from "../../shared/services/user.service";
+import {User} from "../../shared/domains";
+import {ProfileDataResolver} from "../../shared/routes/profile-data.resolver";
+import {APP_SERVICE_PROVIDERS} from "../../shared/services/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../shared/http/index";
+import {APP_RESOLVER_PROVIDERS} from "../../shared/routes/index";
 
 describe('UserEditComponent', () => {
 

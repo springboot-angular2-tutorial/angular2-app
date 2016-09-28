@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
-import {User} from "../../../shared/domains";
-import {HttpErrorHandler, UserService} from "../../../shared/services";
+import {User} from "../../shared/domains";
+import {HttpErrorHandler, UserService} from "../../shared/services";
 
 @Component({
   selector: 'mpt-user-list',

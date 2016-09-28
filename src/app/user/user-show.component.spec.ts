@@ -7,14 +7,14 @@ import {
   MicropostListComponent,
   FollowBtnComponent,
   UserStatsComponent
-} from "../../../shared/components";
-import {APP_SERVICE_PROVIDERS} from "../../../shared/services";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+} from "../../shared/components";
+import {APP_SERVICE_PROVIDERS} from "../../shared/services";
+import {APP_TEST_HTTP_PROVIDERS} from "../../shared/http/index";
 import {HttpModule} from "@angular/http";
 import {RouterTestingModule} from "@angular/router/testing";
-import {TimeAgoPipe} from "../../../shared/pipes/time-ago.pipe";
-import {PluralizePipe} from "../../../shared/pipes/pluralize.pipe";
-import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
+import {TimeAgoPipe} from "../../shared/pipes/time-ago.pipe";
+import {PluralizePipe} from "../../shared/pipes/pluralize.pipe";
+import {GravatarComponent} from "../../shared/components/gravatar/gravatar.component";
 
 describe('UserShowComponent', () => {
 

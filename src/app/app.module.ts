@@ -20,16 +20,16 @@ import {UserStatsComponent} from "../shared/components/user-stats/user-stats.com
 import {TimeAgoPipe} from "../shared/pipes/time-ago.pipe";
 import {GravatarComponent} from "../shared/components/gravatar/gravatar.component";
 import {PluralizePipe} from "../shared/pipes/pluralize.pipe";
-import {UserShowComponent} from "./components/user/user-show.component";
+import {UserShowComponent} from "./user/user-show.component";
 import {FollowBtnComponent} from "../shared/components/follow-btn/follow-btn.component";
 import {MicropostListComponent} from "../shared/components/micropost/micropost-list.component";
-import {UserListComponent} from "./components/user/user-list.component";
+import {UserListComponent} from "./user/user-list.component";
 import {PagerComponent} from "../shared/components/pager/pager.component";
 import {RelatedUserListComponent} from "./relationship/related-user-list.component";
 import {FollowingListComponent} from "./relationship/following-list.component";
 import {FollowerListComponent} from "./relationship/follower-list.component";
 import {SignupComponent} from "./signup/signup.component";
-import {UserEditComponent} from "./components/user/user-edit.component";
+import {UserEditComponent} from "./user/user-edit.component";
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
