@@ -19,7 +19,6 @@ import {UserShowComponent} from "./user/user-show/user-show.component";
 import {FollowBtnComponent} from "../shared/components/follow-btn/follow-btn.component";
 import {MicropostListComponent} from "../shared/components/micropost/micropost-list.component";
 import {UserListComponent} from "./user/user-list/user-list.component";
-import {PagerComponent} from "../shared/components/pager/pager.component";
 import {RelatedUserListComponent} from "./relationship/shared/related-user-list.component";
 import {FollowingListComponent} from "./relationship/following-list/following-list.component";
 import {FollowerListComponent} from "./relationship/follower-list/follower-list.component";
@@ -53,7 +52,6 @@ const APP_PROVIDERS = [
     UserStatsComponent,
     FollowBtnComponent,
     MicropostListComponent,
-    PagerComponent,
     RelatedUserListComponent,
   ],
   imports: [
