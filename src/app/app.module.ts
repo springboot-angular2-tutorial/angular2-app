@@ -17,9 +17,7 @@ import {HomeComponent} from "./home/home.component";
 import {MicropostNewComponent} from "../shared/components/micropost/micropost-new.component";
 import {FeedComponent} from "./home/feed/feed.component";
 import {UserStatsComponent} from "../shared/components/user-stats/user-stats.component";
-import {TimeAgoPipe} from "../shared/pipes/time-ago.pipe";
 import {GravatarComponent} from "../shared/components/gravatar/gravatar.component";
-import {PluralizePipe} from "../shared/pipes/pluralize.pipe";
 import {UserShowComponent} from "./user/user-show/user-show.component";
 import {FollowBtnComponent} from "../shared/components/follow-btn/follow-btn.component";
 import {MicropostListComponent} from "../shared/components/micropost/micropost-list.component";
@@ -30,6 +28,7 @@ import {FollowingListComponent} from "./relationship/following-list/following-li
 import {FollowerListComponent} from "./relationship/follower-list/follower-list.component";
 import {SignupComponent} from "./signup/signup.component";
 import {UserEditComponent} from "./user/user-edit/user-edit.component";
+import {SharedModule} from "./shared/shared.module";
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -61,16 +60,15 @@ const APP_PROVIDERS = [
     MicropostListComponent,
     PagerComponent,
     RelatedUserListComponent,
-
-    TimeAgoPipe,
-    PluralizePipe,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+
+    SharedModule,
   ],
   providers: [
     ENV_PROVIDERS,

@@ -8,7 +8,7 @@ import {MicropostListComponent} from "./micropost-list.component";
 import {MicropostService, APP_SERVICE_PROVIDERS} from "../../services";
 import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
 import {RouterTestingModule} from "@angular/router/testing";
-import {TimeAgoPipe} from "../../pipes/time-ago.pipe";
+import {SharedModule} from "../../../app/shared/shared.module";
 
 describe('MicropostListComponent', () => {
 
@@ -55,6 +55,7 @@ describe('MicropostListComponent', () => {
       imports: [
         HttpModule,
         RouterTestingModule.withRoutes([]),
+        SharedModule,
       ],
       providers: [
         APP_SERVICE_PROVIDERS,
@@ -63,7 +64,6 @@ describe('MicropostListComponent', () => {
       declarations: [
         TestComponent,
         MicropostListComponent,
-        TimeAgoPipe,
       ]
     });
   });

@@ -10,7 +10,7 @@ import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {UserStatsComponent} from "../../../shared/components/user-stats/user-stats.component";
 import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
-import {PluralizePipe} from "../../../shared/pipes/pluralize.pipe";
+import {SharedModule} from "../../shared/shared.module";
 
 describe('FollowerListComponent', () => {
 
@@ -35,6 +35,7 @@ describe('FollowerListComponent', () => {
             component: FollowerListComponent,
           },
         ]),
+        SharedModule,
       ],
       providers: [
         APP_SERVICE_PROVIDERS,
@@ -46,7 +47,6 @@ describe('FollowerListComponent', () => {
         UserStatsComponent,
         RelatedUserListComponent,
         GravatarComponent,
-        PluralizePipe,
       ]
     });
   });

@@ -6,13 +6,12 @@ import {UserShowComponent} from "./user-show.component";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {HttpModule} from "@angular/http";
 import {RouterTestingModule} from "@angular/router/testing";
-import {TimeAgoPipe} from "../../../shared/pipes/time-ago.pipe";
-import {PluralizePipe} from "../../../shared/pipes/pluralize.pipe";
 import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
 import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {MicropostListComponent} from "../../../shared/components/micropost/micropost-list.component";
 import {FollowBtnComponent} from "../../../shared/components/follow-btn/follow-btn.component";
 import {UserStatsComponent} from "../../../shared/components/user-stats/user-stats.component";
+import {SharedModule} from "../../shared/shared.module";
 
 describe('UserShowComponent', () => {
 
@@ -36,6 +35,7 @@ describe('UserShowComponent', () => {
         RouterTestingModule.withRoutes([
           {path: 'users/:id', component: UserShowComponent},
         ]),
+        SharedModule,
       ],
       providers: [
         APP_SERVICE_PROVIDERS,
@@ -48,8 +48,6 @@ describe('UserShowComponent', () => {
         FollowBtnComponent,
         UserStatsComponent,
         GravatarComponent,
-        TimeAgoPipe,
-        PluralizePipe,
       ]
     });
   });

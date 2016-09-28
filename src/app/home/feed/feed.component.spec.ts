@@ -11,7 +11,7 @@ import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
 import {MicropostService} from "../../../shared/services/micropost.service";
-import {TimeAgoPipe} from "../../../shared/pipes/time-ago.pipe";
+import {SharedModule} from "../../shared/shared.module";
 
 describe('FeedComponent', () => {
 
@@ -59,6 +59,7 @@ describe('FeedComponent', () => {
       imports: [
         HttpModule,
         RouterTestingModule.withRoutes([]),
+        SharedModule,
       ],
       providers: [
         FeedService,
@@ -69,7 +70,6 @@ describe('FeedComponent', () => {
         TestComponent,
         FeedComponent,
         GravatarComponent,
-        TimeAgoPipe,
       ]
     });
   });

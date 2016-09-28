@@ -14,7 +14,7 @@ import {GravatarComponent} from "../../../shared/components";
 import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
 import {APP_SERVICE_PROVIDERS} from "../../services/index";
 import {RouterTestingModule} from "@angular/router/testing";
-import {PluralizePipe} from "../../pipes/pluralize.pipe";
+import {SharedModule} from "../../../app/shared/shared.module";
 
 describe('UserStatsComponent', () => {
 
@@ -47,6 +47,7 @@ describe('UserStatsComponent', () => {
       imports: [
         HttpModule,
         RouterTestingModule.withRoutes([]),
+        SharedModule,
       ],
       providers: [
         APP_SERVICE_PROVIDERS,
@@ -56,7 +57,6 @@ describe('UserStatsComponent', () => {
         TestComponent,
         UserStatsComponent,
         GravatarComponent,
-        PluralizePipe,
       ]
     });
   });

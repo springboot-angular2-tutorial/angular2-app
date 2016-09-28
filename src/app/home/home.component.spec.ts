@@ -10,8 +10,7 @@ import {APP_TEST_HTTP_PROVIDERS} from "../../shared/http/index";
 import {MicropostNewComponent} from "../../shared/components/micropost/micropost-new.component";
 import {UserStatsComponent} from "../../shared/components/user-stats/user-stats.component";
 import {GravatarComponent} from "../../shared/components/gravatar/gravatar.component";
-import {TimeAgoPipe} from "../../shared/pipes/time-ago.pipe";
-import {PluralizePipe} from "../../shared/pipes/pluralize.pipe";
+import {SharedModule} from "../shared/shared.module";
 
 describe('HomeComponent', () => {
 
@@ -31,6 +30,7 @@ describe('HomeComponent', () => {
       imports: [
         HttpModule,
         RouterTestingModule.withRoutes([]),
+        SharedModule,
       ],
       providers: [
         APP_SERVICE_PROVIDERS,
@@ -43,8 +43,6 @@ describe('HomeComponent', () => {
         MicropostNewComponent,
         UserStatsComponent,
         GravatarComponent,
-        TimeAgoPipe,
-        PluralizePipe,
       ]
     });
   });
