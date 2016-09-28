@@ -15,7 +15,7 @@ import {LoginComponent} from "./login/login.component";
 import {TopComponent} from "./top/top.component";
 import {HomeComponent} from "./home/home.component";
 import {MicropostNewComponent} from "../shared/components/micropost/micropost-new.component";
-import {FeedComponent} from "./home/feed.component";
+import {FeedComponent} from "./home/feed/feed.component";
 import {UserStatsComponent} from "../shared/components/user-stats/user-stats.component";
 import {TimeAgoPipe} from "../shared/pipes/time-ago.pipe";
 import {GravatarComponent} from "../shared/components/gravatar/gravatar.component";

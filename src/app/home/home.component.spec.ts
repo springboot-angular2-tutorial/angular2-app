@@ -1,7 +1,7 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {TestBed, fakeAsync} from "@angular/core/testing";
-import {FeedComponent} from "./feed.component";
+import {FeedComponent} from "./feed/feed.component";
 import {HomeComponent} from "./home.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {HttpModule} from "@angular/http";

@@ -1,7 +1,7 @@
 import {Observable} from "rxjs/Observable";
 import {Injectable} from "@angular/core";
-import {MyHttp} from "../../shared/http/http";
-import {Micropost} from "../../shared/domains";
+import {MyHttp} from "../../../shared/http/http";
+import {Micropost} from "../../../shared/domains";
 
 const url = '/api/feed';
 

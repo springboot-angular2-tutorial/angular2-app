@@ -7,11 +7,11 @@ import {MockBackend} from "@angular/http/testing";
 import {By} from "@angular/platform-browser";
 import {getDOM} from "@angular/platform-browser-dynamic/testing/private_import_platform-browser";
 import {FeedService} from "./feed.service";
-import {APP_TEST_HTTP_PROVIDERS} from "../../shared/http/index";
-import {APP_SERVICE_PROVIDERS} from "../../shared/services/index";
-import {GravatarComponent} from "../../shared/components/gravatar/gravatar.component";
-import {MicropostService} from "../../shared/services/micropost.service";
-import {TimeAgoPipe} from "../../shared/pipes/time-ago.pipe";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
+import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
+import {MicropostService} from "../../../shared/services/micropost.service";
+import {TimeAgoPipe} from "../../../shared/pipes/time-ago.pipe";
 
 describe('FeedComponent', () => {
 
