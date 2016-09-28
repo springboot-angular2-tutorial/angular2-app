@@ -29,7 +29,7 @@ import {RelatedUserListComponent} from "./relationship/related-user-list.compone
 import {FollowingListComponent} from "./relationship/following-list.component";
 import {FollowerListComponent} from "./relationship/follower-list.component";
 import {SignupComponent} from "./signup/signup.component";
-import {UserEditComponent} from "./user/user-edit.component";
+import {UserEditComponent} from "./user/user-edit/user-edit.component";
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,

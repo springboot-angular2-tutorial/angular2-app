@@ -5,7 +5,7 @@ import {FollowingListComponent} from "./relationship/following-list.component";
 import {FollowerListComponent} from "./relationship/follower-list.component";
 import {UserListComponent} from "./user/user-list.component";
 import {HelpComponent} from "./help/help.component";
-import {UserEditComponent} from "./user/user-edit.component";
+import {UserEditComponent} from "./user/user-edit/user-edit.component";
 import {ProfileDataResolver} from "../shared/routes/profile-data.resolver";
 import {LoginComponent} from "./login/login.component";
 import {SignupComponent} from "./signup/signup.component";
