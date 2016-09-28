@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {Router} from "@angular/router";
-import {LoginService} from "../../shared/services/login.service";
+import {LoginService} from "../core/services/login.service";
 import * as toastr from "toastr";
 
 @Component({

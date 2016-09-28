@@ -1,8 +1,8 @@
 import {Observable} from "rxjs/Observable";
 import {Injectable} from "@angular/core";
 import {Response} from "@angular/http";
-import {MyHttp} from "../http";
 import {Subject} from "rxjs/Rx";
+import {MyHttp} from "../../../shared/http/http";
 
 @Injectable()
 export class LoginService {

@@ -11,12 +11,13 @@ import {
 } from "@angular/core/testing";
 import {Router} from "@angular/router";
 import {HeaderComponent} from "./header.component";
-import {LoginService, UserService} from "../../services";
 import {login} from "../../testing";
 import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
 import {RouterTestingModule} from "@angular/router/testing";
 import {advance} from "../../testing/helpers";
 import {CoreModule} from "../../../app/core/core.module";
+import {LoginService} from "../../../app/core/services/login.service";
+import {UserService} from "../../../app/core/services/user.service";
 
 describe('HeaderComponent', () => {
 

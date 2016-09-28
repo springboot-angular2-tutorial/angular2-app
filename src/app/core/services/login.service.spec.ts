@@ -8,7 +8,7 @@ import {
 } from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {LoginService} from "./login.service";
-import {APP_TEST_HTTP_PROVIDERS} from "../http/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 
 describe('LoginService', () => {
 

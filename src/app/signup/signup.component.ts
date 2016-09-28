@@ -6,8 +6,8 @@ import {
   EMAIL_PATTERN,
   Validators as AppValidators
 } from "../../shared/forms/index";
-import {UserService} from "../../shared/services/user.service";
-import {LoginService} from "../../shared/services/login.service";
+import {UserService} from "../core/services/user.service";
+import {LoginService} from "../core/services/login.service";
 
 @Component({
   selector: 'mpt-signup',

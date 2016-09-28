@@ -9,7 +9,7 @@ import {getDOM} from "@angular/platform-browser-dynamic/testing/private_import_p
 import {FeedService} from "./feed.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
-import {MicropostService} from "../../../shared/services/micropost.service";
+import {MicropostService} from "../../core/services/micropost.service";
 import {SharedModule} from "../../shared/shared.module";
 import {CoreModule} from "../../core/core.module";
 

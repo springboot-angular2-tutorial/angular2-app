@@ -8,7 +8,7 @@ import {
   Validators as AppValidators,
   EMAIL_PATTERN
 } from "../../../shared/forms";
-import {UserService} from "../../../shared/services/user.service";
+import {UserService} from "../../core/services/user.service";
 
 @Component({
   selector: 'mpt-user-edit',

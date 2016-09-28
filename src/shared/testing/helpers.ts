@@ -1,5 +1,5 @@
 import {inject, ComponentFixture, tick} from "@angular/core/testing";
-import {LoginService} from "../services";
+import {LoginService} from "../../app/core/services/login.service";
 
 export function login() {
   return inject([LoginService], (loginService) => {

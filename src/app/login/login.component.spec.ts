@@ -13,7 +13,7 @@ import {MockBackend} from "@angular/http/testing";
 import {Router} from "@angular/router";
 import {LoginComponent} from "./login.component";
 import {RouterTestingModule} from "@angular/router/testing";
-import {LoginService} from "../../shared/services/login.service";
+import {LoginService} from "../core/services/login.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../../shared/http/index";
 import {advance} from "../../shared/testing/helpers";
 import {CoreModule} from "../core/core.module";

@@ -9,7 +9,7 @@ import {MockBackend} from "@angular/http/testing";
 import {UserEditComponent} from "./user-edit.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterTestingModule} from "@angular/router/testing";
-import {UserService} from "../../../shared/services/user.service";
+import {UserService} from "../../core/services/user.service";
 import {User} from "../../../shared/domains";
 import {ProfileDataResolver} from "../../../shared/routes/profile-data.resolver";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
