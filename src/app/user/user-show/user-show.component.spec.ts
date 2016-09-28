@@ -3,18 +3,16 @@ import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {inject, TestBed, fakeAsync} from "@angular/core/testing";
 import {Router} from "@angular/router";
 import {UserShowComponent} from "./user-show.component";
-import {
-  MicropostListComponent,
-  FollowBtnComponent,
-  UserStatsComponent
-} from "../../shared/components";
-import {APP_SERVICE_PROVIDERS} from "../../shared/services";
-import {APP_TEST_HTTP_PROVIDERS} from "../../shared/http/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {HttpModule} from "@angular/http";
 import {RouterTestingModule} from "@angular/router/testing";
-import {TimeAgoPipe} from "../../shared/pipes/time-ago.pipe";
-import {PluralizePipe} from "../../shared/pipes/pluralize.pipe";
-import {GravatarComponent} from "../../shared/components/gravatar/gravatar.component";
+import {TimeAgoPipe} from "../../../shared/pipes/time-ago.pipe";
+import {PluralizePipe} from "../../../shared/pipes/pluralize.pipe";
+import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
+import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
+import {MicropostListComponent} from "../../../shared/components/micropost/micropost-list.component";
+import {FollowBtnComponent} from "../../../shared/components/follow-btn/follow-btn.component";
+import {UserStatsComponent} from "../../../shared/components/user-stats/user-stats.component";
 
 describe('UserShowComponent', () => {
 

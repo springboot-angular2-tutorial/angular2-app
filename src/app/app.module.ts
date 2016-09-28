@@ -20,7 +20,7 @@ import {UserStatsComponent} from "../shared/components/user-stats/user-stats.com
 import {TimeAgoPipe} from "../shared/pipes/time-ago.pipe";
 import {GravatarComponent} from "../shared/components/gravatar/gravatar.component";
 import {PluralizePipe} from "../shared/pipes/pluralize.pipe";
-import {UserShowComponent} from "./user/user-show.component";
+import {UserShowComponent} from "./user/user-show/user-show.component";
 import {FollowBtnComponent} from "../shared/components/follow-btn/follow-btn.component";
 import {MicropostListComponent} from "../shared/components/micropost/micropost-list.component";
 import {UserListComponent} from "./user/user-list/user-list.component";
