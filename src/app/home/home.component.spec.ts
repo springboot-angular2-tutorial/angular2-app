@@ -4,13 +4,12 @@ import {TestBed, fakeAsync} from "@angular/core/testing";
 import {FeedComponent} from "./feed/feed.component";
 import {HomeComponent} from "./home.component";
 import {RouterTestingModule} from "@angular/router/testing";
-import {HttpModule} from "@angular/http";
-import {APP_SERVICE_PROVIDERS} from "../../shared/services/index";
 import {APP_TEST_HTTP_PROVIDERS} from "../../shared/http/index";
 import {MicropostNewComponent} from "../../shared/components/micropost/micropost-new.component";
 import {UserStatsComponent} from "../../shared/components/user-stats/user-stats.component";
 import {GravatarComponent} from "../../shared/components/gravatar/gravatar.component";
 import {SharedModule} from "../shared/shared.module";
+import {CoreModule} from "../core/core.module";
 
 describe('HomeComponent', () => {
 
@@ -28,12 +27,11 @@ describe('HomeComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpModule,
-        RouterTestingModule.withRoutes([]),
+        RouterTestingModule,
+        CoreModule,
         SharedModule,
       ],
       providers: [
-        APP_SERVICE_PROVIDERS,
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [

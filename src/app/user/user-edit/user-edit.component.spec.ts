@@ -4,7 +4,7 @@ import {inject, TestBed, fakeAsync} from "@angular/core/testing";
 import {Router} from "@angular/router";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
-import {BaseResponseOptions, Response, HttpModule} from "@angular/http";
+import {BaseResponseOptions, Response} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {UserEditComponent} from "./user-edit.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -12,9 +12,9 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {UserService} from "../../../shared/services/user.service";
 import {User} from "../../../shared/domains";
 import {ProfileDataResolver} from "../../../shared/routes/profile-data.resolver";
-import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {APP_RESOLVER_PROVIDERS} from "../../../shared/routes/index";
+import {CoreModule} from "../../core/core.module";
 
 describe('UserEditComponent', () => {
 
@@ -35,7 +35,6 @@ describe('UserEditComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpModule,
         FormsModule,
         ReactiveFormsModule,
         RouterTestingModule.withRoutes([
@@ -45,9 +44,9 @@ describe('UserEditComponent', () => {
             resolve: {profile: ProfileDataResolver},
           },
         ]),
+        CoreModule,
       ],
       providers: [
-        APP_SERVICE_PROVIDERS,
         APP_TEST_HTTP_PROVIDERS,
         APP_RESOLVER_PROVIDERS,
       ],

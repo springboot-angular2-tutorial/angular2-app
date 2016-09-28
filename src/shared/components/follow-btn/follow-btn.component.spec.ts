@@ -1,13 +1,13 @@
 import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {inject, TestBed, fakeAsync} from "@angular/core/testing";
-import {Response, ResponseOptions, HttpModule} from "@angular/http";
+import {Response, ResponseOptions} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {FollowBtnComponent} from "./follow-btn.component";
 import {FollowBtnService} from "./follow-btn.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
-import {APP_SERVICE_PROVIDERS} from "../../services/index";
 import {RouterTestingModule} from "@angular/router/testing";
+import {CoreModule} from "../../../app/core/core.module";
 
 describe('FollowBtnComponent', () => {
 
@@ -71,11 +71,10 @@ describe('FollowBtnComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpModule,
-        RouterTestingModule.withRoutes([]),
+        RouterTestingModule,
+        CoreModule,
       ],
       providers: [
-        APP_SERVICE_PROVIDERS,
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [

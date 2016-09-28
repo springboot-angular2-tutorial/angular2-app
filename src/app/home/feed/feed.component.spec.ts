@@ -1,6 +1,6 @@
 import {Component, DebugElement} from "@angular/core";
 import {TestBed, inject, fakeAsync} from "@angular/core/testing";
-import {ResponseOptions, Response, HttpModule} from "@angular/http";
+import {ResponseOptions, Response} from "@angular/http";
 import {FeedComponent} from "./feed.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {MockBackend} from "@angular/http/testing";
@@ -8,10 +8,10 @@ import {By} from "@angular/platform-browser";
 import {getDOM} from "@angular/platform-browser-dynamic/testing/private_import_platform-browser";
 import {FeedService} from "./feed.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
-import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
 import {MicropostService} from "../../../shared/services/micropost.service";
 import {SharedModule} from "../../shared/shared.module";
+import {CoreModule} from "../../core/core.module";
 
 describe('FeedComponent', () => {
 
@@ -57,13 +57,12 @@ describe('FeedComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpModule,
-        RouterTestingModule.withRoutes([]),
+        RouterTestingModule,
+        CoreModule,
         SharedModule,
       ],
       providers: [
         FeedService,
-        APP_SERVICE_PROVIDERS,
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [

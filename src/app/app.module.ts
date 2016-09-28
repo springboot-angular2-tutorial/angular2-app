@@ -9,7 +9,6 @@ import {AppComponent} from "./app.component";
 import {HeaderComponent} from "../shared/components/header/header.component";
 import {APP_RESOLVER_PROVIDERS} from "../shared/routes/index";
 import {HelpComponent} from "./help/help.component";
-import {APP_SERVICE_PROVIDERS} from "../shared/services/index";
 import {APP_HTTP_PROVIDERS} from "../shared/http/index";
 import {LoginComponent} from "./login/login.component";
 import {TopComponent} from "./top/top.component";
@@ -29,10 +28,10 @@ import {FollowerListComponent} from "./relationship/follower-list/follower-list.
 import {SignupComponent} from "./signup/signup.component";
 import {UserEditComponent} from "./user/user-edit/user-edit.component";
 import {SharedModule} from "./shared/shared.module";
+import {CoreModule} from "./core/core.module";
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  ...APP_SERVICE_PROVIDERS,
   ...APP_HTTP_PROVIDERS,
 ];
 
@@ -68,6 +67,7 @@ const APP_PROVIDERS = [
     HttpModule,
     RouterModule.forRoot(ROUTES),
 
+    CoreModule,
     SharedModule,
   ],
   providers: [

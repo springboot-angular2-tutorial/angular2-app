@@ -4,14 +4,13 @@ import {inject, TestBed, fakeAsync} from "@angular/core/testing";
 import {Router} from "@angular/router";
 import {UserShowComponent} from "./user-show.component";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
-import {HttpModule} from "@angular/http";
 import {RouterTestingModule} from "@angular/router/testing";
 import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
-import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {MicropostListComponent} from "../../../shared/components/micropost/micropost-list.component";
 import {FollowBtnComponent} from "../../../shared/components/follow-btn/follow-btn.component";
 import {UserStatsComponent} from "../../../shared/components/user-stats/user-stats.component";
 import {SharedModule} from "../../shared/shared.module";
+import {CoreModule} from "../../core/core.module";
 
 describe('UserShowComponent', () => {
 
@@ -31,14 +30,13 @@ describe('UserShowComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpModule,
         RouterTestingModule.withRoutes([
           {path: 'users/:id', component: UserShowComponent},
         ]),
+        CoreModule,
         SharedModule,
       ],
       providers: [
-        APP_SERVICE_PROVIDERS,
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [

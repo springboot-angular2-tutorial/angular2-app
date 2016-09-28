@@ -4,13 +4,12 @@ import {inject, TestBed, fakeAsync} from "@angular/core/testing";
 import {Router} from "@angular/router";
 import {FollowingListComponent} from "./following-list.component";
 import {RelatedUserListComponent} from "../shared/related-user-list.component";
-import {HttpModule} from "@angular/http";
 import {RouterTestingModule} from "@angular/router/testing";
-import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {UserStatsComponent} from "../../../shared/components/user-stats/user-stats.component";
 import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
 import {SharedModule} from "../../shared/shared.module";
+import {CoreModule} from "../../core/core.module";
 
 describe('FollowingListComponent', () => {
 
@@ -28,17 +27,16 @@ describe('FollowingListComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpModule,
         RouterTestingModule.withRoutes([
           {
             path: 'users/:id/followings',
             component: FollowingListComponent,
           },
         ]),
+        CoreModule,
         SharedModule,
       ],
       providers: [
-        APP_SERVICE_PROVIDERS,
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [

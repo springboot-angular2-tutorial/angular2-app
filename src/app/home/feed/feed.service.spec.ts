@@ -7,7 +7,6 @@ import {
 } from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {FeedService} from "./feed.service";
-import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 
 describe('FeedService', () => {
@@ -45,7 +44,6 @@ describe('FeedService', () => {
       ],
       providers: [
         FeedService,
-        APP_SERVICE_PROVIDERS,
         APP_TEST_HTTP_PROVIDERS,
       ],
     });

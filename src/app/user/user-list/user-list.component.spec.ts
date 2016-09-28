@@ -7,16 +7,16 @@ import {
   ComponentFixture,
   TestBed
 } from "@angular/core/testing";
-import {ResponseOptions, Response, HttpModule} from "@angular/http";
+import {ResponseOptions, Response} from "@angular/http";
 import {Router} from "@angular/router";
 import {MockBackend} from "@angular/http/testing";
 import {UserListComponent} from "./user-list.component";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
-import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
 import {advance} from "../../../shared/testing/helpers";
 import {RouterTestingModule} from "@angular/router/testing";
 import {PagerComponent} from "../../../shared/components/pager/pager.component";
 import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
+import {CoreModule} from "../../core/core.module";
 
 describe('UserListComponent', () => {
 
@@ -47,16 +47,15 @@ describe('UserListComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpModule,
         RouterTestingModule.withRoutes([
           {
             path: 'users',
             component: UserListComponent,
           },
         ]),
+        CoreModule,
       ],
       providers: [
-        APP_SERVICE_PROVIDERS,
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [

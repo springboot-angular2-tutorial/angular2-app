@@ -2,13 +2,14 @@ import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
 import {inject, TestBed, fakeAsync} from "@angular/core/testing";
-import {ResponseOptions, Response, HttpModule} from "@angular/http";
+import {ResponseOptions, Response} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {MicropostListComponent} from "./micropost-list.component";
-import {MicropostService, APP_SERVICE_PROVIDERS} from "../../services";
+import {MicropostService} from "../../services";
 import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
 import {RouterTestingModule} from "@angular/router/testing";
 import {SharedModule} from "../../../app/shared/shared.module";
+import {CoreModule} from "../../../app/core/core.module";
 
 describe('MicropostListComponent', () => {
 
@@ -53,12 +54,11 @@ describe('MicropostListComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpModule,
-        RouterTestingModule.withRoutes([]),
+        RouterTestingModule,
+        CoreModule,
         SharedModule,
       ],
       providers: [
-        APP_SERVICE_PROVIDERS,
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [

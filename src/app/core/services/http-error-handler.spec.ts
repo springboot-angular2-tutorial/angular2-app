@@ -1,16 +1,15 @@
 import {inject, TestBed} from "@angular/core/testing";
 import {Router} from "@angular/router";
 import {HttpErrorHandler} from "./http-error-handler";
-import {LoginService} from "./login.service";
-import {APP_TEST_HTTP_PROVIDERS} from "../http/index";
-import {APP_SERVICE_PROVIDERS} from "./index";
-import {HttpModule} from "@angular/http";
+import {LoginService} from "../../../shared/services/login.service";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {CoreModule} from "../core.module";
 
 describe('HttpErrorHandler', () => {
 
-  let errorHandler:HttpErrorHandler;
-  let loginService:LoginService;
-  let router:Router;
+  let errorHandler: HttpErrorHandler;
+  let loginService: LoginService;
+  let router: Router;
 
   class MockRouter {
     navigate() {
@@ -20,7 +19,7 @@ describe('HttpErrorHandler', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpModule,
+        CoreModule,
       ],
       providers: [
         {
@@ -28,7 +27,6 @@ describe('HttpErrorHandler', () => {
           useClass: MockRouter,
         },
         APP_TEST_HTTP_PROVIDERS,
-        APP_SERVICE_PROVIDERS,
       ],
     });
   });

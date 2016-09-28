@@ -7,7 +7,7 @@ import {
   ComponentFixture,
   inject
 } from "@angular/core/testing";
-import {BaseResponseOptions, Response, HttpModule} from "@angular/http";
+import {BaseResponseOptions, Response} from "@angular/http";
 import {Location} from "@angular/common";
 import {MockBackend} from "@angular/http/testing";
 import {Router} from "@angular/router";
@@ -15,8 +15,8 @@ import {LoginComponent} from "./login.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {LoginService} from "../../shared/services/login.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../../shared/http/index";
-import {APP_SERVICE_PROVIDERS} from "../../shared/services/index";
 import {advance} from "../../shared/testing/helpers";
+import {CoreModule} from "../core/core.module";
 
 describe('LoginComponent', () => {
 
@@ -43,13 +43,12 @@ describe('LoginComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpModule,
         RouterTestingModule.withRoutes([
           {path: 'home', component: BlankComponent},
         ]),
+        CoreModule,
       ],
       providers: [
-        APP_SERVICE_PROVIDERS,
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [

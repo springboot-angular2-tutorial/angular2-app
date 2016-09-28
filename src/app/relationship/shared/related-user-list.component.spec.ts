@@ -4,12 +4,10 @@ import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
 import {TestBed, fakeAsync} from "@angular/core/testing";
 import {RelatedUserListComponent} from "./related-user-list.component";
-import {HttpModule} from "@angular/http";
 import {RouterTestingModule} from "@angular/router/testing";
 import {RelatedUser} from "../../../shared/domains";
-import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
 import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
+import {CoreModule} from "../../core/core.module";
 
 describe('RelatedUserListComponent', () => {
 
@@ -34,12 +32,8 @@ describe('RelatedUserListComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpModule,
         RouterTestingModule.withRoutes([]),
-      ],
-      providers: [
-        APP_SERVICE_PROVIDERS,
-        APP_TEST_HTTP_PROVIDERS,
+        CoreModule,
       ],
       declarations: [
         TestComponent,

@@ -7,16 +7,16 @@ import {
   TestBed,
   ComponentFixture
 } from "@angular/core/testing";
-import {BaseResponseOptions, Response, HttpModule} from "@angular/http";
+import {BaseResponseOptions, Response} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {Router} from "@angular/router";
 import {SignupComponent} from "./signup.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {LoginService} from "../../shared/services/login.service";
-import {APP_SERVICE_PROVIDERS} from "../../shared/services/index";
 import {APP_TEST_HTTP_PROVIDERS} from "../../shared/http/index";
 import {advance} from "../../shared/testing/helpers";
+import {CoreModule} from "../core/core.module";
 
 describe('SignupComponent', () => {
 
@@ -43,7 +43,6 @@ describe('SignupComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpModule,
         FormsModule,
         ReactiveFormsModule,
         RouterTestingModule.withRoutes([
@@ -52,9 +51,9 @@ describe('SignupComponent', () => {
             component: BlankComponent,
           },
         ]),
+        CoreModule,
       ],
       providers: [
-        APP_SERVICE_PROVIDERS,
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [

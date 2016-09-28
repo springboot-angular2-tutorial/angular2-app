@@ -11,12 +11,12 @@ import {
 } from "@angular/core/testing";
 import {Router} from "@angular/router";
 import {HeaderComponent} from "./header.component";
-import {LoginService, UserService, APP_SERVICE_PROVIDERS} from "../../services";
+import {LoginService, UserService} from "../../services";
 import {login} from "../../testing";
 import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
 import {RouterTestingModule} from "@angular/router/testing";
-import {HttpModule} from "@angular/http";
 import {advance} from "../../testing/helpers";
+import {CoreModule} from "../../../app/core/core.module";
 
 describe('HeaderComponent', () => {
 
@@ -41,7 +41,6 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpModule,
         RouterTestingModule.withRoutes([
           {path: 'home', component: BlankComponent},
           {path: 'users', component: BlankComponent},
@@ -51,9 +50,9 @@ describe('HeaderComponent', () => {
           {path: 'login', component: BlankComponent},
           {path: '', component: BlankComponent},
         ]),
+        CoreModule,
       ],
       providers: [
-        APP_SERVICE_PROVIDERS,
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [

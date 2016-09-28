@@ -7,14 +7,14 @@ import {
   TestBed,
   fakeAsync
 } from "@angular/core/testing";
-import {ResponseOptions, Response, HttpModule} from "@angular/http";
+import {ResponseOptions, Response} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {UserStatsComponent} from "./user-stats.component";
 import {GravatarComponent} from "../../../shared/components";
 import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
-import {APP_SERVICE_PROVIDERS} from "../../services/index";
 import {RouterTestingModule} from "@angular/router/testing";
 import {SharedModule} from "../../../app/shared/shared.module";
+import {CoreModule} from "../../../app/core/core.module";
 
 describe('UserStatsComponent', () => {
 
@@ -45,12 +45,11 @@ describe('UserStatsComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpModule,
-        RouterTestingModule.withRoutes([]),
+        RouterTestingModule,
+        CoreModule,
         SharedModule,
       ],
       providers: [
-        APP_SERVICE_PROVIDERS,
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [
