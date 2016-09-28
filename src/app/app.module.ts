@@ -23,7 +23,7 @@ import {PluralizePipe} from "../shared/pipes/pluralize.pipe";
 import {UserShowComponent} from "./user/user-show.component";
 import {FollowBtnComponent} from "../shared/components/follow-btn/follow-btn.component";
 import {MicropostListComponent} from "../shared/components/micropost/micropost-list.component";
-import {UserListComponent} from "./user/user-list.component";
+import {UserListComponent} from "./user/user-list/user-list.component";
 import {PagerComponent} from "../shared/components/pager/pager.component";
 import {RelatedUserListComponent} from "./relationship/related-user-list.component";
 import {FollowingListComponent} from "./relationship/following-list.component";
