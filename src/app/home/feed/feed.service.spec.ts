@@ -7,7 +7,7 @@ import {
 } from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {FeedService} from "./feed.service";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
 
 describe('FeedService', () => {
 

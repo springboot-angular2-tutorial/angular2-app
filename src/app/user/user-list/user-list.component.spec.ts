@@ -11,7 +11,7 @@ import {ResponseOptions, Response} from "@angular/http";
 import {Router} from "@angular/router";
 import {MockBackend} from "@angular/http/testing";
 import {UserListComponent} from "./user-list.component";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
 import {advance} from "../../../shared/testing/helpers";
 import {RouterTestingModule} from "@angular/router/testing";
 import {PagerComponent} from "../../../shared/components/pager/pager.component";

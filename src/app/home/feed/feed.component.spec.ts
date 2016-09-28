@@ -7,7 +7,7 @@ import {MockBackend} from "@angular/http/testing";
 import {By} from "@angular/platform-browser";
 import {getDOM} from "@angular/platform-browser-dynamic/testing/private_import_platform-browser";
 import {FeedService} from "./feed.service";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
 import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
 import {MicropostService} from "../../core/services/micropost.service";
 import {SharedModule} from "../../shared/shared.module";

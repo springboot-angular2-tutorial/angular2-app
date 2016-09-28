@@ -14,7 +14,7 @@ import {SignupComponent} from "./signup.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {LoginService} from "../core/services/login.service";
-import {APP_TEST_HTTP_PROVIDERS} from "../../shared/http/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../core/http/index";
 import {advance} from "../../shared/testing/helpers";
 import {CoreModule} from "../core/core.module";
 

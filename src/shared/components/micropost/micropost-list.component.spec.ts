@@ -5,7 +5,7 @@ import {inject, TestBed, fakeAsync} from "@angular/core/testing";
 import {ResponseOptions, Response} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {MicropostListComponent} from "./micropost-list.component";
-import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../app/core/http/index";
 import {RouterTestingModule} from "@angular/router/testing";
 import {SharedModule} from "../../../app/shared/shared.module";
 import {CoreModule} from "../../../app/core/core.module";

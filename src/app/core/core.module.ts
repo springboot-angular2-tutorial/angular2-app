@@ -8,7 +8,7 @@ import {UserService} from "./services/user.service";
 import {FollowBtnService} from "../../shared/components/follow-btn/follow-btn.service";
 import {PrivatePageGuard} from "./services/private-page.guard";
 import {PublicPageGuard} from "./services/public-page.guard";
-import {MyHttp} from "../../shared/http/http";
+import {MyHttp} from "./http/http";
 import {XHRBackend, Http, RequestOptions, HttpModule} from "@angular/http";
 
 @NgModule({

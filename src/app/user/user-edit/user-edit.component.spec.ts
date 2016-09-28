@@ -12,7 +12,7 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {UserService} from "../../core/services/user.service";
 import {User} from "../../../shared/domains";
 import {ProfileDataResolver} from "../../../shared/routes/profile-data.resolver";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
 import {APP_RESOLVER_PROVIDERS} from "../../../shared/routes/index";
 import {CoreModule} from "../../core/core.module";
 

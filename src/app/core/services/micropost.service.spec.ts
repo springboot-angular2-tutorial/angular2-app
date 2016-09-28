@@ -7,7 +7,7 @@ import {
 } from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {MicropostService} from "./micropost.service";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../http/index";
 
 describe('MicropostService', () => {
 

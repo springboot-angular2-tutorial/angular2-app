@@ -5,7 +5,7 @@ import {Response, ResponseOptions} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {FollowBtnComponent} from "./follow-btn.component";
 import {FollowBtnService} from "./follow-btn.service";
-import {APP_TEST_HTTP_PROVIDERS} from "../../http/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../app/core/http/index";
 import {RouterTestingModule} from "@angular/router/testing";
 import {CoreModule} from "../../../app/core/core.module";
 

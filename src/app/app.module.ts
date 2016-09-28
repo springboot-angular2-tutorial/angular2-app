@@ -9,7 +9,6 @@ import {AppComponent} from "./app.component";
 import {HeaderComponent} from "../shared/components/header/header.component";
 import {APP_RESOLVER_PROVIDERS} from "../shared/routes/index";
 import {HelpComponent} from "./help/help.component";
-import {APP_HTTP_PROVIDERS} from "../shared/http/index";
 import {LoginComponent} from "./login/login.component";
 import {TopComponent} from "./top/top.component";
 import {HomeComponent} from "./home/home.component";
@@ -32,7 +31,6 @@ import {CoreModule} from "./core/core.module";
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  ...APP_HTTP_PROVIDERS,
 ];
 
 @NgModule({

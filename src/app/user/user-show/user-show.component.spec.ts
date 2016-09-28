@@ -3,7 +3,7 @@ import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {inject, TestBed, fakeAsync} from "@angular/core/testing";
 import {Router} from "@angular/router";
 import {UserShowComponent} from "./user-show.component";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
 import {RouterTestingModule} from "@angular/router/testing";
 import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
 import {MicropostListComponent} from "../../../shared/components/micropost/micropost-list.component";

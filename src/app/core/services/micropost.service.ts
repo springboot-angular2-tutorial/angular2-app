@@ -1,7 +1,7 @@
 import {Observable} from "rxjs/Observable";
 import {Injectable} from "@angular/core";
 import {Response} from "@angular/http";
-import {MyHttp} from "../../../shared/http/http";
+import {MyHttp} from "../http/http";
 
 const url = '/api/microposts';
 

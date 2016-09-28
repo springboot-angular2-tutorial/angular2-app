@@ -4,7 +4,7 @@ import {TestBed, fakeAsync} from "@angular/core/testing";
 import {FeedComponent} from "./feed/feed.component";
 import {HomeComponent} from "./home.component";
 import {RouterTestingModule} from "@angular/router/testing";
-import {APP_TEST_HTTP_PROVIDERS} from "../../shared/http/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../core/http/index";
 import {MicropostNewComponent} from "../../shared/components/micropost/micropost-new.component";
 import {UserStatsComponent} from "../../shared/components/user-stats/user-stats.component";
 import {GravatarComponent} from "../../shared/components/gravatar/gravatar.component";
