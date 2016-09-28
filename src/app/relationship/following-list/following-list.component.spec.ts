@@ -3,14 +3,14 @@ import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {inject, TestBed, fakeAsync} from "@angular/core/testing";
 import {Router} from "@angular/router";
 import {FollowingListComponent} from "./following-list.component";
-import {RelatedUserListComponent} from "./related-user-list.component";
+import {RelatedUserListComponent} from "../shared/related-user-list.component";
 import {HttpModule} from "@angular/http";
 import {RouterTestingModule} from "@angular/router/testing";
-import {APP_SERVICE_PROVIDERS} from "../../shared/services/index";
-import {APP_TEST_HTTP_PROVIDERS} from "../../shared/http/index";
-import {UserStatsComponent} from "../../shared/components/user-stats/user-stats.component";
-import {GravatarComponent} from "../../shared/components/gravatar/gravatar.component";
-import {PluralizePipe} from "../../shared/pipes/pluralize.pipe";
+import {APP_SERVICE_PROVIDERS} from "../../../shared/services/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../shared/http/index";
+import {UserStatsComponent} from "../../../shared/components/user-stats/user-stats.component";
+import {GravatarComponent} from "../../../shared/components/gravatar/gravatar.component";
+import {PluralizePipe} from "../../../shared/pipes/pluralize.pipe";
 
 describe('FollowingListComponent', () => {
 
