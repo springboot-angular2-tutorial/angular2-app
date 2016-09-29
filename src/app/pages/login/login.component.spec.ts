@@ -17,6 +17,7 @@ import {LoginService} from "../../core/services/login.service";
 import {CoreModule} from "../../core/core.module";
 import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
 import {advance} from "../../../shared/testing/helpers";
+import {LoginModule} from "./login.module";
 
 describe('LoginComponent', () => {
 
@@ -47,13 +48,13 @@ describe('LoginComponent', () => {
           {path: 'home', component: BlankComponent},
         ]),
         CoreModule,
+        LoginModule,
       ],
       providers: [
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [
         TestComponent,
-        LoginComponent,
         BlankComponent,
       ]
     });

@@ -5,9 +5,9 @@ import * as toastr from "toastr";
 import {
   EMAIL_PATTERN,
   Validators as AppValidators
-} from "../core/forms/index";
-import {UserService} from "../core/services/user.service";
-import {LoginService} from "../core/services/login.service";
+} from "../../core/forms/index";
+import {UserService} from "../../core/services/user.service";
+import {LoginService} from "../../core/services/login.service";
 
 @Component({
   selector: 'mpt-signup',
