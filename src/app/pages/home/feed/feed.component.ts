@@ -8,7 +8,6 @@ import {HttpErrorHandler} from "../../../core/services/http-error-handler";
   selector: 'mpt-feed',
   styleUrls: ['./feed.scss'],
   templateUrl: './feed.html',
-  providers: [FeedService],
 })
 export class FeedComponent {
 

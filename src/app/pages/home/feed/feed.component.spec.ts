@@ -6,12 +6,11 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {MockBackend} from "@angular/http/testing";
 import {By} from "@angular/platform-browser";
 import {getDOM} from "@angular/platform-browser-dynamic/testing/private_import_platform-browser";
-import {FeedService} from "./feed.service";
 import {MicropostService} from "../../../core/services/micropost.service";
 import {CoreModule} from "../../../core/core.module";
-import {SharedModule} from "../../../shared/shared.module";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../core/http/index";
 import {GravatarComponent} from "../../../shared/gravatar/gravatar.component";
+import {FeedModule} from "./feed.module";
 
 describe('FeedComponent', () => {
 
@@ -59,15 +58,13 @@ describe('FeedComponent', () => {
       imports: [
         RouterTestingModule,
         CoreModule,
-        SharedModule,
+        FeedModule,
       ],
       providers: [
-        FeedService,
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [
         TestComponent,
-        FeedComponent,
       ]
     });
   });
