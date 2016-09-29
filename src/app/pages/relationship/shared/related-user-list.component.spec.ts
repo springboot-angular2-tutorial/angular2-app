@@ -7,8 +7,8 @@ import {RelatedUserListComponent} from "./related-user-list.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {RelatedUser} from "../../../../shared/domains";
 import {CoreModule} from "../../../core/core.module";
-import {SharedModule} from "../../../shared/shared.module";
 import {GravatarComponent} from "../../../shared/gravatar/gravatar.component";
+import {RelatedUserListModule} from "./related-user-list.module";
 
 describe('RelatedUserListComponent', () => {
 
@@ -35,11 +35,10 @@ describe('RelatedUserListComponent', () => {
       imports: [
         RouterTestingModule.withRoutes([]),
         CoreModule,
-        SharedModule,
+        RelatedUserListModule,
       ],
       declarations: [
         TestComponent,
-        RelatedUserListComponent,
       ]
     });
   });
