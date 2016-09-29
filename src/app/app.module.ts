@@ -25,6 +25,7 @@ import {SignupComponent} from "./signup/signup.component";
 import {UserEditComponent} from "./user/user-edit/user-edit.component";
 import {SharedModule} from "./shared/shared.module";
 import {CoreModule} from "./core/core.module";
+import {UserStatsModule} from "./shared/user-stats/user-stats.module";
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -48,7 +49,6 @@ const APP_PROVIDERS = [
 
     MicropostNewComponent,
     FeedComponent,
-    UserStatsComponent,
     MicropostListComponent,
     RelatedUserListComponent,
   ],
@@ -61,6 +61,7 @@ const APP_PROVIDERS = [
 
     CoreModule,
     SharedModule,
+    UserStatsModule,
   ],
   providers: [
     ENV_PROVIDERS,

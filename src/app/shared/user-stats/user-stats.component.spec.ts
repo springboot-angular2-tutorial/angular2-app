@@ -13,8 +13,8 @@ import {UserStatsComponent} from "./user-stats.component";
 import {GravatarComponent} from "../../../shared/components";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../app/core/http/index";
 import {RouterTestingModule} from "@angular/router/testing";
-import {SharedModule} from "../../../app/shared/shared.module";
 import {CoreModule} from "../../../app/core/core.module";
+import {UserStatsModule} from "./user-stats.module";
 
 describe('UserStatsComponent', () => {
 
@@ -47,14 +47,13 @@ describe('UserStatsComponent', () => {
       imports: [
         RouterTestingModule,
         CoreModule,
-        SharedModule,
+        UserStatsModule,
       ],
       providers: [
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [
         TestComponent,
-        UserStatsComponent,
       ]
     });
   });

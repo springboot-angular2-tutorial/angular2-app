@@ -6,15 +6,19 @@ import {GravatarComponent} from "./gravatar/gravatar.component";
 import {PagerComponent} from "./pager/pager.component";
 import {FollowBtnModule} from "./follow-btn/follow-btn.module";
 import {FollowBtnComponent} from "./follow-btn/follow-btn.component";
+import {UserStatsComponent} from "./user-stats/user-stats.component";
+import {UserStatsModule} from "./user-stats/user-stats.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FollowBtnModule,
+    // UserStatsModule,
   ],
   declarations: [
     GravatarComponent,
     PagerComponent,
+    // UserStatsComponent,
 
     PluralizePipe,
     TimeAgoPipe,
@@ -25,6 +29,7 @@ import {FollowBtnComponent} from "./follow-btn/follow-btn.component";
     GravatarComponent,
     PagerComponent,
     FollowBtnComponent,
+    // UserStatsComponent,
 
     PluralizePipe,
     TimeAgoPipe,

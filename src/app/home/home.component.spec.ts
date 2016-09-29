@@ -6,9 +6,10 @@ import {HomeComponent} from "./home.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {APP_TEST_HTTP_PROVIDERS} from "../core/http/index";
 import {MicropostNewComponent} from "../../shared/components/micropost/micropost-new.component";
-import {UserStatsComponent} from "../../shared/components/user-stats/user-stats.component";
 import {SharedModule} from "../shared/shared.module";
 import {CoreModule} from "../core/core.module";
+import {UserStatsComponent} from "../shared/user-stats/user-stats.component";
+import {UserStatsModule} from "../shared/user-stats/user-stats.module";
 
 describe('HomeComponent', () => {
 
@@ -29,6 +30,7 @@ describe('HomeComponent', () => {
         RouterTestingModule,
         CoreModule,
         SharedModule,
+        UserStatsModule,
       ],
       providers: [
         APP_TEST_HTTP_PROVIDERS,
@@ -38,7 +40,6 @@ describe('HomeComponent', () => {
         HomeComponent,
         FeedComponent,
         MicropostNewComponent,
-        UserStatsComponent,
       ]
     });
   });
