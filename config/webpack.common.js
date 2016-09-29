@@ -40,7 +40,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new ForkCheckerPlugin()
+    new ForkCheckerPlugin(),
+    new webpack.ContextReplacementPlugin(
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      __dirname
+    )
   ],
 
   node: {
