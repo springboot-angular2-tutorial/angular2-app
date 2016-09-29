@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from "@angular/core";
-import {UserService} from "../../../app/core/services/user.service";
-import {HttpErrorHandler} from "../../../app/core/services/http-error-handler";
-import {User} from "../../../shared/domains";
+import {User} from "../../shared/domains";
+import {UserService} from "../core/services/user.service";
+import {HttpErrorHandler} from "../core/services/http-error-handler";
 
 @Component({
   selector: 'mpt-user-stats',

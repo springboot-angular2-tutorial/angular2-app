@@ -8,8 +8,8 @@ import {APP_TEST_HTTP_PROVIDERS} from "../core/http/index";
 import {MicropostNewComponent} from "../../shared/components/micropost/micropost-new.component";
 import {SharedModule} from "../shared/shared.module";
 import {CoreModule} from "../core/core.module";
-import {UserStatsComponent} from "../shared/user-stats/user-stats.component";
-import {UserStatsModule} from "../shared/user-stats/user-stats.module";
+import {UserStatsComponent} from "../user-stats/user-stats.component";
+import {UserStatsModule} from "../user-stats/user-stats.module";
 
 describe('HomeComponent', () => {
 

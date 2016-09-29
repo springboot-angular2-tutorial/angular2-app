@@ -9,8 +9,8 @@ import {MicropostListComponent} from "../../../shared/components/micropost/micro
 import {FollowBtnComponent} from "../../shared/follow-btn/follow-btn.component";
 import {SharedModule} from "../../shared/shared.module";
 import {CoreModule} from "../../core/core.module";
-import {UserStatsComponent} from "../../shared/user-stats/user-stats.component";
-import {UserStatsModule} from "../../shared/user-stats/user-stats.module";
+import {UserStatsComponent} from "../../user-stats/user-stats.component";
+import {UserStatsModule} from "../../user-stats/user-stats.module";
 
 describe('UserShowComponent', () => {
 

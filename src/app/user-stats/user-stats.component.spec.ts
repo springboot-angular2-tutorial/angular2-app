@@ -10,11 +10,11 @@ import {
 import {ResponseOptions, Response} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {UserStatsComponent} from "./user-stats.component";
-import {GravatarComponent} from "../../../shared/components";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../app/core/http/index";
 import {RouterTestingModule} from "@angular/router/testing";
-import {CoreModule} from "../../../app/core/core.module";
 import {UserStatsModule} from "./user-stats.module";
+import {CoreModule} from "../core/core.module";
+import {APP_TEST_HTTP_PROVIDERS} from "../core/http/index";
+import {GravatarComponent} from "../shared/gravatar/gravatar.component";
 
 describe('UserStatsComponent', () => {
 
