@@ -11,7 +11,7 @@ import {SharedModule} from "./shared/shared.module";
 import {CoreModule} from "./core/core.module";
 import {UserStatsModule} from "./user-stats/user-stats.module";
 import {HomeModule} from "./pages/home/home.module";
-import {UserShowModule} from "./user/user-show/user-show.module";
+import {UserShowModule} from "./pages/user/user-show/user-show.module";
 import {SignupModule} from "./pages/signup/signup.module";
 import {LoginModule} from "./pages/login/login.module";
 import {FollowerListModule} from "./pages/relationship/follower-list/follower-list.module";

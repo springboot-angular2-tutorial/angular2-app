@@ -1,8 +1,8 @@
 import {CommonModule} from "@angular/common";
-import {SharedModule} from "../../shared/shared.module";
-import {UserStatsModule} from "../../user-stats/user-stats.module";
+import {SharedModule} from "../../../shared/shared.module";
+import {UserStatsModule} from "../../../user-stats/user-stats.module";
 import {NgModule} from "@angular/core/src/metadata/ng_module";
-import {MicropostListModule} from "../../micropost/micropost-list/micropost-list.module";
+import {MicropostListModule} from "../../../micropost/micropost-list/micropost-list.module";
 import {UserShowComponent} from "./user-show.component";
 
 @NgModule({

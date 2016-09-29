@@ -1,6 +1,6 @@
 import {Routes} from "@angular/router";
 import {HomeComponent} from "./pages/home/home.component";
-import {UserShowComponent} from "./user/user-show/user-show.component";
+import {UserShowComponent} from "./pages/user/user-show/user-show.component";
 import {FollowingListComponent} from "./pages/relationship/following-list/following-list.component";
 import {FollowerListComponent} from "./pages/relationship/follower-list/follower-list.component";
 import {UserListComponent} from "./pages/user/user-list/user-list.component";
