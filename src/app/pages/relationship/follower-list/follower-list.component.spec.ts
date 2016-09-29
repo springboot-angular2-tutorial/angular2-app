@@ -5,11 +5,11 @@ import {Router} from "@angular/router";
 import {FollowerListComponent} from "./follower-list.component";
 import {RelatedUserListComponent} from "../shared/related-user-list.component";
 import {RouterTestingModule} from "@angular/router/testing";
-import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
-import {SharedModule} from "../../shared/shared.module";
-import {CoreModule} from "../../core/core.module";
-import {UserStatsComponent} from "../../user-stats/user-stats.component";
-import {UserStatsModule} from "../../user-stats/user-stats.module";
+import {CoreModule} from "../../../core/core.module";
+import {SharedModule} from "../../../shared/shared.module";
+import {UserStatsModule} from "../../../user-stats/user-stats.module";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../core/http/index";
+import {UserStatsComponent} from "../../../user-stats/user-stats.component";
 
 describe('FollowerListComponent', () => {
 
@@ -43,7 +43,6 @@ describe('FollowerListComponent', () => {
       declarations: [
         TestComponent,
         FollowerListComponent,
-        // UserStatsComponent,
         RelatedUserListComponent,
       ]
     });

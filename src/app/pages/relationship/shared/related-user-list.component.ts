@@ -1,7 +1,7 @@
 import {Observable} from "rxjs/Observable";
 import {Component, OnInit, Input} from "@angular/core";
-import {RelatedUser} from "../../../shared/domains";
-import {HttpErrorHandler} from "../../core/services/http-error-handler";
+import {RelatedUser} from "../../../../shared/domains";
+import {HttpErrorHandler} from "../../../core/services/http-error-handler";
 
 @Component({
   selector: 'mpt-related-user-list',

@@ -5,10 +5,10 @@ import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
 import {TestBed, fakeAsync} from "@angular/core/testing";
 import {RelatedUserListComponent} from "./related-user-list.component";
 import {RouterTestingModule} from "@angular/router/testing";
-import {RelatedUser} from "../../../shared/domains";
-import {GravatarComponent} from "../../shared/gravatar/gravatar.component";
-import {CoreModule} from "../../core/core.module";
-import {SharedModule} from "../../shared/shared.module";
+import {RelatedUser} from "../../../../shared/domains";
+import {CoreModule} from "../../../core/core.module";
+import {SharedModule} from "../../../shared/shared.module";
+import {GravatarComponent} from "../../../shared/gravatar/gravatar.component";
 
 describe('RelatedUserListComponent', () => {
 
