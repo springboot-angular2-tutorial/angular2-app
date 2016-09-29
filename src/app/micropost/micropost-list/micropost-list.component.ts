@@ -1,9 +1,9 @@
 import {Component, OnInit, Input} from "@angular/core";
-import {Micropost, UserStats} from "../../../../shared/domains";
 import {MicropostListService} from "./micropost-list.service";
-import {MicropostService} from "../../../core/services/micropost.service";
-import {UserService} from "../../../core/services/user.service";
-import {HttpErrorHandler} from "../../../core/services/http-error-handler";
+import {Micropost, UserStats} from "../../../shared/domains";
+import {MicropostService} from "../../core/services/micropost.service";
+import {UserService} from "../../core/services/user.service";
+import {HttpErrorHandler} from "../../core/services/http-error-handler";
 
 @Component({
   selector: 'mpt-micropost-list',

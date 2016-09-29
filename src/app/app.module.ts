@@ -15,7 +15,7 @@ import {HomeComponent} from "./home/home.component";
 import {MicropostNewComponent} from "../shared/components/micropost/micropost-new.component";
 import {FeedComponent} from "./home/feed/feed.component";
 import {UserShowComponent} from "./user/user-show/user-show.component";
-import {MicropostListComponent} from "./shared/micropost/micropost-list/micropost-list.component";
+import {MicropostListComponent} from "./micropost/micropost-list/micropost-list.component";
 import {UserListComponent} from "./user/user-list/user-list.component";
 import {RelatedUserListComponent} from "./relationship/shared/related-user-list.component";
 import {FollowingListComponent} from "./relationship/following-list/following-list.component";
