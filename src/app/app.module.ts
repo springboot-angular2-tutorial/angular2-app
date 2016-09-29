@@ -11,11 +11,6 @@ import {APP_RESOLVER_PROVIDERS} from "../shared/routes/index";
 import {HelpComponent} from "./help/help.component";
 import {LoginComponent} from "./login/login.component";
 import {TopComponent} from "./top/top.component";
-import {HomeComponent} from "./home/home.component";
-import {MicropostNewComponent} from "./micropost/micropost-new/micropost-new.component";
-import {FeedComponent} from "./home/feed/feed.component";
-import {UserShowComponent} from "./user/user-show/user-show.component";
-import {MicropostListComponent} from "./micropost/micropost-list/micropost-list.component";
 import {UserListComponent} from "./user/user-list/user-list.component";
 import {RelatedUserListComponent} from "./relationship/shared/related-user-list.component";
 import {FollowingListComponent} from "./relationship/following-list/following-list.component";
@@ -25,6 +20,8 @@ import {UserEditComponent} from "./user/user-edit/user-edit.component";
 import {SharedModule} from "./shared/shared.module";
 import {CoreModule} from "./core/core.module";
 import {UserStatsModule} from "./user-stats/user-stats.module";
+import {HomeModule} from "./home/home.module";
+import {UserShowModule} from "./user/user-show/user-show.module";
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -36,19 +33,14 @@ const APP_PROVIDERS = [
     AppComponent,
     TopComponent,
     LoginComponent,
-    HomeComponent,
     HelpComponent,
     HeaderComponent,
-    UserShowComponent,
     UserListComponent,
     FollowingListComponent,
     FollowerListComponent,
     SignupComponent,
     UserEditComponent,
 
-    MicropostNewComponent,
-    FeedComponent,
-    MicropostListComponent,
     RelatedUserListComponent,
   ],
   imports: [
@@ -60,6 +52,9 @@ const APP_PROVIDERS = [
 
     CoreModule,
     SharedModule,
+
+    HomeModule,
+    UserShowModule,
     UserStatsModule,
   ],
   providers: [
