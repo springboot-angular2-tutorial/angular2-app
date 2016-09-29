@@ -8,7 +8,7 @@ import {ROUTES} from "./app.routes";
 import {AppComponent} from "./app.component";
 import {HeaderComponent} from "./header/header.component";
 import {APP_RESOLVER_PROVIDERS} from "../shared/routes/index";
-import {HelpComponent} from "./help/help.component";
+import {HelpComponent} from "./pages/help/help.component";
 import {LoginComponent} from "./login/login.component";
 import {TopComponent} from "./top/top.component";
 import {UserListComponent} from "./user/user-list/user-list.component";
