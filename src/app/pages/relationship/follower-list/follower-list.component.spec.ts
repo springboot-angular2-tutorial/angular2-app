@@ -6,10 +6,9 @@ import {FollowerListComponent} from "./follower-list.component";
 import {RelatedUserListComponent} from "../shared/related-user-list.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {CoreModule} from "../../../core/core.module";
-import {SharedModule} from "../../../shared/shared.module";
-import {UserStatsModule} from "../../../user-stats/user-stats.module";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../core/http/index";
 import {UserStatsComponent} from "../../../user-stats/user-stats.component";
+import {FollowerListModule} from "./follower-list.module";
 
 describe('FollowerListComponent', () => {
 
@@ -34,16 +33,13 @@ describe('FollowerListComponent', () => {
           },
         ]),
         CoreModule,
-        SharedModule,
-        UserStatsModule,
+        FollowerListModule,
       ],
       providers: [
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [
         TestComponent,
-        FollowerListComponent,
-        RelatedUserListComponent,
       ]
     });
   });

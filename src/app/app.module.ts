@@ -11,9 +11,6 @@ import {APP_RESOLVER_PROVIDERS} from "../shared/routes/index";
 import {HelpComponent} from "./pages/help/help.component";
 import {TopComponent} from "./top/top.component";
 import {UserListComponent} from "./user/user-list/user-list.component";
-import {RelatedUserListComponent} from "./pages/relationship/shared/related-user-list.component";
-import {FollowingListComponent} from "./pages/relationship/following-list/following-list.component";
-import {FollowerListComponent} from "./pages/relationship/follower-list/follower-list.component";
 import {UserEditComponent} from "./user/user-edit/user-edit.component";
 import {SharedModule} from "./shared/shared.module";
 import {CoreModule} from "./core/core.module";
@@ -22,6 +19,8 @@ import {HomeModule} from "./pages/home/home.module";
 import {UserShowModule} from "./user/user-show/user-show.module";
 import {SignupModule} from "./pages/signup/signup.module";
 import {LoginModule} from "./pages/login/login.module";
+import {FollowerListModule} from "./pages/relationship/follower-list/follower-list.module";
+import {FollowingListModule} from "./pages/relationship/following-list/following-list.module";
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -35,11 +34,7 @@ const APP_PROVIDERS = [
     HelpComponent,
     HeaderComponent,
     UserListComponent,
-    FollowingListComponent,
-    FollowerListComponent,
     UserEditComponent,
-
-    RelatedUserListComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +50,9 @@ const APP_PROVIDERS = [
     SignupModule,
     LoginModule,
     UserShowModule,
+    FollowerListModule,
+    FollowingListModule,
+
     UserStatsModule,
   ],
   providers: [
