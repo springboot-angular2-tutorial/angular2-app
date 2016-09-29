@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {LoginService} from "../../../app/core/services/login.service";
+import {LoginService} from "../core/services/login.service";
 
 @Component({
   selector: 'mpt-header',

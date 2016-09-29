@@ -6,7 +6,7 @@ import {RouterModule} from "@angular/router";
 import {ENV_PROVIDERS} from "./environment";
 import {ROUTES} from "./app.routes";
 import {AppComponent} from "./app.component";
-import {HeaderComponent} from "../shared/components/header/header.component";
+import {HeaderComponent} from "./header/header.component";
 import {APP_RESOLVER_PROVIDERS} from "../shared/routes/index";
 import {HelpComponent} from "./help/help.component";
 import {LoginComponent} from "./login/login.component";
