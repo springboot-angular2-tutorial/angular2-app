@@ -1,6 +1,5 @@
 import {NgModule, ApplicationRef} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {RouterModule} from "@angular/router";
 import {ENV_PROVIDERS} from "./environment";
@@ -35,8 +34,6 @@ const APP_PROVIDERS = [
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES),
 
