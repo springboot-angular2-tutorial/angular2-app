@@ -12,7 +12,7 @@ import {HelpComponent} from "./help/help.component";
 import {LoginComponent} from "./login/login.component";
 import {TopComponent} from "./top/top.component";
 import {HomeComponent} from "./home/home.component";
-import {MicropostNewComponent} from "../shared/components/micropost/micropost-new.component";
+import {MicropostNewComponent} from "./micropost/micropost-new/micropost-new.component";
 import {FeedComponent} from "./home/feed/feed.component";
 import {UserShowComponent} from "./user/user-show/user-show.component";
 import {MicropostListComponent} from "./micropost/micropost-list/micropost-list.component";
