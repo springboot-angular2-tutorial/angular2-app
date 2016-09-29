@@ -11,13 +11,13 @@ import {ResponseOptions, Response} from "@angular/http";
 import {Router} from "@angular/router";
 import {MockBackend} from "@angular/http/testing";
 import {UserListComponent} from "./user-list.component";
-import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
-import {advance} from "../../../shared/testing/helpers";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../core/http/index";
+import {advance} from "../../../../shared/testing/helpers";
 import {RouterTestingModule} from "@angular/router/testing";
-import {PagerComponent} from "../../shared/pager/pager.component";
-import {GravatarComponent} from "../../shared/gravatar/gravatar.component";
-import {CoreModule} from "../../core/core.module";
-import {SharedModule} from "../../shared/shared.module";
+import {PagerComponent} from "../../../shared/pager/pager.component";
+import {GravatarComponent} from "../../../shared/gravatar/gravatar.component";
+import {CoreModule} from "../../../core/core.module";
+import {UserListModule} from "./user-list.module";
 
 describe('UserListComponent', () => {
 
@@ -55,14 +55,13 @@ describe('UserListComponent', () => {
           },
         ]),
         CoreModule,
-        SharedModule,
+        UserListModule,
       ],
       providers: [
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [
         TestComponent,
-        UserListComponent,
       ]
     });
   });

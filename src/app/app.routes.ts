@@ -3,7 +3,7 @@ import {HomeComponent} from "./pages/home/home.component";
 import {UserShowComponent} from "./user/user-show/user-show.component";
 import {FollowingListComponent} from "./pages/relationship/following-list/following-list.component";
 import {FollowerListComponent} from "./pages/relationship/follower-list/follower-list.component";
-import {UserListComponent} from "./user/user-list/user-list.component";
+import {UserListComponent} from "./pages/user/user-list/user-list.component";
 import {HelpComponent} from "./pages/help/help.component";
 import {UserEditComponent} from "./pages/user/user-edit/user-edit.component";
 import {ProfileDataResolver} from "../shared/routes/profile-data.resolver";
