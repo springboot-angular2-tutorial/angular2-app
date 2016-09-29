@@ -9,6 +9,7 @@ import {PrivatePageGuard} from "./services/private-page.guard";
 import {PublicPageGuard} from "./services/public-page.guard";
 import {MyHttp} from "./http/http";
 import {XHRBackend, Http, RequestOptions, HttpModule} from "@angular/http";
+import {ProfileDataResolver} from "./services/profile-data.resolver";
 
 @NgModule({
   imports: [
@@ -30,6 +31,9 @@ import {XHRBackend, Http, RequestOptions, HttpModule} from "@angular/http";
     LoginService,
     MicropostService,
     UserService,
+
+    ProfileDataResolver,
+
     PrivatePageGuard,
     PublicPageGuard,
   ]

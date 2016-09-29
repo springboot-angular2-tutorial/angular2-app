@@ -20,8 +20,6 @@ import {FollowBtnComponent} from "./follow-btn/follow-btn.component";
     TimeAgoPipe,
   ],
   exports: [
-    CommonModule,
-
     GravatarComponent,
     PagerComponent,
     FollowBtnComponent,
