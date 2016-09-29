@@ -20,7 +20,7 @@ import {UserEditComponent} from "./user/user-edit/user-edit.component";
 import {SharedModule} from "./shared/shared.module";
 import {CoreModule} from "./core/core.module";
 import {UserStatsModule} from "./user-stats/user-stats.module";
-import {HomeModule} from "./home/home.module";
+import {HomeModule} from "./pages/home/home.module";
 import {UserShowModule} from "./user/user-show/user-show.module";
 
 const APP_PROVIDERS = [

@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Output} from "@angular/core";
 import {FeedService} from "./feed.service";
-import {Micropost} from "../../../shared/domains";
-import {MicropostService} from "../../core/services/micropost.service";
-import {HttpErrorHandler} from "../../core/services/http-error-handler";
+import {Micropost} from "../../../../shared/domains";
+import {MicropostService} from "../../../core/services/micropost.service";
+import {HttpErrorHandler} from "../../../core/services/http-error-handler";
 
 @Component({
   selector: 'mpt-feed',

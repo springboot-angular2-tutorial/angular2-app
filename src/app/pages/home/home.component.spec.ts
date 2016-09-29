@@ -4,11 +4,11 @@ import {TestBed, fakeAsync} from "@angular/core/testing";
 import {FeedComponent} from "./feed/feed.component";
 import {HomeComponent} from "./home.component";
 import {RouterTestingModule} from "@angular/router/testing";
-import {APP_TEST_HTTP_PROVIDERS} from "../core/http/index";
-import {MicropostNewComponent} from "../micropost/micropost-new/micropost-new.component";
-import {CoreModule} from "../core/core.module";
-import {UserStatsComponent} from "../user-stats/user-stats.component";
 import {HomeModule} from "./home.module";
+import {CoreModule} from "../../core/core.module";
+import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
+import {UserStatsComponent} from "../../user-stats/user-stats.component";
+import {MicropostNewComponent} from "../../micropost/micropost-new/micropost-new.component";
 
 describe('HomeComponent', () => {
 

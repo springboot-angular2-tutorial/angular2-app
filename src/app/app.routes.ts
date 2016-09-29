@@ -1,5 +1,5 @@
 import {Routes} from "@angular/router";
-import {HomeComponent} from "./home/home.component";
+import {HomeComponent} from "./pages/home/home.component";
 import {UserShowComponent} from "./user/user-show/user-show.component";
 import {FollowingListComponent} from "./relationship/following-list/following-list.component";
 import {FollowerListComponent} from "./relationship/follower-list/follower-list.component";
