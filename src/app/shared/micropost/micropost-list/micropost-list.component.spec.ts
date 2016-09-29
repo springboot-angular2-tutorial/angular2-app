@@ -5,11 +5,11 @@ import {inject, TestBed, fakeAsync} from "@angular/core/testing";
 import {ResponseOptions, Response} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {MicropostListComponent} from "./micropost-list.component";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../app/core/http/index";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../core/http/index";
 import {RouterTestingModule} from "@angular/router/testing";
-import {SharedModule} from "../../../app/shared/shared.module";
-import {CoreModule} from "../../../app/core/core.module";
-import {MicropostService} from "../../../app/core/services/micropost.service";
+import {CoreModule} from "../../../core/core.module";
+import {MicropostService} from "../../../core/services/micropost.service";
+import {MicropostListModule} from "./micropost-list.module";
 
 describe('MicropostListComponent', () => {
 
@@ -56,14 +56,13 @@ describe('MicropostListComponent', () => {
       imports: [
         RouterTestingModule,
         CoreModule,
-        SharedModule,
+        MicropostListModule,
       ],
       providers: [
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [
         TestComponent,
-        MicropostListComponent,
       ]
     });
   });

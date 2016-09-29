@@ -5,12 +5,11 @@ import {Router} from "@angular/router";
 import {UserShowComponent} from "./user-show.component";
 import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
 import {RouterTestingModule} from "@angular/router/testing";
-import {MicropostListComponent} from "../../../shared/components/micropost/micropost-list.component";
+import {MicropostListComponent} from "../../shared/micropost/micropost-list/micropost-list.component";
 import {FollowBtnComponent} from "../../shared/follow-btn/follow-btn.component";
-import {SharedModule} from "../../shared/shared.module";
 import {CoreModule} from "../../core/core.module";
 import {UserStatsComponent} from "../../user-stats/user-stats.component";
-import {UserStatsModule} from "../../user-stats/user-stats.module";
+import {UserShowModule} from "./user-show.module";
 
 describe('UserShowComponent', () => {
 
@@ -34,16 +33,13 @@ describe('UserShowComponent', () => {
           {path: 'users/:id', component: UserShowComponent},
         ]),
         CoreModule,
-        SharedModule,
-        UserStatsModule,
+        UserShowModule,
       ],
       providers: [
         APP_TEST_HTTP_PROVIDERS,
       ],
       declarations: [
         TestComponent,
-        UserShowComponent,
-        MicropostListComponent,
       ]
     });
   });
