@@ -15,7 +15,7 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {CoreModule} from "../core/core.module";
 import {APP_TEST_HTTP_PROVIDERS} from "../core/http/index";
 import {LoginService} from "../core/services/login.service";
-import {login, advance} from "../../shared/testing/helpers";
+import {login, advance} from "../testing/helpers";
 import {UserService} from "../core/services/user.service";
 
 describe('HeaderComponent', () => {

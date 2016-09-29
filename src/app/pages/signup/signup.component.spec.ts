@@ -15,7 +15,7 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {LoginService} from "../../core/services/login.service";
 import {CoreModule} from "../../core/core.module";
 import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
-import {advance} from "../../../shared/testing/helpers";
+import {advance} from "../../testing/helpers";
 import {SignupModule} from "./signup.module";
 
 describe('SignupComponent', () => {

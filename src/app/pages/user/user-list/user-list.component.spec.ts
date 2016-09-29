@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 import {MockBackend} from "@angular/http/testing";
 import {UserListComponent} from "./user-list.component";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../core/http/index";
-import {advance} from "../../../../shared/testing/helpers";
+import {advance} from "../../../testing/helpers";
 import {RouterTestingModule} from "@angular/router/testing";
 import {PagerComponent} from "../../../shared/pager/pager.component";
 import {GravatarComponent} from "../../../shared/gravatar/gravatar.component";
