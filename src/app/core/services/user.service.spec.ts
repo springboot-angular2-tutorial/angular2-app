@@ -8,7 +8,7 @@ import {
 } from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {UserService} from "./user.service";
-import {UserParams} from "../../../shared/dto";
+import {UserParams} from "../dto";
 import {APP_TEST_HTTP_PROVIDERS} from "../http/index";
 
 const dummyListJson = [

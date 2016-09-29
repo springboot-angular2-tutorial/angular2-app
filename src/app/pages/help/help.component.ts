@@ -7,7 +7,6 @@ import {Component, OnInit} from "@angular/core";
 export class HelpComponent implements OnInit {
 
   ngOnInit(): void {
-    console.log("test");
   }
 
 }

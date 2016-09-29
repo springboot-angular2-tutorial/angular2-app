@@ -1,6 +1,6 @@
 import {Observable} from "rxjs/Observable";
 import {Component, OnInit, Input} from "@angular/core";
-import {RelatedUser} from "../../../../shared/domains";
+import {RelatedUser} from "../../../core/domains";
 import {HttpErrorHandler} from "../../../core/services/http-error-handler";
 
 @Component({

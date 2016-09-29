@@ -3,7 +3,7 @@ import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {isEmpty, omitBy} from "lodash";
 import * as toastr from "toastr";
-import {User} from "../../../../shared/domains";
+import {User} from "../../../core/domains";
 import {UserService} from "../../../core/services/user.service";
 import {
   EMAIL_PATTERN,

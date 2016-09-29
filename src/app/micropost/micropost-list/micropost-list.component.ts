@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from "@angular/core";
 import {MicropostListService} from "./micropost-list.service";
-import {Micropost, UserStats} from "../../../shared/domains";
+import {Micropost, UserStats} from "../../core/domains";
 import {MicropostService} from "../../core/services/micropost.service";
 import {UserService} from "../../core/services/user.service";
 import {HttpErrorHandler} from "../../core/services/http-error-handler";

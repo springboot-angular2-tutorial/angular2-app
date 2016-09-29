@@ -1,7 +1,7 @@
 import {Observable} from "rxjs/Observable";
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
-import {RelatedUser} from "../../../../shared/domains";
+import {RelatedUser} from "../../../core/domains";
 import {UserService} from "../../../core/services/user.service";
 
 @Component({

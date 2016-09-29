@@ -1,9 +1,9 @@
 import {Observable} from "rxjs/Observable";
 import {Injectable} from "@angular/core";
 import {Response} from "@angular/http";
-import {User, RelatedUser} from "../../../shared/domains";
+import {User, RelatedUser} from "../domains";
 import {objToSearchParams} from "./helpers";
-import {PageRequest, Page, UserParams} from "../../../shared/dto";
+import {PageRequest, Page, UserParams} from "../dto";
 import {MyHttp} from "../http/http";
 
 const url = '/api/users';

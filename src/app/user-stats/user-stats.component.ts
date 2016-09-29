@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from "@angular/core";
-import {User} from "../../shared/domains";
+import {User} from "../core/domains";
 import {UserService} from "../core/services/user.service";
 import {HttpErrorHandler} from "../core/services/http-error-handler";
 
