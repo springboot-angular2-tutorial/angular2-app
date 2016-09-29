@@ -14,7 +14,6 @@ const METADATA = webpackMerge(commonConfig.metadata, {
   host: HOST,
   port: PORT,
   ENV: ENV,
-  HMR: false
 });
 
 module.exports = webpackMerge(commonConfig, {
@@ -32,11 +31,9 @@ module.exports = webpackMerge(commonConfig, {
     // new DedupePlugin(),
     new DefinePlugin({
       'ENV': JSON.stringify(METADATA.ENV),
-      'HMR': METADATA.HMR,
       'process.env': {
         'ENV': JSON.stringify(METADATA.ENV),
         'NODE_ENV': JSON.stringify(METADATA.ENV),
-        'HMR': METADATA.HMR
       }
     }),
     new UglifyJsPlugin({

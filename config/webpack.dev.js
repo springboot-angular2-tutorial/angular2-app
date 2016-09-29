@@ -5,12 +5,10 @@ const commonConfig = require('./webpack.common.js');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig.metadata, {
   host: 'localhost',
   port: 3001,
-  ENV: ENV,
-  HMR: HMR
+  ENV: ENV
 });
 
 module.exports = webpackMerge(commonConfig, {
@@ -28,11 +26,9 @@ module.exports = webpackMerge(commonConfig, {
   plugins: [
     new DefinePlugin({
       'ENV': JSON.stringify(METADATA.ENV),
-      'HMR': METADATA.HMR,
       'process.env': {
         'ENV': JSON.stringify(METADATA.ENV),
         'NODE_ENV': JSON.stringify(METADATA.ENV),
-        'HMR': METADATA.HMR
       }
     })
   ],
