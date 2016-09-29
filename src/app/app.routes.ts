@@ -5,7 +5,7 @@ import {FollowingListComponent} from "./pages/relationship/following-list/follow
 import {FollowerListComponent} from "./pages/relationship/follower-list/follower-list.component";
 import {UserListComponent} from "./user/user-list/user-list.component";
 import {HelpComponent} from "./pages/help/help.component";
-import {UserEditComponent} from "./user/user-edit/user-edit.component";
+import {UserEditComponent} from "./pages/user/user-edit/user-edit.component";
 import {ProfileDataResolver} from "../shared/routes/profile-data.resolver";
 import {LoginComponent} from "./pages/login/login.component";
 import {SignupComponent} from "./pages/signup/signup.component";

@@ -7,14 +7,14 @@ import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
 import {BaseResponseOptions, Response} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {UserEditComponent} from "./user-edit.component";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterTestingModule} from "@angular/router/testing";
-import {UserService} from "../../core/services/user.service";
-import {User} from "../../../shared/domains";
-import {ProfileDataResolver} from "../../../shared/routes/profile-data.resolver";
-import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
-import {APP_RESOLVER_PROVIDERS} from "../../../shared/routes/index";
-import {CoreModule} from "../../core/core.module";
+import {UserService} from "../../../core/services/user.service";
+import {User} from "../../../../shared/domains";
+import {ProfileDataResolver} from "../../../../shared/routes/profile-data.resolver";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../core/http/index";
+import {APP_RESOLVER_PROVIDERS} from "../../../../shared/routes/index";
+import {CoreModule} from "../../../core/core.module";
+import {UserEditModule} from "./user-edit.module";
 
 describe('UserEditComponent', () => {
 
@@ -35,8 +35,6 @@ describe('UserEditComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        FormsModule,
-        ReactiveFormsModule,
         RouterTestingModule.withRoutes([
           {
             path: 'users/me/edit',
@@ -45,14 +43,14 @@ describe('UserEditComponent', () => {
           },
         ]),
         CoreModule,
+        UserEditModule,
       ],
       providers: [
         APP_TEST_HTTP_PROVIDERS,
-        APP_RESOLVER_PROVIDERS,
+        APP_RESOLVER_PROVIDERS, // TODO
       ],
       declarations: [
         TestComponent,
-        UserEditComponent,
       ]
     });
   });
