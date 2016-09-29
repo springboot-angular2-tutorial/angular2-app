@@ -9,7 +9,7 @@ import {AppComponent} from "./app.component";
 import {HeaderComponent} from "./header/header.component";
 import {APP_RESOLVER_PROVIDERS} from "../shared/routes/index";
 import {HelpComponent} from "./pages/help/help.component";
-import {LoginComponent} from "./login/login.component";
+import {LoginComponent} from "./pages/login/login.component";
 import {TopComponent} from "./top/top.component";
 import {UserListComponent} from "./user/user-list/user-list.component";
 import {RelatedUserListComponent} from "./relationship/shared/related-user-list.component";

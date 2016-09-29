@@ -7,7 +7,7 @@ import {UserListComponent} from "./user/user-list/user-list.component";
 import {HelpComponent} from "./pages/help/help.component";
 import {UserEditComponent} from "./user/user-edit/user-edit.component";
 import {ProfileDataResolver} from "../shared/routes/profile-data.resolver";
-import {LoginComponent} from "./login/login.component";
+import {LoginComponent} from "./pages/login/login.component";
 import {SignupComponent} from "./signup/signup.component";
 import {TopComponent} from "./top/top.component";
 import {PrivatePageGuard} from "./core/services/private-page.guard";
