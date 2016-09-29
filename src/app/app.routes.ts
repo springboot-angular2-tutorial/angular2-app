@@ -9,7 +9,7 @@ import {UserEditComponent} from "./user/user-edit/user-edit.component";
 import {ProfileDataResolver} from "../shared/routes/profile-data.resolver";
 import {LoginComponent} from "./pages/login/login.component";
 import {SignupComponent} from "./pages/signup/signup.component";
-import {TopComponent} from "./top/top.component";
+import {TopComponent} from "./pages/top/top.component";
 import {PrivatePageGuard} from "./core/services/private-page.guard";
 import {PublicPageGuard} from "./core/services/public-page.guard";
 

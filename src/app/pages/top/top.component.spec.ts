@@ -3,6 +3,7 @@ import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {TestBed, fakeAsync} from "@angular/core/testing";
 import {TopComponent} from "./top.component";
 import {RouterTestingModule} from "@angular/router/testing";
+import {TopModule} from "./top.module";
 
 describe('TopComponent', () => {
 
@@ -18,11 +19,10 @@ describe('TopComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule.withRoutes([]),
+        TopModule,
       ],
-      providers: [],
       declarations: [
         TestComponent,
-        TopComponent,
       ]
     });
   });

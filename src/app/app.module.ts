@@ -9,7 +9,6 @@ import {AppComponent} from "./app.component";
 import {HeaderComponent} from "./header/header.component";
 import {APP_RESOLVER_PROVIDERS} from "../shared/routes/index";
 import {HelpComponent} from "./pages/help/help.component";
-import {TopComponent} from "./top/top.component";
 import {UserListComponent} from "./user/user-list/user-list.component";
 import {UserEditComponent} from "./user/user-edit/user-edit.component";
 import {SharedModule} from "./shared/shared.module";
@@ -21,6 +20,7 @@ import {SignupModule} from "./pages/signup/signup.module";
 import {LoginModule} from "./pages/login/login.module";
 import {FollowerListModule} from "./pages/relationship/follower-list/follower-list.module";
 import {FollowingListModule} from "./pages/relationship/following-list/following-list.module";
+import {TopModule} from "./pages/top/top.module";
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -30,7 +30,6 @@ const APP_PROVIDERS = [
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    TopComponent,
     HelpComponent,
     HeaderComponent,
     UserListComponent,
@@ -49,6 +48,7 @@ const APP_PROVIDERS = [
     HomeModule,
     SignupModule,
     LoginModule,
+    TopModule,
     UserShowModule,
     FollowerListModule,
     FollowingListModule,
