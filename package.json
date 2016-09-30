@@ -94,7 +94,7 @@
     "typescript": "^2.0.3",
     "url-loader": "^0.5.7",
     "webpack": "2.1.0-beta.22",
-    "webpack-dev-server": "^2.1.0-beta.2",
+    "webpack-dev-server": "^2.1.0-beta.7",
     "webpack-manifest-plugin": "^1.0.0",
     "webpack-merge": "~0.14.1"
   }
