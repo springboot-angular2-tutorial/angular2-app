@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import * as toastr from "toastr";
@@ -14,7 +14,7 @@ import {LoginService} from "../../core/services/login.service";
   styleUrls: ['./signup.scss'],
   templateUrl: './signup.html',
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
 
   myForm: FormGroup;
   name: FormControl;
@@ -25,6 +25,9 @@ export class SignupComponent {
   constructor(private router: Router,
               private userService: UserService,
               private loginService: LoginService) {
+  }
+
+  ngOnInit(): void {
     this.initForm();
   }
 

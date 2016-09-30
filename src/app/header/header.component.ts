@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
               private loginService: LoginService) {
   }
 
-  ngOnInit(): any {
+  ngOnInit(): void {
     this.isSignedIn = this.loginService.isSignedIn();
     this.loginService.events.subscribe(() => {
       this.isSignedIn = this.loginService.isSignedIn();

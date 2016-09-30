@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from "@angular/core";
+import {Component, EventEmitter, Output, OnInit} from "@angular/core";
 import {FeedService} from "./feed.service";
 import {Micropost} from "../../../core/domains";
 import {MicropostService} from "../../../core/services/micropost.service";
@@ -9,7 +9,7 @@ import {HttpErrorHandler} from "../../../core/services/http-error-handler";
   styleUrls: ['./feed.scss'],
   templateUrl: './feed.html',
 })
-export class FeedComponent {
+export class FeedComponent implements OnInit {
 
   feed: Micropost[];
 
@@ -18,6 +18,9 @@ export class FeedComponent {
   constructor(private micropostService: MicropostService,
               private feedService: FeedService,
               private errorHandler: HttpErrorHandler) {
+  }
+
+  ngOnInit(): void {
     this.list();
   }
 

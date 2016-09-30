@@ -8,13 +8,13 @@ const md5Hex = require('md5-hex');
 })
 export class GravatarComponent implements OnChanges {
 
-  imageUrl:string;
+  imageUrl: string;
 
-  @Input() email:string;
-  @Input() size:number;
-  @Input() alt:string;
+  @Input() email: string;
+  @Input() size: number;
+  @Input() alt: string;
 
-  ngOnChanges() {
+  ngOnChanges(): void {
     if (this.email) {
       const hash = md5Hex(this.email);
       this.imageUrl = `https://secure.gravatar.com/avatar/${hash}?s=${this.size}`;

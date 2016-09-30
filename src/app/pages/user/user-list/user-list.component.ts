@@ -21,7 +21,7 @@ export class UserListComponent implements OnInit {
               private router: Router) {
   }
 
-  ngOnInit(): any {
+  ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.page = +(params['page'] || 1);
       this.list(this.page);

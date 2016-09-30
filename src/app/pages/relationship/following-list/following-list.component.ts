@@ -13,7 +13,8 @@ export class FollowingListComponent implements OnInit {
   userId: string;
   listProvider: (params: any) => Observable<RelatedUser[]>;
 
-  constructor(private userService: UserService, private route: ActivatedRoute) {
+  constructor(private userService: UserService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit(): any {

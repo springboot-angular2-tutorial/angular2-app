@@ -57,8 +57,8 @@ export class FollowBtnComponent implements OnChanges {
     this.userService.get(this.followerId)
       .finally(() => this.busy = false)
       .subscribe(user => {
-        this.canShowFollowBtn = this._canShowFollowBtn(<User>user);
-        this.canShowUnfollowBtn = this._canShowUnfollowBtn(<User>user);
+        this.canShowFollowBtn = this._canShowFollowBtn(user);
+        this.canShowUnfollowBtn = this._canShowUnfollowBtn(user);
       }, e => this.errorHandler.handle(e))
     ;
   }

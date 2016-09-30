@@ -28,7 +28,7 @@ export class UserEditComponent implements OnInit {
               private userService: UserService) {
   }
 
-  ngOnInit(): any {
+  ngOnInit(): void {
     this.route.data.subscribe(data => {
       this.user = data['profile'];
       this.initForm();

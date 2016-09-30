@@ -7,7 +7,7 @@ export function login() {
   });
 }
 
-export function advance(fixture:ComponentFixture<any>):void {
+export function advance(fixture: ComponentFixture<any>): void {
   tick();
   fixture.detectChanges();
 }
