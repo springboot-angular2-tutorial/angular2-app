@@ -12,15 +12,14 @@ import {SignupComponent} from "./pages/signup/signup.component";
 import {TopComponent} from "./pages/top/top.component";
 import {PrivatePageGuard} from "./core/services/private-page.guard";
 import {PublicPageGuard} from "./core/services/public-page.guard";
+import {NoContentComponent} from "./pages/no-content/no-content.component";
 
 export const ROUTES: Routes = [
-  {path: '', component: TopComponent, canActivate: [PublicPageGuard]},
   {
     path: 'home',
     component: HomeComponent,
     canActivate: [PrivatePageGuard]
   },
-  {path: 'users/:id', component: UserShowComponent},
   {
     path: 'users/:id/followings',
     component: FollowingListComponent,
@@ -32,17 +31,20 @@ export const ROUTES: Routes = [
     canActivate: [PrivatePageGuard]
   },
   {
-    path: 'users',
-    component: UserListComponent,
-    canActivate: [PrivatePageGuard]
-  },
-  {path: 'help', component: HelpComponent},
-  {
     path: 'users/me/edit',
     component: UserEditComponent,
     resolve: {profile: ProfileDataResolver},
     canActivate: [PrivatePageGuard],
   },
+  {path: 'users/:id', component: UserShowComponent},
+  {
+    path: 'users',
+    component: UserListComponent,
+    canActivate: [PrivatePageGuard]
+  },
   {path: 'login', component: LoginComponent, canActivate: [PublicPageGuard]},
   {path: 'signup', component: SignupComponent, canActivate: [PublicPageGuard]},
+  {path: 'help', component: HelpComponent},
+  {path: '', component: TopComponent, canActivate: [PublicPageGuard]},
+  {path: '**', component: NoContentComponent}
 ];
