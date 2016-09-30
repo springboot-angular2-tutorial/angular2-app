@@ -21,7 +21,7 @@
         <li class="top" *ngIf="!isSignedIn">
           <a routerLink="/">Home</a>
         </li>
-        <li class="users" routerLinkActive="active" *ngIf="isSignedIn">
+        <li class="users" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isSignedIn">
           <a routerLink="/users">Users</a>
         </li>
         <li class="help" routerLinkActive="active">
