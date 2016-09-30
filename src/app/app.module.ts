@@ -45,8 +45,5 @@ import {UserListModule} from "./pages/user/user-list/user-list.module";
   ]
 })
 export class AppModule {
-  constructor(appRef: ApplicationRef) {
-    appRef.bootstrap(AppComponent);
-  }
 }
 
