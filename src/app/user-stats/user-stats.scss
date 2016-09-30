@@ -2,28 +2,28 @@
 
 mpt-gravatar {
   float: left;
-  margin-right: 10px;
+  margin-right: $margin-xsmall;
 }
 
 section {
-  padding: 10px 0;
+  padding: $margin-xsmall 0;
   border-bottom: 1px solid $border-color;
 }
 
 section.user h2 {
   font-size: 1.4em;
   margin-top: 0;
-  margin-bottom: 2px;
+  margin-bottom: $margin-xxsmall;
 }
 section.user span {
   display: block;
-  margin-bottom: 2px;
+  margin-bottom: $margin-xxsmall;
   line-height: 1;
 }
 
 section.relationships a {
   float: left;
-  padding: 0 10px;
+  padding: 0 $margin-xsmall;
   border-left: 1px solid $border-color;
 }
 section.relationships a:first-child {

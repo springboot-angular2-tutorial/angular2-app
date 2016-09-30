@@ -1,8 +1,8 @@
 @import 'src/css/index';
 
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
+  margin-top: $margin-xlarge;
+  padding-top: $margin-xxsmall;
   border-top: 1px solid $border-color;
   color: $weak-text-color;
 }
