@@ -63,7 +63,7 @@
     "@types/webpack": "^1.12.31",
     "angular2-template-loader": "^0.5.0",
     "awesome-typescript-loader": "^2.2.4",
-    "bootstrap-loader": "~2.0.0-beta.11",
+    "bootstrap-loader": "2.0.0-beta.11",
     "bootstrap-sass": "^3.3.7",
     "codelyzer": "~1.0.0-beta.0",
     "css-loader": "^0.25.0",
