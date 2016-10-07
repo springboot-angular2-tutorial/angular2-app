@@ -23,7 +23,7 @@ module.exports = {
       },
       {test: /\.css$/, loader: 'raw-loader'},
       {test: /\.scss$/, loaders: ["raw-loader", "sass-loader"]},
-      {test: /\.html$/, loader: 'raw-loader'},
+      {test: /\.html$/, loader: ['raw-loader', 'html-minify-loader']},
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url?limit=10000&mimetype=application/font-woff'
@@ -38,6 +38,11 @@ module.exports = {
         loader: 'url?limit=10000&mimetype=image/svg+xml'
       }
     ]
+  },
+  'html-minify-loader': {
+    dom: {
+      lowerCaseAttributeNames: false
+    }
   },
   plugins: [
     new ForkCheckerPlugin(),
@@ -54,7 +59,6 @@ module.exports = {
       jquery: 'jquery'
     })
   ],
-
   node: {
     global: 'window',
     crypto: 'empty',
