@@ -42,6 +42,7 @@ module.exports = webpackMerge(commonConfig, {
       quiet: true
     }),
     new UglifyJsPlugin({
+      compress: {warnings: false},
       beautify: false,
       comments: false,
       sourceMap: true
