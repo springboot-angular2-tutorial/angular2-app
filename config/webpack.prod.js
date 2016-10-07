@@ -43,7 +43,8 @@ module.exports = webpackMerge(commonConfig, {
     }),
     new UglifyJsPlugin({
       beautify: false,
-      comments: false
+      comments: false,
+      sourceMap: true
     })
   ],
   node: {

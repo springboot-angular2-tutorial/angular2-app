@@ -45,6 +45,9 @@ module.exports = {
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
       __dirname
     ),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: ['polyfills', 'vendor'].reverse()
+    }),
     new webpack.ProvidePlugin({
       jQuery: 'jquery',
       $: 'jquery',
