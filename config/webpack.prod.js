@@ -5,6 +5,7 @@ const commonConfig = require('./webpack.common.js');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
@@ -36,15 +37,12 @@ module.exports = webpackMerge(commonConfig, {
         'NODE_ENV': JSON.stringify(METADATA.ENV),
       }
     }),
+    new LoaderOptionsPlugin({
+      minimize: true,
+      quiet: true
+    }),
     new UglifyJsPlugin({
       beautify: false,
-      mangle: {
-        screw_ie8: true,
-        keep_fnames: true
-      },
-      compress: {
-        screw_ie8: true
-      },
       comments: false
     })
   ],

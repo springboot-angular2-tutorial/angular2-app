@@ -1,7 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
-import {isEmpty, omitBy} from "lodash";
+import isEmpty from "lodash/isEmpty";
+import omitBy from "lodash/omitBy";
 import * as toastr from "toastr";
 import {User} from "../../../core/domains";
 import {UserService} from "../../../core/services/user.service";
