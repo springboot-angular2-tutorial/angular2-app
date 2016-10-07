@@ -5,7 +5,8 @@ import * as toastr from "toastr";
 import {User} from "../../../core/domains";
 import {UserService} from "../../../core/services/user.service";
 import {EMAIL_PATTERN, Validators as AppValidators} from "../../../core/forms";
-import {isEmpty, omitBy} from "lodash";
+import * as isEmpty from "lodash/isEmpty";
+import * as omitBy from "lodash/omitBy";
 
 @Component({
   selector: 'mpt-user-edit',
