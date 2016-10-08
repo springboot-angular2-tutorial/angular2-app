@@ -17,7 +17,7 @@ mvn spring-boot:run
 Serve frontend app by webpack-dev-server.
 
 ```
-npm install webpack-dev-server rimraf webpack -g
+npm install webpack-dev-server webpack -g
 npm install
 npm start
 open http://localhost:8080
@@ -27,6 +27,12 @@ Testing.
 
 ```
 npm test
+```
+
+Production build.
+
+```
+npm run build:prod:aot
 ```
 
 ## Tutorial
