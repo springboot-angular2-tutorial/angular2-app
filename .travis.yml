@@ -7,7 +7,7 @@ cache:
 node_js:
 - '6.2.0'
 
-script: node_modules/karma/bin/karma start --browsers PhantomJS
+script: npm run sass && node_modules/karma/bin/karma start --browsers PhantomJS
 
 before_deploy: npm run build:prod:aot
 deploy:
