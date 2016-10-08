@@ -8,13 +8,6 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 8080;
-const METADATA = webpackMerge(commonConfig.metadata, {
-  host: HOST,
-  port: PORT,
-  ENV: ENV
-});
 
 module.exports = webpackMerge(commonConfig, {
   entry: {
@@ -31,10 +24,10 @@ module.exports = webpackMerge(commonConfig, {
   plugins: [
     new ManifestPlugin(),
     new DefinePlugin({
-      'ENV': JSON.stringify(METADATA.ENV),
+      'ENV': JSON.stringify(ENV),
       'process.env': {
-        'ENV': JSON.stringify(METADATA.ENV),
-        'NODE_ENV': JSON.stringify(METADATA.ENV)
+        'ENV': JSON.stringify(ENV),
+        'NODE_ENV': JSON.stringify(ENV)
       }
     }),
     new LoaderOptionsPlugin({

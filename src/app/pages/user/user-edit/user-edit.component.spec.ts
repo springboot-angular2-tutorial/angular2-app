@@ -11,9 +11,9 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {UserService} from "../../../core/services/user.service";
 import {User} from "../../../core/domains";
 import {ProfileDataResolver} from "../../../core/services/profile-data.resolver";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../core/http/index";
 import {CoreModule} from "../../../core/core.module";
 import {UserEditModule} from "./user-edit.module";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
 
 describe('UserEditComponent', () => {
 

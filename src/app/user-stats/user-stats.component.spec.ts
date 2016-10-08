@@ -13,8 +13,8 @@ import {UserStatsComponent} from "./user-stats.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {UserStatsModule} from "./user-stats.module";
 import {CoreModule} from "../core/core.module";
-import {APP_TEST_HTTP_PROVIDERS} from "../core/http/index";
 import {GravatarComponent} from "../shared/gravatar/gravatar.component";
+import {APP_TEST_HTTP_PROVIDERS} from "../testing";
 
 describe('UserStatsComponent', () => {
 

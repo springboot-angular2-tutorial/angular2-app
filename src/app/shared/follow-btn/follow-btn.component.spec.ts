@@ -5,10 +5,10 @@ import {Response, ResponseOptions} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {FollowBtnComponent} from "./follow-btn.component";
 import {FollowBtnService} from "./follow-btn.service";
-import {APP_TEST_HTTP_PROVIDERS} from "../../core/http/index";
 import {RouterTestingModule} from "@angular/router/testing";
 import {CoreModule} from "../../core/core.module";
 import {SharedModule} from "../shared.module";
+import {APP_TEST_HTTP_PROVIDERS} from "../../testing";
 
 describe('FollowBtnComponent', () => {
 

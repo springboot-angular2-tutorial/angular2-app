@@ -6,9 +6,9 @@ import {FollowingListComponent} from "./following-list.component";
 import {RelatedUserListComponent} from "../shared/related-user-list.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {CoreModule} from "../../../core/core.module";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../core/http/index";
 import {UserStatsComponent} from "../../../user-stats/user-stats.component";
 import {FollowingListModule} from "./following-list.module";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
 
 describe('FollowingListComponent', () => {
 

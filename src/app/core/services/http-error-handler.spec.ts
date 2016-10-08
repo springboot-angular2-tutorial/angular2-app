@@ -2,8 +2,8 @@ import {inject, TestBed} from "@angular/core/testing";
 import {Router} from "@angular/router";
 import {HttpErrorHandler} from "./http-error-handler";
 import {LoginService} from "./login.service";
-import {APP_TEST_HTTP_PROVIDERS} from "../http/index";
 import {CoreModule} from "../core.module";
+import {APP_TEST_HTTP_PROVIDERS} from "../../testing";
 
 describe('HttpErrorHandler', () => {
 
