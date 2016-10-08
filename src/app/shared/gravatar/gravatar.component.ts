@@ -1,4 +1,4 @@
-import {Component, OnChanges, Input} from "@angular/core";
+import {Component, OnChanges, Input, SimpleChanges} from "@angular/core";
 
 const md5Hex = require('md5-hex');
 
@@ -14,7 +14,7 @@ export class GravatarComponent implements OnChanges {
   @Input() size: number;
   @Input() alt: string;
 
-  ngOnChanges(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.email) {
       const hash = md5Hex(this.email);
       this.imageUrl = `https://secure.gravatar.com/avatar/${hash}?s=${this.size}`;

@@ -7,7 +7,7 @@ import {HttpErrorHandler} from "../../core/services/http-error-handler";
 
 @Component({
   selector: 'mpt-micropost-list',
-  styleUrls: ['./micropost-list.scss'],
+  styleUrls: ['./micropost-list.css'],
   templateUrl: './micropost-list.html',
   providers: [MicropostListService],
 })

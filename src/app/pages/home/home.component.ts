@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 
 @Component({
   selector: 'mpt-home',
-  styleUrls: ['./home.scss'],
+  styleUrls: ['./home.css'],
   templateUrl: './home.html',
 })
 export class HomeComponent {

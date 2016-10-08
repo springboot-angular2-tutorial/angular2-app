@@ -1,4 +1,11 @@
-import {Component, OnChanges, EventEmitter, Output, Input} from "@angular/core";
+import {
+  Component,
+  OnChanges,
+  EventEmitter,
+  Output,
+  Input,
+  SimpleChanges
+} from "@angular/core";
 import {FollowBtnService} from "./follow-btn.service";
 import {UserService} from "../../core/services/user.service";
 import {HttpErrorHandler} from "../../core/services/http-error-handler";
@@ -22,7 +29,7 @@ export class FollowBtnComponent implements OnChanges {
               private errorHandler: HttpErrorHandler) {
   }
 
-  ngOnChanges(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.followerId) {
       this.loadCurrentStatus();
     }

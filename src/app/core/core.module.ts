@@ -7,9 +7,14 @@ import {MicropostService} from "./services/micropost.service";
 import {UserService} from "./services/user.service";
 import {PrivatePageGuard} from "./services/private-page.guard";
 import {PublicPageGuard} from "./services/public-page.guard";
-import {MyHttp} from "./http/http";
+import {MyHttp} from "./http";
 import {XHRBackend, Http, RequestOptions, HttpModule} from "@angular/http";
 import {ProfileDataResolver} from "./services/profile-data.resolver";
+
+export function createMyHttp(xhrBackend: XHRBackend, requestOptions: RequestOptions) {
+  const ngHttp = new Http(xhrBackend, requestOptions);
+  return new MyHttp(ngHttp);
+}
 
 @NgModule({
   imports: [
@@ -21,10 +26,7 @@ import {ProfileDataResolver} from "./services/profile-data.resolver";
   providers: [
     {
       provide: MyHttp,
-      useFactory: (xhrBackend: XHRBackend, requestOptions: RequestOptions) => {
-        const ngHttp = new Http(xhrBackend, requestOptions);
-        return new MyHttp(ngHttp);
-      },
+      useFactory: createMyHttp,
       deps: [XHRBackend, RequestOptions]
     },
     HttpErrorHandler,

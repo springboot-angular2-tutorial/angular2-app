@@ -33,7 +33,6 @@ module.exports = {
         loaders: ['awesome-typescript-loader', 'angular2-template-loader']
       },
       {test: /\.css$/, loader: 'raw-loader'},
-      {test: /\.scss$/, loaders: ["raw-loader", "sass-loader"]},
       {test: /\.html$/, loader: 'raw-loader'},
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,

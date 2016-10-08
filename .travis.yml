@@ -9,7 +9,7 @@ node_js:
 
 script: node_modules/karma/bin/karma start --browsers PhantomJS
 
-before_deploy: npm run build:prod
+before_deploy: npm run build:prod:aot
 deploy:
   provider: s3
   access_key_id: $AWS_ACCESS_KEY_ID

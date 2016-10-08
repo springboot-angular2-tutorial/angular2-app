@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "declaration": false,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "pretty": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noImplicitAny": false,
+    "noImplicitReturns": false,
+    "noImplicitUseStrict": false,
+    "noFallthroughCasesInSwitch": true,
+    "outDir": "./dist/unbundled-aot"
+  },
+  "types": [
+    "es6",
+    "jasmine",
+    "lodash",
+    "node",
+    "pluralize",
+    "source-map",
+    "toastr",
+    "webpack"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "aot",
+    "src/**/*.spec.ts",
+    "src/main.aot.ts"
+  ],
+  "angularCompilerOptions": {
+    "genDir": "aot",
+    "skipMetadataEmit" : true
+  }
+}

@@ -22,7 +22,6 @@ module.exports = {
         exclude: [/\.spec\.ts$/]
       },
       {test: /\.css$/, loader: 'raw-loader'},
-      {test: /\.scss$/, loaders: ["raw-loader", "sass-loader"]},
       {test: /\.html$/, loader: ['raw-loader', 'html-minify-loader']},
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,

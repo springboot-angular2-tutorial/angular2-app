@@ -5,7 +5,7 @@ import {HttpErrorHandler} from "../../core/services/http-error-handler";
 
 @Component({
   selector: 'mpt-micropost-new',
-  styleUrls: ['./micropost-new.scss'],
+  styleUrls: ['./micropost-new.css'],
   templateUrl: './micropost-new.html',
 })
 export class MicropostNewComponent {

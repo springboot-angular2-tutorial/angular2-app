@@ -5,7 +5,7 @@ import {HttpErrorHandler} from "../core/services/http-error-handler";
 
 @Component({
   selector: 'mpt-user-stats',
-  styleUrls: ['./user-stats.scss'],
+  styleUrls: ['./user-stats.css'],
   templateUrl: './user-stats.html',
 })
 export class UserStatsComponent implements OnInit {

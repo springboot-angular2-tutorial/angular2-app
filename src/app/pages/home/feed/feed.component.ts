@@ -6,7 +6,7 @@ import {HttpErrorHandler} from "../../../core/services/http-error-handler";
 
 @Component({
   selector: 'mpt-feed',
-  styleUrls: ['./feed.scss'],
+  styleUrls: ['./feed.css'],
   templateUrl: './feed.html',
 })
 export class FeedComponent implements OnInit {

@@ -5,8 +5,9 @@
   "main": "",
   "scripts": {
     "rimraf": "rimraf",
-    "clean": "npm cache clean && npm run rimraf -- node_modules doc coverage dist",
+    "clean": "npm cache clean && npm run rimraf -- node_modules doc coverage dist aot src/**/*.css",
     "clean:dist": "npm run rimraf -- dist",
+    "clean:aot": "npm run rimraf -- aot",
     "preclean:install": "npm run clean",
     "clean:install": "npm set progress=false && npm install",
     "preclean:start": "npm run clean",
@@ -16,12 +17,25 @@
     "build:dev": "webpack --config config/webpack.dev.js --progress --profile --colors --display-error-details --display-cached",
     "prebuild:prod": "npm run clean:dist",
     "build:prod": "webpack --config config/webpack.prod.js  --progress --profile --bail",
+    "prebuild:prod:aot": "npm run clean:dist",
+    "build:prod:aot": "npm run sass && npm run ngc && webpack --config config/webpack.aot.js --progress --profile --bail",
     "server": "npm run server:dev",
     "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base src/",
     "server:prod": "http-server dist --cors",
-    "test": "node_modules/karma/bin/karma start",
+
+    "test": "npm run sass && karma start",
+    "test:watch": "npm-run-all -p -r sass:watch karma:watch",
+    "karma:watch": "karma start --browsers Chrome --reporters dots,notify --single-run false",
+
     "docs": "typedoc  --options typedoc.json  src/**/*.ts",
-    "start": "npm run server:dev"
+    "start": "npm-run-all -p -r server:dev sass:watch",
+
+    "prengc": "npm run clean:aot",
+    "ngc": "ngc -p tsconfig.aot.json --locale=en-US",
+
+    "presass": "rimraf -- src/**/*.css",
+    "sass": "node-sass src -o src --include-path node_modules --output-style compressed -q",
+    "sass:watch": "node-sass -w src -o src"
   },
   "repository": {
     "type": "git",
@@ -54,6 +68,9 @@
     "zone.js": "~0.6.17"
   },
   "devDependencies": {
+    "@angular/compiler-cli": "^0.6.4",
+    "@angular/platform-server": "^2.0.2",
+    "@types/es6-shim": "^0.31.32",
     "@types/jasmine": "^2.5.35",
     "@types/lodash": "^4.14.37",
     "@types/node": "^6.0.45",
@@ -67,8 +84,6 @@
     "bootstrap-sass": "^3.3.7",
     "codelyzer": "~1.0.0-beta.0",
     "css-loader": "^0.25.0",
-    "exports-loader": "^0.6.3",
-    "expose-loader": "^0.7.1",
     "extract-text-webpack-plugin": "~2.0.0-beta.4",
     "file-loader": "^0.9.0",
     "html-minify-loader": "^1.1.0",
@@ -83,11 +98,11 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.8.0",
     "node-sass": "^3.5.3",
+    "npm-run-all": "^3.1.0",
     "phantomjs-prebuilt": "^2.1.13",
     "raw-loader": "^0.5.1",
     "resolve-url-loader": "~1.6.0",
     "rimraf": "2.5.4",
-    "sass-loader": "~4.0.0",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.0",
     "ts-helpers": "^1.1.1",

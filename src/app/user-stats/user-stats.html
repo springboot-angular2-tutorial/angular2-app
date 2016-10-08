@@ -2,7 +2,7 @@
 
   <section class="user clearfix">
     <h2>
-      <mpt-gravatar [email]="user?.email" size="50" [alt]="user?.name"></mpt-gravatar>
+      <mpt-gravatar [email]="user?.email" [size]="50" [alt]="user?.name"></mpt-gravatar>
       {{user?.name}}
     </h2>
     <span *ngIf="!shownOnProfile">

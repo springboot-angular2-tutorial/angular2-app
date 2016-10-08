@@ -11,7 +11,7 @@ import {LoginService} from "../../core/services/login.service";
 
 @Component({
   selector: 'mpt-signup',
-  styleUrls: ['./signup.scss'],
+  styleUrls: ['./signup.css'],
   templateUrl: './signup.html',
 })
 export class SignupComponent implements OnInit {

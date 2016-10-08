@@ -3,7 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'mpt-user-show',
-  styleUrls: ['./user-show.scss'],
+  styleUrls: ['./user-show.css'],
   templateUrl: './user-show.html',
 })
 export class UserShowComponent implements OnInit {
