@@ -3,7 +3,7 @@ import {Router} from "@angular/router";
 import {HttpErrorHandler} from "./http-error-handler";
 import {LoginService} from "./login.service";
 import {CoreModule} from "../core.module";
-import {APP_TEST_HTTP_PROVIDERS} from "../../testing";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
 
 describe('HttpErrorHandler', () => {
 

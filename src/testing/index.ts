@@ -1,6 +1,6 @@
 import {RequestOptions, Http} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
-import {MyHttp} from "../core/http";
+import {MyHttp} from "../app/core/http";
 
 export * from './helpers';
 

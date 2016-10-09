@@ -11,12 +11,12 @@ import {ResponseOptions, Response} from "@angular/http";
 import {Router} from "@angular/router";
 import {MockBackend} from "@angular/http/testing";
 import {UserListComponent} from "./user-list.component";
-import {advance, APP_TEST_HTTP_PROVIDERS} from "../../../testing";
 import {RouterTestingModule} from "@angular/router/testing";
 import {PagerComponent} from "../../../shared/pager/pager.component";
 import {GravatarComponent} from "../../../shared/gravatar/gravatar.component";
 import {CoreModule} from "../../../core/core.module";
 import {UserListModule} from "./user-list.module";
+import {APP_TEST_HTTP_PROVIDERS, advance} from "../../../../testing";
 
 describe('UserListComponent', () => {
 

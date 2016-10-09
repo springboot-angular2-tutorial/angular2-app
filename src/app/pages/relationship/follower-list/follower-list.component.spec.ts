@@ -8,7 +8,7 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {CoreModule} from "../../../core/core.module";
 import {UserStatsComponent} from "../../../user-stats/user-stats.component";
 import {FollowerListModule} from "./follower-list.module";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../../testing";
 
 describe('FollowerListComponent', () => {
 

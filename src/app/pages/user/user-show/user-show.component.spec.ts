@@ -9,7 +9,7 @@ import {FollowBtnComponent} from "../../../shared/follow-btn/follow-btn.componen
 import {CoreModule} from "../../../core/core.module";
 import {UserStatsComponent} from "../../../user-stats/user-stats.component";
 import {UserShowModule} from "./user-show.module";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../../testing";
 
 describe('UserShowComponent', () => {
 

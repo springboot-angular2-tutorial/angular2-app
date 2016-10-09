@@ -14,12 +14,12 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {UserStatsModule} from "./user-stats.module";
 import {CoreModule} from "../core/core.module";
 import {GravatarComponent} from "../shared/gravatar/gravatar.component";
-import {APP_TEST_HTTP_PROVIDERS} from "../testing";
+import {APP_TEST_HTTP_PROVIDERS} from "../../testing";
 
 describe('UserStatsComponent', () => {
 
   @Component({
-    template: `<mpt-user-stats userId="1" [shownOnProfile]="false"></mpt-user-stats>`,
+    template: `<mpt-user-stats [userId]="1" [shownOnProfile]="false"></mpt-user-stats>`,
   })
   class TestComponent {
   }
@@ -73,7 +73,7 @@ describe('UserStatsComponent', () => {
     expect(cmpDebugElement).toBeTruthy();
 
     const cmp: UserStatsComponent = cmpDebugElement.componentInstance;
-    expect(cmp.userId).toEqual('1');
+    expect(cmp.userId).toEqual(1);
     expect(cmp.user).toBeTruthy();
     expect(cmp.user.id).toEqual(1);
     expect(cmp.user.email).toEqual('test1@test.com');

@@ -13,7 +13,7 @@ import {User} from "../../../core/domains";
 import {ProfileDataResolver} from "../../../core/services/profile-data.resolver";
 import {CoreModule} from "../../../core/core.module";
 import {UserEditModule} from "./user-edit.module";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../../testing";
 
 describe('UserEditComponent', () => {
 

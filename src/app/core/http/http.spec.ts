@@ -8,7 +8,7 @@ import {
 } from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {MyHttp} from "./http";
-import {APP_TEST_HTTP_PROVIDERS} from "../../testing";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
 
 describe('MyHttp', () => {
   let myHttp: MyHttp;

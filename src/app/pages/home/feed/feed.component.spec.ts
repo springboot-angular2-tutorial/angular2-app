@@ -10,7 +10,7 @@ import {MicropostService} from "../../../core/services/micropost.service";
 import {CoreModule} from "../../../core/core.module";
 import {GravatarComponent} from "../../../shared/gravatar/gravatar.component";
 import {FeedModule} from "./feed.module";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../../testing";
 
 describe('FeedComponent', () => {
 

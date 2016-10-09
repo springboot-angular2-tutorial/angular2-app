@@ -8,12 +8,12 @@ import {FollowBtnService} from "./follow-btn.service";
 import {RouterTestingModule} from "@angular/router/testing";
 import {CoreModule} from "../../core/core.module";
 import {SharedModule} from "../shared.module";
-import {APP_TEST_HTTP_PROVIDERS} from "../../testing";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
 
 describe('FollowBtnComponent', () => {
 
   @Component({
-    template: `<mpt-follow-btn followerId="1" (updated)="doSomething()"></mpt-follow-btn>`,
+    template: `<mpt-follow-btn [followerId]="1" (updated)="doSomething()"></mpt-follow-btn>`,
   })
   class TestComponent {
     doSomething() {
@@ -147,7 +147,7 @@ describe('FollowBtnComponent', () => {
       unfollowBtn.nativeElement.click();
       expect(cmp.canShowFollowBtn).toBeTruthy();
       expect(cmp.canShowUnfollowBtn).toBeFalsy();
-      expect(followBtnService.unfollow).toHaveBeenCalledWith('1');
+      expect(followBtnService.unfollow).toHaveBeenCalledWith(1);
       expect(testCmp.doSomething).toHaveBeenCalled();
     });
   });
@@ -170,7 +170,7 @@ describe('FollowBtnComponent', () => {
       followBtn.nativeElement.click();
       expect(cmp.canShowFollowBtn).toBeFalsy();
       expect(cmp.canShowUnfollowBtn).toBeTruthy();
-      expect(followBtnService.follow).toHaveBeenCalledWith('1');
+      expect(followBtnService.follow).toHaveBeenCalledWith(1);
       expect(testCmp.doSomething).toHaveBeenCalled();
     });
   });

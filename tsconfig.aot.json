@@ -14,7 +14,7 @@
     "node_modules",
     "dist",
     "src/**/*.spec.ts",
-    "src/app/testing"
+    "src/testing"
   ],
   "angularCompilerOptions": {
     "genDir": "build",
