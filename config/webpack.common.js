@@ -6,7 +6,7 @@ const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin
 module.exports = {
   entry: {
     'polyfills': './src/polyfills.ts',
-    'vendor': ['./src/vendor.ts', 'bootstrap-loader'],
+    'vendor': './src/vendor.ts',
     'main': './src/main.ts'
   },
   resolve: {
@@ -54,7 +54,12 @@ module.exports = {
     new webpack.ProvidePlugin({
       jQuery: 'jquery',
       $: 'jquery',
-      jquery: 'jquery'
+      jquery: 'jquery',
+      "Tether": 'tether',
+      "window.Tether": "tether",
+      Dropdown: "exports?Dropdown!bootstrap/js/dist/dropdown",
+      Util: "exports?Util!bootstrap/js/dist/util",
+      Collapse: "exports?Collapse!bootstrap/js/dist/collapse",
     })
   ],
   node: {
