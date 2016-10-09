@@ -1,12 +1,18 @@
 <div class="row">
 
   <aside class="col-md-4">
-    <mpt-user-stats #us [userId]="userId" [shownOnProfile]="true"></mpt-user-stats>
+    <mpt-user-stats #us [userId]="userId"
+                    [shownOnProfile]="true"></mpt-user-stats>
   </aside>
 
   <div class="col-md-8">
-    <mpt-follow-btn [followerId]="userId" (updated)="us.ngOnInit()"></mpt-follow-btn>
-    <mpt-micropost-list [userId]="userId"></mpt-micropost-list>
+    <div class="row follow-btn">
+      <mpt-follow-btn [followerId]="userId"
+                      (updated)="us.ngOnInit()"></mpt-follow-btn>
+    </div>
+    <div class="row">
+      <mpt-micropost-list [userId]="userId"></mpt-micropost-list>
+    </div>
   </div>
 
 </div>

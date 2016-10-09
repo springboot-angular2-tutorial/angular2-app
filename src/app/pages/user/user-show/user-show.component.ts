@@ -1,8 +1,9 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ViewEncapsulation} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'mpt-user-show',
+  encapsulation: ViewEncapsulation.Native,
   styleUrls: ['./user-show.css'],
   templateUrl: './user-show.html',
 })
