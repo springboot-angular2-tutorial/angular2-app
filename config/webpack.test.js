@@ -1,32 +1,30 @@
 const helpers = require('./helpers');
-
-const DefinePlugin = require('webpack/lib/DefinePlugin');
+const webpack = require('webpack');
 
 const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 
 module.exports = {
   devtool: 'inline-source-map',
   resolve: {
-    extensions: ['', '.ts', '.js'],
-    root: helpers.root('src')
+    extensions: ['.ts', '.js'],
   },
   module: {
-    preLoaders: [
+    rules: [
       {
+        enforce: 'pre',
         test: /\.ts$/,
         loader: 'tslint-loader',
         exclude: [helpers.root('node_modules')]
       },
       {
+        enforce: 'pre',
         test: /\.js$/,
         loader: 'source-map-loader',
         exclude: [
           helpers.root('node_modules/rxjs'),
           helpers.root('node_modules/@angular')
         ]
-      }
-    ],
-    loaders: [
+      },
       {
         test: /\.ts$/,
         loaders: ['awesome-typescript-loader', 'angular2-template-loader']
@@ -36,23 +34,27 @@ module.exports = {
     ]
   },
   plugins: [
-    new DefinePlugin({
+    new webpack.DefinePlugin({
       'ENV': JSON.stringify(ENV),
       'process.env': {
         'ENV': JSON.stringify(ENV),
         'NODE_ENV': JSON.stringify(ENV),
       }
-    })
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        tslint: {
+          emitErrors: false,
+          failOnHint: false,
+          resourcePath: 'src'
+        },
+      },
+    }),
   ],
-  tslint: {
-    emitErrors: false,
-    failOnHint: false,
-    resourcePath: 'src'
-  },
   node: {
-    global: 'window',
-    process: false,
+    global: true,
     crypto: 'empty',
+    process: false,
     module: false,
     clearImmediate: false,
     setImmediate: false

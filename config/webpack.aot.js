@@ -1,10 +1,8 @@
 const helpers = require('./helpers');
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
 
-const DefinePlugin = require('webpack/lib/DefinePlugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
@@ -13,7 +11,6 @@ module.exports = webpackMerge(commonConfig, {
   entry: {
     'main': './src/main.aot.ts'
   },
-  debug: false,
   devtool: 'source-map',
   output: {
     path: helpers.root('dist'),
@@ -23,18 +20,18 @@ module.exports = webpackMerge(commonConfig, {
   },
   plugins: [
     new ManifestPlugin(),
-    new DefinePlugin({
+    new webpack.DefinePlugin({
       'ENV': JSON.stringify(ENV),
       'process.env': {
         'ENV': JSON.stringify(ENV),
         'NODE_ENV': JSON.stringify(ENV)
       }
     }),
-    new LoaderOptionsPlugin({
+    new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false
     }),
-    new UglifyJsPlugin({
+    new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       },
@@ -44,7 +41,7 @@ module.exports = webpackMerge(commonConfig, {
     })
   ],
   node: {
-    global: 'window',
+    global: true,
     crypto: 'empty',
     process: false,
     module: false,

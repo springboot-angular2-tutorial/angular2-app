@@ -10,11 +10,10 @@ module.exports = {
     'main': './src/main.ts'
   },
   resolve: {
-    extensions: ['', '.ts', '.js'],
-    root: helpers.root('src'),
+    extensions: ['.ts', '.js'],
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.ts$/,
         loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
@@ -41,7 +40,7 @@ module.exports = {
     }),
   ],
   node: {
-    global: 'window',
+    global: true,
     crypto: 'empty',
     module: false,
     clearImmediate: false,

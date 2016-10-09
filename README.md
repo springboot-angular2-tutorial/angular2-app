@@ -32,7 +32,7 @@ npm test
 Production build.
 
 ```
-npm run build:prod:aot
+npm run build:prod
 ```
 
 ## Tutorial
