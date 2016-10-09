@@ -5,14 +5,8 @@ const commonConfig = require('./webpack.common.js');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const METADATA = webpackMerge(commonConfig.metadata, {
-  host: 'localhost',
-  port: 3001,
-  ENV: ENV
-});
 
 module.exports = webpackMerge(commonConfig, {
-  metadata: METADATA,
   debug: true,
   devtool: 'cheap-module-source-map',
   output: {
@@ -23,12 +17,12 @@ module.exports = webpackMerge(commonConfig, {
   },
   plugins: [
     new DefinePlugin({
-      'ENV': JSON.stringify(METADATA.ENV),
+      'ENV': JSON.stringify(ENV),
       'process.env': {
-        'ENV': JSON.stringify(METADATA.ENV),
-        'NODE_ENV': JSON.stringify(METADATA.ENV)
+        'ENV': JSON.stringify(ENV),
+        'NODE_ENV': JSON.stringify(ENV)
       }
-    })
+    }),
   ],
   tslint: {
     emitErrors: false,
@@ -36,8 +30,8 @@ module.exports = webpackMerge(commonConfig, {
     resourcePath: 'src'
   },
   devServer: {
-    port: METADATA.port,
-    host: METADATA.host,
+    port: 3001,
+    host: 'localhost',
     historyApiFallback: true,
     watchOptions: {
       aggregateTimeout: 300,
