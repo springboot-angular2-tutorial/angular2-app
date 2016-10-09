@@ -3,13 +3,13 @@
 <form (submit)="login(email.value, password.value); $event.preventDefault()">
 
   <div class="form-group">
-    <label for="email">Email</label>
+    <label class="col-form-label" for="email">Email</label>
     <input type="text" #email class="form-control" id="email"
            placeholder="Email">
   </div>
 
   <div class="form-group">
-    <label for="password">Password</label>
+    <label class="col-form-label" for="password">Password</label>
     <input type="password" #password class="form-control" id="password"
            placeholder="Password">
   </div>

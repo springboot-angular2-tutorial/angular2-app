@@ -3,69 +3,77 @@
 <form [formGroup]="myForm" (submit)="onSubmit(myForm.value)" novalidate>
 
   <div class="form-group"
-       [class.has-error]="!name.valid && name.touched">
-    <label class="control-label" for="nameInput">Name</label>
+       [class.has-danger]="!name.valid && name.touched">
+    <label class="col-form-label" for="nameInput">Name</label>
     <input
       type="text"
-      class="form-control"
+      class="form-control form-control-danger"
       id="nameInput"
       placeholder="Name"
       maxlength="30"
       formControlName="name"/>
-      <span *ngIf="name.hasError('required') && name.touched"
-            class="help-block">Name is required</span>
-      <span *ngIf="name.hasError('minlength') && name.touched"
-            class="help-block">Name must be longer than 4 chars.</span>
+    <div *ngIf="name.hasError('required') && name.touched"
+         class="form-control-feedback">Name is required
+    </div>
+    <div *ngIf="name.hasError('minlength') && name.touched"
+         class="form-control-feedback">Name must be longer than 4 chars.
+    </div>
   </div>
 
   <div class="form-group"
-       [class.has-error]="!email.valid && email.touched">
-    <label class="control-label" for="emailInput">Email</label>
+       [class.has-danger]="!email.valid && email.touched">
+    <label class="col-form-label" for="emailInput">Email</label>
     <input
       type="email"
-      class="form-control"
+      class="form-control form-control-danger"
       id="emailInput"
       placeholder="Email"
       maxlength="30"
       formControlName="email"/>
-      <span *ngIf="email.hasError('required') && email.touched"
-            class="help-block">Email is required</span>
-      <span *ngIf="email.hasError('pattern') && email.touched"
-            class="help-block">Invalid format</span>
+    <div *ngIf="email.hasError('required') && email.touched"
+         class="form-control-feedback">Email is required
+    </div>
+    <div *ngIf="email.hasError('pattern') && email.touched"
+         class="form-control-feedback">Invalid format
+    </div>
   </div>
 
   <div class="form-group"
-       [class.has-error]="!password.valid && password.touched">
-    <label class="control-label" for="passwordInput">Password</label>
+       [class.has-danger]="!password.valid && password.touched">
+    <label class="col-form-label" for="passwordInput">Password</label>
     <input
       type="password"
-      class="form-control"
+      class="form-control form-control-danger"
       id="passwordInput"
       placeholder="Password"
       maxlength="100"
       formControlName="password"/>
-      <span *ngIf="password.hasError('required') && password.touched"
-            class="help-block">Password is required</span>
-      <span *ngIf="password.hasError('minlength') && password.touched"
-            class="help-block">Password must be longer than 8 chars.</span>
+    <div *ngIf="password.hasError('required') && password.touched"
+         class="form-control-feedback">Password is required
+    </div>
+    <div *ngIf="password.hasError('minlength') && password.touched"
+         class="form-control-feedback">Password must be longer than 8 chars.
+    </div>
   </div>
 
   <div class="form-group"
-       [class.has-error]="!passwordConfirmation.valid && passwordConfirmation.touched">
-    <label class="control-label" for="passwordConfirmationInput">Confirm
+       [class.has-danger]="!passwordConfirmation.valid && passwordConfirmation.touched">
+    <label class="col-form-label" for="passwordConfirmationInput">Confirm
       Password</label>
     <input
       type="password"
-      class="form-control"
+      class="form-control form-control-danger"
       id="passwordConfirmationInput"
       placeholder="Confirm Password"
       formControlName="passwordConfirmation"/>
-      <span
-        *ngIf="passwordConfirmation.hasError('required') && passwordConfirmation.touched"
-        class="help-block">Password confirmation is required</span>
-      <span
-        *ngIf="passwordConfirmation.hasError('matched') && passwordConfirmation.touched"
-        class="help-block">Doesn't match</span>
+    <div
+      *ngIf="passwordConfirmation.hasError('required') && passwordConfirmation.touched"
+      class="form-control-feedback">Password confirmation is required
+    </div>
+    <div
+      *ngIf="passwordConfirmation.hasError('matched') && passwordConfirmation.touched"
+      class="form-control-feedback">Doesn't match
+    </div>
   </div>
 
   <button type="submit" class="btn btn-lg btn-primary">Submit</button>
