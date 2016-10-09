@@ -13,7 +13,7 @@ Thumbs.db
 
 # Dist #
 /dist
-/aot
+/build
 /src/**/*.css
 
 # IDE #
@@ -22,6 +22,3 @@ Thumbs.db
 
 # generated documents
 /doc
-
-# tmp
-/tmp

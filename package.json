@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "clean": "npm cache clean && rimraf -- node_modules doc coverage dist aot src/**/*.css",
-    "clean:dist": "rimraf -- dist aot tmp",
+    "clean:dist": "rimraf -- dist build",
     "preclean:install": "npm run clean",
     "clean:install": "npm set progress=false && npm install",
     "preclean:start": "npm run clean",

@@ -9,11 +9,11 @@ export class LoginService {
 
   private authEvents: Subject<AuthEvent>;
 
-  constructor(private http:MyHttp) {
+  constructor(private http: MyHttp) {
     this.authEvents = new Subject<AuthEvent>();
   }
 
-  login(email, password):Observable<Response> {
+  login(email: string, password: string): Observable<Response> {
     const body = {
       email: email,
       password: password,
@@ -24,16 +24,18 @@ export class LoginService {
     });
   }
 
-  logout():void {
+  logout(): void {
     localStorage.removeItem('jwt');
     this.authEvents.next(new DidLogout());
   }
 
-  isSignedIn():boolean {
+  isSignedIn(): boolean {
     return localStorage.getItem('jwt') !== null;
   }
 
-  get events(): Observable<AuthEvent> { return this.authEvents; }
+  get events(): Observable<AuthEvent> {
+    return this.authEvents;
+  }
 
 }
 

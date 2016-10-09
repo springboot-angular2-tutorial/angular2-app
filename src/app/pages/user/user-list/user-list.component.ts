@@ -28,11 +28,11 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  onPageChanged(page) {
+  onPageChanged(page: number) {
     this.router.navigate(['/users', {page: page}]);
   }
 
-  private list(page) {
+  private list(page: number) {
     this.userService.list({page: page, size: 5})
       .subscribe(usersPage => {
         this.users = usersPage.content;
