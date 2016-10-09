@@ -3,6 +3,7 @@ import "rxjs/add/operator/mergeMap";
 import "rxjs/add/operator/finally";
 import "rxjs/add/operator/do";
 import "jquery";
+import "bootstrap/js/dist/util";
 import "bootstrap/js/dist/collapse";
 import * as toastr from "toastr";
 

@@ -36,6 +36,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       jQuery: 'jquery',
       $: 'jquery',
+      Util: "exports?Util!bootstrap/js/dist/util",
       Collapse: "exports?Collapse!bootstrap/js/dist/collapse",
     }),
   ],
