@@ -3,8 +3,6 @@ import {Router} from "@angular/router";
 import * as toastr from "toastr";
 import {LoginService} from "./login.service";
 
-toastr.options.preventDuplicates = true;
-
 @Injectable()
 export class HttpErrorHandler {
 

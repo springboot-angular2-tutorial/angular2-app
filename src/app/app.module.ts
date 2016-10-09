@@ -17,14 +17,12 @@ import {HelpModule} from "./pages/help/help.module";
 import {UserEditModule} from "./pages/user/user-edit/user-edit.module";
 import {UserListModule} from "./pages/user/user-list/user-list.module";
 import {NoContentComponent} from "./pages/no-content/no-content.component";
-import {VendorComponent} from "../vendor";
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     HeaderComponent,
-    VendorComponent,
     NoContentComponent,
   ],
   imports: [
