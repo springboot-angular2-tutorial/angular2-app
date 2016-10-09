@@ -2,8 +2,13 @@
 
 aside {
   margin-bottom: $margin-xxsmall;
+  position: relative;
 }
 
-.follow-btn button {
-  margin-bottom: $margin-xlarge;
+.follow-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: $margin-medium;
+  margin-top: $margin-xsmall;
 }

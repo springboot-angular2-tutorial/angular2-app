@@ -48,13 +48,13 @@ describe('UserShowComponent', () => {
     TestBed.compileComponents().then(() => {
       const fixture = TestBed.createComponent(TestComponent);
       return router.navigate(['/users', '1']).then(() => {
+        fixture.detectChanges();
         cmpDebugElement = fixture.debugElement.query(By.directive(UserShowComponent));
         userStatsDebugElement = cmpDebugElement.query(By.directive(UserStatsComponent));
         followBtnDebugElement = cmpDebugElement.query(By.directive(FollowBtnComponent));
         micropostListDebugElement = cmpDebugElement.query(By.directive(MicropostListComponent));
-        fixture.detectChanges();
       });
-    });
+    }).catch(e => console.log(e));
   }));
 
   it('can be shown', () => {

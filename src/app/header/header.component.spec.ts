@@ -87,7 +87,7 @@ describe('HeaderComponent', () => {
     });
 
     it('shows a nav link to home', fakeAsync(() => {
-      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.home>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '.nav-item.home>a');
       expect(link).toBeTruthy();
       link.click();
       advance(fixture);
@@ -96,12 +96,12 @@ describe('HeaderComponent', () => {
     }));
 
     it('does not show a nav link to top', () => {
-      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.top>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '.nav-item.top>a');
       expect(link).toBeNull();
     });
 
     it('shows a nav link to users', fakeAsync(() => {
-      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.users>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '.nav-item.users>a');
       expect(link).toBeTruthy();
       link.click();
       advance(fixture);
@@ -110,7 +110,7 @@ describe('HeaderComponent', () => {
     }));
 
     it('shows a nav link to help', fakeAsync(() => {
-      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.help>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '.nav-item.help>a');
       expect(link).toBeTruthy();
       link.click();
       advance(fixture);
@@ -119,7 +119,7 @@ describe('HeaderComponent', () => {
     }));
 
     it('shows a nav link to profile', fakeAsync(() => {
-      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.profile>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '.nav-item.profile>a');
       expect(link).toBeTruthy();
       link.click();
       advance(fixture);
@@ -131,7 +131,7 @@ describe('HeaderComponent', () => {
         spyOn(userService, 'get').and.returnValue(Observable.of({}));
       }));
       it('shows a nav link to settings', fakeAsync(() => {
-        const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.settings>a');
+        const link = getDOM().querySelector(cmpDebugElement.nativeElement, '.nav-item.settings>a');
         expect(link).toBeTruthy();
         link.click();
         advance(fixture);
@@ -140,7 +140,7 @@ describe('HeaderComponent', () => {
     });
 
     it('shows a nav link to logout', fakeAsync(() => {
-      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.logout>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '.nav-item.logout>a');
       expect(link).toBeTruthy();
       spyOn(loginService, 'logout');
       link.click();
@@ -156,12 +156,12 @@ describe('HeaderComponent', () => {
     });
 
     it('does not show a nav link to home', () => {
-      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.home>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '.nav-item.home>a');
       expect(link).toBeNull();
     });
 
     it('shows a nav link to top', fakeAsync(() => {
-      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.top>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '.nav-item.top>a');
       expect(link).toBeTruthy();
       link.click();
       advance(fixture);
@@ -169,12 +169,12 @@ describe('HeaderComponent', () => {
     }));
 
     it('does not show a nav link to users', () => {
-      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.users>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '.nav-item.users>a');
       expect(link).toBeNull();
     });
 
     it('shows a nav link to help', fakeAsync(() => {
-      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.help>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '.nav-item.help>a');
       expect(link).toBeTruthy();
       link.click();
       advance(fixture);
@@ -183,17 +183,17 @@ describe('HeaderComponent', () => {
     }));
 
     it('does not show a nav link to profile', () => {
-      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.profile>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '.nav-item.profile>a');
       expect(link).toBeNull();
     });
 
     it('does not show a nav link to settings', () => {
-      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.settings>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '.nav-item.settings>a');
       expect(link).toBeNull();
     });
 
     it('shows a nav link to sign in', fakeAsync(() => {
-      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '#navbar li.login>a');
+      const link = getDOM().querySelector(cmpDebugElement.nativeElement, '.nav-item.login>a');
       expect(link).toBeTruthy();
       link.click();
       advance(fixture);
