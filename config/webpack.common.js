@@ -21,26 +21,8 @@ module.exports = {
         exclude: [/\.spec\.ts$/]
       },
       {test: /\.css$/, loader: 'raw-loader'},
-      {test: /\.html$/, loader: ['raw-loader', 'html-minify-loader']},
-      {
-        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/font-woff'
-      },
-      {
-        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/octet-stream'
-      },
-      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
-      {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=image/svg+xml'
-      }
+      {test: /\.html$/, loader: ['raw-loader']},
     ]
-  },
-  'html-minify-loader': {
-    dom: {
-      lowerCaseAttributeNames: false
-    }
   },
   plugins: [
     new ForkCheckerPlugin(),
@@ -55,8 +37,6 @@ module.exports = {
       jQuery: 'jquery',
       $: 'jquery',
       jquery: 'jquery',
-      "Tether": 'tether',
-      "window.Tether": "tether",
       Dropdown: "exports?Dropdown!bootstrap/js/dist/dropdown",
       Util: "exports?Util!bootstrap/js/dist/util",
       Collapse: "exports?Collapse!bootstrap/js/dist/collapse",
