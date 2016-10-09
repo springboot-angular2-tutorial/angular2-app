@@ -36,17 +36,16 @@ module.exports = {
     new webpack.ProvidePlugin({
       jQuery: 'jquery',
       $: 'jquery',
-      jquery: 'jquery',
       Dropdown: "exports?Dropdown!bootstrap/js/dist/dropdown",
       Util: "exports?Util!bootstrap/js/dist/util",
       Collapse: "exports?Collapse!bootstrap/js/dist/collapse",
-    })
+    }),
   ],
   node: {
     global: 'window',
     crypto: 'empty',
     module: false,
     clearImmediate: false,
-    setImmediate: false
+    setImmediate: false,
   }
 };

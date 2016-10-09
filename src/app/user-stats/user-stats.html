@@ -2,7 +2,8 @@
 
   <section class="user clearfix">
     <h2>
-      <mpt-gravatar [email]="user?.email" [size]="50" [alt]="user?.name"></mpt-gravatar>
+      <mpt-gravatar [email]="user?.email" [size]="68"
+                    [alt]="user?.name"></mpt-gravatar>
       {{user?.name}}
     </h2>
     <span *ngIf="!shownOnProfile">
@@ -13,13 +14,13 @@
 
   <section class="relationships clearfix">
     <div>
-      <!-- TODO https://github.com/angular/angular/issues/9801 -->
       <a class="followings" [routerLink]="['/users/' + user?.id, 'followings']">
-        <strong class="stat">{{user?.userStats?.followingCnt || 0}}</strong> followings
+        <strong class="stat">{{user?.userStats?.followingCnt || 0}}</strong>
+        followings
       </a>
-      <!-- TODO https://github.com/angular/angular/issues/9801 -->
       <a class="followers" [routerLink]="['/users/' + user?.id, 'followers']">
-        <strong class="stat">{{user?.userStats?.followerCnt || 0}}</strong> followers
+        <strong class="stat">{{user?.userStats?.followerCnt || 0}}</strong>
+        followers
       </a>
     </div>
   </section>

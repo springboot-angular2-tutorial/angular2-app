@@ -24,7 +24,7 @@
     "test:watch": "npm-run-all -p -r sass:watch karma:watch",
     "karma:watch": "karma start --browsers Chrome --reporters dots,notify --single-run false",
     "docs": "typedoc  --options typedoc.json  src/**/*.ts",
-    "start": "npm-run-all -p -r server:dev sass:watch",
+    "start": "npm-run-all -p -r sass:watch server:dev",
     "ngc": "ngc -p tsconfig.aot.json --locale=en-US",
     "presass": "rimraf -- src/**/*.css",
     "sass": "node-sass src -o src --include-path node_modules --output-style compressed -q",

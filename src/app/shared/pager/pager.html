@@ -1,7 +1,8 @@
 <nav>
-  <ul class="pager">
-    <li><a href="#" (click)="showPrev(); $event.preventDefault()">Previous</a>
-    </li>
-    <li><a href="#" (click)="showNext(); $event.preventDefault()">Next</a></li>
-  </ul>
+  <button type="button" class="btn btn-outline-primary" (click)="showPrev()">
+    Prev
+  </button>
+  <button type="button" class="btn btn-outline-primary" (click)="showNext()">
+    Next
+  </button>
 </nav>

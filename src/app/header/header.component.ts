@@ -4,6 +4,7 @@ import {LoginService} from "../core/services/login.service";
 
 @Component({
   selector: 'mpt-header',
+  styleUrls: ['./header.css'],
   templateUrl: './header.html',
 })
 export class HeaderComponent implements OnInit {

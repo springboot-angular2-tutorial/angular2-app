@@ -2,6 +2,7 @@
 
 .feed li {
   @extend %list_1;
+  line-height: 20px;
 }
 
 mpt-gravatar {

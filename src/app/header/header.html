@@ -11,7 +11,8 @@
       <li class="nav-item home" routerLinkActive="active" *ngIf="isSignedIn">
         <a class="nav-link" [routerLink]="['/home']">Home</a>
       </li>
-      <li class="nav-item top" *ngIf="!isSignedIn">
+      <li class="nav-item top" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}" *ngIf="!isSignedIn">
         <a class="nav-link" [routerLink]="['/']">Home</a>
       </li>
       <li class="nav-item users" routerLinkActive="active"
@@ -21,23 +22,22 @@
       <li class="nav-item help" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/help']">Help</a>
       </li>
-      <li class="dropdown nav-item" *ngIf="isSignedIn">
-        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"
-           role="button" aria-haspopup="true" aria-expanded="false">
-          Account<span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li class="profile"><a [routerLink]="['/users/me']">Profile</a></li>
-          <li class="settings"><a [routerLink]="['/users/me/edit']">Settings</a>
-          </li>
-          <li role="separator" class="divider"></li>
-          <li class="logout">
-            <a href="#" (click)="logout(); $event.preventDefault()">Sign out</a>
-          </li>
-        </ul>
+      <li class="nav-item login" routerLinkActive="active" *ngIf="!isSignedIn">
+        <a class="nav-link" [routerLink]="['/login']">Sign in</a>
       </li>
-      <li class="nav-item login" *ngIf="!isSignedIn">
-        <a [routerLink]="['/login']">Sign in</a>
+    </ul>
+    <ul class="nav navbar-nav pull-sm-right" *ngIf="isSignedIn">
+      <li class="nav-item profile" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">
+        <a class="nav-link" [routerLink]="['/users/me']">Profile</a>
+      </li>
+      <li class="nav-item settings" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">
+        <a class="nav-link" [routerLink]="['/users/me/edit']">Settings</a>
+      </li>
+      <li class="nav-item logout">
+        <a class="nav-link" href="#"
+           (click)="logout(); $event.preventDefault()">Sign out</a>
       </li>
     </ul>
   </div>
