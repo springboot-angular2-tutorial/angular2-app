@@ -4,7 +4,7 @@
   "description": "Angular2 tutorial sample application",
   "main": "",
   "scripts": {
-    "clean": "npm cache clean && rimraf -- node_modules doc coverage dist aot src/**/*.css",
+    "clean": "npm cache clean && rimraf -- node_modules doc coverage dist build src/**/*.css",
     "clean:dist": "rimraf -- dist build",
     "preclean:install": "npm run clean",
     "clean:install": "npm set progress=false && npm install",
@@ -26,7 +26,7 @@
     "ngc": "ngc -p tsconfig.aot.json --locale=en-US",
     "presass": "rimraf -- src/**/*.css",
     "sass": "node-sass src -o src --include-path node_modules --output-style compressed -q",
-    "sass:watch": "node-sass -w src -o src"
+    "sass:watch": "node-sass src -o src && node-sass -w src -o src"
   },
   "repository": {
     "type": "git",
