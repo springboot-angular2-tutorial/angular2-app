@@ -13,7 +13,7 @@ Thumbs.db
 
 # Dist #
 /dist
-/build
+/aot
 /src/**/*.css
 
 # IDE #

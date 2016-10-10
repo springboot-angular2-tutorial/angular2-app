@@ -8,7 +8,7 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "allowSyntheticDefaultImports": true,
-    "outDir": "./build"
+    "outDir": "/dev/null"
   },
   "exclude": [
     "node_modules",
@@ -17,7 +17,7 @@
     "src/testing"
   ],
   "angularCompilerOptions": {
-    "genDir": "build",
+    "genDir": "aot",
     "skipMetadataEmit" : true
   }
 }
