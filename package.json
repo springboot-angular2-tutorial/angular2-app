@@ -74,7 +74,6 @@
     "codelyzer": "~1.0.0-beta.0",
     "css-loader": "^0.25.0",
     "exports-loader": "^0.6.3",
-    "extract-text-webpack-plugin": "~2.0.0-beta.4",
     "jasmine-core": "^2.4.1",
     "karma": "^1.2.0",
     "karma-chrome-launcher": "^2.0.0",
