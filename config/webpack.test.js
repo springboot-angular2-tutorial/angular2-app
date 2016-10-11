@@ -36,10 +36,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(ENV),
-      'process.env': {
-        'ENV': JSON.stringify(ENV),
-        'NODE_ENV': JSON.stringify(ENV),
-      }
+      'API_URL': JSON.stringify('')
     }),
     new webpack.LoaderOptionsPlugin({
       options: {
