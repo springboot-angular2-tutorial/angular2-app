@@ -19,3 +19,4 @@ app.get('*', (req, res) => {
 });
 
 app.listen(4200);
+console.log("server is running on http://localhost:4200");

@@ -6,6 +6,7 @@ const commonConfig = require('./webpack.common.js');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
+const API_URL = process.env.API_URL || '';
 
 module.exports = webpackMerge(commonConfig, {
   entry: {
@@ -22,10 +23,7 @@ module.exports = webpackMerge(commonConfig, {
     new ManifestPlugin(),
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(ENV),
-      'process.env': {
-        'ENV': JSON.stringify(ENV),
-        'NODE_ENV': JSON.stringify(ENV)
-      }
+      'API_URL': JSON.stringify(API_URL)
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,

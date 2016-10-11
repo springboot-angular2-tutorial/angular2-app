@@ -13,7 +13,7 @@ let _decorateModuleRef = function identity<T>(value: T): T {
   return value;
 };
 
-if ('production' === process.env.ENV) {
+if ('production' === ENV) {
   // Production
   disableDebugTools();
   enableProdMode();

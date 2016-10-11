@@ -13,7 +13,7 @@ import {ProfileDataResolver} from "./services/profile-data.resolver";
 
 export function createMyHttp(xhrBackend: XHRBackend, requestOptions: RequestOptions) {
   const ngHttp = new Http(xhrBackend, requestOptions);
-  return new MyHttp(ngHttp);
+  return new MyHttp(ngHttp, API_URL);
 }
 
 @NgModule({

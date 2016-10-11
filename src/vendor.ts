@@ -11,7 +11,7 @@ require("!style!css!./vendor.css");
 
 toastr.options.preventDuplicates = true;
 
-if ('production' === process.env.ENV) {
+if ('production' === ENV) {
 } else {
 }
 
