@@ -32,13 +32,18 @@ module.exports = webpackMerge(commonConfig, {
     }),
   ],
   devServer: {
-    port: 3001,
+    port: 4200,
     host: 'localhost',
     historyApiFallback: true,
     watchOptions: {
       aggregateTimeout: 300,
       poll: 1000
-    }
+    },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+      }
+    },
   },
   node: {
     global: true,

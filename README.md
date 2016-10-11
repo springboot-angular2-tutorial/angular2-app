@@ -4,6 +4,8 @@ This repository is an example application for angular2 tutorial.
 
 [Demo](https://micropost.hana053.com/)
 
+* Ahead-of-time compilation
+
 ## Getting Started
 
 Prepare backend app.
@@ -20,7 +22,7 @@ Serve frontend app by webpack-dev-server.
 npm install webpack-dev-server webpack -g
 npm install
 npm start
-open http://localhost:8080
+open http://localhost:4200
 ```
 
 Testing.
@@ -33,6 +35,8 @@ Production build.
 
 ```
 npm run build:prod
+npm run server:prod
+open http://localhost:4200
 ```
 
 ## Tutorial

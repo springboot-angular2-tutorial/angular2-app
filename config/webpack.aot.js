@@ -38,7 +38,7 @@ module.exports = webpackMerge(commonConfig, {
       beautify: false,
       comments: false,
       sourceMap: true
-    })
+    }),
   ],
   node: {
     global: true,
