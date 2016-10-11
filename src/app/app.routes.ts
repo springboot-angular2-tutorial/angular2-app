@@ -4,7 +4,6 @@ import {UserShowComponent} from "./pages/user/user-show/user-show.component";
 import {FollowingListComponent} from "./pages/relationship/following-list/following-list.component";
 import {FollowerListComponent} from "./pages/relationship/follower-list/follower-list.component";
 import {UserListComponent} from "./pages/user/user-list/user-list.component";
-import {HelpComponent} from "./pages/help/help.component";
 import {UserEditComponent} from "./pages/user/user-edit/user-edit.component";
 import {ProfileDataResolver} from "./core/services/profile-data.resolver";
 import {LoginComponent} from "./pages/login/login.component";
@@ -44,7 +43,10 @@ export const ROUTES: Routes = [
   },
   {path: 'login', component: LoginComponent, canActivate: [PublicPageGuard]},
   {path: 'signup', component: SignupComponent, canActivate: [PublicPageGuard]},
-  {path: 'help', component: HelpComponent},
+  {
+    path: 'help',
+    loadChildren: './pages/help/help.module#HelpModule'
+  },
   {path: '', component: TopComponent, canActivate: [PublicPageGuard]},
   {path: '**', component: NoContentComponent}
 ];

@@ -13,6 +13,16 @@ module.exports = webpackMerge(commonConfig, {
   entry: {
     'main': './src/main.aot.ts'
   },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        loaders: [
+          'angular2-router-loader?loader=system&aot=true&genDir=aot/src/app',
+        ],
+      },
+    ]
+  },
   devtool: 'source-map',
   output: {
     path: helpers.root('dist'),
