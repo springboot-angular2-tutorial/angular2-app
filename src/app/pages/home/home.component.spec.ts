@@ -7,7 +7,7 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {HomeModule} from "./home.module";
 import {CoreModule} from "../../core/core.module";
 import {UserStatsComponent} from "../../user-stats/user-stats.component";
-import {MicropostNewComponent} from "../../micropost/micropost-new/micropost-new.component";
+import {MicropostNewComponent} from "../../components";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
 
 describe('HomeComponent', () => {

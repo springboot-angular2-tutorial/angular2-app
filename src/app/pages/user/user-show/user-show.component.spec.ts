@@ -4,7 +4,7 @@ import {inject, TestBed, fakeAsync} from "@angular/core/testing";
 import {Router} from "@angular/router";
 import {UserShowComponent} from "./user-show.component";
 import {RouterTestingModule} from "@angular/router/testing";
-import {MicropostListComponent} from "../../../micropost/micropost-list/micropost-list.component";
+import {MicropostListComponent} from "../../../components";
 import {FollowBtnComponent} from "../../../shared/follow-btn/follow-btn.component";
 import {CoreModule} from "../../../core/core.module";
 import {UserStatsComponent} from "../../../user-stats/user-stats.component";

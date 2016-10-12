@@ -4,7 +4,7 @@ import {RouterModule} from "@angular/router";
 import {ENV_PROVIDERS} from "./environment";
 import {ROUTES} from "./app.routes";
 import {AppComponent} from "./app.component";
-import {HeaderComponent} from "./components/header/header.component";
+import {HeaderComponent} from "./components";
 import {CoreModule} from "./core/core.module";
 import {HomeModule} from "./pages/home/home.module";
 import {UserShowModule} from "./pages/user/user-show/user-show.module";

@@ -1,8 +1,8 @@
 import {Observable} from "rxjs/Observable";
 import {Injectable} from "@angular/core";
-import {MyHttp} from "../../core/http/http";
-import {Micropost} from "../../core/domains";
-import {objToSearchParams} from "../../core/services/helpers";
+import {MyHttp} from "../../../core/http";
+import {Micropost} from "../../../core/domains";
+import {objToSearchParams} from "../../../core/services/helpers";
 
 const url = (userId:string):string => `/api/users/${userId}/microposts`;
 
