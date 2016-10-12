@@ -7,14 +7,23 @@ cache:
 node_js:
 - '6.2.0'
 
+install:
+  # install aws cli
+  - sudo apt-get -y install python-pip
+  - sudo pip install awscli
+  - aws --version
+
 script: npm run sass && node_modules/karma/bin/karma start --browsers PhantomJS
 
-before_deploy: npm run build:prod
+after_success:
+  # Parse branch name and determine an environment to deploy
+  - export ENV=$(echo "${TRAVIS_BRANCH}" | perl -ne "print $& if /(?<=deploy\/).*/")
+  # Switch AWS Role when ENV is prod
+  - test "${ENV}" = "prod" && source scripts/switch-production-role.sh
+
 deploy:
-  provider: s3
-  access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key: $AWS_SECRET_ACCESS_KEY
-  bucket: "cdn.hana053.com"
-  skip_cleanup: true
-  acl: public_read
-  local_dir: dist
+  - provider: script
+    script: scripts/deploy.sh
+    skip_cleanup: true
+    on:
+      branch: deploy/*
