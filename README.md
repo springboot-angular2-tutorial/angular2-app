@@ -5,6 +5,7 @@ This repository is an example application for angular2 tutorial.
 [Demo](https://micropost.hana053.com/)
 
 * Ahead-of-time compilation
+* Lazy Loading
 
 ## Getting Started
 
