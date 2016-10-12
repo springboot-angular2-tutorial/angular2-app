@@ -45,7 +45,7 @@ export const ROUTES: Routes = [
   {path: 'signup', component: SignupComponent, canActivate: [PublicPageGuard]},
   {
     path: 'help',
-    loadChildren: './pages/help/help.module#HelpModule'
+    loadChildren: './pages/+help/help.module#HelpModule'
   },
   {path: '', component: TopComponent, canActivate: [PublicPageGuard]},
   {path: '**', component: NoContentComponent}
