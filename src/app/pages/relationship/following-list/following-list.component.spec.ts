@@ -6,7 +6,7 @@ import {FollowingListComponent} from "./following-list.component";
 import {RelatedUserListComponent} from "../shared/related-user-list.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {CoreModule} from "../../../core/core.module";
-import {UserStatsComponent} from "../../../user-stats/user-stats.component";
+import {UserStatsComponent} from "../../../components";
 import {FollowingListModule} from "./following-list.module";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../../testing";
 

@@ -12,9 +12,9 @@ import {MockBackend} from "@angular/http/testing";
 import {UserStatsComponent} from "./user-stats.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {UserStatsModule} from "./user-stats.module";
-import {CoreModule} from "../core/core.module";
-import {GravatarComponent} from "../shared/gravatar/gravatar.component";
-import {APP_TEST_HTTP_PROVIDERS} from "../../testing";
+import {CoreModule} from "../../core/core.module";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
+import {GravatarComponent} from "../../shared/gravatar/gravatar.component";
 
 describe('UserStatsComponent', () => {
 

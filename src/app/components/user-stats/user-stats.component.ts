@@ -1,12 +1,12 @@
 import {Component, OnInit, Input} from "@angular/core";
-import {User} from "../core/domains";
-import {UserService} from "../core/services/user.service";
-import {HttpErrorHandler} from "../core/services/http-error-handler";
+import {User} from "../../core/domains";
+import {UserService} from "../../core/services/user.service";
+import {HttpErrorHandler} from "../../core/services/http-error-handler";
 
 @Component({
   selector: 'mpt-user-stats',
-  styleUrls: ['./user-stats.css'],
-  templateUrl: './user-stats.html',
+  styleUrls: ['user-stats.css'],
+  templateUrl: 'user-stats.html',
 })
 export class UserStatsComponent implements OnInit {
 
