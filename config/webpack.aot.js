@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
@@ -21,6 +22,10 @@ module.exports = webpackMerge(commonConfig, {
   },
   plugins: [
     new ManifestPlugin(),
+    new HtmlWebpackPlugin({
+      template: 'src/index.prod.html',
+      chunksSortMode: 'dependency',
+    }),
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(ENV),
       'API_URL': JSON.stringify(API_URL)

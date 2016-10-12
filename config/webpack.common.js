@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const helpers = require('./helpers');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
 module.exports = {
@@ -38,10 +37,6 @@ module.exports = {
       $: 'jquery',
       Util: "exports?Util!bootstrap/js/dist/util",
       Collapse: "exports?Collapse!bootstrap/js/dist/collapse",
-    }),
-    new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      chunksSortMode: 'dependency',
     }),
   ],
   node: {
