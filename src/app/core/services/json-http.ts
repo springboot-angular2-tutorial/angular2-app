@@ -17,7 +17,7 @@ const mergeAuthToken = (options: RequestOptionsArgs) => {
 };
 
 @Injectable()
-export class MyHttp {
+export class JsonHttp {
 
   constructor(private http: Http, private baseUrl: string = '') {
   }

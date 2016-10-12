@@ -4,7 +4,7 @@ import {Response} from "@angular/http";
 import {User, RelatedUser} from "../domains";
 import {objToSearchParams} from "./helpers";
 import {PageRequest, Page, UserParams} from "../dto";
-import {MyHttp} from "../http/http";
+import {JsonHttp} from "./";
 
 const url = '/api/users';
 const defaultPageRequest:PageRequest = {page: 1, size: 5};
@@ -12,7 +12,7 @@ const defaultPageRequest:PageRequest = {page: 1, size: 5};
 @Injectable()
 export class UserService {
 
-  constructor(private http:MyHttp) {
+  constructor(private http:JsonHttp) {
   }
 
   list(pageRequest:PageRequest = defaultPageRequest):Observable<Page<User>> {

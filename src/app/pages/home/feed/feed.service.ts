@@ -1,14 +1,14 @@
 import {Observable} from "rxjs/Observable";
 import {Injectable} from "@angular/core";
-import {MyHttp} from "../../../core/http";
 import {Micropost} from "../../../core/domains";
+import {JsonHttp} from "../../../core/services";
 
 const url = '/api/feed';
 
 @Injectable()
 export class FeedService {
 
-  constructor(private http: MyHttp) {
+  constructor(private http: JsonHttp) {
   }
 
   showFeed(): Observable<Micropost[]> {

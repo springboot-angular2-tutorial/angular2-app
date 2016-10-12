@@ -7,13 +7,13 @@ import {MicropostService} from "./services/micropost.service";
 import {UserService} from "./services/user.service";
 import {PrivatePageGuard} from "./services/private-page.guard";
 import {PublicPageGuard} from "./services/public-page.guard";
-import {MyHttp} from "./http";
 import {XHRBackend, Http, RequestOptions, HttpModule} from "@angular/http";
 import {ProfileDataResolver} from "./services/profile-data.resolver";
+import {JsonHttp} from "./services";
 
-export function createMyHttp(xhrBackend: XHRBackend, requestOptions: RequestOptions) {
+export function createJsonHttp(xhrBackend: XHRBackend, requestOptions: RequestOptions) {
   const ngHttp = new Http(xhrBackend, requestOptions);
-  return new MyHttp(ngHttp, API_URL);
+  return new JsonHttp(ngHttp, API_URL);
 }
 
 @NgModule({
@@ -25,8 +25,8 @@ export function createMyHttp(xhrBackend: XHRBackend, requestOptions: RequestOpti
   exports: [],
   providers: [
     {
-      provide: MyHttp,
-      useFactory: createMyHttp,
+      provide: JsonHttp,
+      useFactory: createJsonHttp,
       deps: [XHRBackend, RequestOptions]
     },
     HttpErrorHandler,

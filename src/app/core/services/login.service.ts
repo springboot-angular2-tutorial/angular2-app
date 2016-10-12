@@ -2,14 +2,14 @@ import {Observable} from "rxjs/Observable";
 import {Injectable} from "@angular/core";
 import {Response} from "@angular/http";
 import {Subject} from "rxjs/Rx";
-import {MyHttp} from "../http/http";
+import {JsonHttp} from "./";
 
 @Injectable()
 export class LoginService {
 
   private authEvents: Subject<AuthEvent>;
 
-  constructor(private http: MyHttp) {
+  constructor(private http: JsonHttp) {
     this.authEvents = new Subject<AuthEvent>();
   }
 

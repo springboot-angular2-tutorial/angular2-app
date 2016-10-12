@@ -1,16 +1,16 @@
 import {RequestOptions, Http} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
-import {MyHttp} from "../app/core/http";
+import {JsonHttp} from "../app/core/services";
 
 export * from './helpers';
 
 export const APP_TEST_HTTP_PROVIDERS = [
   MockBackend,
   {
-    provide: MyHttp,
+    provide: JsonHttp,
     useFactory: (mockBackend: MockBackend, requestOptions: RequestOptions) => {
       const http = new Http(mockBackend, requestOptions);
-      return new MyHttp(http);
+      return new JsonHttp(http);
     },
     deps: [MockBackend, RequestOptions]
   },
