@@ -3,8 +3,6 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const API_URL = process.env.API_URL || '';
 
@@ -30,10 +28,6 @@ module.exports = webpackMerge(commonConfig, {
     chunkFilename: '[id].[chunkhash].chunk.js'
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.prod.html',
-      chunksSortMode: 'dependency',
-    }),
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(ENV),
       'API_URL': JSON.stringify(API_URL)
