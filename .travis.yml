@@ -8,6 +8,7 @@ node_js:
 - '6.2.0'
 
 install:
+  - npm install
   # install aws cli
   - sudo apt-get -y install python-pip
   - sudo pip install awscli
