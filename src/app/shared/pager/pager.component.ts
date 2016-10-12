@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, Output} from "@angular/core";
 
 @Component({
   selector: 'mpt-pager',
-  templateUrl: './pager.html',
+  templateUrl: './pager.component.html',
 })
 export class PagerComponent {
 

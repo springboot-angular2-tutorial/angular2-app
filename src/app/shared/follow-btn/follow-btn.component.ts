@@ -13,7 +13,7 @@ import {User} from "../../core/domains";
 
 @Component({
   selector: 'mpt-follow-btn',
-  templateUrl: './follow-btn.html',
+  templateUrl: './follow-btn.component.html',
 })
 export class FollowBtnComponent implements OnChanges {
 

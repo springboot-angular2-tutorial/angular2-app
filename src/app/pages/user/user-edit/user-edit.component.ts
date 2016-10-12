@@ -10,7 +10,7 @@ import omitBy from "lodash/omitBy";
 
 @Component({
   selector: 'mpt-user-edit',
-  templateUrl: './user-edit.html',
+  templateUrl: './user-edit.component.html',
 })
 export class UserEditComponent implements OnInit {
 

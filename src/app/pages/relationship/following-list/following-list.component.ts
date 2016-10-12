@@ -6,7 +6,7 @@ import {UserService} from "../../../core/services/user.service";
 
 @Component({
   selector: 'mpt-following-list',
-  templateUrl: './following-list.html',
+  templateUrl: './following-list.component.html',
 })
 export class FollowingListComponent implements OnInit {
 

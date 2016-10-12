@@ -5,14 +5,14 @@ import * as toastr from "toastr";
 import {
   EMAIL_PATTERN,
   Validators as AppValidators
-} from "../../core/forms/index";
+} from "../../core/forms";
 import {UserService} from "../../core/services/user.service";
 import {LoginService} from "../../core/services/login.service";
 
 @Component({
   selector: 'mpt-signup',
-  styleUrls: ['./signup.css'],
-  templateUrl: './signup.html',
+  styleUrls: ['./signup.component.css'],
+  templateUrl: './signup.component.html',
 })
 export class SignupComponent implements OnInit {
 

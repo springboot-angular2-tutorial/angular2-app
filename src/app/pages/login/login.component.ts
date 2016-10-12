@@ -5,8 +5,8 @@ import {LoginService} from "../../core/services/login.service";
 
 @Component({
   selector: 'mpt-login',
-  styleUrls: ['./login.css'],
-  templateUrl: './login.html',
+  styleUrls: ['./login.component.css'],
+  templateUrl: './login.component.html',
 })
 export class LoginComponent {
 

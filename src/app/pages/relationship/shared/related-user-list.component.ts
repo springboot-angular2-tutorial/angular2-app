@@ -5,8 +5,8 @@ import {HttpErrorHandler} from "../../../core/services/http-error-handler";
 
 @Component({
   selector: 'mpt-related-user-list',
-  styleUrls: ['./related-user-list.css'],
-  templateUrl: './related-user-list.html',
+  styleUrls: ['./related-user-list.component.css'],
+  templateUrl: './related-user-list.component.html',
 })
 export class RelatedUserListComponent implements OnInit {
 

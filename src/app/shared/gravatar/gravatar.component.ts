@@ -4,7 +4,7 @@ const md5Hex = require('md5-hex');
 
 @Component({
   selector: 'mpt-gravatar',
-  templateUrl: './gravatar.html',
+  templateUrl: './gravatar.component.html',
 })
 export class GravatarComponent implements OnChanges {
 
