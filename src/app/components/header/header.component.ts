@@ -1,11 +1,11 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {LoginService} from "../core/services/login.service";
+import {LoginService} from "../../core/services/login.service";
 
 @Component({
   selector: 'mpt-header',
-  styleUrls: ['./header.css'],
-  templateUrl: './header.html',
+  styleUrls: ['header.css'],
+  templateUrl: 'header.html',
 })
 export class HeaderComponent implements OnInit {
 
