@@ -15,33 +15,33 @@ export const ROUTES: Routes = [
   },
   {
     path: 'users/:id/followings',
-    loadChildren: './pages/relationship/following-list/following-list.module#FollowingListModule',
+    loadChildren: './pages/relationship/+following-list/following-list.module#FollowingListModule',
     canActivate: [PrivatePageGuard]
   },
   {
     path: 'users/:id/followers',
-    loadChildren: './pages/relationship/follower-list/follower-list.module#FollowerListModule',
+    loadChildren: './pages/relationship/+follower-list/follower-list.module#FollowerListModule',
     canActivate: [PrivatePageGuard]
   },
   {
     path: 'users/me/edit',
-    loadChildren: './pages/user/user-edit/user-edit.module#UserEditModule',
+    loadChildren: './pages/user/+user-edit/user-edit.module#UserEditModule',
     resolve: {profile: ProfileDataResolver},
     canActivate: [PrivatePageGuard],
   },
   {
     path: 'users/:id',
-    loadChildren: './pages/user/user-show/user-show.module#UserShowModule',
+    loadChildren: './pages/user/+user-show/user-show.module#UserShowModule',
   },
   {
     path: 'users',
-    loadChildren: './pages/user/user-list/user-list.module#UserListModule',
+    loadChildren: './pages/user/+user-list/user-list.module#UserListModule',
     canActivate: [PrivatePageGuard],
   },
   {path: 'login', component: LoginComponent, canActivate: [PublicPageGuard]},
   {
     path: 'signup',
-    loadChildren: './pages/signup/signup.module#SignupModule',
+    loadChildren: './pages/+signup/signup.module#SignupModule',
     canActivate: [PublicPageGuard],
   },
   {
