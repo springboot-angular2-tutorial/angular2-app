@@ -6,6 +6,7 @@ This repository is an example application for angular2 tutorial.
 
 * Ahead-of-time compilation
 * Lazy Loading
+* Preloading 
 
 ## Getting Started
 
