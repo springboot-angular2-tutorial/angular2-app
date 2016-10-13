@@ -19,31 +19,31 @@ const mergeAuthToken = (options: RequestOptionsArgs) => {
 @Injectable()
 export class JsonHttp {
 
-  constructor(private http: Http, private baseUrl: string = '') {
+  constructor(private http: Http) {
   }
 
   get(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    return this.http.get(this.baseUrl + url, mergeAuthToken(options));
+    return this.http.get(url, mergeAuthToken(options));
   }
 
   post(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
-    return this.http.post(this.baseUrl + url, body, mergeAuthToken(options));
+    return this.http.post(url, body, mergeAuthToken(options));
   }
 
   put(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
-    return this.http.put(this.baseUrl + url, body, mergeAuthToken(options));
+    return this.http.put(url, body, mergeAuthToken(options));
   }
 
   delete(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    return this.http.delete(this.baseUrl + url, mergeAuthToken(options));
+    return this.http.delete(url, mergeAuthToken(options));
   }
 
   patch(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
-    return this.http.patch(this.baseUrl + url, body, mergeAuthToken(options));
+    return this.http.patch(url, body, mergeAuthToken(options));
   }
 
   head(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    return this.http.head(this.baseUrl + url, mergeAuthToken(options));
+    return this.http.head(url, mergeAuthToken(options));
   }
 
 }

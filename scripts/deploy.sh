@@ -6,16 +6,20 @@ if [ -z "${ENV}" ]; then
 fi
 
 # set variables
-API_URL="https://backend-${ENV}.hana053.com"
+CDN_URL="https://cdn-${ENV}.hana053.com"
+S3_CDN_URL="s3://cdn-${ENV}.hana053.com"
+
 if [ "${ENV}" = "prod" ]; then
-  BUCKET_URL="s3://micropost.hana053.com"
+  MAIN_URL="https://micropost.hana053.com"
 else
-  BUCKET_URL="s3://micropost-${ENV}.hana053.com"
+  MAIN_URL="https://micropost-${ENV}.hana053.com"
 fi
 
 # build
-API_URL=${API_URL} npm run build:prod
+PUBLIC_PATH=${CDN_URL} npm run build:prod
 
 # deploy
-aws s3 sync --delete --acl public-read dist ${BUCKET_URL}
+aws s3 sync --delete --acl public-read dist ${S3_CDN_URL}
 
+# invalidate index.html
+curl -I "${MAIN_URL}/index.html" -H 'Cache-Purge: 1'

@@ -13,7 +13,7 @@ import {JsonHttp} from "./services";
 
 export function createJsonHttp(xhrBackend: XHRBackend, requestOptions: RequestOptions) {
   const ngHttp = new Http(xhrBackend, requestOptions);
-  return new JsonHttp(ngHttp, API_URL);
+  return new JsonHttp(ngHttp);
 }
 
 @NgModule({
