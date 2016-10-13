@@ -10,6 +10,7 @@ import {HomeModule} from "./pages/home/home.module";
 import {LoginModule} from "./pages/login/login.module";
 import {TopModule} from "./pages/top/top.module";
 import {NoContentComponent} from "./pages/no-content/no-content.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -23,6 +24,9 @@ import {NoContentComponent} from "./pages/no-content/no-content.component";
     RouterModule.forRoot(ROUTES, {
       preloadingStrategy: PreloadAllModules
     }),
+    FormsModule,
+    ReactiveFormsModule,
+
     CoreModule,
     HomeModule,
     LoginModule,
