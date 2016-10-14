@@ -8,7 +8,7 @@ import {MicropostListComponent} from "./micropost-list.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {MicropostListModule} from "./micropost-list.module";
 import {MicropostService} from "../../core/services/micropost.service";
-import {CoreModule} from "../../core/core.module";
+import {CoreModule} from "../../core";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
 
 describe('MicropostListComponent', () => {

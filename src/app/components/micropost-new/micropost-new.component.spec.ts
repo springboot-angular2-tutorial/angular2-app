@@ -6,7 +6,7 @@ import {MockBackend} from "@angular/http/testing";
 import {MicropostNewComponent} from "./micropost-new.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {MicropostService} from "../../core/services/micropost.service";
-import {CoreModule} from "../../core/core.module";
+import {CoreModule} from "../../core";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
 
 describe('MicropostNewComponent', () => {

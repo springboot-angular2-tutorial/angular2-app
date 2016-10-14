@@ -1,7 +1,7 @@
 import {CommonModule} from "@angular/common";
-import {HomeComponent} from "./home.component";
 import {NgModule} from "@angular/core/src/metadata/ng_module";
-import {SharedModule} from "../../shared/shared.module";
+import {HomeComponent} from "./home.component";
+import {SharedModule} from "../../shared";
 import {MicropostNewComponent, UserStatsModule} from "../../components";
 import {FeedModule} from "./feed/feed.module";
 

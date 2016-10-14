@@ -14,7 +14,7 @@ import {Router} from "@angular/router";
 import {LoginComponent} from "./login.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {LoginService} from "../../core/services/login.service";
-import {CoreModule} from "../../core/core.module";
+import {CoreModule} from "../../core";
 import {LoginModule} from "./login.module";
 import {APP_TEST_HTTP_PROVIDERS, advance} from "../../../testing";
 

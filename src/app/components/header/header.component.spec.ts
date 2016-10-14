@@ -12,7 +12,7 @@ import {
 import {Router} from "@angular/router";
 import {HeaderComponent} from "./header.component";
 import {RouterTestingModule} from "@angular/router/testing";
-import {CoreModule} from "../../core/core.module";
+import {CoreModule} from "../../core";
 import {APP_TEST_HTTP_PROVIDERS, login, advance} from "../../../testing";
 import {LoginService} from "../../core/services/login.service";
 import {UserService} from "../../core/services/user.service";

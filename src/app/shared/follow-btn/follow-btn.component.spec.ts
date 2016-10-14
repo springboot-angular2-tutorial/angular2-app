@@ -3,12 +3,12 @@ import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {inject, TestBed, fakeAsync} from "@angular/core/testing";
 import {Response, ResponseOptions} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
-import {FollowBtnComponent} from "./follow-btn.component";
-import {FollowBtnService} from "./follow-btn.service";
 import {RouterTestingModule} from "@angular/router/testing";
-import {CoreModule} from "../../core/core.module";
+import {CoreModule} from "../../core";
 import {SharedModule} from "../shared.module";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
+import {FollowBtnComponent} from "./follow-btn.component";
+import {FollowBtnService} from "./follow-btn.service";
 
 describe('FollowBtnComponent', () => {
 

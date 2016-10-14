@@ -6,7 +6,7 @@ import {TestBed, fakeAsync} from "@angular/core/testing";
 import {RelatedUserListComponent} from "./related-user-list.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {RelatedUser} from "../../core/domains";
-import {CoreModule} from "../../core/core.module";
+import {CoreModule} from "../../core";
 import {GravatarComponent} from "../../shared/gravatar/gravatar.component";
 import {RelatedUserListModule} from "./related-user-list.module";
 

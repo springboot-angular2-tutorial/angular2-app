@@ -5,7 +5,7 @@ import {ENV_PROVIDERS} from "./environment";
 import {ROUTES} from "./app.routes";
 import {AppComponent} from "./app.component";
 import {HeaderComponent} from "./components";
-import {CoreModule} from "./core/core.module";
+import {CoreModule} from "./core";
 import {HomeModule} from "./pages/home/home.module";
 import {LoginModule} from "./pages/login/login.module";
 import {TopModule} from "./pages/top/top.module";

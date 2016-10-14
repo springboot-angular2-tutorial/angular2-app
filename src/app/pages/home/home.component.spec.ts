@@ -5,7 +5,7 @@ import {FeedComponent} from "./feed/feed.component";
 import {HomeComponent} from "./home.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {HomeModule} from "./home.module";
-import {CoreModule} from "../../core/core.module";
+import {CoreModule} from "../../core";
 import {MicropostNewComponent, UserStatsComponent} from "../../components";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
 

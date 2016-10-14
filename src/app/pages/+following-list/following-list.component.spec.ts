@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 import {FollowingListComponent} from "./following-list.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {FollowingListModule} from "./following-list.module";
-import {CoreModule} from "../../core/core.module";
+import {CoreModule} from "../../core";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
 import {UserStatsComponent, RelatedUserListComponent} from "../../components";
 

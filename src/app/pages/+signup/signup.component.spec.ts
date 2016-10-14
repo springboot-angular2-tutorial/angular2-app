@@ -13,7 +13,7 @@ import {Router} from "@angular/router";
 import {SignupComponent} from "./signup.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {LoginService} from "../../core/services/login.service";
-import {CoreModule} from "../../core/core.module";
+import {CoreModule} from "../../core";
 import {SignupModule} from "./signup.module";
 import {APP_TEST_HTTP_PROVIDERS, advance} from "../../../testing";
 
