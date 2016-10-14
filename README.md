@@ -21,8 +21,8 @@ mvn spring-boot:run
 Serve frontend app by webpack-dev-server.
 
 ```
-npm install webpack-dev-server webpack -g
-npm install
+npm install webpack-dev-server webpack yarn -g
+yarn install
 npm start
 open http://localhost:4200
 ```

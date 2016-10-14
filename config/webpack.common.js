@@ -12,6 +12,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js'],
+    alias: {
+      "lodash": "lodash-es",
+    },
   },
   module: {
     rules: [
