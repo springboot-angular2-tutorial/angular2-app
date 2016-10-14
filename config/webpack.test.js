@@ -7,6 +7,9 @@ module.exports = {
   devtool: 'inline-source-map',
   resolve: {
     extensions: ['.ts', '.js'],
+    alias: {
+      "lodash": "lodash-es",
+    },
   },
   module: {
     rules: [
