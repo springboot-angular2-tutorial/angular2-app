@@ -10,7 +10,7 @@ node_js:
 - '6.7.0'
 
 before_install:
-  - npm install -g yarn
+  - npm install -g yarn --cache-min 999999999
 install:
   - yarn install
 
