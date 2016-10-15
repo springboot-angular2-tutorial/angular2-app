@@ -3,26 +3,26 @@ dist: trusty
 language: node_js
 cache:
   directories:
-  - node_modules
+    - $HOME/.npm
+    - $HOME/.yarn-cache
+    - node_modules
 node_js:
 - '6.7.0'
 
-install:
+before_install:
   - npm install -g yarn
+install:
   - yarn install
+
+script: npm run sass && node_modules/karma/bin/karma start --browsers PhantomJS
+
+before_deploy:
+  # Parse branch name and determine an environment to deploy
+  - export ENV=$(echo "${TRAVIS_BRANCH}" | perl -ne "print $& if /(?<=deploy\/).*/")
   # install aws cli
   - sudo apt-get -y install python-pip curl
   - sudo pip install awscli
   - aws --version
-
-script: npm run sass && node_modules/karma/bin/karma start --browsers PhantomJS
-
-after_success:
-  # Parse branch name and determine an environment to deploy
-  - export ENV=$(echo "${TRAVIS_BRANCH}" | perl -ne "print $& if /(?<=deploy\/).*/")
-  # Switch AWS Role when ENV is prod
-  - test "${ENV}" = "prod" && source scripts/switch-production-role.sh
-
 deploy:
   - provider: script
     script: scripts/deploy.sh

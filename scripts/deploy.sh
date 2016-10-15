@@ -5,10 +5,15 @@ if [ -z "${ENV}" ]; then
   exit 1
 fi
 
+# switch role if production
+cd `dirname $0`
+if [ "${ENV}" = "prod" ]; then
+  source switch-production-role.sh
+fi
+
 # set variables
 CDN_URL="https://cdn-${ENV}.hana053.com"
 S3_CDN_URL="s3://cdn-${ENV}.hana053.com"
-
 if [ "${ENV}" = "prod" ]; then
   MAIN_URL="https://micropost.hana053.com"
 else
