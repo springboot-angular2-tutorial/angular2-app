@@ -11,6 +11,7 @@ node_js:
 
 before_install:
   - npm install -g yarn --cache-min 999999999
+  - yarn --version
 install:
   - yarn install
 
