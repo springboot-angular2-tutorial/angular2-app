@@ -4,11 +4,11 @@ if [ -z "${ENV}" ]; then
   echo "ENV is required."
   exit 1
 fi
+cd "../$(dirname $0)"
 
 # switch role if production
-cd `dirname $0`
 if [ "${ENV}" = "prod" ]; then
-  source switch-production-role.sh
+  source scripts/switch-production-role.sh
 fi
 
 # set variables
