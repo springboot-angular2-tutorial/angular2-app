@@ -4,7 +4,6 @@ if [ -z "${ENV}" ]; then
   echo "ENV is required."
   exit 1
 fi
-cd "../$(dirname $0)"
 
 # switch role if production
 if [ "${ENV}" = "prod" ]; then

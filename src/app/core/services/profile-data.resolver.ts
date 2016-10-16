@@ -4,7 +4,6 @@ import {
   RouterStateSnapshot
 } from "@angular/router";
 import {Injectable} from "@angular/core";
-import "rxjs/add/observable/of";
 import {UserService} from "./user.service";
 
 @Injectable()

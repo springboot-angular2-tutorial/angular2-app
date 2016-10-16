@@ -2,11 +2,11 @@ import {Component, OnInit} from "@angular/core";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import * as toastr from "toastr";
+import isEmpty from "lodash/isEmpty";
+import omitBy from "lodash/omitBy";
 import {User} from "../../core/domains";
 import {UserService} from "../../core/services/user.service";
 import {EMAIL_PATTERN, Validators as AppValidators} from "../../core/forms";
-import isEmpty from "lodash/isEmpty";
-import omitBy from "lodash/omitBy";
 
 @Component({
   selector: 'mpt-user-edit',
