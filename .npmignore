@@ -1,9 +1,0 @@
-.npmignore
-.gitignore
-.gitmodules
-.travis.yml
-.coveralls.yml
-
-test/
-node_modules/
-coverage/
