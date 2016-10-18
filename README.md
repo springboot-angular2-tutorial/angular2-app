@@ -48,13 +48,14 @@ Under construction...
 ## Related Projects
 
 * [Spring Boot app](https://github.com/springboot-angular2-tutorial/boot-app)
-* :star: [Android app](https://github.com/springboot-angular2-tutorial/android-app)
+* [Android app](https://github.com/springboot-angular2-tutorial/android-app)
+* [Server provisioning by Ansible](https://github.com/springboot-angular2-tutorial/micropost-provisionings)
+* [Infrastructure by Terraform](https://github.com/springboot-angular2-tutorial/micropost-formation)
 
 ## Credits
 
 * [Rails tutorial](https://github.com/railstutorial/sample_app_rails_4)
 * [angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter)
-* [angular2-seed](https://github.com/mgechev/angular2-seed)
 
 ## License
 
