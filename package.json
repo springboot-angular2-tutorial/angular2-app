@@ -100,6 +100,6 @@
     "typescript": "^2.0.3",
     "webpack": "2.1.0-beta.25",
     "webpack-dev-server": "^2.1.0-beta.9",
-    "webpack-merge": "~0.14.1"
+    "webpack-merge": "~0.15.0"
   }
 }

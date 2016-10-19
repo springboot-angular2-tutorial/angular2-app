@@ -20,7 +20,7 @@ else
 fi
 
 # build
-PUBLIC_PATH=${CDN_URL} npm run build:prod
+PUBLIC_PATH=${CDN_URL} yarn run build:prod
 
 # deploy
 aws s3 sync --delete --acl public-read dist ${S3_CDN_URL}

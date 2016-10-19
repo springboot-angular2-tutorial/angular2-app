@@ -10,12 +10,11 @@ node_js:
 - '6.7.0'
 
 before_install:
-  - npm install -g yarn --cache-min 999999999
-  - yarn --version
+  - npm install -g yarn@">=0.16.0" --cache-min 999999999
 install:
   - yarn install
 
-script: npm run sass && node_modules/karma/bin/karma start --browsers PhantomJS
+script: yarn run sass && node_modules/karma/bin/karma start --browsers PhantomJS
 
 before_deploy:
   # Parse branch name and determine an environment to deploy
