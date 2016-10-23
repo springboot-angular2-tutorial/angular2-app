@@ -7,7 +7,8 @@ import {GravatarComponent} from "./gravatar.component";
 describe('GravatarComponent', () => {
 
   @Component({
-    template: `<mpt-gravatar email="test@test.com" alt="test-alt" size="1"></mpt-gravatar>`,
+    template: `<mpt-gravatar [hash]="'9a3f499f653f7e8d4c5bf3ae0cf6418f'"
+                             [alt]="'test-alt'" [size]="1"></mpt-gravatar>`,
   })
   class TestComponent {
   }
@@ -36,13 +37,13 @@ describe('GravatarComponent', () => {
     expect(cmpDebugElement).toBeTruthy();
 
     const cmp: GravatarComponent = cmpDebugElement.componentInstance;
-    expect(cmp.email).toEqual('test@test.com');
+    expect(cmp.hash).toEqual('9a3f499f653f7e8d4c5bf3ae0cf6418f');
     expect(cmp.alt).toEqual('test-alt');
-    expect(cmp.size).toEqual('1');
+    expect(cmp.size).toEqual(1);
 
     const el = cmpDebugElement.nativeElement;
     expect(getDOM().querySelector(el, 'img').getAttribute('src'))
-      .toEqual('https://secure.gravatar.com/avatar/b642b4217b34b1e8d3bd915fc65c4452?s=1');
+      .toEqual('https://secure.gravatar.com/avatar/9a3f499f653f7e8d4c5bf3ae0cf6418f?s=1');
   });
 
 });

@@ -32,7 +32,7 @@ describe('UserStatsComponent', () => {
   const dummyResponse = new Response(new ResponseOptions({
     body: {
       id: 1,
-      email: 'test1@test.com',
+      avatarHash: '9a3f499f653f7e8d4c5bf3ae0cf6418f',
       name: 'test1',
       userStats: {
         micropostCnt: 2,
@@ -76,12 +76,11 @@ describe('UserStatsComponent', () => {
     expect(cmp.userId).toEqual(1);
     expect(cmp.user).toBeTruthy();
     expect(cmp.user.id).toEqual(1);
-    expect(cmp.user.email).toEqual('test1@test.com');
     expect(cmp.user.userStats.micropostCnt).toEqual(2);
 
     const gravatarDebugElement = cmpDebugElement.query(By.directive(GravatarComponent));
     expect(gravatarDebugElement).toBeTruthy();
-    expect(gravatarDebugElement.componentInstance.email).toEqual('test1@test.com');
+    expect(gravatarDebugElement.componentInstance.hash).toEqual('9a3f499f653f7e8d4c5bf3ae0cf6418f');
     expect(gravatarDebugElement.componentInstance.alt).toEqual('test1');
 
     const el = cmpDebugElement.nativeElement;
