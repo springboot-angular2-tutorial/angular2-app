@@ -1,1 +1,4 @@
-<img *ngIf="imageUrl" [alt]="alt" [src]="imageUrl"/>
+<div class="wrapper " [style.width]="size + 'px'" [style.height]="size + 'px'">
+  <div class="loading" [hidden]="!loading"></div>
+  <img [alt]="alt" [src]="imageUrl" (load)="showImg()" [hidden]="loading"/>
+</div>

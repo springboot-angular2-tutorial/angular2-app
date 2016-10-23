@@ -9,7 +9,9 @@
     <span *ngIf="!shownOnProfile">
       <a class="profile-link" [routerLink]="['/users/' + user?.id]">view my profile</a>
     </span>
-    <span class="microposts" *ngIf="!shownOnProfile">{{user?.userStats?.micropostCnt | pluralize:'micropost'}}</span>
+    <span class="microposts" *ngIf="!shownOnProfile">
+      {{(user?.userStats?.micropostCnt || 0) | pluralize:'micropost'}}
+    </span>
   </section>
 
   <section class="relationships clearfix">

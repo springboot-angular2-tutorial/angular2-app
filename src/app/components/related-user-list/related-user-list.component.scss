@@ -3,3 +3,8 @@
 .users li {
   @extend %list_1;
 }
+
+mpt-gravatar {
+  float: left;
+  margin-right: $margin-xsmall;
+}

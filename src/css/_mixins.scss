@@ -1,0 +1,17 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@mixin loading($size: 24px, $color: gray) {
+  border-radius: 50%;
+  width: $size;
+  height: $size;
+  border: .25rem solid rgba($color, 0.2);
+  border-top-color: $color;
+  animation: spin 1s infinite linear;
+}
