@@ -8,10 +8,11 @@ export interface Micropost {
 
 export interface User {
   id:string|number;
-  email:string;
+  email?:string;
   name?:string;
   userStats?:UserStats;
   isMyself?:boolean;
+  avatarHash?:string;
 }
 
 export interface RelatedUser extends User {

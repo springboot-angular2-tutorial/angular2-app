@@ -1,7 +1,5 @@
 import {Component, OnChanges, Input, SimpleChanges} from "@angular/core";
 
-const md5Hex = require('md5-hex');
-
 @Component({
   selector: 'mpt-gravatar',
   styleUrls: ['./gravatar.component.css'],
@@ -10,21 +8,20 @@ const md5Hex = require('md5-hex');
 export class GravatarComponent implements OnChanges {
 
   imageUrl: string;
-  loading: boolean = true;
+  isLoading: boolean = true;
 
-  @Input() email: string;
+  @Input() hash: string;
   @Input() size: number;
   @Input() alt: string;
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.email) {
-      const hash = md5Hex(this.email);
-      this.imageUrl = `https://secure.gravatar.com/avatar/${hash}?s=${this.size}`;
+    if (this.hash) {
+      this.imageUrl = `https://secure.gravatar.com/avatar/${this.hash}?s=${this.size}`;
     }
   }
 
-  showImg(): void {
-    this.loading = false;
+  stopLoading(): void {
+    this.isLoading = false;
   }
 
 }
