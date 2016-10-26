@@ -28,11 +28,14 @@ describe('JsonHttp', () => {
   beforeEach(inject([JsonHttp, Http, MockBackend], (..._) => {
     [jsonHttp, http, backend] = _;
   }));
+  beforeEach(() => {
+    localStorage.setItem('jwt', 'test');
+  });
 
   const expectCustomRequest = (method: RequestMethod) => (conn) => {
     conn.mockRespond(new Response(new BaseResponseOptions()));
     expect(conn.request.method).toEqual(method);
-    expect(conn.request.headers.has('x-auth-token')).toBeTruthy();
+    expect(conn.request.headers.has('authorization')).toBeTruthy();
   };
 
   describe('#get', () => {
