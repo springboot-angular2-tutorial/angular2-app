@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 credentials=$(aws sts assume-role --role-arn ${PROD_ROLE_ARN} --role-session-name travisci)
 

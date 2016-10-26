@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 if [ -z "${ENV}" ]; then
   echo "ENV is required."
