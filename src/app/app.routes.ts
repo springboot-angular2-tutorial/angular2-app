@@ -1,7 +1,7 @@
 import {Routes} from "@angular/router";
 import {HomeComponent} from "./pages/home/home.component";
 import {ProfileDataResolver} from "./core/services/profile-data.resolver";
-import {LoginComponent} from "./pages/login/login.component";
+import {AuthComponent} from "./pages/auth/auth.component";
 import {TopComponent} from "./pages/top/top.component";
 import {PrivatePageGuard} from "./core/services/private-page.guard";
 import {PublicPageGuard} from "./core/services/public-page.guard";
@@ -38,7 +38,7 @@ export const ROUTES: Routes = [
     loadChildren: './pages/+user-list/user-list.module#UserListModule',
     canActivate: [PrivatePageGuard],
   },
-  {path: 'login', component: LoginComponent, canActivate: [PublicPageGuard]},
+  {path: 'login', component: AuthComponent, canActivate: [PublicPageGuard]},
   {
     path: 'signup',
     loadChildren: './pages/+signup/signup.module#SignupModule',

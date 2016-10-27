@@ -1,9 +1,9 @@
 import {inject, ComponentFixture, tick} from "@angular/core/testing";
-import {LoginService} from "../app/core/services/login.service";
+import {AuthService} from "../app/core/services/auth.service";
 
 export function login() {
-  return inject([LoginService], (loginService) => {
-    spyOn(loginService, 'isSignedIn').and.returnValue(true);
+  return inject([AuthService], (authService) => {
+    spyOn(authService, 'isSignedIn').and.returnValue(true);
   });
 }
 

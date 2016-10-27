@@ -1,18 +1,17 @@
 import {inject, TestBed} from "@angular/core/testing";
 import {
-  Headers,
   ResponseOptions,
   Response,
   RequestMethod,
   HttpModule
 } from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
-import {LoginService} from "./login.service";
+import {AuthService} from "./auth.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
 
-describe('LoginService', () => {
+describe('AuthService', () => {
 
-  let loginService: LoginService;
+  let authService: AuthService;
   let backend: MockBackend;
 
   beforeEach(() => {
@@ -22,28 +21,28 @@ describe('LoginService', () => {
       ],
       providers: [
         APP_TEST_HTTP_PROVIDERS,
-        LoginService,
+        AuthService,
       ],
     });
   });
-  beforeEach(inject([LoginService, MockBackend], (..._) => {
-    [loginService, backend] = _;
+  beforeEach(inject([AuthService, MockBackend], (..._) => {
+    [authService, backend] = _;
   }));
 
   describe('.login', () => {
     it('can login', (done) => {
       backend.connections.subscribe(conn => {
         conn.mockRespond(new Response(new ResponseOptions({
-          headers: new Headers({'x-auth-token': 'my jwt'}),
+          body: JSON.stringify({token: 'my jwt'}),
         })));
         expect(conn.request.method).toEqual(RequestMethod.Post);
-        expect(conn.request.url).toEqual('/api/login');
+        expect(conn.request.url).toEqual('/api/auth');
         expect(conn.request.json()).toEqual({
           email: 'test@test.com',
           password: 'secret',
         });
       });
-      loginService.login('test@test.com', 'secret').subscribe(() => {
+      authService.login('test@test.com', 'secret').subscribe(() => {
         expect(localStorage.getItem('jwt')).toEqual('my jwt');
         done();
       });
@@ -53,7 +52,7 @@ describe('LoginService', () => {
   describe('.logout', () => {
     it('can logout', () => {
       localStorage.setItem('jwt', 'my jwt');
-      loginService.logout();
+      authService.logout();
       expect(localStorage.getItem('jwt')).toBeFalsy();
     });
   }); // .logout
@@ -61,14 +60,14 @@ describe('LoginService', () => {
   describe('.isSignedIn', () => {
     describe('when not signed in', () => {
       it('should be false', () => {
-        expect(loginService.isSignedIn()).toBeFalsy();
+        expect(authService.isSignedIn()).toBeFalsy();
       });
     });
 
     describe('when signed in', () => {
       beforeEach(() => localStorage.setItem('jwt', 'dummy'));
       it('should be true', () => {
-        expect(loginService.isSignedIn()).toBeTruthy();
+        expect(authService.isSignedIn()).toBeTruthy();
       });
     });
   }); // .isSignedIn

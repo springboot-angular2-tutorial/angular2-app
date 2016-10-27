@@ -1,18 +1,18 @@
 import {Injectable} from "@angular/core";
 import {CanActivate, Router} from "@angular/router";
-import {LoginService} from "./login.service";
+import {AuthService} from "./auth.service";
 
 @Injectable()
 export class PublicPageGuard implements CanActivate {
 
-  constructor(private router: Router, private loginService: LoginService) {
+  constructor(private router: Router, private authService: AuthService) {
   }
 
   canActivate() {
-    if (this.loginService.isSignedIn()) {
+    if (this.authService.isSignedIn()) {
       this.router.navigate(['/home']);
     }
-    return !this.loginService.isSignedIn();
+    return !this.authService.isSignedIn();
   }
 
 }

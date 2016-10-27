@@ -7,12 +7,12 @@ import {
   TestBed,
   ComponentFixture
 } from "@angular/core/testing";
-import {BaseResponseOptions, Response} from "@angular/http";
+import {Response, ResponseOptions} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {Router} from "@angular/router";
 import {SignupComponent} from "./signup.component";
 import {RouterTestingModule} from "@angular/router/testing";
-import {LoginService} from "../../core/services/login.service";
+import {AuthService} from "../../core/services/auth.service";
 import {CoreModule} from "../../core";
 import {SignupModule} from "./signup.module";
 import {APP_TEST_HTTP_PROVIDERS, advance} from "../../../testing";
@@ -34,7 +34,7 @@ describe('SignupComponent', () => {
   let fixture: ComponentFixture<any>;
   let cmpDebugElement: DebugElement;
 
-  let loginService: LoginService;
+  let authService: AuthService;
   let backend: MockBackend;
   let router: Router;
   let location: Location;
@@ -60,8 +60,8 @@ describe('SignupComponent', () => {
       ]
     });
   });
-  beforeEach(inject([LoginService, MockBackend, Router, Location], (..._) => {
-    [loginService, backend, router, location] = _;
+  beforeEach(inject([AuthService, MockBackend, Router, Location], (..._) => {
+    [authService, backend, router, location] = _;
   }));
   beforeEach(fakeAsync(() => {
     TestBed.compileComponents().then(() => {
@@ -91,16 +91,18 @@ describe('SignupComponent', () => {
 
   it('can signup', fakeAsync(() => {
     const page: SignupComponent = cmpDebugElement.componentInstance;
-    spyOn(loginService, 'login').and.callThrough();
+    spyOn(authService, 'login').and.callThrough();
     backend.connections.subscribe(conn => {
-      conn.mockRespond(new Response(new BaseResponseOptions()));
+      conn.mockRespond(new Response(new ResponseOptions({
+        body: JSON.stringify({token: 'my jwt'}),
+      })));
     });
     page.onSubmit({
       email: 'test@test.com',
       password: 'secret',
       name: 'akira',
     });
-    expect(loginService.login).toHaveBeenCalledWith('test@test.com', 'secret');
+    expect(authService.login).toHaveBeenCalledWith('test@test.com', 'secret');
     advance(fixture);
     expect(location.path()).toEqual('/home');
   }));
