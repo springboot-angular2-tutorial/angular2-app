@@ -12,6 +12,7 @@ export interface User {
   name?:string;
   userStats?:UserStats;
   isMyself?:boolean;
+  isFollowedByMe?:boolean;
   avatarHash?:string;
 }
 
@@ -23,6 +24,5 @@ export interface UserStats {
   micropostCnt:number;
   followingCnt:number;
   followerCnt:number;
-  followedByMe:boolean;
 }
 

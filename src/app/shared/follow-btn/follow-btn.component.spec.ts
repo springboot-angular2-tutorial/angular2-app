@@ -30,9 +30,7 @@ describe('FollowBtnComponent', () => {
       id: 1,
       email: "test@test.com",
       isMyself: null,
-      userStats: {
-        followedByMe: false,
-      }
+      isFollowedByMe: false,
     })
   }));
 
@@ -52,9 +50,7 @@ describe('FollowBtnComponent', () => {
       id: 1,
       email: "test@test.com",
       isMyself: false,
-      userStats: {
-        followedByMe: true,
-      }
+      isFollowedByMe: true,
     })
   }));
 
@@ -63,9 +59,7 @@ describe('FollowBtnComponent', () => {
       id: 1,
       email: "test@test.com",
       isMyself: false,
-      userStats: {
-        followedByMe: false,
-      }
+      isFollowedByMe: false,
     })
   }));
 

@@ -73,14 +73,14 @@ export class FollowBtnComponent implements OnChanges {
   private _canShowFollowBtn(user: User): boolean {
     if (user.isMyself === null) return false; // not signed in
     if (user.isMyself === true) return false; // myself
-    if (user.userStats.followedByMe === true) return false; // already followed
+    if (user.isFollowedByMe === true) return false; // already followed
     return true;
   }
 
   private _canShowUnfollowBtn(user: User): boolean {
     if (user.isMyself === null) return false; // not signed in
     if (user.isMyself === true) return false; // myself
-    if (user.userStats.followedByMe === false) return false; // not followed yet
+    if (user.isFollowedByMe === false) return false; // not followed yet
     return true;
   }
 }
