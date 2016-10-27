@@ -18,8 +18,8 @@ export class LoginService {
       email: email,
       password: password,
     };
-    return this.http.post('/api/login', body).do(resp => {
-      localStorage.setItem('jwt', resp.headers.get('x-auth-token'));
+    return this.http.post('/api/login', body).do((resp: Response) => {
+      localStorage.setItem('jwt', resp.json().token);
       this.authEvents.next(new DidLogin());
     });
   }

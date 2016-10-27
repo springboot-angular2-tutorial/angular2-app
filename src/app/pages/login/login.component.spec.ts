@@ -7,7 +7,7 @@ import {
   ComponentFixture,
   inject
 } from "@angular/core/testing";
-import {BaseResponseOptions, Response} from "@angular/http";
+import {BaseResponseOptions, Response, ResponseOptions} from "@angular/http";
 import {Location} from "@angular/common";
 import {MockBackend} from "@angular/http/testing";
 import {Router} from "@angular/router";
@@ -77,7 +77,9 @@ describe('LoginComponent', () => {
     const cmp: LoginComponent = cmpDebugElement.componentInstance;
     spyOn(loginService, 'login').and.callThrough();
     backend.connections.subscribe(conn => {
-      conn.mockRespond(new Response(new BaseResponseOptions()));
+      conn.mockRespond(new Response(new ResponseOptions({
+        body: JSON.stringify({token: 'my jwt'}),
+      })));
     });
     cmp.login('test@test.com', 'secret');
     expect(loginService.login).toHaveBeenCalledWith('test@test.com', 'secret');

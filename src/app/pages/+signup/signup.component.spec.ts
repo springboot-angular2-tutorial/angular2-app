@@ -7,7 +7,7 @@ import {
   TestBed,
   ComponentFixture
 } from "@angular/core/testing";
-import {BaseResponseOptions, Response} from "@angular/http";
+import {BaseResponseOptions, Response, ResponseOptions} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {Router} from "@angular/router";
 import {SignupComponent} from "./signup.component";
@@ -93,7 +93,9 @@ describe('SignupComponent', () => {
     const page: SignupComponent = cmpDebugElement.componentInstance;
     spyOn(loginService, 'login').and.callThrough();
     backend.connections.subscribe(conn => {
-      conn.mockRespond(new Response(new BaseResponseOptions()));
+      conn.mockRespond(new Response(new ResponseOptions({
+        body: JSON.stringify({token: 'my jwt'}),
+      })));
     });
     page.onSubmit({
       email: 'test@test.com',

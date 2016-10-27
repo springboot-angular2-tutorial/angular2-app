@@ -32,10 +32,7 @@ export class UserService {
   }
 
   updateMe(userParam: UserParams): Observable<Response> {
-    return this.http.patch(`${url}/me`, userParam)
-      .do(resp => {
-        localStorage.setItem('jwt', resp.headers.get('x-auth-token'));
-      });
+    return this.http.patch(`${url}/me`, userParam);
   }
 
   listFollowings(userId: string,

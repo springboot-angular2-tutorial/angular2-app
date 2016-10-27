@@ -1,6 +1,5 @@
 import {inject, TestBed} from "@angular/core/testing";
 import {
-  Headers,
   ResponseOptions,
   Response,
   RequestMethod,
@@ -34,7 +33,7 @@ describe('LoginService', () => {
     it('can login', (done) => {
       backend.connections.subscribe(conn => {
         conn.mockRespond(new Response(new ResponseOptions({
-          headers: new Headers({'x-auth-token': 'my jwt'}),
+          body: JSON.stringify({token: 'my jwt'}),
         })));
         expect(conn.request.method).toEqual(RequestMethod.Post);
         expect(conn.request.url).toEqual('/api/login');
