@@ -7,7 +7,7 @@ import {
   Validators as AppValidators
 } from "../../core/forms";
 import {UserService} from "../../core/services/user.service";
-import {AuthService} from "../../core/services/login.service";
+import {AuthService} from "../../core/services/auth.service";
 
 @Component({
   selector: 'mpt-signup',

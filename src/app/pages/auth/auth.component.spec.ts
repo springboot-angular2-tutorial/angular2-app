@@ -11,11 +11,11 @@ import {Response, ResponseOptions} from "@angular/http";
 import {Location} from "@angular/common";
 import {MockBackend} from "@angular/http/testing";
 import {Router} from "@angular/router";
-import {AuthComponent} from "./login.component";
+import {AuthComponent} from "./auth.component";
 import {RouterTestingModule} from "@angular/router/testing";
-import {AuthService} from "../../core/services/login.service";
+import {AuthService} from "../../core/services/auth.service";
 import {CoreModule} from "../../core";
-import {AuthModule} from "./login.module";
+import {AuthModule} from "./auth.module";
 import {APP_TEST_HTTP_PROVIDERS, advance} from "../../../testing";
 
 describe('AuthComponent', () => {

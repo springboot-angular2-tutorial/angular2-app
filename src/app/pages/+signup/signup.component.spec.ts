@@ -7,12 +7,12 @@ import {
   TestBed,
   ComponentFixture
 } from "@angular/core/testing";
-import {BaseResponseOptions, Response, ResponseOptions} from "@angular/http";
+import {Response, ResponseOptions} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 import {Router} from "@angular/router";
 import {SignupComponent} from "./signup.component";
 import {RouterTestingModule} from "@angular/router/testing";
-import {AuthService} from "../../core/services/login.service";
+import {AuthService} from "../../core/services/auth.service";
 import {CoreModule} from "../../core";
 import {SignupModule} from "./signup.module";
 import {APP_TEST_HTTP_PROVIDERS, advance} from "../../../testing";

@@ -6,7 +6,7 @@ import {
   HttpModule
 } from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
-import {AuthService} from "./login.service";
+import {AuthService} from "./auth.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
 
 describe('AuthService', () => {

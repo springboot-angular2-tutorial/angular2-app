@@ -1,12 +1,12 @@
 import {Component} from "@angular/core";
 import {Router} from "@angular/router";
 import * as toastr from "toastr";
-import {AuthService} from "../../core/services/login.service";
+import {AuthService} from "../../core/services/auth.service";
 
 @Component({
   selector: 'mpt-auth',
-  styleUrls: ['./login.component.css'],
-  templateUrl: './login.component.html',
+  styleUrls: ['./auth.component.css'],
+  templateUrl: './auth.component.html',
 })
 export class AuthComponent {
 

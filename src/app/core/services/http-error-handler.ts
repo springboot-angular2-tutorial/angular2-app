@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Router} from "@angular/router";
 import * as toastr from "toastr";
-import {AuthService} from "./login.service";
+import {AuthService} from "./auth.service";
 
 @Injectable()
 export class HttpErrorHandler {
