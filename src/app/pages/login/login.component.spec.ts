@@ -7,21 +7,21 @@ import {
   ComponentFixture,
   inject
 } from "@angular/core/testing";
-import {BaseResponseOptions, Response, ResponseOptions} from "@angular/http";
+import {Response, ResponseOptions} from "@angular/http";
 import {Location} from "@angular/common";
 import {MockBackend} from "@angular/http/testing";
 import {Router} from "@angular/router";
-import {LoginComponent} from "./login.component";
+import {AuthComponent} from "./login.component";
 import {RouterTestingModule} from "@angular/router/testing";
-import {LoginService} from "../../core/services/login.service";
+import {AuthService} from "../../core/services/login.service";
 import {CoreModule} from "../../core";
-import {LoginModule} from "./login.module";
+import {AuthModule} from "./login.module";
 import {APP_TEST_HTTP_PROVIDERS, advance} from "../../../testing";
 
-describe('LoginComponent', () => {
+describe('AuthComponent', () => {
 
   @Component({
-    template: `<mpt-login></mpt-login><router-outlet></router-outlet>`,
+    template: `<mpt-auth></mpt-auth><router-outlet></router-outlet>`,
   })
   class TestComponent {
   }
@@ -35,7 +35,7 @@ describe('LoginComponent', () => {
   let cmpDebugElement: DebugElement;
 
   let fixture: ComponentFixture<any>;
-  let loginService: LoginService;
+  let authService: AuthService;
   let backend: MockBackend;
   let router: Router;
   let location: Location;
@@ -47,7 +47,7 @@ describe('LoginComponent', () => {
           {path: 'home', component: BlankComponent},
         ]),
         CoreModule,
-        LoginModule,
+        AuthModule,
       ],
       providers: [
         APP_TEST_HTTP_PROVIDERS,
@@ -58,14 +58,14 @@ describe('LoginComponent', () => {
       ]
     });
   });
-  beforeEach(inject([LoginService, MockBackend, Router, Location], (..._) => {
-    [loginService, backend, router, location] = _;
+  beforeEach(inject([AuthService, MockBackend, Router, Location], (..._) => {
+    [authService, backend, router, location] = _;
   }));
   beforeEach(fakeAsync(() => {
     TestBed.compileComponents().then(() => {
       fixture = TestBed.createComponent(TestComponent);
       fixture.detectChanges();
-      cmpDebugElement = fixture.debugElement.query(By.directive(LoginComponent));
+      cmpDebugElement = fixture.debugElement.query(By.directive(AuthComponent));
     });
   }));
 
@@ -74,15 +74,15 @@ describe('LoginComponent', () => {
   });
 
   it('can login', fakeAsync(() => {
-    const cmp: LoginComponent = cmpDebugElement.componentInstance;
-    spyOn(loginService, 'login').and.callThrough();
+    const cmp: AuthComponent = cmpDebugElement.componentInstance;
+    spyOn(authService, 'login').and.callThrough();
     backend.connections.subscribe(conn => {
       conn.mockRespond(new Response(new ResponseOptions({
         body: JSON.stringify({token: 'my jwt'}),
       })));
     });
     cmp.login('test@test.com', 'secret');
-    expect(loginService.login).toHaveBeenCalledWith('test@test.com', 'secret');
+    expect(authService.login).toHaveBeenCalledWith('test@test.com', 'secret');
     advance(fixture);
     expect(location.path()).toEqual('/home');
   }));

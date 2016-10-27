@@ -7,7 +7,7 @@ import {
   Validators as AppValidators
 } from "../../core/forms";
 import {UserService} from "../../core/services/user.service";
-import {LoginService} from "../../core/services/login.service";
+import {AuthService} from "../../core/services/login.service";
 
 @Component({
   selector: 'mpt-signup',
@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
 
   constructor(private router: Router,
               private userService: UserService,
-              private loginService: LoginService) {
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
   onSubmit(params) {
     this.userService.create(params)
       .mergeMap(() => {
-        return this.loginService.login(params.email, params.password);
+        return this.authService.login(params.email, params.password);
       })
       .subscribe(() => {
         this.router.navigate(['/home']);

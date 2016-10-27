@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {LoginService} from "../../core/services/login.service";
+import {AuthService} from "../../core/services/login.service";
 
 @Component({
   selector: 'mpt-header',
@@ -12,18 +12,18 @@ export class HeaderComponent implements OnInit {
   isSignedIn: boolean;
 
   constructor(private router: Router,
-              private loginService: LoginService) {
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
-    this.isSignedIn = this.loginService.isSignedIn();
-    this.loginService.events.subscribe(() => {
-      this.isSignedIn = this.loginService.isSignedIn();
+    this.isSignedIn = this.authService.isSignedIn();
+    this.authService.events.subscribe(() => {
+      this.isSignedIn = this.authService.isSignedIn();
     });
   }
 
   logout() {
-    this.loginService.logout();
+    this.authService.logout();
     this.router.navigate(['/login']);
   }
 

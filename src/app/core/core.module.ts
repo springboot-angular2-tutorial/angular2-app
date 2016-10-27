@@ -2,7 +2,7 @@ import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core/src/metadata/ng_module";
 import {SkipSelf, Optional} from "@angular/core";
 import {HttpErrorHandler} from "./services/http-error-handler";
-import {LoginService} from "./services/login.service";
+import {AuthService} from "./services/login.service";
 import {MicropostService} from "./services/micropost.service";
 import {UserService} from "./services/user.service";
 import {PrivatePageGuard} from "./services/private-page.guard";
@@ -30,7 +30,7 @@ export function createJsonHttp(xhrBackend: XHRBackend, requestOptions: RequestOp
       deps: [XHRBackend, RequestOptions]
     },
     HttpErrorHandler,
-    LoginService,
+    AuthService,
     MicropostService,
     UserService,
 

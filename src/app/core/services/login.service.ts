@@ -5,7 +5,7 @@ import {Subject} from "rxjs/Rx";
 import {JsonHttp} from "./";
 
 @Injectable()
-export class LoginService {
+export class AuthService {
 
   private authEvents: Subject<AuthEvent>;
 
@@ -18,7 +18,7 @@ export class LoginService {
       email: email,
       password: password,
     };
-    return this.http.post('/api/login', body).do((resp: Response) => {
+    return this.http.post('/api/auth', body).do((resp: Response) => {
       localStorage.setItem('jwt', resp.json().token);
       this.authEvents.next(new DidLogin());
     });

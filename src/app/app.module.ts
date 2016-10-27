@@ -8,7 +8,7 @@ import {AppComponent} from "./app.component";
 import {HeaderComponent} from "./components";
 import {CoreModule} from "./core";
 import {HomeModule} from "./pages/home/home.module";
-import {LoginModule} from "./pages/login/login.module";
+import {AuthModule} from "./pages/login/login.module";
 import {TopModule} from "./pages/top/top.module";
 import {NoContentComponent} from "./pages/no-content/no-content.component";
 
@@ -29,7 +29,7 @@ import {NoContentComponent} from "./pages/no-content/no-content.component";
 
     CoreModule,
     HomeModule,
-    LoginModule,
+    AuthModule,
     TopModule,
   ],
   providers: [

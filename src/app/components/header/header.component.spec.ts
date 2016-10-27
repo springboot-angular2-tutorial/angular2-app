@@ -14,7 +14,7 @@ import {HeaderComponent} from "./header.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {CoreModule} from "../../core";
 import {APP_TEST_HTTP_PROVIDERS, login, advance} from "../../../testing";
-import {LoginService} from "../../core/services/login.service";
+import {AuthService} from "../../core/services/login.service";
 import {UserService} from "../../core/services/user.service";
 
 describe('HeaderComponent', () => {
@@ -76,9 +76,9 @@ describe('HeaderComponent', () => {
   };
 
   describe('when signed in', () => {
-    let loginService: LoginService;
+    let authService: AuthService;
 
-    beforeEach(inject([LoginService], _ => loginService = _));
+    beforeEach(inject([AuthService], _ => authService = _));
     beforeEach(login());
     beforeEach(initComponent());
 
@@ -142,9 +142,9 @@ describe('HeaderComponent', () => {
     it('shows a nav link to logout', fakeAsync(() => {
       const link = getDOM().querySelector(cmpDebugElement.nativeElement, '.nav-item.logout>a');
       expect(link).toBeTruthy();
-      spyOn(loginService, 'logout');
+      spyOn(authService, 'logout');
       link.click();
-      expect(loginService.logout).toHaveBeenCalled();
+      expect(authService.logout).toHaveBeenCalled();
     }));
   }); // when signed in
 

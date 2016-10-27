@@ -1,7 +1,7 @@
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core/src/metadata/ng_module";
 import {RouterModule} from "@angular/router";
-import {LoginComponent} from "./login.component";
+import {AuthComponent} from "./login.component";
 
 @NgModule({
   imports: [
@@ -9,11 +9,11 @@ import {LoginComponent} from "./login.component";
     RouterModule,
   ],
   declarations: [
-    LoginComponent,
+    AuthComponent,
   ],
   exports: [
-    LoginComponent,
+    AuthComponent,
   ]
 })
-export class LoginModule {
+export class AuthModule {
 }
