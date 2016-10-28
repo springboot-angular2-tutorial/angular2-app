@@ -1,18 +1,18 @@
 module.exports = function (config) {
-  var testWebpackConfig = require('./webpack.test.js');
-  config.set({
+  const testWebpackConfig = require('./webpack.test.js');
+  const configuration = {
     basePath: '',
     frameworks: ['jasmine'],
     exclude: [],
     files: [
-      {pattern: './config/spec-bundle.js', watched: false}
+      {pattern: './config/spec-bundle.js', watched: false},
     ],
     preprocessors: {
-      './config/spec-bundle.js': ['webpack', 'sourcemap']
+      './config/spec-bundle.js': ['webpack', 'sourcemap'],
     },
     webpack: testWebpackConfig,
     webpackServer: {
-      noInfo: true
+      noInfo: true,
     },
     reporters: ['mocha'],
     port: 9876,
@@ -20,6 +20,20 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: true
-  });
+    customLaunchers: {
+      ChromeTravisCi: {
+        base: 'Chrome',
+        flags: ['--no-sandbox'],
+      },
+    },
+    singleRun: true,
+  };
+
+  if (process.env.TRAVIS){
+    configuration.browsers = [
+      'ChromeTravisCi'
+    ];
+  }
+
+  config.set(configuration);
 };
