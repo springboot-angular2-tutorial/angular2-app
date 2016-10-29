@@ -22,8 +22,14 @@ fi
 # build
 PUBLIC_PATH=${CDN_URL} yarn run build:prod
 
+# create codedeploy archive
+tar czvf dist/codedeploy.tgz -C codedeploy .
+
 # deploy
 aws s3 sync --delete --acl public-read dist ${S3_CDN_URL}
 
-# invalidate index.html
-curl -I "${MAIN_URL}/index.html" -H 'Cache-Purge: 1'
+# invalidate cached index.html by using codedeploy
+aws deploy create-deployment --application-name micropost \
+  --s3-location bucket=cdn-${ENV}.hana053.com,key=codedeploy.tgz,bundleType=tgz \
+  --deployment-group-name web-frontend
+
