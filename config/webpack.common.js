@@ -13,7 +13,8 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js'],
     alias: {
-      "lodash": "lodash-es",
+      lodash: "lodash-es",
+      jquery: "jquery/src/jquery",
     },
   },
   module: {
@@ -45,8 +46,6 @@ module.exports = {
       name: ['polyfills', 'vendor'].reverse()
     }),
     new webpack.ProvidePlugin({
-      jQuery: 'jquery',
-      $: 'jquery',
       Util: "exports?Util!bootstrap/js/dist/util",
       Collapse: "exports?Collapse!bootstrap/js/dist/collapse",
     }),

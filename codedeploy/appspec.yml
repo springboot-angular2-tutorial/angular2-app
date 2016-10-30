@@ -1,0 +1,7 @@
+version: 0.0
+os: linux
+hooks:
+  ApplicationStart:
+    - location: application_start.sh
+      timeout: 300
+      runas: root
