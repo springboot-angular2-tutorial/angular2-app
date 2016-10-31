@@ -49,7 +49,7 @@ Under construction...
 
 * [Spring Boot app](https://github.com/springboot-angular2-tutorial/boot-app)
 * [Android app](https://github.com/springboot-angular2-tutorial/android-app)
-* [Server provisioning by Ansible](https://github.com/springboot-angular2-tutorial/micropost-provisionings)
+* [Server provisioning by Ansible and Packer](https://github.com/springboot-angular2-tutorial/micropost-provisionings)
 * [Infrastructure by Terraform](https://github.com/springboot-angular2-tutorial/micropost-formation)
 * [Lambda functions by Serverless](https://github.com/springboot-angular2-tutorial/micropost-functions)
 
