@@ -28,7 +28,12 @@ module.exports = {
         ],
         exclude: [/\.spec\.ts$/]
       },
-      {test: /\.css$/, loader: 'raw-loader'},
+      // global css
+      {
+        test: /\.css$/,
+        exclude: [helpers.root('src')],
+        loaders: ['style', 'css'],
+      },
       {test: /\.html$/, loader: 'raw-loader'},
     ]
   },

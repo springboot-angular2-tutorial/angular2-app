@@ -1,10 +1,10 @@
 <div>
 
   <h3>Microposts ({{userStats?.micropostCnt}})</h3>
-  <ol class="posts list-unstyled">
-    <li *ngFor="let p of posts">
-      <span class="content">{{p.content}}</span>
-      <span class="timestamp">Posted about {{p.createdAt | timeAgo}}.</span>
+  <ol class="list-unstyled">
+    <li *ngFor="let p of posts" [mptStyles]="[styles.list]">
+      <span [mptStyles]="[styles.content]">{{p.content}}</span>
+      <span [mptStyles]="[styles.timestamp]">Posted about {{p.createdAt | timeAgo}}.</span>
       <a *ngIf="p.isMyPost" href="#" class="delete"
          (click)="delete(p.id); $event.preventDefault()">delete</a>
     </li>

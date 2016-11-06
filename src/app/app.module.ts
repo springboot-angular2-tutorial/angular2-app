@@ -5,18 +5,18 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ENV_PROVIDERS} from "./environment";
 import {ROUTES} from "./app.routes";
 import {AppComponent} from "./app.component";
-import {HeaderComponent} from "./components";
 import {CoreModule} from "./core";
 import {HomeModule} from "./pages/home/home.module";
 import {AuthModule} from "./pages/auth/auth.module";
 import {TopModule} from "./pages/top/top.module";
 import {NoContentComponent} from "./pages/no-content/no-content.component";
+import {HeaderModule} from "./components/header/header.module";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    HeaderComponent,
     NoContentComponent,
   ],
   imports: [
@@ -28,9 +28,11 @@ import {NoContentComponent} from "./pages/no-content/no-content.component";
     ReactiveFormsModule,
 
     CoreModule,
+    SharedModule,
     HomeModule,
     AuthModule,
     TopModule,
+    HeaderModule,
   ],
   providers: [
     ENV_PROVIDERS,

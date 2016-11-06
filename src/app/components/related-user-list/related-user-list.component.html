@@ -1,6 +1,7 @@
-<ul class="users list-unstyled">
-  <li *ngFor="let u of users" class="clearfix">
-    <mpt-gravatar [alt]="u.name" [hash]="u.avatarHash" [size]="60"></mpt-gravatar>
+<ul class="list-unstyled">
+  <li *ngFor="let u of users" class="clearfix" [mptStyles]="[styles.list]">
+    <mpt-gravatar [alt]="u.name" [hash]="u.avatarHash" [size]="60"
+                  [mptStyles]="[styles.gravatar]"></mpt-gravatar>
     <a [routerLink]="['/users', u.id]">{{u.name}}</a>
   </li>
 </ul>

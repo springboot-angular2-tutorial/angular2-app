@@ -1,12 +1,13 @@
 import {Component, OnChanges, Input, SimpleChanges} from "@angular/core";
+import {styles} from "./gravatar.component.styles";
 
 @Component({
   selector: 'mpt-gravatar',
-  styleUrls: ['./gravatar.component.css'],
   templateUrl: './gravatar.component.html',
 })
 export class GravatarComponent implements OnChanges {
 
+  styles: any = styles;
   imageUrl: string;
   isLoading: boolean = true;
 

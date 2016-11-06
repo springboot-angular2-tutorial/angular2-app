@@ -2,16 +2,17 @@ import {Observable} from "rxjs/Observable";
 import {Component, OnInit, Input} from "@angular/core";
 import {RelatedUser} from "../../core/domains";
 import {HttpErrorHandler} from "../../core/services/http-error-handler";
+import {styles} from "./related-user-list.component.styles";
 
 @Component({
   selector: 'mpt-related-user-list',
-  styleUrls: ['related-user-list.component.css'],
   templateUrl: 'related-user-list.component.html',
 })
 export class RelatedUserListComponent implements OnInit {
 
   @Input() listProvider: (params: {maxId: number, count: number}) => Observable<RelatedUser[]>;
 
+  styles: any = styles;
   users: RelatedUser[] = [];
   noMoreUsers: boolean = false;
 

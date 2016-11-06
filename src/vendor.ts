@@ -6,8 +6,8 @@ import "jquery";
 import "bootstrap/js/dist/util";
 import "bootstrap/js/dist/collapse";
 import * as toastr from "toastr";
-
-require("!style!css!./vendor.css");
+import "toastr/build/toastr.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 toastr.options.preventDuplicates = true;
 

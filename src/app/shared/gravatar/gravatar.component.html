@@ -1,5 +1,5 @@
-<div class="wrapper " [style.width]="size + 'px'" [style.height]="size + 'px'">
-  <div class="loading" [hidden]="!isLoading"></div>
+<div [mptStyles]="[styles.wrapper]" [style.width]="size + 'px'" [style.height]="size + 'px'">
+  <div class="loading" [hidden]="!isLoading" [mptStyles]="[styles.loading]"></div>
   <img *ngIf="imageUrl" [alt]="alt" [src]="imageUrl" (load)="stopLoading()"
        [hidden]="isLoading"/>
 </div>

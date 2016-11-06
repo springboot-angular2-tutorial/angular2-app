@@ -1,10 +1,12 @@
-import {Component, ViewEncapsulation} from "@angular/core";
+import {Component} from "@angular/core";
+import {styles} from "./app.component.styles";
 
 @Component({
   selector: 'mpt-app',
-  encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./app.component.css'],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
+
+  styles: any = styles;
+
 }

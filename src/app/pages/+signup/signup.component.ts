@@ -2,16 +2,12 @@ import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import * as toastr from "toastr";
-import {
-  EMAIL_PATTERN,
-  Validators as AppValidators
-} from "../../core/forms";
+import {EMAIL_PATTERN, Validators as AppValidators} from "../../core/forms";
 import {UserService} from "../../core/services/user.service";
 import {AuthService} from "../../core/services/auth.service";
 
 @Component({
   selector: 'mpt-signup',
-  styleUrls: ['./signup.component.css'],
   templateUrl: './signup.component.html',
 })
 export class SignupComponent implements OnInit {

@@ -1,6 +1,7 @@
 <h1>Sign in</h1>
 
-<form (submit)="login(email.value, password.value); $event.preventDefault()">
+<form (submit)="login(email.value, password.value); $event.preventDefault()"
+      [mptStyles]="[styles.form]">
 
   <div class="form-group">
     <label class="col-form-label" for="email">Email</label>

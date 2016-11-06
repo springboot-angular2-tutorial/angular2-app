@@ -3,14 +3,15 @@ import {FeedService} from "./feed.service";
 import {Micropost} from "../../../core/domains";
 import {MicropostService} from "../../../core/services/micropost.service";
 import {HttpErrorHandler} from "../../../core/services/http-error-handler";
+import {styles} from "./feed.component.styles";
 
 @Component({
   selector: 'mpt-feed',
-  styleUrls: ['./feed.component.css'],
   templateUrl: './feed.component.html',
 })
 export class FeedComponent implements OnInit {
 
+  styles: any = styles;
   feed: Micropost[];
 
   @Output() deleted = new EventEmitter();
@@ -42,3 +43,4 @@ export class FeedComponent implements OnInit {
   }
 
 }
+

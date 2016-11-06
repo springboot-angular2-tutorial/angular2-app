@@ -2,15 +2,17 @@ import {Component, EventEmitter, Output} from "@angular/core";
 import * as toastr from "toastr";
 import {MicropostService} from "../../core/services/micropost.service";
 import {HttpErrorHandler} from "../../core/services/http-error-handler";
+import {styles} from "./micropost-new.component.styles";
 
 @Component({
   selector: 'mpt-micropost-new',
-  styleUrls: ['micropost-new.component.css'],
   templateUrl: 'micropost-new.component.html',
 })
 export class MicropostNewComponent {
 
   @Output() created = new EventEmitter();
+
+  styles: any = styles;
 
   constructor(private micropostService: MicropostService,
               private errorHandler: HttpErrorHandler) {

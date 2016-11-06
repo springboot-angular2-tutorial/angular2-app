@@ -1,9 +1,9 @@
 <div class="row">
 
-  <aside class="col-md-4">
+  <aside class="col-md-4" [mptStyles]="[styles.aside]">
     <mpt-user-stats #us [userId]="userId"
                     [shownOnProfile]="true"></mpt-user-stats>
-    <div class="follow-btn">
+    <div [mptStyles]="[styles.followBtn]">
       <mpt-follow-btn [followerId]="userId"
                       (updated)="us.ngOnInit()"></mpt-follow-btn>
     </div>

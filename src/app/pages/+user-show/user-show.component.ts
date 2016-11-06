@@ -1,13 +1,14 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
+import {styles} from './user-show.component.styles';
 
 @Component({
   selector: 'mpt-user-show',
-  styleUrls: ['user-show.component.css'],
   templateUrl: 'user-show.component.html',
 })
 export class UserShowComponent implements OnInit {
 
+  styles: any = styles;
   userId: string;
 
   constructor(private route: ActivatedRoute) {

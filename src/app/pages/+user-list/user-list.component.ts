@@ -3,14 +3,15 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {User} from "../../core/domains";
 import {UserService} from "../../core/services/user.service";
 import {HttpErrorHandler} from "../../core/services/http-error-handler";
+import {styles} from './user-list.component.styles';
 
 @Component({
   selector: 'mpt-user-list',
-  styleUrls: ['user-list.component.css'],
   templateUrl: 'user-list.component.html',
 })
 export class UserListComponent implements OnInit {
 
+  styles: any = styles;
   users: User[];
   totalPages: number;
   page: number;

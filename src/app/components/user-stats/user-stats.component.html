@@ -1,27 +1,30 @@
 <div>
 
-  <section class="user clearfix">
-    <h2>
+  <section class="clearfix" [mptStyles]="[styles.section]">
+    <h2 [mptStyles]="[styles.userName]">
       <mpt-gravatar [hash]="user?.avatarHash" [size]="68"
-                    [alt]="user?.name"></mpt-gravatar>
+                    [alt]="user?.name"
+                    [mptStyles]="[styles.gravatar]"></mpt-gravatar>
       {{user?.name}}
     </h2>
-    <span *ngIf="!shownOnProfile">
-      <a class="profile-link" [routerLink]="['/users/' + user?.id]">view my profile</a>
+    <span *ngIf="!shownOnProfile" [mptStyles]="[styles.userText]">
+      <a [routerLink]="['/users/' + user?.id]">view my profile</a>
     </span>
-    <span class="microposts" *ngIf="!shownOnProfile">
+    <span *ngIf="!shownOnProfile" [mptStyles]="[styles.userText]">
       {{(user?.userStats?.micropostCnt || 0) | pluralize:'micropost'}}
     </span>
   </section>
 
-  <section class="relationships clearfix">
+  <section class="clearfix" [mptStyles]="[styles.section]">
     <div>
-      <a class="followings" [routerLink]="['/users/' + user?.id, 'followings']">
-        <strong class="stat">{{user?.userStats?.followingCnt || 0}}</strong>
+      <a [routerLink]="['/users/' + user?.id, 'followings']"
+         [mptStyles]="[styles.relationshipsLeft]">
+        <strong [mptStyles]="[styles.relationshipsNumber]">{{user?.userStats?.followingCnt || 0}}</strong>
         followings
       </a>
-      <a class="followers" [routerLink]="['/users/' + user?.id, 'followers']">
-        <strong class="stat">{{user?.userStats?.followerCnt || 0}}</strong>
+      <a [routerLink]="['/users/' + user?.id, 'followers']"
+         [mptStyles]="[styles.relationshipsRight]">
+        <strong [mptStyles]="[styles.relationshipsNumber]">{{user?.userStats?.followerCnt || 0}}</strong>
         followers
       </a>
     </div>

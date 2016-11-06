@@ -4,10 +4,10 @@ import {Micropost, UserStats} from "../../core/domains";
 import {MicropostService} from "../../core/services/micropost.service";
 import {UserService} from "../../core/services/user.service";
 import {HttpErrorHandler} from "../../core/services/http-error-handler";
+import {styles} from "./micropost-list.component.styles";
 
 @Component({
   selector: 'mpt-micropost-list',
-  styleUrls: ['micropost-list.component.css'],
   templateUrl: 'micropost-list.component.html',
   providers: [MicropostListService],
 })
@@ -15,6 +15,7 @@ export class MicropostListComponent implements OnInit {
 
   @Input() userId: string;
 
+  styles: any = styles;
   posts: Micropost[] = [];
   noMorePosts: boolean = false;
   userStats: UserStats;

@@ -1,14 +1,15 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {AuthService} from "../../core/services/auth.service";
+import {styles} from "./header.component.styles";
 
 @Component({
   selector: 'mpt-header',
-  styleUrls: ['header.component.css'],
   templateUrl: 'header.component.html',
 })
 export class HeaderComponent implements OnInit {
 
+  styles: any = styles;
   isSignedIn: boolean;
 
   constructor(private router: Router,
