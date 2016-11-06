@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, HostListener} from "@angular/core";
 import {Router} from "@angular/router";
 import {AuthService} from "../../core/services/auth.service";
 import {styles} from "./header.component.styles";
@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
 
   styles: any = styles;
   isSignedIn: boolean;
+  isMenuHidden: boolean = true;
 
   constructor(private router: Router,
               private authService: AuthService) {
@@ -26,6 +27,15 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  toggleMenu(e: Event) {
+    this.isMenuHidden = !this.isMenuHidden;
+    e.stopPropagation();
+  }
+
+  @HostListener('document:click') hideMenu() {
+    this.isMenuHidden = true;
   }
 
 }

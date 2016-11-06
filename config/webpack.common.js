@@ -14,7 +14,6 @@ module.exports = {
     extensions: ['.ts', '.js'],
     alias: {
       lodash: "lodash-es",
-      jquery: "jquery/src/jquery",
     },
   },
   module: {
@@ -49,10 +48,6 @@ module.exports = {
     ),
     new webpack.optimize.CommonsChunkPlugin({
       name: ['polyfills', 'vendor'].reverse()
-    }),
-    new webpack.ProvidePlugin({
-      Util: "exports?Util!bootstrap/js/dist/util",
-      Collapse: "exports?Collapse!bootstrap/js/dist/collapse",
     }),
   ],
   node: {
