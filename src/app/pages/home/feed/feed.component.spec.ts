@@ -89,7 +89,7 @@ describe('FeedComponent', () => {
     expect(cmp.feed.length).toEqual(2);
 
     const el = cmpDebugElement.nativeElement;
-    expect(getDOM().querySelectorAll(el, 'li .content').length).toEqual(2);
+    expect(getDOM().querySelectorAll(el, 'li').length).toEqual(2);
 
     const avatarLink = getDOM().querySelector(el, 'li>a');
     expect(avatarLink.getAttribute('href')).toEqual('/users/1');
@@ -99,23 +99,22 @@ describe('FeedComponent', () => {
     expect(gravatarDebugElement.componentInstance.hash).toEqual('9a3f499f653f7e8d4c5bf3ae0cf6418f');
     expect(gravatarDebugElement.componentInstance.alt).toEqual('test user1');
 
-    const userLink = getDOM().querySelector(el, '.user>a');
-    expect(userLink.innerHTML).toEqual("test user1");
+    const userLink = getDOM().querySelector(el, 'span>a');
     expect(userLink.getAttribute('href')).toEqual('/users/1');
 
-    const content = getDOM().querySelector(el, '.content');
-    expect(content.innerHTML).toEqual('content1');
+    const firstItem = getDOM().querySelector(el, 'li');
+    expect(firstItem.innerText).toMatch(/test user1/);
+    expect(firstItem.innerText).toMatch(/content1/);
+    expect(firstItem.innerText).toMatch(/1 day ago/);
+    expect(firstItem.innerText).toMatch(/delete/);
 
-    const timestamp = getDOM().querySelector(el, '.timestamp');
-    expect(timestamp.innerText).toMatch(/1 day ago/);
-
-    const deleteLinks = getDOM().querySelectorAll(el, '.delete');
-    expect(deleteLinks[0]).toBeTruthy();
-    expect(deleteLinks[1]).toBeFalsy();
+    const lastItem = getDOM().querySelector(el, 'li:last-child');
+    expect(lastItem.innerText).not.toMatch(/delete/);
   });
 
   it('does not delete micropost when not confirmed', () => {
-    const deleteLink = getDOM().querySelector(cmpDebugElement.nativeElement, '.delete');
+    const deleteLink = getDOM()
+      .querySelector(cmpDebugElement.nativeElement, 'li:first-child > a:last-child');
     spyOn(window, 'confirm').and.returnValue(false);
     spyOn(micropostService, 'delete');
     deleteLink.click();
@@ -125,7 +124,8 @@ describe('FeedComponent', () => {
   it('deletes micropost when confirmed', done => {
     const cmp: FeedComponent = cmpDebugElement.componentInstance;
     const testCmp: TestComponent = testCmpDebugElement.componentInstance;
-    const deleteLink = getDOM().querySelector(cmpDebugElement.nativeElement, '.delete');
+    const deleteLink = getDOM()
+      .querySelector(cmpDebugElement.nativeElement, 'li:first-child > a:last-child');
     spyOn(window, 'confirm').and.returnValue(true);
     spyOn(cmp, 'list');
     spyOn(testCmp, 'listenDeleted');

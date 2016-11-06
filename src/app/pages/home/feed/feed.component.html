@@ -1,4 +1,4 @@
-<ol class="feed list-unstyled">
+<ol class="list-unstyled">
 
   <li *ngFor="let f of feed" [mptStyles]="[styles.list]">
     <a [routerLink]="['/users', f.user.id]">
@@ -6,12 +6,10 @@
                     [alt]="f.user.name"
                     [mptStyles]="[styles.gravatar]"></mpt-gravatar>
     </a>
-    <span class="user">
-      <a [routerLink]="['/users', f.user.id]">{{f.user.name}}</a>
-    </span>
+    <span><a [routerLink]="['/users', f.user.id]">{{f.user.name}}</a></span>
     <span [mptStyles]="[styles.content]">{{f.content}}</span>
     <span [mptStyles]="[styles.timestamp]">Posted less than {{f.createdAt | timeAgo}}.</span>
-    <a *ngIf="f.isMyPost" class="delete" href="#"
+    <a *ngIf="f.isMyPost" href="#"
        (click)="delete(f.id); $event.preventDefault()">delete</a>
   </li>
 

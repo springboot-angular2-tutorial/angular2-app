@@ -16,6 +16,7 @@ import {CoreModule} from "../../core";
 import {APP_TEST_HTTP_PROVIDERS, login, advance} from "../../../testing";
 import {AuthService} from "../../core/services/auth.service";
 import {UserService} from "../../core/services/user.service";
+import {SharedModule} from "../../shared/shared.module";
 
 describe('HeaderComponent', () => {
 
@@ -50,6 +51,7 @@ describe('HeaderComponent', () => {
           {path: '', component: BlankComponent},
         ]),
         CoreModule,
+        SharedModule,
       ],
       providers: [
         APP_TEST_HTTP_PROVIDERS,

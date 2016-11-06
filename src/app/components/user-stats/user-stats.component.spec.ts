@@ -87,20 +87,20 @@ describe('UserStatsComponent', () => {
     const header = getDOM().querySelector(el, 'h2');
     expect(header.innerText).toMatch(/test1/);
 
-    const profileLink = getDOM().querySelector(el, 'a.profile-link');
+    const profileLink = getDOM().querySelector(el, 'section:first-child a');
     expect(profileLink).toBeTruthy();
     expect(profileLink.getAttribute('href')).toEqual('/users/1');
 
-    const postCnt = getDOM().querySelector(el, '.microposts');
+    const postCnt = getDOM().querySelector(el, 'section:first-child > span:last-child');
     expect(postCnt).toBeTruthy();
     expect(postCnt.innerText).toMatch(/2 microposts/);
 
-    const followingsLink = getDOM().querySelector(el, 'a.followings');
+    const followingsLink = getDOM().querySelector(el, 'section:last-child a:first-child');
     expect(followingsLink).toBeTruthy();
     expect(followingsLink.getAttribute('href')).toEqual('/users/1/followings');
     expect(followingsLink.innerText).toMatch(/3[\s\S]*?followings/);
 
-    const followersLink = getDOM().querySelector(el, 'a.followers');
+    const followersLink = getDOM().querySelector(el, 'section:last-child a:last-child');
     expect(followersLink).toBeTruthy();
     expect(followersLink.getAttribute('href')).toEqual('/users/1/followers');
     expect(followersLink.innerText).toMatch(/4[\s\S]*?followers/);

@@ -8,6 +8,7 @@ import {RouterTestingModule} from "@angular/router/testing";
 import {MicropostService} from "../../core/services/micropost.service";
 import {CoreModule} from "../../core";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
+import {SharedModule} from "../../shared/shared.module";
 
 describe('MicropostNewComponent', () => {
 
@@ -30,6 +31,7 @@ describe('MicropostNewComponent', () => {
       imports: [
         RouterTestingModule,
         CoreModule,
+        SharedModule,
       ],
       providers: [
         APP_TEST_HTTP_PROVIDERS,

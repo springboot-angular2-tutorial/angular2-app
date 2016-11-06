@@ -88,17 +88,15 @@ describe('MicropostListComponent', () => {
     expect(cmp.posts.length).toEqual(2);
 
     const el = cmpDebugElement.nativeElement;
-    expect(getDOM().querySelectorAll(el, 'li>.content').length).toEqual(2);
+    expect(getDOM().querySelectorAll(el, 'li').length).toEqual(2);
 
-    const content = getDOM().querySelector(el, '.content');
-    expect(content.innerHTML).toEqual('content1');
+    const firstItem = getDOM().querySelector(el, 'li:first-child');
+    expect(firstItem.innerText).toMatch(/content1/);
+    expect(firstItem.innerText).toMatch(/1 day ago/);
+    expect(firstItem.innerText).toMatch(/delete/);
 
-    const timestamp = getDOM().querySelector(el, '.timestamp');
-    expect(timestamp.innerText).toMatch(/1 day ago/);
-
-    const deleteLinks = getDOM().querySelectorAll(el, '.delete');
-    expect(deleteLinks[0]).toBeTruthy();
-    expect(deleteLinks[1]).toBeFalsy();
+    const secondItem = getDOM().querySelector(el, 'li:last-child');
+    expect(secondItem.innerText).not.toMatch(/delete/);
   });
 
   it('can load more', () => {

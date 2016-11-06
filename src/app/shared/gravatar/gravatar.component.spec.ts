@@ -3,6 +3,7 @@ import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
 import {TestBed, fakeAsync} from "@angular/core/testing";
 import {GravatarComponent} from "./gravatar.component";
+import {StylesDirective} from "../directives/styles.directive";
 
 describe('GravatarComponent', () => {
 
@@ -22,6 +23,7 @@ describe('GravatarComponent', () => {
       declarations: [
         TestComponent,
         GravatarComponent,
+        StylesDirective,
       ]
     });
   });

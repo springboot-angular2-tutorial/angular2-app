@@ -66,14 +66,14 @@ describe('RelatedUserListComponent', () => {
     const cmp: RelatedUserListComponent = cmpDebugElement.componentInstance;
     expect(cmp.users.length).toEqual(2);
 
-    expect(getDOM().querySelectorAll(cmpDebugElement.nativeElement, '.users>li').length).toEqual(2);
+    expect(getDOM().querySelectorAll(cmpDebugElement.nativeElement, 'li').length).toEqual(2);
 
     const gravatarDebugElement = cmpDebugElement.query(By.directive(GravatarComponent));
     expect(gravatarDebugElement).toBeTruthy();
     expect(gravatarDebugElement.componentInstance.alt).toEqual('test1');
     expect(gravatarDebugElement.componentInstance.hash).toEqual('9a3f499f653f7e8d4c5bf3ae0cf6418f');
 
-    const userLink: HTMLElement = cmpDebugElement.query(By.css('.users>li>a')).nativeElement;
+    const userLink: HTMLElement = cmpDebugElement.query(By.css('li>a')).nativeElement;
     expect(userLink.innerText).toEqual('test1');
     expect(userLink.getAttribute('href')).toEqual('/users/1');
   });
