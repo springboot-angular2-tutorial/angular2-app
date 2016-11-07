@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 import {Router} from "@angular/router";
 import {AuthService} from "../../core/services/auth.service";
 import {styles} from "./auth.component.styles";
-import {ToastService} from "../../components/toast/toast.service";
+import {ToastService} from "../../core/toast/toast.service";
 
 @Component({
   selector: 'mpt-auth',

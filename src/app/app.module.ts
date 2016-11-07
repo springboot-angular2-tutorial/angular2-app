@@ -12,7 +12,7 @@ import {TopModule} from "./pages/top/top.module";
 import {NoContentComponent} from "./pages/no-content/no-content.component";
 import {HeaderModule} from "./components/header/header.module";
 import {SharedModule} from "./shared/shared.module";
-import {ToastModule} from "./components/toast/toast.module";
+import {ToastModule} from "./core/toast/toast.module";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -34,7 +34,6 @@ import {ToastModule} from "./components/toast/toast.module";
     AuthModule,
     TopModule,
     HeaderModule,
-    ToastModule,
   ],
   providers: [
     ENV_PROVIDERS,

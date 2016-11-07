@@ -7,8 +7,8 @@ export function login() {
   });
 }
 
-export function advance(fixture: ComponentFixture<any>): void {
-  tick();
+export function advance(fixture: ComponentFixture<any>, millis?:number): void {
+  tick(millis);
   fixture.detectChanges();
 }
 

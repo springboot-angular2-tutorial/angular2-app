@@ -5,7 +5,7 @@ import {ToastService} from "./toast.service";
 
 @Component({
   selector: 'mpt-toast',
-  templateUrl: './toast.component.html',
+  templateUrl: 'toast.component.html',
 })
 export class ToastComponent implements OnInit {
 

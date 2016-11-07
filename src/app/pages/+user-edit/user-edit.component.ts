@@ -6,7 +6,7 @@ import omitBy from "lodash/omitBy";
 import {User} from "../../core/domains";
 import {UserService} from "../../core/services/user.service";
 import {EMAIL_PATTERN, Validators as AppValidators} from "../../core/forms";
-import {ToastService} from "../../components/toast/toast.service";
+import {ToastService} from "../../core/toast/toast.service";
 
 @Component({
   selector: 'mpt-user-edit',

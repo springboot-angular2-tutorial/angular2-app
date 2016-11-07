@@ -10,6 +10,8 @@ import {PublicPageGuard} from "./services/public-page.guard";
 import {XHRBackend, Http, RequestOptions, HttpModule} from "@angular/http";
 import {ProfileDataResolver} from "./services/profile-data.resolver";
 import {JsonHttp} from "./services";
+import {ToastModule} from "./toast/toast.module";
+import {ToastComponent} from "./toast/toast.component";
 
 export function createJsonHttp(xhrBackend: XHRBackend, requestOptions: RequestOptions) {
   const ngHttp = new Http(xhrBackend, requestOptions);
@@ -20,8 +22,11 @@ export function createJsonHttp(xhrBackend: XHRBackend, requestOptions: RequestOp
   imports: [
     CommonModule,
     HttpModule,
+    ToastModule,
   ],
-  declarations: [],
+  exports: [
+    ToastComponent,
+  ],
   providers: [
     {
       provide: JsonHttp,

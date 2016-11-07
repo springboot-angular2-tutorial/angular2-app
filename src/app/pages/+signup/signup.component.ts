@@ -4,7 +4,7 @@ import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {EMAIL_PATTERN, Validators as AppValidators} from "../../core/forms";
 import {UserService} from "../../core/services/user.service";
 import {AuthService} from "../../core/services/auth.service";
-import {ToastService} from "../../components/toast/toast.service";
+import {ToastService} from "../../core/toast/toast.service";
 
 @Component({
   selector: 'mpt-signup',

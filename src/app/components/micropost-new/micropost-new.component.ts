@@ -2,7 +2,7 @@ import {Component, EventEmitter, Output} from "@angular/core";
 import {MicropostService} from "../../core/services/micropost.service";
 import {HttpErrorHandler} from "../../core/services/http-error-handler";
 import {styles} from "./micropost-new.component.styles";
-import {ToastService} from "../toast/toast.service";
+import {ToastService} from "../../core/toast/toast.service";
 
 @Component({
   selector: 'mpt-micropost-new',
