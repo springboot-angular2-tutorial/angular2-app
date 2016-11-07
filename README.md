@@ -8,6 +8,7 @@ This repository is an example application for angular2 tutorial.
 * Lazy Loading
 * Preloading 
 * [CSS in JS](https://speakerdeck.com/vjeux/react-css-in-js) by using [Aphrodite](https://github.com/Khan/aphrodite)
+* Hot module reload
 
 ## Getting Started
 
