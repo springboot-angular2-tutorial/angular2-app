@@ -1,6 +1,6 @@
 <div [mptStyles]="[styles.wrapper]">
   <ul class="list-unstyled">
-    <li *ngFor="let toast of toasts" [mptStyles]="[styles.list]">
+    <li *ngFor="let toast of toasts.reverse()" [mptStyles]="[styles.list]">
       <div [mptStyles]="toast.styles">{{toast.message}}</div>
     </li>
   </ul>
