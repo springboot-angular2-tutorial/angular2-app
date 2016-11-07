@@ -8,6 +8,9 @@ export const styles = StyleSheet.create({
     zIndex: '999999',
     display: 'table',
   },
+  list: {
+    marginBottom: '12px',
+  },
   toastBase: {
     color: 'white',
     opacity: '0.9',
