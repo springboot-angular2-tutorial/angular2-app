@@ -1,12 +1,12 @@
 import {Component, OnInit} from "@angular/core";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
-import * as toastr from "toastr";
 import isEmpty from "lodash/isEmpty";
 import omitBy from "lodash/omitBy";
 import {User} from "../../core/domains";
 import {UserService} from "../../core/services/user.service";
 import {EMAIL_PATTERN, Validators as AppValidators} from "../../core/forms";
+import {ToastService} from "../../components/toast/toast.service";
 
 @Component({
   selector: 'mpt-user-edit',
@@ -23,7 +23,8 @@ export class UserEditComponent implements OnInit {
   user: User;
 
   constructor(private route: ActivatedRoute,
-              private userService: UserService) {
+              private userService: UserService,
+              private toastService: ToastService) {
   }
 
   ngOnInit(): void {
@@ -40,8 +41,8 @@ export class UserEditComponent implements OnInit {
 
     this.userService.updateMe(omitBy(params, isEmpty))
       .subscribe(() => {
-        toastr.success('Successfully updated.');
-      }, this.handleError);
+        this.toastService.success('Successfully updated.');
+      }, e => this.handleError(e));
   }
 
   private initForm() {
@@ -71,7 +72,7 @@ export class UserEditComponent implements OnInit {
     switch (error.status) {
       case 400:
         if (error.json()['code'] === 'email_already_taken') {
-          toastr.error('This email is already taken.');
+          this.toastService.error('This email is already taken.');
         }
     }
   }

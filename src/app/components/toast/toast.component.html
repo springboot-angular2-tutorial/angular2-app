@@ -1,0 +1,7 @@
+<div [mptStyles]="[styles.wrapper]">
+  <ul class="list-unstyled">
+    <li *ngFor="let toast of toasts">
+      <div [mptStyles]="toast.styles">{{toast.message}}</div>
+    </li>
+  </ul>
+</div>

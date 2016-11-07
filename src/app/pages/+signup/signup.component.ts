@@ -1,10 +1,10 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
-import * as toastr from "toastr";
 import {EMAIL_PATTERN, Validators as AppValidators} from "../../core/forms";
 import {UserService} from "../../core/services/user.service";
 import {AuthService} from "../../core/services/auth.service";
+import {ToastService} from "../../components/toast/toast.service";
 
 @Component({
   selector: 'mpt-signup',
@@ -20,7 +20,8 @@ export class SignupComponent implements OnInit {
 
   constructor(private router: Router,
               private userService: UserService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private toastService: ToastService) {
   }
 
   ngOnInit(): void {
@@ -34,7 +35,7 @@ export class SignupComponent implements OnInit {
       })
       .subscribe(() => {
         this.router.navigate(['/home']);
-      }, this.handleError)
+      }, e => this.handleError(e))
     ;
   }
 
@@ -67,7 +68,7 @@ export class SignupComponent implements OnInit {
     switch (error.status) {
       case 400:
         if (error.json()['code'] === 'email_already_taken') {
-          toastr.error('This email is already taken.');
+          this.toastService.error('This email is already taken.');
         }
     }
   }

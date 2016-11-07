@@ -21,7 +21,6 @@
       "node",
       "pluralize",
       "source-map",
-      "toastr",
       "webpack"
     ]
   },

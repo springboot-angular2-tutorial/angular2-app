@@ -22,7 +22,6 @@ export function createJsonHttp(xhrBackend: XHRBackend, requestOptions: RequestOp
     HttpModule,
   ],
   declarations: [],
-  exports: [],
   providers: [
     {
       provide: JsonHttp,
@@ -33,9 +32,7 @@ export function createJsonHttp(xhrBackend: XHRBackend, requestOptions: RequestOp
     AuthService,
     MicropostService,
     UserService,
-
     ProfileDataResolver,
-
     PrivatePageGuard,
     PublicPageGuard,
   ]

@@ -56,10 +56,6 @@
   version "2.5.37"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.37.tgz#15f16040b1106941ec4aeefa3cd9c55342a0dcbb"
 
-"@types/jquery@*":
-  version "2.0.33"
-  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-2.0.33.tgz#684ef3a2e99f6fd2afc52a357e47ae05f51f4f6c"
-
 "@types/lodash@^4.14.37":
   version "4.14.38"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.38.tgz#fcbd51e740c5e260652cad975dd26c5c4151cb11"
@@ -75,12 +71,6 @@
 "@types/source-map@*", "@types/source-map@^0.1.28":
   version "0.1.29"
   resolved "https://registry.yarnpkg.com/@types/source-map/-/source-map-0.1.29.tgz#d7048a60180b09f8aa6d53bda311c6b51cbd7018"
-
-"@types/toastr@^2.1.27":
-  version "2.1.30"
-  resolved "https://registry.yarnpkg.com/@types/toastr/-/toastr-2.1.30.tgz#95fb0d06702b68fa88cc33af5ae82d6be9ff52b7"
-  dependencies:
-    "@types/jquery" "*"
 
 "@types/uglify-js@*":
   version "2.6.28"
@@ -3854,10 +3844,6 @@ tmp@0.0.28:
 to-array@0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/to-array/-/to-array-0.1.4.tgz#17e6c11f73dd4f3d74cda7a4ff3238e9ad9bf890"
-
-toastr@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/toastr/-/toastr-2.1.2.tgz#fd69066ae7578a5b3357725fc9c7c335e9b681df"
 
 toposort@^1.0.0:
   version "1.0.0"
