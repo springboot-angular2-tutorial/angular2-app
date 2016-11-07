@@ -18,6 +18,7 @@ export class ToastComponent implements OnInit {
 
   ngOnInit(): void {
     this.toastService.events
+      .debounceTime(500)
       .map(toast => this.applyStyle(toast))
       .do(toast => this.addToast(toast))
       .delay(4800)
