@@ -12,7 +12,8 @@ module.exports = webpackMerge(commonConfig, {
     filename: '[name].js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js',
-    publicPath: '/'
+    // required for hot module replacement
+    publicPath: 'http://localhost:4200/',
   },
   plugins: [
     new webpack.DefinePlugin({

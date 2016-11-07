@@ -52,6 +52,16 @@
   dependencies:
     tsickle "^0.1.7"
 
+"@angularclass/hmr":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@angularclass/hmr/-/hmr-1.2.2.tgz#46a18f89a1e94d05c268b83c9480e005f73fc265"
+
+"@angularclass/hmr-loader":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@angularclass/hmr-loader/-/hmr-loader-3.0.2.tgz#c789182411f09d0b98929e6acbfd3e4aeaace597"
+  dependencies:
+    loader-utils "^0.2.15"
+
 "@types/jasmine@^2.5.35":
   version "2.5.37"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.37.tgz#15f16040b1106941ec4aeefa3cd9c55342a0dcbb"

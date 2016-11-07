@@ -21,6 +21,7 @@ module.exports = {
       {
         test: /\.ts$/,
         loaders: [
+          '@angularclass/hmr-loader',
           'awesome-typescript-loader',
           'angular2-template-loader',
           'angular2-router-loader?loader=system',

@@ -1,5 +1,5 @@
-var path = require('path');
-var _root = path.resolve(__dirname, '..');
+const path = require('path');
+const _root = path.resolve(__dirname, '..');
 
 function hasProcessFlag(flag) {
   return process.argv.join('').indexOf(flag) > -1;
@@ -10,5 +10,10 @@ function root(args) {
   return path.join.apply(path, [_root].concat(args));
 }
 
+function prod() {
+  return process.env.NODE_ENV === 'production';
+}
+
 exports.hasProcessFlag = hasProcessFlag;
 exports.root = root;
+exports.prod = prod;
