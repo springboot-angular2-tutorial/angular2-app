@@ -10,6 +10,7 @@ import {FollowBtnService} from "./follow-btn.service";
 import {UserService} from "../../core/services/user.service";
 import {HttpErrorHandler} from "../../core/services/http-error-handler";
 import {User} from "../../core/domains";
+import {AuthService} from "../../core/services/auth.service";
 
 @Component({
   selector: 'mpt-follow-btn',
@@ -26,6 +27,7 @@ export class FollowBtnComponent implements OnChanges {
 
   constructor(private followBtnService: FollowBtnService,
               private userService: UserService,
+              private authService: AuthService,
               private errorHandler: HttpErrorHandler) {
   }
 
@@ -71,15 +73,15 @@ export class FollowBtnComponent implements OnChanges {
   }
 
   private _canShowFollowBtn(user: User): boolean {
-    if (user.isMyself === null) return false; // not signed in
-    if (user.isMyself === true) return false; // myself
+    if (this.authService.isMyself(user) === null) return false; // not signed in
+    if (this.authService.isMyself(user) === true) return false; // myself
     if (user.isFollowedByMe === true) return false; // already followed
     return true;
   }
 
   private _canShowUnfollowBtn(user: User): boolean {
-    if (user.isMyself === null) return false; // not signed in
-    if (user.isMyself === true) return false; // myself
+    if (this.authService.isMyself(user) === null) return false; // not signed in
+    if (this.authService.isMyself(user) === true) return false; // myself
     if (user.isFollowedByMe === false) return false; // not followed yet
     return true;
   }

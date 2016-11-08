@@ -49,6 +49,7 @@
     "aphrodite": "^1.0.0",
     "bootstrap": "^4.0.0-alpha.4",
     "core-js": "^2.4.1",
+    "jwt-decode": "^2.1.0",
     "lodash-es": "^4.16.5",
     "pluralize": "~3.0.0",
     "rxjs": "5.0.0-beta.12",

@@ -8,6 +8,7 @@ import {
 import {MockBackend} from "@angular/http/testing";
 import {AuthService} from "./auth.service";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
+import {User} from "../domains";
 
 describe('AuthService', () => {
 
@@ -71,6 +72,32 @@ describe('AuthService', () => {
       });
     });
   }); // .isSignedIn
+
+  describe('.isMyself', () => {
+    let user: User = {id: 1};
+
+    describe('when not signed in', () => {
+      it('should be null', () => {
+        expect(authService.isMyself(user)).toBeNull();
+      });
+    });
+
+    describe('when signed in and user is myself', () => {
+      // tslint:disable-next-line
+      beforeEach(() => localStorage.setItem('jwt', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNDc5MjAxMzgxfQ.HHakflRTrPahGdAwy1epXmOgm7V1H5836KRThAd1rFp79WKEpBkf98Agis_OdRd1vv16YmWc3WlE-iniT_F7Ag'));
+      it('should be true', () => {
+        expect(authService.isMyself(user)).toBeTruthy();
+      });
+    });
+
+    describe('when signed in and user is myself', () => {
+      // tslint:disable-next-line
+      beforeEach(() => localStorage.setItem('jwt', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiZXhwIjoxNDc5MjA0NjUzfQ.V3AQ5LEBq7AoI_tmKR9FnplN9pGk264qp2nTlSZeKdrV3Uva_DFQnkagR9tIFbvuVAfwqtQW1FLRc3gHcJo2nA'));
+      it('should be false', () => {
+        expect(authService.isMyself(user)).toBe(false);
+      });
+    });
+  }); // .isMyself
 
 });
 

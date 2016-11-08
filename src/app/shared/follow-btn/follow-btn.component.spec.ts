@@ -9,6 +9,7 @@ import {SharedModule} from "../shared.module";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
 import {FollowBtnComponent} from "./follow-btn.component";
 import {FollowBtnService} from "./follow-btn.service";
+import {AuthService} from "../../core/services/auth.service";
 
 describe('FollowBtnComponent', () => {
 
@@ -24,32 +25,12 @@ describe('FollowBtnComponent', () => {
   let testCmpDebugElement: DebugElement;
 
   let followBtnService: FollowBtnService;
-
-  const notSignedInResponse = new Response(new ResponseOptions({
-    body: JSON.stringify({
-      id: 1,
-      email: "test@test.com",
-      isMyself: null,
-      isFollowedByMe: false,
-    })
-  }));
-
-  const mySelfResponse = new Response(new ResponseOptions({
-    body: JSON.stringify({
-      id: 1,
-      email: "test@test.com",
-      isMyself: true,
-      userStats: {
-        followedByMe: false,
-      }
-    })
-  }));
+  let authService: AuthService;
 
   const followingResponse = new Response(new ResponseOptions({
     body: JSON.stringify({
       id: 1,
       email: "test@test.com",
-      isMyself: false,
       isFollowedByMe: true,
     })
   }));
@@ -58,7 +39,6 @@ describe('FollowBtnComponent', () => {
     body: JSON.stringify({
       id: 1,
       email: "test@test.com",
-      isMyself: false,
       isFollowedByMe: false,
     })
   }));
@@ -78,8 +58,8 @@ describe('FollowBtnComponent', () => {
       ]
     });
   });
-  beforeEach(inject([FollowBtnService], _ => {
-    followBtnService = _;
+  beforeEach(inject([FollowBtnService, AuthService], (..._) => {
+    [followBtnService, authService] = _;
     spyOn(followBtnService, 'follow').and.callThrough();
     spyOn(followBtnService, 'unfollow').and.callThrough();
   }));
@@ -104,7 +84,7 @@ describe('FollowBtnComponent', () => {
   };
 
   describe('when not signed in', () => {
-    beforeEach(mockBackendBy(notSignedInResponse));
+    beforeEach(() => spyOn(authService, 'isMyself').and.returnValue(null));
     beforeEach(initComponent());
     it('should not show any button', () => {
       expect(cmpDebugElement).toBeTruthy();
@@ -114,7 +94,7 @@ describe('FollowBtnComponent', () => {
   });
 
   describe('when showing myself', () => {
-    beforeEach(mockBackendBy(mySelfResponse));
+    beforeEach(() => spyOn(authService, 'isMyself').and.returnValue(true));
     beforeEach(initComponent());
     it('should not show any button', () => {
       expect(cmpDebugElement).toBeTruthy();
@@ -124,6 +104,7 @@ describe('FollowBtnComponent', () => {
   });
 
   describe('when following the user', () => {
+    beforeEach(() => spyOn(authService, 'isMyself').and.returnValue(false));
     beforeEach(mockBackendBy(followingResponse));
     beforeEach(initComponent());
     it('should show an unfollow button', () => {
@@ -147,6 +128,7 @@ describe('FollowBtnComponent', () => {
   });
 
   describe('when not following the user', () => {
+    beforeEach(() => spyOn(authService, 'isMyself').and.returnValue(false));
     beforeEach(mockBackendBy(notFollowingResponse));
     beforeEach(initComponent());
     it('should show a follow button', () => {

@@ -11,7 +11,6 @@ export interface User {
   email?:string;
   name?:string;
   userStats?:UserStats;
-  isMyself?:boolean;
   isFollowedByMe?:boolean;
   avatarHash?:string;
 }

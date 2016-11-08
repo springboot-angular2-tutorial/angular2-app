@@ -2,7 +2,9 @@ import {Observable} from "rxjs/Observable";
 import {Injectable} from "@angular/core";
 import {Response} from "@angular/http";
 import {Subject} from "rxjs/Rx";
+import jwtDecode from "jwt-decode";
 import {JsonHttp} from "./";
+import {User} from "../domains";
 
 @Injectable()
 export class AuthService {
@@ -31,6 +33,12 @@ export class AuthService {
 
   isSignedIn(): boolean {
     return localStorage.getItem('jwt') !== null;
+  }
+
+  isMyself(user: User): boolean|null {
+    if (!this.isSignedIn()) return null; // It means unknown.
+    const decoded = jwtDecode(localStorage.getItem('jwt'));
+    return user.id + '' === decoded.sub;
   }
 
   get events(): Observable<AuthEvent> {
