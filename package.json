@@ -70,7 +70,6 @@
     "awesome-typescript-loader": "^2.2.4",
     "codelyzer": "~1.0.0-beta.0",
     "css-loader": "^0.25.0",
-    "exports-loader": "^0.6.3",
     "express": "^4.14.0",
     "html-webpack-plugin": "^2.24.1",
     "http-proxy": "^1.15.1",
