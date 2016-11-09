@@ -1,6 +1,8 @@
 const helpers = require('./helpers');
 const webpack = require('webpack');
 
+const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
+
 const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 
 module.exports = {
@@ -40,12 +42,18 @@ module.exports = {
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(ENV),
     }),
+    new ContextReplacementPlugin(
+      // The (\\|\/) piece accounts for path separators in *nix and Windows
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      helpers.root('src') // location of your src
+    ),
     new webpack.LoaderOptionsPlugin({
+      debug: true,
       options: {
         tslint: {
           emitErrors: false,
           failOnHint: false,
-          resourcePath: 'src'
+          resourcePath: 'src',
         },
       },
     }),

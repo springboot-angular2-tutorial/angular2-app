@@ -11,9 +11,7 @@ module.exports = function (config) {
       './config/spec-bundle.js': ['webpack', 'sourcemap'],
     },
     webpack: testWebpackConfig,
-    webpackServer: {
-      noInfo: true,
-    },
+    webpackMiddleware: { stats: 'errors-only'},
     reporters: ['mocha'],
     port: 9876,
     colors: true,
