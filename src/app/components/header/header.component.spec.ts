@@ -143,7 +143,7 @@ describe('HeaderComponent', () => {
     }));
   }); // when signed in
 
-  fdescribe('when not signed in', () => {
+  describe('when not signed in', () => {
     beforeEach(initComponent());
 
     it('can be shown', () => {

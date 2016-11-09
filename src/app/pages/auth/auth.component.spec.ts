@@ -89,8 +89,8 @@ describe('AuthComponent', () => {
 
   it('can navigate to signup page', () => {
     const el = cmpDebugElement.nativeElement;
-    const signupLink = getDOM().querySelector(el, 'a');
-    expect(signupLink.getAttribute('href')).toEqual('/signup');
+    const signupLink = getDOM().querySelector(el, 'a[href="/signup"]');
+    expect(signupLink).toBeTruthy();
   });
 
 });

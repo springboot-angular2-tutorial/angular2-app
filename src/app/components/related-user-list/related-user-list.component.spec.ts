@@ -75,14 +75,14 @@ describe('RelatedUserListComponent', () => {
     expect(gravatarDebugElement.componentInstance.alt).toEqual('test1');
     expect(gravatarDebugElement.componentInstance.hash).toEqual('9a3f499f653f7e8d4c5bf3ae0cf6418f');
 
-    const userLink: HTMLElement = cmpDebugElement.query(By.css('li>a')).nativeElement;
+    const userLink: HTMLElement = cmpDebugElement.query(By.css('a[href="/users/1"]')).nativeElement;
+    expect(userLink).toBeTruthy();
     expect(userLink.innerText).toEqual('test1');
-    expect(userLink.getAttribute('href')).toEqual('/users/1');
   });
 
   it('can load more', () => {
     const cmp: RelatedUserListComponent = cmpDebugElement.componentInstance;
-    const moreBtn = getDOM().querySelector(cmpDebugElement.nativeElement, '.moreBtn');
+    const moreBtn = getDOM().querySelector(cmpDebugElement.nativeElement, 'button');
     spyOn(cmp, 'listProvider').and.callThrough();
     moreBtn.click();
     expect(cmp.users.length).toEqual(4);

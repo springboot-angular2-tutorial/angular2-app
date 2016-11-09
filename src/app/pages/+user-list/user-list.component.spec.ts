@@ -98,8 +98,8 @@ describe('UserListComponent', () => {
     expect(gravatarDebugElement.componentInstance.hash).toEqual('9a3f499f653f7e8d4c5bf3ae0cf6418f');
     expect(gravatarDebugElement.componentInstance.alt).toEqual('test1');
 
-    const userShowLink = cmpDebugElement.query(By.css('li>a')).nativeElement;
-    expect(userShowLink.getAttribute('href')).toEqual('/users/1');
+    const userShowLink = getDOM().querySelector(el, 'li > a[href="/users/1"]');
+    expect(userShowLink).toBeTruthy();
 
     const pager: PagerComponent = pagerDebugElement.componentInstance;
     expect(pager.totalPages).toEqual(1);

@@ -36,8 +36,8 @@ describe('TopComponent', () => {
 
   it('can be shown', () => {
     expect(cmpDebugElement).toBeTruthy();
-    const signupLink = cmpDebugElement.query(By.css('a')).nativeElement;
-    expect(signupLink.getAttribute('href')).toEqual('/signup');
+    const signupLink = cmpDebugElement.query(By.css('a[href="/signup"]')).nativeElement;
+    expect(signupLink).toBeTruthy();
   });
 
 });
