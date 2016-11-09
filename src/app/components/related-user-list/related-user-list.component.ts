@@ -10,7 +10,7 @@ import {styles} from "./related-user-list.component.styles";
 })
 export class RelatedUserListComponent implements OnInit {
 
-  @Input() listProvider: (params: {maxId: number, count: number}) => Observable<RelatedUser[]>;
+  @Input() listProvider: (params: {maxId: number|null, count: number}) => Observable<RelatedUser[]>;
 
   styles: any = styles;
   users: RelatedUser[] = [];
@@ -29,7 +29,7 @@ export class RelatedUserListComponent implements OnInit {
     this.list(lastUser.relationshipId);
   }
 
-  private list(maxId = null) {
+  private list(maxId: number|null = null) {
     this.listProvider({maxId: maxId, count: 5})
       .subscribe(users => {
           this.users = this.users.concat(users);

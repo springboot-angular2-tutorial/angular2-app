@@ -12,7 +12,8 @@
       "es2015",
       "dom"
     ],
-    "strictNullChecks": false,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
     "baseUrl": "./src",
     "paths": {},
     "types": [

@@ -12,7 +12,7 @@ export class MicropostListService {
   constructor(private http: JsonHttp) {
   }
 
-  list(userId: string, params: {maxId: number, count: number}): Observable<Micropost[]> {
+  list(userId: string, params: {maxId: number|null, count: number}): Observable<Micropost[]> {
     return this.http.get(url(userId), {search: objToSearchParams(params)})
       .map(res => res.json())
       ;

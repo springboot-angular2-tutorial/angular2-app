@@ -8,7 +8,7 @@ import {
   Headers
 } from "@angular/http";
 
-const mergeAuthToken = (options: RequestOptionsArgs) => {
+const mergeAuthToken = (options: RequestOptionsArgs = {}) => {
   let newOptions = new RequestOptions({}).merge(options);
   let newHeaders = new Headers(newOptions.headers);
   const jwt = localStorage.getItem('jwt');
