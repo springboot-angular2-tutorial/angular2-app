@@ -2,7 +2,7 @@ import {StyleSheet} from "aphrodite";
 
 export const styles = StyleSheet.create({
   wrapper: {
-    position: 'absolute',
+    position: 'fixed',
     top: '12px',
     right: '12px',
     zIndex: '999999',
