@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Angular2 tutorial sample application",
   "scripts": {
-    "clean": "yarn cache clean && rimraf -- node_modules doc coverage dist aot",
+    "clean": "rimraf -- node_modules doc coverage dist aot",
     "clean:install": "yarn run clean && yarn install",
     "clean:start": "yarn run clean && yarn start",
     "clean:dist": "rimraf -- dist aot",
@@ -12,7 +12,7 @@
     "server:prod": "node server.js",
     "test": "karma start",
     "test:watch": "karma start --reporters dots,notify --single-run false",
-    "docs": "typedoc  --options typedoc.json  src/**/*.ts",
+    "docs": "typedoc --options typedoc.json  src/**/*.ts",
     "start": "yarn run server:dev",
     "ngc": "ngc -p tsconfig.aot.json --locale=en-US"
   },
