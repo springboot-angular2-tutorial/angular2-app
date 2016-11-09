@@ -5,6 +5,7 @@ import {EMAIL_PATTERN, Validators as AppValidators} from "../../core/forms";
 import {UserService} from "../../core/services/user.service";
 import {AuthService} from "../../core/services/auth.service";
 import {ToastService} from "../../core/toast/toast.service";
+import values from "lodash/values";
 
 @Component({
   selector: 'mpt-signup',
@@ -29,6 +30,10 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(params) {
+    values(this.myForm.controls).forEach(c => c.markAsTouched());
+
+    if (!this.myForm.valid) return;
+
     this.userService.create(params)
       .mergeMap(() => {
         return this.authService.login(params.email, params.password);
@@ -54,14 +59,13 @@ export class SignupComponent implements OnInit {
     ]));
     this.passwordConfirmation = new FormControl('', Validators.compose([
       Validators.required,
-      AppValidators.match(this.password),
     ]));
     this.myForm = new FormGroup({
       name: this.name,
       email: this.email,
       password: this.password,
       passwordConfirmation: this.passwordConfirmation,
-    });
+    }, AppValidators.match(this.password, this.passwordConfirmation));
   }
 
   private handleError(error) {

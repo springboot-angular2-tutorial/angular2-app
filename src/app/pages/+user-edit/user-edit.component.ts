@@ -3,6 +3,7 @@ import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import isEmpty from "lodash/isEmpty";
 import omitBy from "lodash/omitBy";
+import values from "lodash/values";
 import {User} from "../../core/domains";
 import {UserService} from "../../core/services/user.service";
 import {EMAIL_PATTERN, Validators as AppValidators} from "../../core/forms";
@@ -35,8 +36,8 @@ export class UserEditComponent implements OnInit {
   }
 
   onSubmit(params) {
-    this.passwordConfirmation.updateValueAndValidity({});
-    this.passwordConfirmation.markAsTouched();
+    values(this.myForm.controls).forEach(c => c.markAsTouched());
+
     if (!this.myForm.valid) return;
 
     this.userService.updateMe(omitBy(params, isEmpty))
@@ -57,15 +58,13 @@ export class UserEditComponent implements OnInit {
     this.password = new FormControl('', Validators.compose([
       Validators.minLength(8),
     ]));
-    this.passwordConfirmation = new FormControl('', Validators.compose([
-      AppValidators.match(this.password),
-    ]));
+    this.passwordConfirmation = new FormControl('');
     this.myForm = new FormGroup({
       name: this.name,
       email: this.email,
       password: this.password,
       passwordConfirmation: this.passwordConfirmation,
-    });
+    }, AppValidators.match(this.password, this.passwordConfirmation));
   }
 
   private handleError(error) {

@@ -54,7 +54,7 @@
   </div>
 
   <div class="form-group"
-       [class.has-danger]="!passwordConfirmation.valid && passwordConfirmation.touched">
+       [class.has-danger]="(!passwordConfirmation.valid || myForm.hasError('unmatched')) && passwordConfirmation.touched">
     <label class="col-form-label" for="passwordConfirmationInput">Confirm
       Password</label>
     <input
@@ -64,7 +64,7 @@
       placeholder="Confirm Password"
       formControlName="passwordConfirmation"/>
     <div
-      *ngIf="passwordConfirmation.hasError('matched') && passwordConfirmation.touched"
+      *ngIf="myForm.hasError('unmatched') && passwordConfirmation.touched"
       class="form-control-feedback">Doesn't match
     </div>
   </div>

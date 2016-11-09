@@ -97,12 +97,12 @@ describe('SignupComponent', () => {
         body: JSON.stringify({token: 'my jwt'}),
       })));
     });
-    page.onSubmit({
-      email: 'test@test.com',
-      password: 'secret',
-      name: 'akira',
-    });
-    expect(authService.login).toHaveBeenCalledWith('test@test.com', 'secret');
+    page.name.setValue('akira', {});
+    page.email.setValue('test@test.com', {});
+    page.password.setValue('secret123', {});
+    page.passwordConfirmation.setValue('secret123', {});
+    cmpDebugElement.query(By.css('button')).nativeElement.click();
+    expect(authService.login).toHaveBeenCalledWith('test@test.com', 'secret123');
     advance(fixture);
     expect(location.path()).toEqual('/home');
   }));

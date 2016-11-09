@@ -42,7 +42,7 @@
        [class.has-danger]="!password.valid && password.touched">
     <label class="col-form-label" for="passwordInput">Password</label>
     <input
-      type="password"
+      type="text"
       class="form-control form-control-danger"
       id="passwordInput"
       placeholder="Password"
@@ -57,11 +57,11 @@
   </div>
 
   <div class="form-group"
-       [class.has-danger]="!passwordConfirmation.valid && passwordConfirmation.touched">
+       [class.has-danger]="(!passwordConfirmation.valid || myForm.hasError('unmatched')) && passwordConfirmation.touched">
     <label class="col-form-label" for="passwordConfirmationInput">Confirm
       Password</label>
     <input
-      type="password"
+      type="text"
       class="form-control form-control-danger"
       id="passwordConfirmationInput"
       placeholder="Confirm Password"
@@ -71,7 +71,7 @@
       class="form-control-feedback">Password confirmation is required
     </div>
     <div
-      *ngIf="passwordConfirmation.hasError('matched') && passwordConfirmation.touched"
+      *ngIf="myForm.hasError('unmatched') && passwordConfirmation.touched"
       class="form-control-feedback">Doesn't match
     </div>
   </div>
