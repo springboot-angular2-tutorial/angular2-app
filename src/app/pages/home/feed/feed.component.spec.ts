@@ -91,16 +91,16 @@ describe('FeedComponent', () => {
     const el = cmpDebugElement.nativeElement;
     expect(getDOM().querySelectorAll(el, 'li').length).toEqual(2);
 
-    const avatarLink = getDOM().querySelector(el, 'li>a');
-    expect(avatarLink.getAttribute('href')).toEqual('/users/1');
+    const avatarLink = getDOM().querySelector(el, 'li > a[href="/users/1"]');
+    expect(avatarLink).toBeTruthy();
+
+    const userLink = getDOM().querySelector(el, 'li > span > a[href="/users/1"]');
+    expect(userLink).toBeTruthy();
 
     const gravatarDebugElement = cmpDebugElement.query(By.directive(GravatarComponent));
     expect(gravatarDebugElement).toBeTruthy();
     expect(gravatarDebugElement.componentInstance.hash).toEqual('9a3f499f653f7e8d4c5bf3ae0cf6418f');
     expect(gravatarDebugElement.componentInstance.alt).toEqual('test user1');
-
-    const userLink = getDOM().querySelector(el, 'span>a');
-    expect(userLink.getAttribute('href')).toEqual('/users/1');
 
     const firstItem = getDOM().querySelector(el, 'li');
     expect(firstItem.innerText).toMatch(/test user1/);
@@ -114,7 +114,7 @@ describe('FeedComponent', () => {
 
   it('does not delete micropost when not confirmed', () => {
     const deleteLink = getDOM()
-      .querySelector(cmpDebugElement.nativeElement, 'li:first-child > a:last-child');
+      .querySelector(cmpDebugElement.nativeElement, 'li:first-child > a[href="#"]');
     spyOn(window, 'confirm').and.returnValue(false);
     spyOn(micropostService, 'delete');
     deleteLink.click();
@@ -125,7 +125,7 @@ describe('FeedComponent', () => {
     const cmp: FeedComponent = cmpDebugElement.componentInstance;
     const testCmp: TestComponent = testCmpDebugElement.componentInstance;
     const deleteLink = getDOM()
-      .querySelector(cmpDebugElement.nativeElement, 'li:first-child > a:last-child');
+      .querySelector(cmpDebugElement.nativeElement, 'li:first-child > a[href="#"]');
     spyOn(window, 'confirm').and.returnValue(true);
     spyOn(cmp, 'list');
     spyOn(testCmp, 'listenDeleted');
