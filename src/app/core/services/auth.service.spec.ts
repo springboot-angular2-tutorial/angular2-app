@@ -74,7 +74,10 @@ describe('AuthService', () => {
   }); // .isSignedIn
 
   describe('.isMyself', () => {
-    let user: User = {id: 1};
+    let user: User = {
+      id: 1,
+      userStats: {followingCnt: 0, followerCnt: 0, micropostCnt: 0}
+    };
 
     describe('when not signed in', () => {
       it('should be null', () => {

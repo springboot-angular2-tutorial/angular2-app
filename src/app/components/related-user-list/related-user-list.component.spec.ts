@@ -25,13 +25,15 @@ describe('RelatedUserListComponent', () => {
             id: 1,
             avatarHash: '9a3f499f653f7e8d4c5bf3ae0cf6418f',
             name: 'test1',
-            relationshipId: 1
+            relationshipId: 1,
+            userStats: {micropostCnt: 1, followerCnt: 1, followingCnt: 1}
           },
           {
             id: 2,
             avatarHash: '8a3f499f653f7e8d4c5bf3ae0cf6418f',
             name: 'test2',
             relationshipId: 100,
+            userStats: {micropostCnt: 1, followerCnt: 1, followingCnt: 1}
           },
         ]);
       };

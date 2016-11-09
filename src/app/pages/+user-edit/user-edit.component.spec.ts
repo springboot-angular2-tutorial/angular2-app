@@ -29,7 +29,12 @@ describe('UserEditComponent', () => {
   let router: Router;
   let backend: MockBackend;
 
-  const user: User = {id: 1, email: "test@test.com", name: "test user"};
+  const user: User = {
+    id: 1,
+    email: "test@test.com",
+    name: "test user",
+    userStats: {micropostCnt: 1, followerCnt: 1, followingCnt: 1}
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
