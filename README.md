@@ -38,7 +38,7 @@ yarn test
 Production build.
 
 ```
-yarn run build:prod
+yarn run build
 yarn run server:prod
 open http://localhost:4200
 ```
