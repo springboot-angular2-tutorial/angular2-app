@@ -7,7 +7,6 @@ export class Validators {
       if (c1.value !== c2.value) return {unmatched: true};
       return {};
     };
-
   }
 
 }

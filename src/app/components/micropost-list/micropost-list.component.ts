@@ -59,7 +59,7 @@ export class MicropostListComponent implements OnInit {
   private loadUserStats() {
     this.userService.get(this.userId)
       .subscribe(user => {
-        if (user.userStats) this.userStats = user.userStats;
+        this.userStats = user.userStats;
       }, e => this.errorHandler.handle(e))
     ;
   }

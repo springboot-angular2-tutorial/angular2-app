@@ -10,7 +10,7 @@ export interface User {
   id:string|number;
   email?:string;
   name?:string;
-  userStats?:UserStats;
+  userStats:UserStats;
   isFollowedByMe?:boolean;
   avatarHash?:string;
 }
