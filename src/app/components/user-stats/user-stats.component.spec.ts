@@ -87,22 +87,17 @@ describe('UserStatsComponent', () => {
     const header = getDOM().querySelector(el, 'h2');
     expect(header.innerText).toMatch(/test1/);
 
-    const profileLink = getDOM().querySelector(el, 'section:first-child a');
+    const profileLink = getDOM().querySelector(el, 'a[href="/users/1"]');
     expect(profileLink).toBeTruthy();
-    expect(profileLink.getAttribute('href')).toEqual('/users/1');
 
-    const postCnt = getDOM().querySelector(el, 'section:first-child > span:last-child');
-    expect(postCnt).toBeTruthy();
-    expect(postCnt.innerText).toMatch(/2 microposts/);
+    expect(el.innerText).toMatch(/2 microposts/);
 
-    const followingsLink = getDOM().querySelector(el, 'section:last-child a:first-child');
+    const followingsLink = getDOM().querySelector(el, 'a[href="/users/1/followings"]');
     expect(followingsLink).toBeTruthy();
-    expect(followingsLink.getAttribute('href')).toEqual('/users/1/followings');
     expect(followingsLink.innerText).toMatch(/3[\s\S]*?followings/);
 
-    const followersLink = getDOM().querySelector(el, 'section:last-child a:last-child');
+    const followersLink = getDOM().querySelector(el, 'a[href="/users/1/followers"]');
     expect(followersLink).toBeTruthy();
-    expect(followersLink.getAttribute('href')).toEqual('/users/1/followers');
     expect(followersLink.innerText).toMatch(/4[\s\S]*?followers/);
   });
 
@@ -114,13 +109,13 @@ describe('UserStatsComponent', () => {
     });
 
     it('does not show profile link', () => {
-      const profileLink = getDOM().querySelector(cmpDebugElement.nativeElement, 'a.profile-link');
-      expect(profileLink).toBeFalsy();
+      const el = cmpDebugElement.nativeElement;
+      expect(el.innerText).not.toMatch(/view my profile/);
     });
 
     it('does not show post counts', () => {
-      const postCnt = getDOM().querySelector(cmpDebugElement.nativeElement, '.microposts');
-      expect(postCnt).toBeFalsy();
+      const el = cmpDebugElement.nativeElement;
+      expect(el.innerText).not.toMatch(/\d+ microposts?/);
     });
   });
 
