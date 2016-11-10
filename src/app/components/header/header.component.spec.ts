@@ -1,4 +1,4 @@
-import {Observable} from "rxjs/Observable";
+import {Observable} from "rxjs";
 import {Component, DebugElement} from "@angular/core";
 import {Location} from "@angular/common";
 import {By} from "@angular/platform-browser/src/dom/debug/by";

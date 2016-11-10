@@ -11,7 +11,7 @@ CDN_URL="https://cdn-${ENV}.hana053.com"
 S3_CDN_URL="s3://cdn-${ENV}.hana053.com"
 
 # build
-PUBLIC_PATH=${CDN_URL} yarn run build:prod
+PUBLIC_PATH=${CDN_URL} yarn run build
 
 # create codedeploy archive
 tar czvf dist/codedeploy.tgz -C codedeploy .
