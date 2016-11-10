@@ -14,7 +14,8 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js'],
     alias: {
-      lodash: "lodash-es",
+      lodash: 'lodash-es',
+      aphrodite: 'aphrodite/no-important',
     },
   },
   module: {
