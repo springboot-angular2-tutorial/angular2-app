@@ -3,6 +3,7 @@ const helpers = require('./helpers');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -32,7 +33,10 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: [helpers.root('src')],
-        loaders: ['style', 'css'],
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: "style-loader",
+          loader: "css-loader",
+        }),
       },
       {test: /\.html$/, loader: 'raw-loader'},
     ]
@@ -51,6 +55,7 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: ['polyfills', 'vendor'].reverse()
     }),
+    new ExtractTextPlugin('[name].[chunkhash].css'),
   ],
   node: {
     global: true,
