@@ -27,14 +27,14 @@
   },
   "homepage": "https://github.com/springboot-angular2-tutorial/angular2-app",
   "dependencies": {
-    "@angular/common": "^2.1.2",
-    "@angular/compiler": "^2.1.2",
-    "@angular/core": "^2.1.2",
-    "@angular/forms": "^2.1.2",
-    "@angular/http": "^2.1.2",
-    "@angular/platform-browser": "^2.1.2",
-    "@angular/platform-browser-dynamic": "^2.1.2",
-    "@angular/router": "^3.1.2",
+    "@angular/common": "^2.2.0",
+    "@angular/compiler": "^2.2.0",
+    "@angular/core": "^2.2.0",
+    "@angular/forms": "^2.2.0",
+    "@angular/http": "^2.2.0",
+    "@angular/platform-browser": "^2.2.0",
+    "@angular/platform-browser-dynamic": "^2.2.0",
+    "@angular/router": "^3.2.0",
     "@angularclass/hmr": "^1.2.2",
     "@angularclass/hmr-loader": "^3.0.2",
     "aphrodite": "^1.1.0",
@@ -48,13 +48,13 @@
     "zone.js": "^0.6.26"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "^2.1.2",
-    "@angular/platform-server": "^2.1.2",
+    "@angular/compiler-cli": "^2.2.0",
+    "@angular/platform-server": "^2.2.0",
     "@types/jasmine": "^2.5.37",
     "@types/lodash": "^4.14.38",
     "@types/node": "^6.0.46",
     "@types/pluralize": "^0.0.27",
-    "@types/source-map": "^0.1.29",
+    "@types/source-map": "^0.5.0",
     "@types/webpack": "^1.12.35",
     "angular2-router-loader": "^0.3.3",
     "angular2-template-loader": "^0.6.0",
@@ -82,7 +82,7 @@
     "tslint-loader": "^2.1.5",
     "typescript": "~2.0.8",
     "webpack": "2.1.0-beta.25",
-    "webpack-dev-server": "^2.1.0-beta.10",
-    "webpack-merge": "^0.15.0"
+    "webpack-dev-server": ">=2.1.0-beta.11",
+    "webpack-merge": "^0.16.0"
   }
 }
