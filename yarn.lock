@@ -72,9 +72,9 @@
   version "4.14.39"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.39.tgz#99e2180351609e4466abde8952d153a63a03eb14"
 
-"@types/node@^6.0.46":
-  version "6.0.47"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.47.tgz#07dd004f05d0b74344ebf943b559659bd7f445b1"
+"@types/node@^6.0.48":
+  version "6.0.48"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.48.tgz#86ccc15f66b73cbbc5eb3483398936c585122b3c"
 
 "@types/pluralize@^0.0.27":
   version "0.0.27"
@@ -90,9 +90,9 @@
   dependencies:
     "@types/source-map" "*"
 
-"@types/webpack@^1.12.35":
-  version "1.12.36"
-  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-1.12.36.tgz#46349f6fb34549ef472a96c5cec030a544f26924"
+"@types/webpack@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-2.0.0.tgz#e7934a1c0bb628e1940f090c0afd2682817c1def"
   dependencies:
     "@types/uglify-js" "*"
 
@@ -3947,9 +3947,9 @@ type-is@~1.6.13:
     media-typer "0.3.0"
     mime-types "~2.1.11"
 
-typescript@~2.0.8:
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.0.9.tgz#b4f5fecc3f44d5c717f3b3e7c331e5bbb147a53d"
+typescript@~2.0.10:
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.0.10.tgz#ccdd4ed86fd5550a407101a0814012e1b3fac3dd"
 
 uglify-js@2.7.x, uglify-js@~2.7.3:
   version "2.7.4"
@@ -4154,9 +4154,9 @@ webpack-sources@^0.1.0:
     source-list-map "~0.1.0"
     source-map "~0.5.3"
 
-webpack@>=2.1.0-beta.26:
-  version "2.1.0-beta.26"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.1.0-beta.26.tgz#770eed2b04ce9863107ff138caa701a85e7b4e12"
+webpack@>=2.1.0-beta.27:
+  version "2.1.0-beta.27"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.1.0-beta.27.tgz#06cb802e44118159e46b7533ae76b0d84c8c89d8"
   dependencies:
     acorn "^4.0.3"
     ajv "^4.7.0"
