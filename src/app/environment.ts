@@ -1,6 +1,6 @@
 // Angular 2
 // rc2 workaround
-import {enableDebugTools} from "@angular/platform-browser";
+import {enableDebugTools, disableDebugTools} from "@angular/platform-browser";
 import {enableProdMode, ApplicationRef} from "@angular/core";
 // Environment Providers
 let PROVIDERS: any[] = [
@@ -16,6 +16,7 @@ let _decorateModuleRef = function identity<T>(value: T): T {
 if ('production' === ENV) {
   // Production
   enableProdMode();
+  disableDebugTools();
 
   PROVIDERS = [
     ...PROVIDERS,
