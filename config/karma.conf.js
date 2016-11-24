@@ -5,14 +5,22 @@ module.exports = function (config) {
     frameworks: ['jasmine'],
     exclude: [],
     files: [
-      {pattern: './config/spec-bundle.ts', watched: false},
+      {pattern: './config/spec-bundle.js', watched: false},
     ],
     preprocessors: {
-      './config/spec-bundle.ts': ['webpack', 'sourcemap'],
+      './config/spec-bundle.js': ['coverage', 'webpack', 'sourcemap'],
     },
     webpack: testWebpackConfig,
-    webpackMiddleware: { stats: 'errors-only'},
-    reporters: ['mocha'],
+    coverageReporter: {
+      type: 'in-memory'
+    },
+    remapCoverageReporter: {
+      'text-summary': null,
+      json: './coverage/coverage.json',
+      html: './coverage/html'
+    },
+    webpackMiddleware: {stats: 'errors-only'},
+    reporters: ['mocha', 'coverage', 'remap-coverage'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
@@ -27,7 +35,7 @@ module.exports = function (config) {
     singleRun: true,
   };
 
-  if (process.env.TRAVIS){
+  if (process.env.TRAVIS) {
     configuration.browsers = [
       'ChromeTravisCi'
     ];

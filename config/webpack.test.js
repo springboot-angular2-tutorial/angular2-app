@@ -1,3 +1,4 @@
+const path = require('path');
 const helpers = require('./helpers');
 const webpack = require('webpack');
 
@@ -9,6 +10,7 @@ module.exports = {
   devtool: 'inline-source-map',
   resolve: {
     extensions: ['.ts', '.js'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     alias: {
       "lodash": "lodash-es",
     },
@@ -32,10 +34,31 @@ module.exports = {
       },
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader']
+        loader: 'awesome-typescript-loader',
+        query: {
+          sourceMap: false,
+          inlineSourceMap: true,
+          module: 'commonjs',
+        },
+      },
+      {
+        test: /\.ts$/,
+        loader: 'angular2-template-loader',
       },
       {test: /\.css$/, loader: 'raw-loader'},
       {test: /\.html$/, loader: 'raw-loader'},
+      {
+        enforce: 'post',
+        test: /\.(js|ts)$/,
+        loader: 'istanbul-instrumenter-loader',
+        include: [
+          helpers.root('src'),
+        ],
+        exclude: [
+          /\.(e2e|spec)\.ts$/,
+          /node_modules/
+        ]
+      },
     ]
   },
   plugins: [

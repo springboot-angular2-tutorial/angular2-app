@@ -2,9 +2,10 @@ import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 import {Injectable} from "@angular/core";
 import {Response} from "@angular/http";
-import jwtDecode from "jwt-decode";
 import {JsonHttp} from "./";
 import {User} from "../domains";
+
+const jwtDecode = require('jwt-decode');
 
 @Injectable()
 export class AuthService {
