@@ -1,4 +1,7 @@
-# Angular2 Tutorial [![Build Status][travis-image]][travis-url]
+# Angular2 Tutorial
+ 
+[![Build Status][travis-image]][travis-url]
+[![Coverage Status](https://coveralls.io/repos/github/springboot-angular2-tutorial/angular2-app/badge.svg?branch=master)](https://coveralls.io/github/springboot-angular2-tutorial/angular2-app?branch=master)
 
 This repository is an example application for angular2 tutorial.
 

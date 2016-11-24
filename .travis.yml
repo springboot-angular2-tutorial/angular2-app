@@ -13,6 +13,9 @@ before_install:
 script:
   - yarn test
 
+after_success:
+  - yarn coveralls
+
 before_deploy:
   # Parse branch name and determine an environment to deploy
   - export ENV=$(echo "${TRAVIS_BRANCH}" | perl -ne "print $& if /(?<=deploy\/).*/")
