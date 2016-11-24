@@ -38,7 +38,7 @@ module.exports = {
         query: {
           sourceMap: false,
           inlineSourceMap: true,
-          module: 'commonjs',
+          module: 'commonjs', // required for coverage https://github.com/AngularClass/angular2-webpack-starter/issues/1021
         },
       },
       {
