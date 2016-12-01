@@ -4,7 +4,7 @@ export function spinner(size: number): any {
     width: `${size}px`,
     height: `${size}px`,
     border: '.25rem solid rgba(128, 128, 128, 0.2)',
-    borderTopColor: 'gray',
+    borderTopColor: 'gray !important',
     position: 'absolute',
     left: '50%',
     top: '50%',
