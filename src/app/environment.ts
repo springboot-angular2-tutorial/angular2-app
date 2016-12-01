@@ -16,7 +16,12 @@ let _decorateModuleRef = function identity<T>(value: T): T {
 if ('production' === ENV) {
   // Production
   enableProdMode();
-  disableDebugTools();
+  _decorateModuleRef = (modRef: any) => {
+    disableDebugTools();
+
+    return modRef;
+  };
+
 
   PROVIDERS = [
     ...PROVIDERS,
