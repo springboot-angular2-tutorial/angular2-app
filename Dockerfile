@@ -9,6 +9,8 @@ RUN apk update && \
     apk add --no-cache $RUBY_PACKAGES && \
     apk del .build-dependencies
 
+COPY docker/default.conf /etc/nginx/conf.d
+
 ADD dist /usr/share/nginx/html
 
 WORKDIR /tmp

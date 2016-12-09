@@ -16,5 +16,5 @@ docker build -t ${DOCKER_NAME} .
 docker tag ${DOCKER_NAME}:latest ${AWS_ACCOUNT_NUMBER}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${DOCKER_NAME}:latest
 docker push ${AWS_ACCOUNT_NUMBER}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${DOCKER_NAME}:latest
 
-#aws sns publish --topic-arn "arn:aws:sns:${AWS_DEFAULT_REGION}:${AWS_ACCOUNT_NUMBER}:backend_app_updated" \
-#   --message "${ENV}: ${TRAVIS_COMMIT}"
+aws sns publish --topic-arn "arn:aws:sns:${AWS_DEFAULT_REGION}:${AWS_ACCOUNT_NUMBER}:frontend_app_updated" \
+   --message "${ENV}: ${TRAVIS_COMMIT}"
