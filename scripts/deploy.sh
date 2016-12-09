@@ -12,6 +12,8 @@ yarn run build
 (
 cd docker
 
+cp -rfp ../dist .
+
 readonly DOCKER_NAME=micropost/frontend
 readonly AWS_ACCOUNT_NUMBER=$(aws sts get-caller-identity --output text --query 'Account')
 
