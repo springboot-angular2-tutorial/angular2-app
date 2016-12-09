@@ -4,6 +4,8 @@ language: node_js
 cache: yarn
 node_js:
 - '7.1.0'
+services:
+- docker
 
 before_install:
   - export CHROME_BIN=chromium-browser

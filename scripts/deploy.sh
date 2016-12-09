@@ -6,20 +6,20 @@ if [ ! -v AWS_SESSION_TOKEN ]; then
   source ./scripts/switch-role.sh
 fi
 
-# set variables
-CDN_URL="https://cdn-${ENV}.hana053.com"
-S3_CDN_URL="s3://cdn-${ENV}.hana053.com"
 
-# build
-PUBLIC_PATH=${CDN_URL} yarn run build
+yarn run build
 
-# create codedeploy archive
-tar czvf dist/codedeploy.tgz -C codedeploy .
+(
+cd docker
 
-# deploy
-aws s3 sync --delete --acl public-read dist ${S3_CDN_URL}
+readonly DOCKER_NAME=micropost/frontend
+readonly AWS_ACCOUNT_NUMBER=$(aws sts get-caller-identity --output text --query 'Account')
 
-# invalidate cached index.html by using codedeploy
-aws deploy create-deployment --application-name micropost \
-  --s3-location bucket=cdn-${ENV}.hana053.com,key=codedeploy.tgz,bundleType=tgz \
-  --deployment-group-name web-frontend
+eval $(aws ecr get-login)
+docker build -t ${DOCKER_NAME} .
+docker tag ${DOCKER_NAME}:latest ${AWS_ACCOUNT_NUMBER}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${DOCKER_NAME}:latest
+docker push ${AWS_ACCOUNT_NUMBER}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${DOCKER_NAME}:latest
+)
+
+#aws sns publish --topic-arn "arn:aws:sns:${AWS_DEFAULT_REGION}:${AWS_ACCOUNT_NUMBER}:backend_app_updated" \
+#   --message "${ENV}: ${TRAVIS_COMMIT}"

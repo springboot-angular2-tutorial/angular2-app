@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
 
+const ManifestPlugin = require('webpack-manifest-plugin');
+
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const PUBLIC_PATH = (process.env.PUBLIC_PATH || '') + '/' ;
 
@@ -44,6 +46,7 @@ module.exports = webpackMerge(commonConfig, {
       comments: false,
       sourceMap: true
     }),
+    new ManifestPlugin(),
   ],
   node: {
     global: true,
