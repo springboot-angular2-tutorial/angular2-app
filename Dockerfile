@@ -13,8 +13,8 @@ ADD dist /usr/share/nginx/html
 
 WORKDIR /tmp
 
-COPY index.html.erb .
-COPY render_template.rb .
+COPY docker/index.html.erb .
+COPY docker/render_template.rb .
 COPY dist/manifest.json .
 
 CMD ruby render_template.rb > /usr/share/nginx/html/index.html && \
