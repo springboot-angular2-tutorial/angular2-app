@@ -2,6 +2,7 @@ const path = require('path');
 const helpers = require('./helpers');
 const webpack = require('webpack');
 
+const { CheckerPlugin } = require('awesome-typescript-loader');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 
 const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
@@ -47,18 +48,18 @@ module.exports = {
       },
       {test: /\.css$/, loader: 'raw-loader'},
       {test: /\.html$/, loader: 'raw-loader'},
-      {
-        enforce: 'post',
-        test: /\.(js|ts)$/,
-        loader: 'istanbul-instrumenter-loader',
-        include: [
-          helpers.root('src'),
-        ],
-        exclude: [
-          /\.(e2e|spec)\.ts$/,
-          /node_modules/
-        ]
-      },
+      // {
+      //   enforce: 'post',
+      //   test: /\.(js|ts)$/,
+      //   loader: 'istanbul-instrumenter-loader',
+      //   include: [
+      //     helpers.root('src'),
+      //   ],
+      //   exclude: [
+      //     /\.(e2e|spec)\.ts$/,
+      //     /node_modules/
+      //   ]
+      // },
     ]
   },
   plugins: [
@@ -80,6 +81,7 @@ module.exports = {
         },
       },
     }),
+    new CheckerPlugin(),
   ],
   node: {
     global: true,

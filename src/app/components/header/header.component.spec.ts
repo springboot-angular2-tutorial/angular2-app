@@ -95,7 +95,8 @@ describe('HeaderComponent', () => {
       expect(link).toBeTruthy();
       link.click();
       advance(fixture);
-      expect(link.parentElement.classList).toContain('active');
+      const activatedNav = getDOM().querySelector(el, '.nav-item.active > a[href="/home"]');
+      expect(activatedNav).toBeTruthy();
     }));
 
     it('does not show a nav link to top', () => {
@@ -108,7 +109,8 @@ describe('HeaderComponent', () => {
       expect(link).toBeTruthy();
       link.click();
       advance(fixture);
-      expect(link.parentElement.classList).toContain('active');
+      const activatedNav = getDOM().querySelector(el, '.nav-item.active > a[href="/users"]');
+      expect(activatedNav).toBeTruthy();
     }));
 
     it('shows a nav link to help', fakeAsync(() => {
@@ -116,7 +118,8 @@ describe('HeaderComponent', () => {
       expect(link).toBeTruthy();
       link.click();
       advance(fixture);
-      expect(link.parentElement.classList).toContain('active');
+      const activatedNav = getDOM().querySelector(el, '.nav-item.active > a[href="/help"]');
+      expect(activatedNav).toBeTruthy();
     }));
 
     it('shows a nav link to profile', fakeAsync(() => {
@@ -160,7 +163,8 @@ describe('HeaderComponent', () => {
       expect(link).toBeTruthy();
       link.click();
       advance(fixture);
-      expect(link.parentElement.classList).toContain('active');
+      const activatedNav = getDOM().querySelector(el, '.nav-item.active > a[href="/"].nav-link');
+      expect(activatedNav).toBeTruthy();
     }));
 
     it('does not show a nav link to users', () => {
@@ -173,7 +177,8 @@ describe('HeaderComponent', () => {
       expect(link).toBeTruthy();
       link.click();
       advance(fixture);
-      expect(link.parentElement.classList).toContain('active');
+      const activatedNav = getDOM().querySelector(el, '.nav-item.active > a[href="/help"]');
+      expect(activatedNav).toBeTruthy();
     }));
 
     it('does not show a nav link to profile', () => {
