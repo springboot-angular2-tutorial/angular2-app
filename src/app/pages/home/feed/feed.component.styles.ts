@@ -3,9 +3,10 @@ import {list_1} from "../../../styles/shared.styles";
 import {colors} from "../../../styles/colors.styles";
 
 export const styles = StyleSheet.create({
-  list: Object.assign({}, list_1, {
+  list: {
+    ...list_1,
     lineHeight: '20px',
-  }),
+  },
   gravatar: {
     float: 'left',
     marginRight: '8px',
