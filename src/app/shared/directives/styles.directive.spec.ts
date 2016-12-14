@@ -1,7 +1,5 @@
 import {Component, DebugElement} from "@angular/core";
-import {HelpComponent} from "./help.component";
 import {TestBed, fakeAsync, ComponentFixture} from "@angular/core/testing";
-import {HelpModule} from "./help.module";
 import {By} from "@angular/platform-browser";
 import {StylesDirective} from "./styles.directive";
 import {StyleSheet} from "aphrodite";
