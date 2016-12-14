@@ -50,7 +50,7 @@ export class MicropostListComponent implements OnInit {
   private list(maxId: number|null = null): void {
     this.userMicropostService.list(this.userId, {maxId: maxId, count: 5})
       .subscribe(posts => {
-        this.posts = this.posts.concat(posts);
+        this.posts = [...this.posts, ...posts];
         this.noMorePosts = posts.length === 0;
       }, e => this.errorHandler.handle(e))
     ;

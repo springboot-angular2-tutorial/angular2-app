@@ -37,7 +37,7 @@ export abstract class RelatedUserListComponent implements OnInit {
 
   private list(maxId: number|null): void {
     this.listProvider(maxId).subscribe(relatedUsers => {
-      this.relatedUsers = this.relatedUsers.concat(relatedUsers);
+      this.relatedUsers = [...this.relatedUsers, ...relatedUsers];
       this.noMoreUsers = relatedUsers.length === 0;
     }, e => this.errorHandler.handle(e));
   }
