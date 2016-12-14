@@ -1,12 +1,11 @@
 import {Observable} from "rxjs/Observable";
-import {Component, OnInit} from "@angular/core";
+import {OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {styles} from "./related-user-list.component.styles";
 import {RelatedUser} from "../../core/domains";
 import {UserService} from "../../core/services/user.service";
 import {HttpErrorHandler} from "../../core/services/http-error-handler";
 
-@Component({})
 export abstract class RelatedUserListComponent implements OnInit {
 
   title: string;

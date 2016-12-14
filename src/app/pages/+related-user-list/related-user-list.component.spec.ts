@@ -1,6 +1,6 @@
 import {Observable} from "rxjs/Observable";
 import {Component, DebugElement} from "@angular/core";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import {RelatedUserListComponent} from "./related-user-list.component";
 import {
   TestBed,
@@ -17,6 +17,8 @@ import {APP_TEST_HTTP_PROVIDERS} from "../../../testing/index";
 import {By} from "@angular/platform-browser";
 import {UserStatsComponent} from "../../components/user-stats/user-stats.component";
 import {RelatedUser} from "../../core/domains";
+import {HttpErrorHandler} from "../../core/services/http-error-handler";
+import {UserService} from "../../core/services/user.service";
 
 describe('RelatedUserListComponent', () => {
 
@@ -31,6 +33,12 @@ describe('RelatedUserListComponent', () => {
     templateUrl: './related-user-list.component.html',
   })
   class TestComponent extends RelatedUserListComponent {
+    constructor(protected userService: UserService,
+                protected route: ActivatedRoute,
+                protected errorHandler: HttpErrorHandler) {
+      super(userService, route, errorHandler);
+    }
+
     ngOnInit() {
       super.ngOnInit();
       this.title = "test title";
