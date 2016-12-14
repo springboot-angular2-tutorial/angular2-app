@@ -3,7 +3,9 @@ import {Component, DebugElement} from "@angular/core";
 import {Router} from "@angular/router";
 import {RelatedUserListComponent} from "./related-user-list.component";
 import {
-  TestBed, inject, fakeAsync,
+  TestBed,
+  inject,
+  fakeAsync,
   ComponentFixture
 } from "@angular/core/testing";
 import {RouterTestingModule} from "@angular/router/testing";
@@ -25,7 +27,7 @@ describe('RelatedUserListComponent', () => {
   }
 
   @Component({
-    selector: 'test',
+    selector: 'mpt-test',
     templateUrl: './related-user-list.component.html',
   })
   class TestComponent extends RelatedUserListComponent {
