@@ -1,8 +1,9 @@
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core/src/metadata/ng_module";
 import {Routes, RouterModule} from "@angular/router";
-import {UserStatsModule, RelatedUserListModule} from "../../components";
 import {FollowerListComponent} from "./follower-list.component";
+import {UserStatsModule} from "../../../components/user-stats/user-stats.module";
+import {SharedModule} from "../../../shared/shared.module";
 
 const routes: Routes = [
   {path: '', component: FollowerListComponent},
@@ -13,7 +14,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     UserStatsModule,
-    RelatedUserListModule
+    SharedModule,
   ],
   declarations: [
     FollowerListComponent,

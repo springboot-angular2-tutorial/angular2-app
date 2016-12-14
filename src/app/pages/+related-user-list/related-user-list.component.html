@@ -1,0 +1,24 @@
+<div class="row">
+
+  <aside class="col-md-4">
+    <mpt-user-stats [userId]="userId"></mpt-user-stats>
+  </aside>
+
+  <div class="col-md-8">
+    <h3>{{title}}</h3>
+
+    <ul class="list-unstyled">
+      <li *ngFor="let u of relatedUsers" class="clearfix"
+          [mptStyles]="[styles.list]">
+        <mpt-gravatar [alt]="u.name" [hash]="u.avatarHash" [size]="60"
+                      [mptStyles]="[styles.gravatar]"></mpt-gravatar>
+        <a [routerLink]="['/users', u.id]">{{u.name}}</a>
+      </li>
+    </ul>
+
+    <button class="btn btn-secondary" type="button" (click)="loadMore()"
+            [disabled]="noMoreUsers">More
+    </button>
+  </div>
+
+</div>

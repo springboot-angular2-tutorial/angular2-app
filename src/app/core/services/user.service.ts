@@ -36,13 +36,14 @@ export class UserService {
   }
 
   listFollowings(userId: string,
-                 params: {maxId: number, count: number}): Observable<RelatedUser[]> {
+                 params: {maxId: number|null, count: number}): Observable<RelatedUser[]> {
     return this.http.get(`${url}/${userId}/followings`, {search: objToSearchParams(params)})
       .map(res => res.json())
       ;
   }
 
-  listFollowers(userId: string, params: {maxId: number, count: number}): Observable<RelatedUser[]> {
+  listFollowers(userId: string,
+                params: {maxId: number|null, count: number}): Observable<RelatedUser[]> {
     return this.http.get(`${url}/${userId}/followers`, {search: objToSearchParams(params)})
       .map(res => res.json())
       ;

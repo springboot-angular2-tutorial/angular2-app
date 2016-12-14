@@ -7,6 +7,7 @@ import {PrivatePageGuard} from "./core/services/private-page.guard";
 import {PublicPageGuard} from "./core/services/public-page.guard";
 import {NoContentComponent} from "./pages/no-content/no-content.component";
 
+/* tslint:disable:max-line-length */
 export const ROUTES: Routes = [
   {
     path: 'home',
@@ -15,12 +16,12 @@ export const ROUTES: Routes = [
   },
   {
     path: 'users/:id/followings',
-    loadChildren: './pages/+following-list/following-list.module#FollowingListModule',
+    loadChildren: './pages/+related-user-list/+following-list/following-list.module#FollowingListModule',
     canActivate: [PrivatePageGuard]
   },
   {
     path: 'users/:id/followers',
-    loadChildren: './pages/+follower-list/follower-list.module#FollowerListModule',
+    loadChildren: './pages/+related-user-list/+follower-list/follower-list.module#FollowerListModule',
     canActivate: [PrivatePageGuard]
   },
   {
@@ -51,3 +52,4 @@ export const ROUTES: Routes = [
   {path: '', component: TopComponent, canActivate: [PublicPageGuard]},
   {path: '**', component: NoContentComponent}
 ];
+/* tslint:enable:max-line-length */

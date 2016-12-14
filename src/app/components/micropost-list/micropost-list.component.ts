@@ -18,7 +18,7 @@ export class MicropostListComponent implements OnInit {
   styles: any = styles;
   posts: Micropost[] = [];
   noMorePosts: boolean = false;
-  userStats: UserStats;
+  userStats: UserStats|undefined;
 
   constructor(private userMicropostService: MicropostListService,
               private micropostService: MicropostService,

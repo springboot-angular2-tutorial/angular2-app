@@ -2,12 +2,11 @@ import {Component, DebugElement} from "@angular/core";
 import {By} from "@angular/platform-browser/src/dom/debug/by";
 import {inject, TestBed, fakeAsync} from "@angular/core/testing";
 import {Router} from "@angular/router";
-import {FollowingListComponent} from "./following-list.component";
 import {RouterTestingModule} from "@angular/router/testing";
+import {FollowingListComponent} from "./following-list.component";
+import {CoreModule} from "../../../core/core.module";
 import {FollowingListModule} from "./following-list.module";
-import {CoreModule} from "../../core";
-import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
-import {UserStatsComponent, RelatedUserListComponent} from "../../components";
+import {APP_TEST_HTTP_PROVIDERS} from "../../../../testing/index";
 
 describe('FollowingListComponent', () => {
 
@@ -19,8 +18,6 @@ describe('FollowingListComponent', () => {
 
   let router: Router;
   let cmpDebugElement: DebugElement;
-  let userStatsDebugElement: DebugElement;
-  let userListDebugElement: DebugElement;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -50,8 +47,6 @@ describe('FollowingListComponent', () => {
       const fixture = TestBed.createComponent(TestComponent);
       return router.navigate(['/users', '1', 'followings']).then(() => {
         cmpDebugElement = fixture.debugElement.query(By.directive(FollowingListComponent));
-        userStatsDebugElement = cmpDebugElement.query(By.directive(UserStatsComponent));
-        userListDebugElement = cmpDebugElement.query(By.directive(RelatedUserListComponent));
         fixture.detectChanges();
       });
     });
@@ -59,13 +54,6 @@ describe('FollowingListComponent', () => {
 
   it('can be shown', () => {
     expect(cmpDebugElement).toBeTruthy();
-    expect(cmpDebugElement.componentInstance.userId).toEqual('1');
-    expect(cmpDebugElement.componentInstance.listProvider).toBeTruthy();
-    expect(userStatsDebugElement).toBeTruthy();
-    expect(userStatsDebugElement.componentInstance.userId).toEqual('1');
-    expect(userListDebugElement).toBeTruthy();
-    expect(userListDebugElement.componentInstance.listProvider).toBeTruthy();
   });
 
 });
-

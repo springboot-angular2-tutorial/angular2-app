@@ -15,6 +15,7 @@ import {UserStatsModule} from "./user-stats.module";
 import {CoreModule} from "../../core";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../testing";
 import {GravatarComponent} from "../../shared/gravatar/gravatar.component";
+import _ from "lodash";
 
 describe('UserStatsComponent', () => {
 
@@ -76,7 +77,7 @@ describe('UserStatsComponent', () => {
     expect(cmp.userId).toEqual(1);
     expect(cmp.user).toBeTruthy();
     expect(cmp.user.id).toEqual(1);
-    expect(cmp.user.userStats.micropostCnt).toEqual(2);
+    expect(_.get(cmp, 'user.userStats.micropostCnt')).toEqual(2);
 
     const gravatarDebugElement = cmpDebugElement.query(By.directive(GravatarComponent));
     expect(gravatarDebugElement).toBeTruthy();
