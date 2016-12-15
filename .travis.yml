@@ -22,7 +22,7 @@ before_deploy:
   # Parse branch name and determine an environment to deploy
   - export ENV=$(echo "${TRAVIS_BRANCH}" | perl -ne "print $& if /(?<=deploy\/).*/")
   # install aws cli
-  - sudo apt-get -y install python-pip curl
+  - sudo apt-get -y install python-pip
   - pip install awscli
   - aws --version
 deploy:
