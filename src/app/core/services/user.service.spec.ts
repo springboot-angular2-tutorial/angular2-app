@@ -137,36 +137,4 @@ describe('UserService', () => {
     });
   }); // .updateMe
 
-  describe('.listFollowings', () => {
-    it("list followings", (done) => {
-      backend.connections.subscribe(conn => {
-        conn.mockRespond(new Response(new ResponseOptions({
-          body: JSON.stringify(dummyListJson),
-        })));
-        expect(conn.request.method).toEqual(RequestMethod.Get);
-        expect(conn.request.url).toEqual('/api/users/1/followings?maxId=2&count=3');
-      });
-      userService.listFollowings('1', {maxId: 2, count: 3}).subscribe(res => {
-        expect(res).toEqual(dummyListJson);
-        done();
-      });
-    });
-  }); // .listFollowings
-
-  describe('.listFollowers', () => {
-    it("list followers", (done) => {
-      backend.connections.subscribe(conn => {
-        conn.mockRespond(new Response(new ResponseOptions({
-          body: JSON.stringify(dummyListJson),
-        })));
-        expect(conn.request.method).toEqual(RequestMethod.Get);
-        expect(conn.request.url).toEqual('/api/users/1/followers?maxId=2&count=3');
-      });
-      userService.listFollowers('1', {maxId: 2, count: 3}).subscribe(res => {
-        expect(res).toEqual(dummyListJson);
-        done();
-      });
-    });
-  }); // .listFollowers
-
 });

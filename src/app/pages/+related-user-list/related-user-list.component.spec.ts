@@ -1,6 +1,6 @@
 import {Observable} from "rxjs/Observable";
 import {Component, DebugElement} from "@angular/core";
-import {Router, ActivatedRoute} from "@angular/router";
+import {Router} from "@angular/router";
 import {RelatedUserListComponent} from "./related-user-list.component";
 import {
   TestBed,
@@ -11,41 +11,24 @@ import {
 import {RouterTestingModule} from "@angular/router/testing";
 import {getDOM} from "@angular/platform-browser/src/dom/dom_adapter";
 import {CoreModule} from "../../core/core.module";
-import {UserStatsModule} from "../../components/user-stats/user-stats.module";
-import {SharedModule} from "../../shared/shared.module";
 import {APP_TEST_HTTP_PROVIDERS} from "../../../testing/index";
 import {By} from "@angular/platform-browser";
 import {UserStatsComponent} from "../../components/user-stats/user-stats.component";
+import {RelatedUserListModule} from "./related-user-list.module";
+import {RelatedUserListService} from "./related-user-list.service";
 import {RelatedUser} from "../../core/domains";
-import {HttpErrorHandler} from "../../core/services/http-error-handler";
-import {UserService} from "../../core/services/user.service";
 
 describe('RelatedUserListComponent', () => {
 
   @Component({
     template: `<router-outlet></router-outlet>`,
   })
-  class MainComponent {
+  class TestComponent {
   }
 
-  @Component({
-    selector: 'mpt-test',
-    templateUrl: './related-user-list.component.html',
-  })
-  class TestComponent extends RelatedUserListComponent {
-    constructor(protected userService: UserService,
-                protected route: ActivatedRoute,
-                protected errorHandler: HttpErrorHandler) {
-      super(userService, route, errorHandler);
-    }
-
-    ngOnInit() {
-      super.ngOnInit();
-      this.title = "test title";
-    }
-
-    protected listProvider(maxId: number|null): Observable<RelatedUser[]> {
-      switch (maxId) {
+  class TestRelatedUserListService extends RelatedUserListService {
+    list(userId: string, params: {maxId: (number|any); count: number}): Observable<RelatedUser[]> {
+      switch (params.maxId) {
         case null:
           return Observable.of([
             {id: 11, relationshipId: 1, name: 'user1'},
@@ -60,12 +43,16 @@ describe('RelatedUserListComponent', () => {
           return Observable.of([]);
       }
     }
+
+    title(): string {
+      return 'test title';
+    }
   }
 
   let router: Router;
   let cmpDebugElement: DebugElement;
   let userStatsDebugElement: DebugElement;
-  let fixture: ComponentFixture<MainComponent>;
+  let fixture: ComponentFixture<TestComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -73,18 +60,20 @@ describe('RelatedUserListComponent', () => {
         RouterTestingModule.withRoutes([
           {
             path: 'test/:id',
-            component: TestComponent,
+            component: RelatedUserListComponent,
           },
         ]),
         CoreModule,
-        SharedModule,
-        UserStatsModule,
+        RelatedUserListModule,
       ],
       providers: [
         APP_TEST_HTTP_PROVIDERS,
+        {
+          provide: RelatedUserListService,
+          useClass: TestRelatedUserListService,
+        }
       ],
       declarations: [
-        MainComponent,
         TestComponent,
       ]
     });
@@ -94,9 +83,9 @@ describe('RelatedUserListComponent', () => {
   }));
   beforeEach(fakeAsync(() => {
     TestBed.compileComponents().then(() => {
-      fixture = TestBed.createComponent(MainComponent);
+      fixture = TestBed.createComponent(TestComponent);
       return router.navigate(['/test', '1']).then(() => {
-        cmpDebugElement = fixture.debugElement.query(By.directive(TestComponent));
+        cmpDebugElement = fixture.debugElement.query(By.directive(RelatedUserListComponent));
         userStatsDebugElement = cmpDebugElement.query(By.directive(UserStatsComponent));
         fixture.detectChanges();
       });

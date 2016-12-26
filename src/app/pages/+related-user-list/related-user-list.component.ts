@@ -1,12 +1,15 @@
-import {Observable} from "rxjs/Observable";
-import {OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {styles} from "./related-user-list.component.styles";
 import {RelatedUser} from "../../core/domains";
-import {UserService} from "../../core/services/user.service";
 import {HttpErrorHandler} from "../../core/services/http-error-handler";
+import {RelatedUserListService} from "./related-user-list.service";
 
-export abstract class RelatedUserListComponent implements OnInit {
+@Component({
+  selector: 'mpt-related-user-list',
+  templateUrl: 'related-user-list.component.html',
+})
+export class RelatedUserListComponent implements OnInit {
 
   title: string;
   styles: any = styles;
@@ -14,9 +17,9 @@ export abstract class RelatedUserListComponent implements OnInit {
   relatedUsers: RelatedUser[] = [];
   noMoreUsers: boolean = false;
 
-  constructor(protected userService: UserService,
-              protected route: ActivatedRoute,
-              protected errorHandler: HttpErrorHandler) {
+  constructor(private route: ActivatedRoute,
+              private errorHandler: HttpErrorHandler,
+              private relatedUserListService: RelatedUserListService) {
   }
 
   ngOnInit(): any {
@@ -24,6 +27,7 @@ export abstract class RelatedUserListComponent implements OnInit {
       this.userId = routeParams['id'];
       this.list(null);
     });
+    this.title = this.relatedUserListService.title();
   }
 
   loadMore() {
@@ -32,10 +36,11 @@ export abstract class RelatedUserListComponent implements OnInit {
     this.list(lastUser.relationshipId);
   }
 
-  protected abstract listProvider(maxId: number|null): Observable<RelatedUser[]>;
-
   private list(maxId: number|null): void {
-    this.listProvider(maxId).subscribe(relatedUsers => {
+    this.relatedUserListService.list(this.userId, {
+      maxId: maxId,
+      count: 5
+    }).subscribe(relatedUsers => {
       this.relatedUsers = [...this.relatedUsers, ...relatedUsers];
       this.noMoreUsers = relatedUsers.length === 0;
     }, e => this.errorHandler.handle(e));

@@ -1,27 +1,25 @@
-import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core/src/metadata/ng_module";
 import {Routes, RouterModule} from "@angular/router";
-import {FollowerListComponent} from "./follower-list.component";
-import {UserStatsModule} from "../../../components/user-stats/user-stats.module";
-import {SharedModule} from "../../../shared/shared.module";
+import {RelatedUserListService} from "../related-user-list.service";
+import {FollowerListService} from "./follower-list.service";
+import {RelatedUserListComponent} from "../related-user-list.component";
+import {RelatedUserListModule} from "../related-user-list.module";
 
 const routes: Routes = [
-  {path: '', component: FollowerListComponent},
+  {path: '', component: RelatedUserListComponent},
 ];
 
 @NgModule({
   imports: [
-    CommonModule,
     RouterModule.forChild(routes),
-    UserStatsModule,
-    SharedModule,
+    RelatedUserListModule,
   ],
-  declarations: [
-    FollowerListComponent,
+  providers: [
+    {
+      provide: RelatedUserListService,
+      useClass: FollowerListService,
+    }
   ],
-  exports: [
-    FollowerListComponent,
-  ]
 })
 export class FollowerListModule {
 }
