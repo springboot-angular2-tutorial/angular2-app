@@ -2,55 +2,55 @@
 # yarn lockfile v1
 
 
-"@angular/common@~2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.3.0.tgz#16b0034fe43ae70875343f23e19835435edd118e"
+"@angular/common@~2.4.0":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.4.1.tgz#a70167430574959c3423ac96ebdec98032d3500d"
 
-"@angular/compiler-cli@~2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-2.3.0.tgz#d9f0171c46d9d63e1a1737a4ccf0fbfe6c321666"
+"@angular/compiler-cli@~2.4.0":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-2.4.1.tgz#9291504197a199fee2f48353d67431a1a9e40833"
   dependencies:
-    "@angular/tsc-wrapped" "0.4.2"
+    "@angular/tsc-wrapped" "0.5.0"
     minimist "^1.2.0"
     reflect-metadata "^0.1.2"
 
-"@angular/compiler@~2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.3.0.tgz#68e39af53728c5d7e6762a225f9c9c6b173bb4fc"
+"@angular/compiler@~2.4.0":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.4.1.tgz#62b4fbfc53c934bd5def78db594cbf245b3f446a"
 
-"@angular/core@~2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.3.0.tgz#e60bd398584d69467d075d001b718364174a2534"
+"@angular/core@~2.4.0":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.1.tgz#3a6d2dc7fd86fdebe4febae7eb28abad7d04c76a"
 
-"@angular/forms@~2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-2.3.0.tgz#96113322db362fa1a4c9798929ffde0e76e034dc"
+"@angular/forms@~2.4.0":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-2.4.1.tgz#440ff9b864b3b79c55423c9ce5863030a25767ce"
 
-"@angular/http@~2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.3.0.tgz#0c0823d69723d96d294e58881397fec1ed803f73"
+"@angular/http@~2.4.0":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.4.1.tgz#f06067e370c44d025ed00a03ef704f6c46ea59ac"
 
-"@angular/platform-browser-dynamic@~2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.3.0.tgz#e818d3fc73cc923230891acab6b802bbddfdff3b"
+"@angular/platform-browser-dynamic@~2.4.0":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.4.1.tgz#5fb72038f76c1e3646cea95f5b4722d67a4419dd"
 
-"@angular/platform-browser@~2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.3.0.tgz#93259309cfb4e8fdb39ececa0b205f4caf002e6c"
+"@angular/platform-browser@~2.4.0":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.1.tgz#4eaa829b450be34f0029796b6c3b99e27d3d5740"
 
-"@angular/platform-server@~2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-2.3.0.tgz#4d0b4b0ddde249f94698d95572f09b87a59190d1"
+"@angular/platform-server@~2.4.0":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-2.4.1.tgz#9e5e427b8226d1a073949effea00a4df352682de"
   dependencies:
     parse5 "^2.2.1"
 
-"@angular/router@~3.3.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@angular/router/-/router-3.3.0.tgz#1e0226e95b40207a120fe1e61f2c4c4d3c782eb1"
+"@angular/router@~3.4.0":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@angular/router/-/router-3.4.1.tgz#079c8580943547a710f292026ac86a08d336a49d"
 
-"@angular/tsc-wrapped@0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@angular/tsc-wrapped/-/tsc-wrapped-0.4.2.tgz#007e1988f57292a0c9d7bd8e4589fe44e573f07c"
+"@angular/tsc-wrapped@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@angular/tsc-wrapped/-/tsc-wrapped-0.5.0.tgz#e50f81af02c6817dcaba22032e49ba8060d628b4"
   dependencies:
     tsickle "^0.2"
 
@@ -765,9 +765,9 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
-codelyzer@^2.0.0-beta.3:
-  version "2.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/codelyzer/-/codelyzer-2.0.0-beta.3.tgz#be17e73a4ccd659d6f2a863da1711b3f742762ed"
+codelyzer@^2.0.0-beta.4:
+  version "2.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/codelyzer/-/codelyzer-2.0.0-beta.4.tgz#644c5ffcdcc6c933991e3790a29c5085e80ae4ca"
   dependencies:
     app-root-path "^2.0.1"
     css-selector-tokenizer "^0.7.0"
@@ -3866,9 +3866,9 @@ ripemd160@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-1.0.1.tgz#93a4bbd4942bc574b69a8fa57c71de10ecca7d6e"
 
-rxjs@5.0.0-rc.4:
-  version "5.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.0.0-rc.4.tgz#a4d08bc5d7f30d48ed7130e2995490c326a325c4"
+rxjs@5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.0.1.tgz#3a69bdf9f0ca0a986303370d4708f72bdfac8356"
   dependencies:
     symbol-observable "^1.0.1"
 
