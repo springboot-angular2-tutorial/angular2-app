@@ -2,8 +2,7 @@ const webpack = require('webpack');
 const helpers = require('./helpers');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const { CheckerPlugin } = require('awesome-typescript-loader');
-const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const { CheckerPlugin } = require('awesome-typescript-loader');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
@@ -48,8 +47,7 @@ module.exports = {
       template: 'src/index.html',
       chunksSortMode: 'dependency',
     }),
-    // new CheckerPlugin(),
-    new ForkCheckerPlugin(),
+    new CheckerPlugin(),
     new webpack.ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
