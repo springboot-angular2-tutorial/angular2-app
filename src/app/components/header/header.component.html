@@ -1,12 +1,12 @@
-<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-  <button class="navbar-toggler hidden-sm-up" type="button"
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+  <button class="navbar-toggler navbar-toggler-right" type="button"
           [mptStyles]="[styles.navbarToggler]" (click)="toggleMenu($event)">
-    &#9776;
+    <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="navbar-toggleable-xs" id="exCollapsingNavbar2"
-       [hidden]="isMenuHidden">
-    <a class="navbar-brand" [routerLink]="['/']">SAMPLE APP</a>
-    <ul class="nav navbar-nav">
+  <a class="navbar-brand" [routerLink]="['/']">SAMPLE APP</a>
+  <div class="navbar-collapse" [hidden]="isMenuHidden">
+
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active" *ngIf="isSignedIn">
         <a class="nav-link" [routerLink]="['/home']">Home</a>
       </li>
@@ -25,7 +25,8 @@
         <a class="nav-link" [routerLink]="['/login']">Sign in</a>
       </li>
     </ul>
-    <ul class="nav navbar-nav float-sm-right" *ngIf="isSignedIn">
+
+    <ul class="navbar-nav my-2 my-lg-0" *ngIf="isSignedIn">
       <li class="nav-item" routerLinkActive="active"
           [routerLinkActiveOptions]="{exact: true}">
         <a class="nav-link" [routerLink]="['/users/me']">Profile</a>
@@ -39,5 +40,6 @@
            (click)="logout(); $event.preventDefault()">Logout</a>
       </li>
     </ul>
+
   </div>
 </nav>
