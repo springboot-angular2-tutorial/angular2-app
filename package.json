@@ -39,7 +39,7 @@
     "@angularclass/hmr": "^1.2.2",
     "@angularclass/hmr-loader": "^3.0.2",
     "aphrodite": "^1.1.0",
-    "bootstrap": "^4.0.0-alpha.4",
+    "bootstrap": "4.0.0-alpha.5",
     "core-js": "^2.4.1",
     "jwt-decode": "^2.1.0",
     "lodash-es": "^4.16.6",

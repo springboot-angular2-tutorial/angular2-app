@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const helpers = require('./helpers');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CheckerPlugin } = require('awesome-typescript-loader');
+const {CheckerPlugin} = require('awesome-typescript-loader');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
