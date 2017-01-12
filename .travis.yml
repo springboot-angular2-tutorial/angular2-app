@@ -3,7 +3,7 @@ dist: trusty
 language: node_js
 cache: yarn
 node_js:
-- '7.1.0'
+- '7.4.0'
 services:
 - docker
 
