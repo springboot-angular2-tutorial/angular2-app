@@ -22,7 +22,7 @@ module.exports = {
         enforce: 'pre',
         test: /\.ts$/,
         loader: 'tslint-loader',
-        exclude: [helpers.root('node_modules')]
+        exclude: [helpers.root('node_modules')],
       },
       {
         enforce: 'pre',
@@ -30,7 +30,7 @@ module.exports = {
         loader: 'source-map-loader',
         exclude: [
           helpers.root('node_modules/rxjs'),
-          helpers.root('node_modules/@angular')
+          helpers.root('node_modules/@angular'),
         ]
       },
       {
@@ -56,8 +56,8 @@ module.exports = {
           helpers.root('src'),
         ],
         exclude: [
-          /\.(e2e|spec)\.ts$/,
-          /node_modules/
+          /\.spec\.ts$/,
+          /node_modules/,
         ]
       },
     ]

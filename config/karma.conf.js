@@ -9,7 +9,6 @@ module.exports = function (config) {
     ],
     preprocessors: {
       './config/spec-bundle.js': ['coverage', 'webpack', 'sourcemap'],
-      // './config/spec-bundle.js': ['webpack', 'sourcemap'],
     },
     webpack: testWebpackConfig,
     coverageReporter: {
@@ -22,7 +21,6 @@ module.exports = function (config) {
     },
     webpackMiddleware: {stats: 'errors-only'},
     reporters: ['mocha', 'coverage', 'remap-coverage'],
-    // reporters: ['mocha'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
