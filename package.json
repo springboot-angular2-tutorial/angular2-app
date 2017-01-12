@@ -53,7 +53,7 @@
     "@angular/platform-server": "~2.4.0",
     "@types/jasmine": "^2.5.37",
     "@types/lodash": "^4.14.38",
-    "@types/node": "^6.0.48",
+    "@types/node": "^7.0.0",
     "@types/pluralize": "^0.0.27",
     "@types/source-map": "^0.5.0",
     "@types/webpack": "^2.0.0",
