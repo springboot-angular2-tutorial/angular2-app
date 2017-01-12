@@ -15,8 +15,8 @@ before_install:
 script:
   - yarn test
 
-#after_success:
-#  - yarn coveralls
+after_success:
+  - yarn coveralls
 
 before_deploy:
   # Parse branch name and determine an environment to deploy
