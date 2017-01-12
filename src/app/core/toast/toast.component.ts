@@ -29,13 +29,10 @@ export class ToastComponent implements OnInit {
   }
 
   private applyStyle(toast): Toast {
-    // return {
-    //   ...toast,
-    //   styles: [styles.toastBase, styles[toast.level]],
-    // };
-    return Object.assign({}, toast, {
+    return {
+      ...toast,
       styles: [styles.toastBase, styles[toast.level]],
-    });
+    };
   }
 
   private addToast(toast) {
