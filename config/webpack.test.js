@@ -1,8 +1,8 @@
 const path = require('path');
 const helpers = require('./helpers');
-const webpack = require('webpack');
 
-// const {CheckerPlugin} = require('awesome-typescript-loader');
+const DefinePlugin = require('webpack/lib/DefinePlugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 
 const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
@@ -63,7 +63,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
+    new DefinePlugin({
       'ENV': JSON.stringify(ENV),
     }),
     new ContextReplacementPlugin(
@@ -71,7 +71,7 @@ module.exports = {
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
       helpers.root('src') // location of your src
     ),
-    new webpack.LoaderOptionsPlugin({
+    new LoaderOptionsPlugin({
       debug: true,
       options: {
         tslint: {
@@ -81,8 +81,10 @@ module.exports = {
         },
       },
     }),
-    // new CheckerPlugin(),
   ],
+  performance: {
+    hints: false,
+  },
   node: {
     global: true,
     crypto: 'empty',
