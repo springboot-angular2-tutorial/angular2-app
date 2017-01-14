@@ -1,9 +1,10 @@
-const webpack = require('webpack');
 const helpers = require('./helpers');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CheckerPlugin} = require('awesome-typescript-loader');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 
 module.exports = {
   entry: {
@@ -48,12 +49,12 @@ module.exports = {
       chunksSortMode: 'dependency',
     }),
     new CheckerPlugin(),
-    new webpack.ContextReplacementPlugin(
+    new ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
       helpers.root('src') // location of your src
     ),
-    new webpack.optimize.CommonsChunkPlugin({
+    new CommonsChunkPlugin({
       name: ['polyfills', 'vendor'].reverse()
     }),
     new ExtractTextPlugin('[name].[chunkhash].css'),

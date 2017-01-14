@@ -1,7 +1,9 @@
 const helpers = require('./helpers');
-const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
+
+const DefinePlugin = require('webpack/lib/DefinePlugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
@@ -16,17 +18,11 @@ module.exports = webpackMerge(commonConfig, {
     publicPath: 'http://localhost:4200/',
   },
   plugins: [
-    new webpack.DefinePlugin({
+    new DefinePlugin({
       'ENV': JSON.stringify(ENV),
     }),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        tslint: {
-          emitErrors: false,
-          failOnHint: false,
-          resourcePath: 'src'
-        },
-      },
+    new LoaderOptionsPlugin({
+      debug: true,
     }),
   ],
   devServer: {
