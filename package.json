@@ -86,8 +86,8 @@
     "tslint": "^4.0.2",
     "tslint-loader": "^3.3.0",
     "typescript": "~2.1.5",
-    "webpack": "2.2.0-rc.4",
-    "webpack-dev-server": "2.2.0-rc.0",
+    "webpack": "~2.2.0-rc.6",
+    "webpack-dev-server": "~2.2.0-rc.0",
     "webpack-merge": "^2.0.0"
   }
 }

@@ -82,9 +82,6 @@ module.exports = {
       },
     }),
   ],
-  performance: {
-    hints: false,
-  },
   node: {
     global: true,
     crypto: 'empty',
