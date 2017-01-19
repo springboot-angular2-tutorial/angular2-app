@@ -3,50 +3,50 @@
 
 
 "@angular/common@~2.4.0":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.4.3.tgz#78d96bd2f8a1a105f635cd25e362ba5704b47f56"
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.4.4.tgz#039520c6395476d7f35ca250973dfef946c62831"
 
 "@angular/compiler-cli@~2.4.0":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-2.4.3.tgz#8339c2f428d29df3ea0eac17f08d296fc87eb160"
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-2.4.4.tgz#726598f850e599677fa1638d1728096384665a63"
   dependencies:
     "@angular/tsc-wrapped" "0.5.1"
     minimist "^1.2.0"
     reflect-metadata "^0.1.2"
 
 "@angular/compiler@~2.4.0":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.4.3.tgz#76a41916f90eda66643107740c4a9ae45cb7a6c1"
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.4.4.tgz#86b861685ebc4c7b19b1133bf8c5bf4d28c71475"
 
 "@angular/core@~2.4.0":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.3.tgz#a72a13bb9f01659b8388558cd6e3a570a8434b1c"
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.4.tgz#eafef7bbdefea321fa5e79998bb2f6707c70729d"
 
 "@angular/forms@~2.4.0":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-2.4.3.tgz#0b4f59b8074e3d0fe987781e0f2af1ca1eec212b"
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-2.4.4.tgz#9679ca369d5bc2968ee1a67634ac221d75487364"
 
 "@angular/http@~2.4.0":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.4.3.tgz#d8afca7362efb010600fde02360e01e848579be6"
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.4.4.tgz#e41a9808eeec9cfdf3d5f9f92d0041b5c041fd60"
 
 "@angular/platform-browser-dynamic@~2.4.0":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.4.3.tgz#d65cc9bc4487e2a86e2c6f6641c711fccfa90c5a"
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.4.4.tgz#b5948cf2cac33c9634a400a7ece8fb5600f83107"
 
 "@angular/platform-browser@~2.4.0":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.3.tgz#eba8588d2fffc39d0b85a9180c297d9ca2f1f3a4"
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.4.tgz#0bff3512d00b199211ff28df0aa5c6841718a19c"
 
 "@angular/platform-server@~2.4.0":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-2.4.3.tgz#207af33919733696976b29bfc03c265a551dd05f"
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-2.4.4.tgz#2fc2d0b4ac29c8f08a3702a8da3ab79933b737d0"
   dependencies:
     parse5 "^2.2.1"
 
 "@angular/router@~3.4.0":
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/@angular/router/-/router-3.4.3.tgz#19846caa1f87d9b83f005f45a2be15b6744db8fd"
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/@angular/router/-/router-3.4.4.tgz#8564889d5bf322a1a4b679bd82c053df03eabb72"
 
 "@angular/tsc-wrapped@0.5.1":
   version "0.5.1"
@@ -489,19 +489,19 @@ bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.6.tgz#53344adb14617a13f6e8dd2ce28905d1c0ba3215"
 
 body-parser@^1.12.4:
-  version "1.15.2"
-  resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.15.2.tgz#d7578cf4f1d11d5f6ea804cef35dc7a7ff6dae67"
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.16.0.tgz#924a5e472c6229fb9d69b85a20d5f2532dec788b"
   dependencies:
     bytes "2.4.0"
     content-type "~1.0.2"
-    debug "~2.2.0"
+    debug "2.6.0"
     depd "~1.1.0"
-    http-errors "~1.5.0"
-    iconv-lite "0.4.13"
+    http-errors "~1.5.1"
+    iconv-lite "0.4.15"
     on-finished "~2.3.0"
-    qs "6.2.0"
-    raw-body "~2.1.7"
-    type-is "~1.6.13"
+    qs "6.2.1"
+    raw-body "~2.2.0"
+    type-is "~1.6.14"
 
 boolbase@~1.0.0:
   version "1.0.0"
@@ -693,8 +693,8 @@ caniuse-api@^1.5.2:
     shelljs "^0.7.0"
 
 caniuse-db@^1.0.30000346, caniuse-db@^1.0.30000604:
-  version "1.0.30000611"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000611.tgz#1075d14d9b3cc153caf5e9e35f45565b03304c37"
+  version "1.0.30000613"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000613.tgz#639133b7a5380c1416f9701d23d54d093dd68299"
 
 capture-stack-trace@^1.0.0:
   version "1.0.0"
@@ -1194,9 +1194,15 @@ debug@2.2.0, debug@~2.2.0:
   dependencies:
     ms "0.7.1"
 
-debug@2.3.3, debug@^2.2.0:
+debug@2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.3.3.tgz#40c453e67e6e13c901ddec317af8986cda9eff8c"
+  dependencies:
+    ms "0.7.2"
+
+debug@2.6.0, debug@^2.2.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.0.tgz#bc596bcabe7617f11d9fa15361eded5608b8499b"
   dependencies:
     ms "0.7.2"
 
@@ -2002,7 +2008,7 @@ http-deceiver@^1.2.4:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/http-deceiver/-/http-deceiver-1.2.7.tgz#fa7168944ab9a519d337cb0bec7284dc3e723d87"
 
-http-errors@~1.5.0:
+http-errors@~1.5.0, http-errors@~1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-1.5.1.tgz#788c0d2c1de2c81b9e6e8c01843b6b97eb920750"
   dependencies:
@@ -2042,9 +2048,9 @@ hyphenate-style-name@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.0.2.tgz#31160a36930adaf1fc04c6074f7eb41465d4ec4b"
 
-iconv-lite@0.4.13:
-  version "0.4.13"
-  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
+iconv-lite@0.4.15:
+  version "0.4.15"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.15.tgz#fe265a218ac6a57cfe854927e9d04c19825eddeb"
 
 icss-replace-symbols@^1.0.2:
   version "1.0.2"
@@ -2291,8 +2297,8 @@ istanbul-instrumenter-loader@^1.2.0:
     object-assign "^4.1.0"
 
 istanbul-lib-coverage@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/istanbul-lib-coverage/-/istanbul-lib-coverage-1.0.0.tgz#c3f9b6d226da12424064cce87fce0fb57fdfa7a2"
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/istanbul-lib-coverage/-/istanbul-lib-coverage-1.0.1.tgz#f263efb519c051c5f1f3343034fc40e7b43ff212"
 
 istanbul-lib-instrument@^1.1.3:
   version "1.4.2"
@@ -2877,17 +2883,13 @@ minimalistic-assert@^1.0.0:
   dependencies:
     brace-expansion "^1.0.0"
 
-minimist@0.0.8:
+minimist@0.0.8, minimist@~0.0.1:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
 
 minimist@1.2.0, minimist@^1.1.0, minimist@^1.1.1, minimist@^1.1.3, minimist@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
-
-minimist@~0.0.1:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
 
 mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
   version "0.5.1"
@@ -3285,10 +3287,6 @@ pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
 
-pluralize@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-3.1.0.tgz#84213d0a12356069daa84060c559242633161368"
-
 portfinder@^1.0.9:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.12.tgz#94a65114bec64433f9ce2116da33158238ce7ab4"
@@ -3603,6 +3601,10 @@ qs@6.2.0, qs@~6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.0.tgz#3b7848c03c2dece69a9522b0fae8c4126d745f3b"
 
+qs@6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.1.tgz#ce03c5ff0935bc1d9d69a9f14cbd18e568d67625"
+
 qs@~6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.0.tgz#f403b264f23bc01228c74131b407f18d5ea5d442"
@@ -3641,12 +3643,12 @@ range-parser@^1.0.3, range-parser@^1.2.0, range-parser@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
 
-raw-body@~2.1.7:
-  version "2.1.7"
-  resolved "https://registry.yarnpkg.com/raw-body/-/raw-body-2.1.7.tgz#adfeace2e4fb3098058014d08c072dcc59758774"
+raw-body@~2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/raw-body/-/raw-body-2.2.0.tgz#994976cf6a5096a41162840492f0bdc5d6e7fb96"
   dependencies:
     bytes "2.4.0"
-    iconv-lite "0.4.13"
+    iconv-lite "0.4.15"
     unpipe "1.0.0"
 
 raw-loader@^0.5.1:
@@ -4492,7 +4494,7 @@ type-check@~0.3.2:
   dependencies:
     prelude-ls "~1.1.2"
 
-type-is@~1.6.13:
+type-is@~1.6.13, type-is@~1.6.14:
   version "1.6.14"
   resolved "https://registry.yarnpkg.com/type-is/-/type-is-1.6.14.tgz#e219639c17ded1ca0789092dd54a03826b817cb2"
   dependencies:
