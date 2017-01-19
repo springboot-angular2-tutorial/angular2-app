@@ -11,7 +11,6 @@ import "lodash/isEmpty";
 import "lodash/omitBy";
 import "jwt-decode";
 import "time-ago";
-import "pluralize";
 import "aphrodite";
 import "bootstrap/dist/css/bootstrap.css";
 

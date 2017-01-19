@@ -43,7 +43,6 @@
     "core-js": "^2.4.1",
     "jwt-decode": "^2.1.0",
     "lodash-es": "^4.16.6",
-    "pluralize": "^3.0.0",
     "rxjs": "~5.0.1",
     "time-ago": "^0.1.0",
     "zone.js": "~0.7.6"

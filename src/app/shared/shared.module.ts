@@ -1,6 +1,6 @@
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core/src/metadata/ng_module";
-import {PluralizePipe, TimeAgoPipe} from "./pipes";
+import {TimeAgoPipe} from "./pipes";
 import {GravatarComponent} from "./gravatar/gravatar.component";
 import {PagerComponent} from "./pager/pager.component";
 import {FollowBtnModule} from "./follow-btn/follow-btn.module";
@@ -17,7 +17,6 @@ import {StylesDirective} from "./directives/styles.directive";
     GravatarComponent,
     StylesDirective,
 
-    PluralizePipe,
     TimeAgoPipe,
   ],
   exports: [
@@ -26,7 +25,6 @@ import {StylesDirective} from "./directives/styles.directive";
     FollowBtnComponent,
     StylesDirective,
 
-    PluralizePipe,
     TimeAgoPipe,
   ]
 })
