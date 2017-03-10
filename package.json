@@ -84,7 +84,7 @@
     "ts-helpers": "^1.1.2",
     "tslint": "^4.0.2",
     "tslint-loader": "^3.3.0",
-    "typescript": "~2.1.5",
+    "typescript": "~2.2.1",
     "webpack": "~2.2.0",
     "webpack-dev-server": "^2.4.1",
     "webpack-merge": "^3.0.0"
