@@ -44,7 +44,7 @@ describe('StylesDirective', () => {
   }));
 
   it('can give a class name for styles', () => {
-    expect(cmpDebugElement.classes).toEqual({'cool_1b2uzpk': true});
+    expect(cmpDebugElement.classes).toEqual({'cool_106q26s': true});
   });
 
   it('can update a class name', () => {
@@ -52,8 +52,8 @@ describe('StylesDirective', () => {
     testComponent.styles = [styles.cool, styles.large];
     fixture.detectChanges();
     expect(cmpDebugElement.classes).toEqual({
-      'cool_1b2uzpk': false,
-      'cool_1b2uzpk-o_O-large_1hjfi1m': true,
+      'cool_106q26s': false,
+      'cool_106q26s-o_O-large_2mywpu': true,
     });
   });
 
